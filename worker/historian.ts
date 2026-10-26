@@ -116,6 +116,10 @@ export async function getNotes(env: Env, sceneId: string, forkId: string, photo:
       await env.KV.put(lockKey, "1", { expirationTtl: LOCK_TTL_SECONDS });
       try {
         const notes = await write(env, forkId, await photo());
+        // The KV lock isn't atomic, so two writers can race. The first notes stored win: eras already painted
+        // from them are keyed by their text, and replacing them would orphan those eras.
+        const raced = await env.BUCKET.get(key);
+        if (raced) return (await raced.json()) as Notes;
         await env.BUCKET.put(key, JSON.stringify(notes), { httpMetadata: { contentType: "application/json" } });
         return notes;
       } finally {

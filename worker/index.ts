@@ -324,13 +324,13 @@ app.post("/api/scenes/:token/eras/:year/elements", async (c) => {
   const era = params && findEra(params.forkId, year);
   if (!params || !era || era.driver !== "culture" || !era.fossil) return fail(c, 400, "bad_request");
   const id = await verifySceneToken(c.env, c.req.param("token"));
-  if (!id) return fail(c, 404, "not_found");
-  const place = await readNoteFor(c.env, id, params.forkId, year);
-  if (place === null) return fail(c, 404, "not_found");
+  if (!id) return fail(c, 404, "not_found", "scene");
+  // Same fallback as era generation: without notes, the era was painted from the chronicle alone.
+  const place = (await readNoteFor(c.env, id, params.forkId, year)) ?? { note: "" };
   const prefix = await eraPrefix(id, year, params, era, place);
   const used = fossilFor(era, place)!;
   const fossil = await c.env.BUCKET.get(`${prefix}/fossil.webp`);
-  if (!fossil) return fail(c, 404, "not_found");
+  if (!fossil) return fail(c, 404, "not_found", "fossil");
   const image = toDataUrl(await fossil.arrayBuffer(), fossil.httpMetadata?.contentType ?? "image/webp");
 
   // One at a time with a retry: three SAM calls at once on the same image failed transiently in testing.

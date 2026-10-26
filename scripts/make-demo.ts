@@ -108,6 +108,15 @@ async function main(): Promise<void> {
   const forks: Record<string, Record<number, object>> = {};
   for (const c of [base, ...chronicles.filter((x) => x !== base)]) {
     const params = { forkId: c.forkId, biome, setting: "outdoor" };
+    // Research first (Muse Spark, once per history), so parallel eras all read the same notes.
+    const { place } = await json<{ place: string }>(
+      await fetch(`${BASE}/api/scenes/${scene.token}/notes`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ forkId: c.forkId }),
+      }),
+    );
+    console.log(`  ${c.forkId}: ${place}`);
     const years = yearsFor(c).filter((y) => !(c === base && y === 0));
     const eras: Record<number, object> = {};
     await pool(years, async (year) => {
