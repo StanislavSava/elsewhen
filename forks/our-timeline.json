@@ -1,0 +1,436 @@
+{
+  "forkId": "our-timeline",
+  "title": "Our timeline",
+  "divergenceYear": null,
+  "premise": "The history that actually happened, and one calm guess at what comes next.",
+  "chain": [],
+  "eras": [
+    {
+      "year": -1000000,
+      "driver": "biology",
+      "structures": "unbuilt",
+      "biomes": {
+        "temperate": {
+          "caption": "Early Pleistocene · mammoths graze a wooded floodplain",
+          "environment": "A temperate floodplain of open woodland, tall grass and a slow, meandering river.",
+          "visualPrompt": "Transform this scene to one million years ago, in the Early Pleistocene. A temperate landscape of open woodland, tall grasses and a meandering river. One southern mammoth (Mammuthus meridionalis) grazes, clearly visible in the mid-ground.",
+          "fauna": [
+            {
+              "kind": "extinct",
+              "name": "Southern mammoth",
+              "binomial": "Mammuthus meridionalis",
+              "ancestor": "early African mammoths that spread north",
+              "niche": "Large browser and grazer of open woodland",
+              "where": "Europe and western Asia, about 2.5 to 0.8 million years ago",
+              "adaptations": [
+                { "trait": "High-crowned molars", "because": "grit and grasses wear teeth down, so taller teeth last a lifetime" },
+                { "trait": "Long, gently curved tusks", "because": "useful for stripping bark and pushing through branches" },
+                { "trait": "A thinner coat than later mammoths", "because": "the climate was still mild, before the great ice ages deepened" }
+              ],
+              "sources": ["https://en.wikipedia.org/wiki/Mammuthus_meridionalis"]
+            }
+          ]
+        },
+        "arid": {
+          "caption": "Early Pleistocene · giraffe-cousins browse a dry savanna",
+          "environment": "A dry savanna of scattered acacias and a sandy, seasonal riverbed.",
+          "visualPrompt": "Transform this scene to one million years ago, in the Early Pleistocene. A dry, open savanna with scattered acacia trees, golden grass and a sandy seasonal riverbed. One Sivatherium, a massive short-necked giraffe relative with broad antler-like ossicones, stands clearly visible in the mid-ground.",
+          "fauna": [
+            {
+              "kind": "extinct",
+              "name": "Sivatherium",
+              "binomial": "Sivatherium maurusium",
+              "ancestor": "early giraffids",
+              "niche": "Heavy browser of savanna trees and shrubs",
+              "where": "Africa, from about 5 million to about 8,000 years ago",
+              "adaptations": [
+                { "trait": "Broad, antler-like ossicones", "because": "display and sparring between rival males" },
+                { "trait": "Short, powerful neck", "because": "it browsed low and mid-height plants instead of tall canopies" },
+                { "trait": "Massive, ox-like build", "because": "size protected it from the big cats of the savanna" }
+              ],
+              "sources": ["https://en.wikipedia.org/wiki/Sivatherium"]
+            }
+          ]
+        },
+        "tropical": {
+          "caption": "Early Pleistocene · a hoe-tusker wades the swamp edge",
+          "environment": "Lush tropical woodland around a reedy swamp.",
+          "visualPrompt": "Transform this scene to one million years ago, in the Early Pleistocene. Lush tropical woodland around a reedy swamp, palms and tall grasses, warm humid light. One Deinotherium, a huge elephant relative with tusks curving downward from its lower jaw, stands clearly visible in the mid-ground.",
+          "fauna": [
+            {
+              "kind": "extinct",
+              "name": "Deinotherium",
+              "binomial": "Deinotherium bozasi",
+              "ancestor": "early proboscideans, distant cousins of elephants",
+              "niche": "Giant browser of high foliage",
+              "where": "Africa, until about 1 million years ago",
+              "adaptations": [
+                { "trait": "Downward-curving lower tusks", "because": "used to pull branches down and strip leaves and bark" },
+                { "trait": "Long legs", "because": "walking long distances between forest patches" },
+                { "trait": "Enormous size", "because": "reaching foliage other browsers couldn't" }
+              ],
+              "sources": ["https://en.wikipedia.org/wiki/Deinotherium"]
+            }
+          ]
+        },
+        "cold": {
+          "caption": "Early Pleistocene · steppe mammoths cross the frost",
+          "environment": "A cold, open steppe with scattered larches and frost-hardened grass.",
+          "visualPrompt": "Transform this scene to one million years ago, in the Early Pleistocene. A cold, open steppe with scattered larch trees, frost on pale grass and a wide grey sky. One steppe mammoth (Mammuthus trogontherii), huge and shaggy, walks clearly visible in the mid-ground.",
+          "fauna": [
+            {
+              "kind": "extinct",
+              "name": "Steppe mammoth",
+              "binomial": "Mammuthus trogontherii",
+              "ancestor": "the southern mammoth",
+              "niche": "Grazer of cold, open grassland",
+              "where": "Northern Eurasia, about 1.7 million to 200,000 years ago",
+              "adaptations": [
+                { "trait": "Huge size, among the largest mammoths", "because": "big bodies lose heat slowly" },
+                { "trait": "Grinding molars with many enamel plates", "because": "tough, gritty steppe grass" },
+                { "trait": "A thicker coat", "because": "the first long glacial winters" }
+              ],
+              "sources": ["https://en.wikipedia.org/wiki/Steppe_mammoth"]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "year": -10000,
+      "driver": "biology",
+      "structures": "unbuilt",
+      "biomes": {
+        "temperate": {
+          "caption": "End of the ice age · aurochs among birch and late snow",
+          "environment": "Cold steppe giving way to birch and pine woodland, patches of late snow.",
+          "visualPrompt": "Transform this scene to 10,000 years ago, at the end of the last ice age. Cold steppe giving way to birch and pine woodland, patches of late snow. One aurochs stands, clearly visible in the mid-ground.",
+          "fauna": [
+            {
+              "kind": "extinct",
+              "name": "Aurochs",
+              "binomial": "Bos primigenius",
+              "ancestor": "Pleistocene wild cattle",
+              "niche": "Large grazer of woodland edges and river meadows",
+              "where": "Europe, Asia and North Africa; the last one died in Poland in 1627",
+              "adaptations": [
+                { "trait": "Forward-curving horns", "because": "defence against wolves and fights between bulls" },
+                { "trait": "Tall, muscular body", "because": "moving between woodland and open meadow" },
+                { "trait": "Mixed diet of grass and leaves", "because": "the forests were spreading as the ice retreated" }
+              ],
+              "sources": ["https://en.wikipedia.org/wiki/Aurochs"]
+            }
+          ]
+        },
+        "arid": {
+          "caption": "The Green Sahara · giant buffalo graze where desert is now",
+          "environment": "Where desert is today, a grassy savanna with shallow lakes.",
+          "visualPrompt": "Transform this scene to 10,000 years ago, during the humid period when today's deserts were green. A grassy savanna with a shallow lake, scattered trees and soft light. One Pelorovis, a giant buffalo with enormous curving horns, grazes clearly visible in the mid-ground.",
+          "fauna": [
+            {
+              "kind": "extinct",
+              "name": "Giant long-horned buffalo",
+              "binomial": "Pelorovis antiquus",
+              "ancestor": "African buffalo relatives",
+              "niche": "Grazer of wet grassland",
+              "where": "Northern and eastern Africa, until a few thousand years ago",
+              "adaptations": [
+                { "trait": "Huge sweeping horns", "because": "display and defence on open grassland" },
+                { "trait": "Heavy grazing build", "because": "plentiful grass during the Green Sahara" },
+                { "trait": "Dependence on water", "because": "it vanished as the lakes dried up again" }
+              ],
+              "sources": ["https://en.wikipedia.org/wiki/Pelorovis"]
+            }
+          ]
+        },
+        "tropical": {
+          "caption": "Late Pleistocene · a giant ground sloth in the forest",
+          "environment": "Warm forest edge with palms and open clearings.",
+          "visualPrompt": "Transform this scene to 10,000 years ago. A warm forest edge with palms, ferns and an open clearing. One giant ground sloth (Megatherium), the size of an elephant, rears up to feed on leaves, clearly visible in the mid-ground.",
+          "fauna": [
+            {
+              "kind": "extinct",
+              "name": "Giant ground sloth",
+              "binomial": "Megatherium americanum",
+              "ancestor": "smaller South American ground sloths",
+              "niche": "Giant browser that stood on its hind legs to reach leaves",
+              "where": "South America, until roughly 12,000 years ago",
+              "adaptations": [
+                { "trait": "Huge curved claws", "because": "pulling branches down to its mouth" },
+                { "trait": "A thick tail used as a prop", "because": "standing upright to feed high in the trees" },
+                { "trait": "Elephant-sized body", "because": "few predators could threaten an adult" }
+              ],
+              "sources": ["https://en.wikipedia.org/wiki/Megatherium"]
+            }
+          ]
+        },
+        "cold": {
+          "caption": "End of the ice age · the last woolly mammoths",
+          "environment": "Tundra and mammoth steppe, low willows, lingering snow.",
+          "visualPrompt": "Transform this scene to 10,000 years ago, at the end of the last ice age. Open tundra and pale steppe grass, low willows, lingering snow under a wide sky. One woolly mammoth walks, clearly visible in the mid-ground.",
+          "fauna": [
+            {
+              "kind": "extinct",
+              "name": "Woolly mammoth",
+              "binomial": "Mammuthus primigenius",
+              "ancestor": "the steppe mammoth",
+              "niche": "Grazer of the cold mammoth steppe",
+              "where": "Northern Eurasia and North America; the last ones lived on Wrangel Island until about 4,000 years ago",
+              "adaptations": [
+                { "trait": "Dense woolly coat over an undercoat", "because": "winters far below freezing" },
+                { "trait": "Small ears and a short tail", "because": "less skin exposed to frostbite" },
+                { "trait": "A fat hump", "because": "energy stored for the long winter" }
+              ],
+              "sources": ["https://en.wikipedia.org/wiki/Woolly_mammoth"]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "year": -2000,
+      "driver": "culture",
+      "structures": "predecessor",
+      "caption": "The first century · timber, thatch and a carved stone",
+      "visualPrompt": "Transform this scene to the early first century. Modest timber-and-thatch houses and a few stone buildings on the same footprints, a packed-earth road, wattle fences, smoke from a hearth, no modern objects.",
+      "visualPromptIndoor": "Transform this room to the early first century: rough plaster and timber walls, a packed-earth floor, a low wooden bench, clay pots, daylight from a small opening.",
+      "fossil": {
+        "medium": "relief",
+        "brief": "A carved limestone relief panel of a harvest festival: a woman holding a basket of fruit, sheaves of wheat, a ram, and a border of grapevines. Weathered stone, soft relief carving, no inscription, no letters, no text of any kind.",
+        "slogan": "Felicitas temporum · the happiness of the times",
+        "elements": [
+          { "name": "woman", "technique": "Personification", "explanation": "Plenty itself, shown as a calm, generous figure" },
+          { "name": "wheat", "technique": "Abundance", "explanation": "Full harvests promise that the order of things works" },
+          { "name": "grapevine", "technique": "Frame of prosperity", "explanation": "The border makes the whole scene feel fertile" }
+        ]
+      }
+    },
+    {
+      "year": -500,
+      "driver": "culture",
+      "structures": "predecessor",
+      "caption": "1526 · timber-framed houses and a painted guild sign",
+      "visualPrompt": "Transform this scene to the year 1526. Timber-framed and stone buildings on the same footprints, unpaved ground, no modern objects, no electricity, no vehicles, candle and daylight only.",
+      "visualPromptIndoor": "Transform this room to the year 1526: timber beams, plaster walls, a wooden bench and chair, a woven rug, candles, a small leaded window.",
+      "fossil": {
+        "medium": "sign",
+        "brief": "A painted wooden shop sign of a bakers' guild hanging from a wrought-iron bracket: two crossed loaves of bread, a golden wheat sheaf and a crown-shaped pretzel on a deep red field, gilded edges, weathered paint. No letters, no words, no text of any kind.",
+        "elements": [
+          { "name": "bread", "technique": "Instant recognition", "explanation": "Most people couldn't read; pictures said what was sold" },
+          { "name": "pretzel", "technique": "Guild emblem", "explanation": "A shared symbol signalled a trusted, regulated trade" },
+          { "name": "gilding", "technique": "Prestige", "explanation": "Gold paint claimed wealth and respectability" }
+        ]
+      }
+    },
+    {
+      "year": -100,
+      "driver": "culture",
+      "structures": "predecessor",
+      "caption": "1926 · trams, chimneys and a public-health poster",
+      "visualPrompt": "Transform this scene to the year 1926. Older brick and stucco buildings on the same footprints, cobblestones, gas lamps, a few vintage cars and a tram line, chimney smoke, period details.",
+      "visualPromptIndoor": "Transform this room to the year 1926: patterned wallpaper, a wooden sideboard, an upholstered armchair, a gas lamp, lace curtains.",
+      "fossil": {
+        "medium": "poster",
+        "brief": "A 1920s public-health poster encouraging people to drink clean water: a stylized woman pouring water from a pitcher, a glowing sun behind her, a geometric Art Deco border, bold flat colours, paper texture. No text, no letters, no words, no numbers, no writing of any kind.",
+        "slogan": "Clean water, healthy home",
+        "elements": [
+          { "name": "woman", "technique": "Idealized everyday hero", "explanation": "Hygiene shown as the graceful thing a modern person does" },
+          { "name": "sun", "technique": "Halo of virtue", "explanation": "The glow borrows the language of saints for a public-health habit" },
+          { "name": "water", "technique": "Purity made visible", "explanation": "Clear, flowing water stands for health and progress" }
+        ]
+      }
+    },
+    {
+      "year": 100,
+      "driver": "culture",
+      "structures": "intact",
+      "caption": "2126 · green roofs, quiet trams, gardens on every street",
+      "visualPrompt": "Transform this scene to the year 2126. The same buildings, refurbished with green roofs, climbing plants and solar facades, quiet electric trams and wide tree-lined walkways. Peaceful, sunlit, optimistic.",
+      "visualPromptIndoor": "Transform this room to the year 2126: the same layout, warm natural materials, plants along the window, soft integrated lighting, simple elegant furniture. Peaceful and sunlit.",
+      "fossil": {
+        "medium": "panel",
+        "brief": "A softly glowing illuminated street panel showing hands planting a seedling in rich soil, surrounded by stylized leaves and sun rays, clean modern illustration in green and gold. No letters, no words, no text of any kind.",
+        "slogan": "Grow your street",
+        "elements": [
+          { "name": "hands", "technique": "Shared agency", "explanation": "Anonymous hands invite anyone to see themselves in the act" },
+          { "name": "seedling", "technique": "Hopeful future", "explanation": "Something small and fragile that you can help grow" },
+          { "name": "sun rays", "technique": "Optimism", "explanation": "Light frames the message as a good, natural direction" }
+        ]
+      }
+    },
+    {
+      "year": 1000,
+      "driver": "culture",
+      "structures": "overgrown",
+      "caption": "3026 · nature has gently reclaimed the place",
+      "visualPrompt": "Transform this scene to 1,000 years in the future. Nature has gently reclaimed this place: the buildings still stand but are weathered and overgrown, moss on the walls, vines across the facades, open empty window frames, young trees growing on the roofs. Peaceful, sunlit, serene.",
+      "visualPromptIndoor": "Transform this room to 1,000 years in the future, gently overgrown: soft moss across the floor, ferns and ivy on the walls, sunlight through the window. Peaceful, sunlit, serene."
+    },
+    {
+      "year": 10000,
+      "driver": "biology",
+      "structures": "buried",
+      "biomes": {
+        "temperate": {
+          "caption": "10,000 years on · old forest over quiet green mounds",
+          "environment": "Old-growth forest growing over low, mossy mounds where buildings once stood.",
+          "visualPrompt": "Transform this scene to 10,000 years in the future. A wild, peaceful old-growth forest; only low mossy mounds and a few weathered stones hint that anything ever stood here. One large ground-dwelling raven, long-legged and glossy black, walks across a clearing, clearly visible in the mid-ground. Sunlit and serene.",
+          "fauna": [
+            {
+              "kind": "speculative",
+              "name": "Ground raven",
+              "binomial": "Corvus terrestris",
+              "ancestor": "the common raven",
+              "niche": "Clever forest-floor forager and scavenger",
+              "adaptations": [
+                { "trait": "Long legs and short wings", "because": "food is on the ground and few predators remain to flee from" },
+                { "trait": "Heavier beak", "because": "cracking nuts and digging for grubs in soft soil" },
+                { "trait": "Family groups that share tools", "because": "ravens were already problem-solvers; that paid off" }
+              ]
+            }
+          ]
+        },
+        "arid": {
+          "caption": "10,000 years on · scrub and stone where streets were",
+          "environment": "Rocky scrubland with low stone mounds and hardy shrubs.",
+          "visualPrompt": "Transform this scene to 10,000 years in the future. A quiet, open scrubland of hardy shrubs, warm sand and low weathered stone mounds where buildings once stood. One long-legged pale desert fox with huge ears trots across the ground, clearly visible in the mid-ground. Golden, peaceful light.",
+          "fauna": [
+            {
+              "kind": "speculative",
+              "name": "Runner fox",
+              "binomial": "Vulpes cursor",
+              "ancestor": "the fennec and red fox",
+              "niche": "Long-distance hunter of desert rodents",
+              "adaptations": [
+                { "trait": "Very long legs", "because": "covering great distances between scattered prey" },
+                { "trait": "Huge ears", "because": "shedding heat and hearing prey underground" },
+                { "trait": "Pale, reflective fur", "because": "staying cool under a harsh sun" }
+              ]
+            }
+          ]
+        },
+        "tropical": {
+          "caption": "10,000 years on · rainforest over vine-covered stones",
+          "environment": "Dense rainforest with vine-covered stone mounds.",
+          "visualPrompt": "Transform this scene to 10,000 years in the future. A dense, peaceful rainforest with tall trees, hanging vines and vine-covered stone mounds where buildings once stood. One brilliantly green gliding parakeet with wide skin flaps between its legs glides between branches, clearly visible in the mid-ground. Soft green light.",
+          "fauna": [
+            {
+              "kind": "speculative",
+              "name": "Glider parakeet",
+              "binomial": "Psittacula volitans",
+              "ancestor": "escaped ring-necked parakeets",
+              "niche": "Fruit-eater of the high canopy",
+              "adaptations": [
+                { "trait": "Skin flaps between the legs", "because": "gliding between trees costs less energy than flapping" },
+                { "trait": "Strong, curved beak", "because": "cracking hard rainforest seeds" },
+                { "trait": "Vivid green plumage", "because": "camouflage among the leaves" }
+              ]
+            }
+          ]
+        },
+        "cold": {
+          "caption": "10,000 years on · tundra over low mounds",
+          "environment": "Open tundra and dwarf birch over low mounds.",
+          "visualPrompt": "Transform this scene to 10,000 years in the future. Open, peaceful tundra with dwarf birch, lichen and low grassy mounds where buildings once stood. One shaggy, long-haired reindeer descendant with broad flat antlers grazes, clearly visible in the mid-ground. Soft northern light.",
+          "fauna": [
+            {
+              "kind": "speculative",
+              "name": "Shag deer",
+              "binomial": "Rangifer hirsutus",
+              "ancestor": "the reindeer",
+              "niche": "Grazer of lichen and tundra grass",
+              "adaptations": [
+                { "trait": "Long shaggy coat", "because": "colder winters after a long warm period" },
+                { "trait": "Broad, flat antlers", "because": "clearing snow from lichen" },
+                { "trait": "Wide hooves", "because": "walking on snow and soft bog" }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "year": 1000000,
+      "driver": "biology",
+      "structures": "gone",
+      "biomes": {
+        "temperate": {
+          "caption": "One million years on · a new forest, new creatures",
+          "environment": "A lush, unfamiliar temperate ecosystem.",
+          "visualPrompt": "Transform this scene to one million years in the future. A lush, unfamiliar ecosystem has evolved where the structures once stood. One speculative creature descended from the pigeon, much larger, flightless and long-legged, stands clearly visible in the mid-ground.",
+          "fauna": [
+            {
+              "kind": "speculative",
+              "name": "Strider pigeon",
+              "binomial": "Columba gradiens",
+              "ancestor": "the city pigeon",
+              "niche": "Tall, flightless browser of shrubs and seeds",
+              "adaptations": [
+                { "trait": "Long legs, no flight", "because": "flying is expensive when food is on the ground and predators are few" },
+                { "trait": "Height of a person", "because": "bigger bodies reach more food and lose heat slowly" },
+                { "trait": "A crop that grinds seeds", "because": "inherited from pigeons, now doing heavier work" }
+              ]
+            }
+          ]
+        },
+        "arid": {
+          "caption": "One million years on · hopping rats on the red plain",
+          "environment": "A wide, open red plain with strange succulents.",
+          "visualPrompt": "Transform this scene to one million years in the future. A wide, open red-earth plain with strange tall succulents where the structures once stood, warm golden light. One speculative kangaroo-like hopping rat, the size of a dog, with long hind legs and a balancing tail, stands clearly visible in the mid-ground.",
+          "fauna": [
+            {
+              "kind": "speculative",
+              "name": "Hopping rat",
+              "binomial": "Rattus saltans",
+              "ancestor": "the brown rat",
+              "niche": "Grazer that travels far between sparse plants",
+              "adaptations": [
+                { "trait": "Long hind legs for hopping", "because": "the most efficient way to cross open ground" },
+                { "trait": "A long balancing tail", "because": "steering and stability at speed" },
+                { "trait": "Kidneys that save water", "because": "very little to drink on the plain" }
+              ]
+            }
+          ]
+        },
+        "tropical": {
+          "caption": "One million years on · giant herons browse tree ferns",
+          "environment": "A misty forest of giant tree ferns.",
+          "visualPrompt": "Transform this scene to one million years in the future. A misty, peaceful forest of giant tree ferns and broad-leaved plants where the structures once stood. One speculative giant long-necked heron descendant, taller than a person, browses fern fronds, clearly visible in the mid-ground.",
+          "fauna": [
+            {
+              "kind": "speculative",
+              "name": "Fern heron",
+              "binomial": "Ardea filicivora",
+              "ancestor": "the grey heron",
+              "niche": "Tall browser of tree-fern fronds",
+              "adaptations": [
+                { "trait": "Very long neck", "because": "reaching the tender fronds at the top of tree ferns" },
+                { "trait": "Flat, serrated beak", "because": "shearing leaves instead of spearing fish" },
+                { "trait": "Weak flight", "because": "plentiful food on foot made flying unnecessary" }
+              ]
+            }
+          ]
+        },
+        "cold": {
+          "caption": "One million years on · seals that walk the shore",
+          "environment": "A cold coast of moss, rock and pale grass.",
+          "visualPrompt": "Transform this scene to one million years in the future. A cold, peaceful landscape of moss, rock and pale grass where the structures once stood, low silver light. One speculative seal descendant that walks on land on four sturdy flippers, with thick grey fur, stands clearly visible in the mid-ground.",
+          "fauna": [
+            {
+              "kind": "speculative",
+              "name": "Walking seal",
+              "binomial": "Phoca ambulans",
+              "ancestor": "the harbour seal",
+              "niche": "Land hunter of burrowing animals",
+              "adaptations": [
+                { "trait": "Flippers turned into sturdy feet", "because": "more food on land than in a colder sea" },
+                { "trait": "Thick fur over blubber", "because": "long freezing winters" },
+                { "trait": "Keen smell", "because": "finding prey under snow" }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+# secrets (all env files live at the root)
+.env
+.env.*
+!.env.example
+.dev.vars
+
+# build / tooling
+node_modules/
+dist/
+.wrangler/
+*.tsbuildinfo
+.DS_Store
+
+# throwaway pre-hackathon work and local assets
+spike/
+sandbox/
+demo-photos/
+brainstorming-session-*.md
+_bmad-output/
+
+# BMAD (symlinks into ~/.bmad-global)
+_bmad
+.agent
+.agents
+.claude
+.cursor
+.gemini
+.opencode
+.windsurf

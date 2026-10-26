@@ -1,0 +1,20 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "elsewhen",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "observability": { "enabled": true },
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "r2_buckets": [{ "binding": "BUCKET", "bucket_name": "elsewhen" }],
+  // Local dev simulates KV; create the namespace and put its id here before the first deploy.
+  "kv_namespaces": [{ "binding": "KV", "id": "local-dev" }],
+  "vars": {
+    "DAILY_BUDGET_CENTS": "500",
+    "KILL_SWITCH": "0"
+  }
+  // Secrets (wrangler secret put): MODEL_API_KEY, TURNSTILE_SITE_KEY, TURNSTILE_SECRET_KEY, SCENE_HMAC_KEY.
+  // Locally they come from .dev.vars, generated from the root .env by scripts/dev-vars.mjs.
+}

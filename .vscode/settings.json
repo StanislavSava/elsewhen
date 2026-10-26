@@ -1,0 +1,12 @@
+{
+  "files.exclude": {
+    "_bmad": true,
+    ".agent": true,
+    ".agents": true,
+    ".claude": true,
+    ".cursor": true,
+    ".gemini": true,
+    ".opencode": true,
+    ".windsurf": true
+  }
+}
