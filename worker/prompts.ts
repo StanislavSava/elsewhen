@@ -14,6 +14,12 @@ const PRESERVE: Record<StructureState, Record<Setting, string>> = {
     indoor:
       "Turn this room into an era-appropriate interior on the same footprint, with the same viewpoint and framing. Remove any people. Photorealistic photograph.",
   },
+  alternate: {
+    outdoor:
+      "Replace the buildings with this world's own architecture on the same footprints, as described. Keep the same viewpoint, framing, horizon line and terrain. Remove any people. Photorealistic photograph.",
+    indoor:
+      "Turn this room into this world's own interior on the same footprint, as described, with the same viewpoint and framing. Remove any people. Photorealistic photograph.",
+  },
   intact: {
     outdoor:
       "Keep the exact same camera position, framing, horizon line and perspective. Keep the large structures in the same places. Remove any people. Photorealistic photograph.",

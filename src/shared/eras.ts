@@ -7,7 +7,10 @@ export type Biome = (typeof BIOMES)[number];
 export const SETTINGS = ["outdoor", "indoor"] as const;
 export type Setting = (typeof SETTINGS)[number];
 
-/** Years relative to now. 0 is the captured photo itself and is never generated. */
+/** Calendar year that "now" (relative year 0) stands for. */
+export const CURRENT_YEAR = 2026;
+
+/** Years relative to now. In our timeline 0 is the captured photo; a fork generates its own alternate now. */
 export const ERA_YEARS = [-1_000_000, -10_000, -2_000, -500, -100, 0, 100, 1_000, 10_000, 1_000_000] as const;
 export type EraYear = (typeof ERA_YEARS)[number];
 export const GENERATED_YEARS = ERA_YEARS.filter((y) => y !== 0);
@@ -58,7 +61,7 @@ export function formatYear(year: number): string {
 
 // ---------------------------------------------------------------- chronicle schema
 
-const StructureState = z.enum(["unbuilt", "predecessor", "intact", "weathered", "overgrown", "buried", "gone"]);
+const StructureState = z.enum(["unbuilt", "predecessor", "alternate", "intact", "weathered", "overgrown", "buried", "gone"]);
 export type StructureState = z.infer<typeof StructureState>;
 
 const Fauna = z.object({
@@ -112,6 +115,7 @@ export type ChronicleEra = z.infer<typeof ChronicleEra>;
 export const Chronicle = z.object({
   forkId: z.string(),
   title: z.string(),
+  /** Calendar year where this history splits from ours (null for our timeline). */
   divergenceYear: z.number().nullable(),
   premise: z.string(),
   chain: z.array(z.object({ year: z.number(), event: z.string(), consequence: z.string() })),
@@ -121,4 +125,9 @@ export type Chronicle = z.infer<typeof Chronicle>;
 
 export function eraCaption(era: ChronicleEra, biome: Biome): string {
   return era.driver === "biology" ? era.biomes[biome].caption : era.caption;
+}
+
+/** Divergence as a year relative to now (e.g. 1440 → −586), or null for our timeline. */
+export function relativeDivergence(c: Chronicle): number | null {
+  return c.divergenceYear === null ? null : c.divergenceYear - CURRENT_YEAR;
 }

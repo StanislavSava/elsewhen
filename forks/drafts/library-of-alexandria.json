@@ -1,0 +1,198 @@
+{
+  "forkId": "library-of-alexandria",
+  "title": "The Library of Alexandria never burned",
+  "divergenceYear": -48,
+  "premise": "In 48 BCE the harbor fire is quenched before it reaches the scroll stacks, and the Library of Alexandria endures. Its copyists and mechanists keep measuring, testing and trading knowledge across continents for two thousand years. The result is a luminous Hellenistic modernity of marble, brass and steam, where geometry lights every street.",
+  "chain": [
+    {
+      "year": -48,
+      "event": "Harbor workers and scholars douse the dockside fire and cut a soaked linen firebreak before it reaches the scroll stores.",
+      "consequence": "The Great Library keeps its collections and strengthens its custom of copying every arriving manuscript."
+    },
+    {
+      "year": 130,
+      "event": "Librarians endow the Hall of Mechanisms for daily trials of steam pressure, lenses and healing herbs recorded on standard diagrams.",
+      "consequence": "Craft knowledge becomes cumulative because any workshop can copy tested drawings."
+    },
+    {
+      "year": 532,
+      "event": "The Scriptorium Compact funds traveling copy schools that reproduce technical scrolls in clear pictures across three harbors.",
+      "consequence": "Mechanical and medical learning stays shared and mutually intelligible for centuries."
+    },
+    {
+      "year": 1084,
+      "event": "Alexandrian mapmakers complete the Harmonious Atlas of currents, stars and winds for open use by all navigators.",
+      "consequence": "Calm exchange of seeds, glassware and instruments spreads observation and measurement widely."
+    },
+    {
+      "year": 1725,
+      "event": "City councils adopt the Daylight Ordinance favoring white porticoes, mirrored lenses, quiet steam trams and public gardens.",
+      "consequence": "Daily life centers on libraries, workshops and shaded promenades built in classical style."
+    },
+    {
+      "year": 1952,
+      "event": "The Lyceum Concord opens free neighborhood lyceums teaching geometry, healing and engine care to all children.",
+      "consequence": "A curious and literate citizenry carries luminous Hellenistic cities confidently into 2026."
+    }
+  ],
+  "eras": [
+    {
+      "year": -2000,
+      "driver": "culture",
+      "structures": "predecessor",
+      "caption": "26 CE · Scrolls in Sunlight",
+      "visualPrompt": "Transform this scene to 26 CE. Low limestone halls with timber colonnades stand on the same footprints, their papyrus awnings shading tables of scrolls and bronze instruments. Linen-robed copyists and children chat softly in warm golden morning light.",
+      "visualPromptIndoor": "A quiet scriptorium interior with cedar tables, clay oil lamps and tall niches holding rolled scrolls in soft lamplight.",
+      "fossil": {
+        "medium": "relief",
+        "brief": "Front view of a pale sandstone relief showing a central unrolled scroll, a toothed bronze wheel on the left, a perched owl on the right, framed by a carved laurel border. No letters, no words, no text of any kind.",
+        "slogan": "Copy, Measure, Share Light",
+        "elements": [
+          {
+            "name": "central unrolled scroll",
+            "technique": "Clarity",
+            "explanation": "The open scroll makes knowledge feel readable and shareable to every passerby."
+          },
+          {
+            "name": "toothed bronze wheel",
+            "technique": "Wonder",
+            "explanation": "The precise wheel suggests clever mechanisms can ease daily work."
+          },
+          {
+            "name": "perched owl",
+            "technique": "Authority",
+            "explanation": "The calm owl lends patient wisdom to the practice of copying."
+          }
+        ]
+      }
+    },
+    {
+      "year": -500,
+      "driver": "culture",
+      "structures": "predecessor",
+      "caption": "1526 · Astrolabes in Marble Light",
+      "visualPrompt": "Transform this scene to 1526. Grand marble porticoes with brass-trimmed domes stand on the same footprints, fronted by paved colonnaded walkways and bubbling fountain channels. Students with astrolabes, potters and flower sellers mingle in clear late-afternoon sunlight.",
+      "visualPromptIndoor": "Inside a high frescoed lecture hall with marble benches, brass armillary spheres and tall shuttered windows glowing with daylight.",
+      "fossil": {
+        "medium": "mural",
+        "brief": "Front view of a warm plaster mural showing a serene bearded teacher, a large brass astrolabe overhead, potted olive saplings below, bordered by a blue geometric frieze. No letters, no words, no text of any kind.",
+        "slogan": "Observe the World Together",
+        "elements": [
+          {
+            "name": "serene bearded teacher",
+            "technique": "Warmth",
+            "explanation": "The gentle teacher invites viewers to trust learning as kind guidance."
+          },
+          {
+            "name": "large brass astrolabe",
+            "technique": "Wonder",
+            "explanation": "The shining instrument makes the sky feel measurable and near."
+          },
+          {
+            "name": "potted olive saplings",
+            "technique": "Hope",
+            "explanation": "Young trees promise that careful study will nourish future plenty."
+          }
+        ]
+      }
+    },
+    {
+      "year": -100,
+      "driver": "culture",
+      "structures": "predecessor",
+      "caption": "1926 · Trams and Lenses Glow",
+      "visualPrompt": "Transform this scene to 1926. Elegant white marble facades with cast-iron and glass verandas stand on the same footprints, linked by polished steam-tram rails and lens-topped lamp posts. Families promenade with books and parcels beneath bright midday sun filtered through plane trees.",
+      "visualPromptIndoor": "Inside a bright reading room with white columns, oak card catalogs and brass reading lamps under a frosted skylight.",
+      "fossil": {
+        "medium": "poster",
+        "brief": "Front view of a cream printed poster showing a white steam tram on the left, a smiling female engineer in the center, a radiant sunburst lens above, and a marble colonnade below. No letters, no words, no text of any kind.",
+        "slogan": "Reason Lights Every Street",
+        "elements": [
+          {
+            "name": "white steam tram",
+            "technique": "Comfort",
+            "explanation": "The clean tram makes new transit feel safe, punctual and pleasant."
+          },
+          {
+            "name": "smiling female engineer",
+            "technique": "Belonging",
+            "explanation": "Her friendly gaze lets every viewer picture themselves as a maker."
+          },
+          {
+            "name": "radiant sunburst lens",
+            "technique": "Optimism",
+            "explanation": "The bright lens bathes the city in optimism and clear sight."
+          }
+        ]
+      }
+    },
+    {
+      "year": 0,
+      "driver": "culture",
+      "structures": "alternate",
+      "caption": "2026 · Luminous Halls of Reason",
+      "visualPrompt": "Transform this scene to 2026. Luminous fluted marble buildings with brass louvers and solar-lens glass stand on the same footprints, their arcades sheltering bookstalls and steam-quiet transit stops. Neighbors linger over diagrams and tea in soft clear daylight with gentle lens glow.",
+      "visualPromptIndoor": "Inside a serene atrium library with marble mosaic floor, brass shelves of glass scroll-cases and a domed oculus pouring daylight in.",
+      "fossil": {
+        "medium": "billboard",
+        "brief": "Front view of a large civic billboard showing a gleaming marble library, a diverse circle of readers on its steps, and a giant glowing geometric lens radiating beams over a green garden strip. No letters, no words, no text of any kind.",
+        "slogan": "Geometry Serves Everyone Daily",
+        "elements": [
+          {
+            "name": "gleaming marble library",
+            "technique": "Pride",
+            "explanation": "The shining library presents shared learning as the proud center of civic life."
+          },
+          {
+            "name": "diverse circle of readers",
+            "technique": "Belonging",
+            "explanation": "The gathered readers show that wisdom belongs to neighbors together."
+          },
+          {
+            "name": "giant glowing geometric lens",
+            "technique": "Optimism",
+            "explanation": "The beaming lens suggests reason gently brightens every home."
+          }
+        ]
+      }
+    },
+    {
+      "year": 100,
+      "driver": "culture",
+      "structures": "alternate",
+      "caption": "2126 · Gentle Light Ahead",
+      "visualPrompt": "Transform this scene to 2126. Slender ivory marble pavilions with pearlescent solar glass and brass vine trellises stand on the same footprints, linked by silent gliding walkways and mist fountains. Children and elders tend star charts and float lanterns in calm opalescent evening light.",
+      "visualPromptIndoor": "Inside a circular learning lounge with living jasmine walls, mother-of-pearl desks and a ceiling lens diffusing warm star-like light.",
+      "fossil": {
+        "medium": "panel",
+        "brief": "Front view of a softly glowing wall panel showing a tranquil child with a star chart, a hovering brass airship above olive trees, and a luminous spiral of light connecting them over pale marble. No letters, no words, no text of any kind.",
+        "slogan": "Keep Curiosity Kind and Bright",
+        "elements": [
+          {
+            "name": "tranquil child with a star chart",
+            "technique": "Tenderness",
+            "explanation": "The curious child makes the future feel tender and personally inviting."
+          },
+          {
+            "name": "hovering brass airship",
+            "technique": "Wonder",
+            "explanation": "The floating craft promises peaceful travel guided by careful measurement."
+          },
+          {
+            "name": "luminous spiral of light",
+            "technique": "Harmony",
+            "explanation": "The glowing spiral links learning, sky and earth in one calm motion."
+          }
+        ]
+      }
+    },
+    {
+      "year": 1000,
+      "driver": "culture",
+      "structures": "overgrown",
+      "caption": "3026 · Gardens Keep the Books",
+      "visualPrompt": "Transform this scene to 3026. Graceful marble colonnades softened by fig vines and flowering jasmine stand on the same footprints, their brass lenses dappled by tall plane trees and songbirds. Small groups picnic, read and garden in dappled golden daylight beside clear reflecting pools.",
+      "visualPromptIndoor": "Inside a vine-framed marble hall with open skylights, ferns along the sills and readers at stone tables in gentle green-filtered daylight."
+    }
+  ]
+}

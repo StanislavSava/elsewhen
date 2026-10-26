@@ -1,0 +1,168 @@
+{
+  "forkId": "no-printing-press",
+  "title": "The printing press was never invented",
+  "divergenceYear": 1440,
+  "premise": "In 1440 Gutenberg's workshop fails and movable type never spreads. Books remain rare handwritten treasures, and powerful guilds of scribes and memorizers become the keepers of knowledge. Cities learn to speak, paint and remember together, building halls for recitation where libraries would have stood.",
+  "chain": [
+    {
+      "year": 1440,
+      "event": "In Mainz Gutenberg's press trials produce uneven type and lose funding, and movable type is set aside.",
+      "consequence": "Hand copying remains the only way to make books, keeping them costly and guarded by workshops."
+    },
+    {
+      "year": 1548,
+      "event": "Cities charter powerful guilds of scribes and memorizers to license copying and public recitation.",
+      "consequence": "Scriptoria and recitation halls become civic centers and memory training becomes a honored craft."
+    },
+    {
+      "year": 1682,
+      "event": "Teachers develop standard memory halls and picture-sign codes for law, craft and news.",
+      "consequence": "Ideas travel by trained reciters and painted image boards, allowing shared culture without printed text."
+    },
+    {
+      "year": 1815,
+      "event": "Artisans perfect large stencil and relief presses that print pictures, seals and color patterns but not small text.",
+      "consequence": "Streets fill with vivid image posters and signboards while words stay handwritten, strengthening visual storytelling."
+    },
+    {
+      "year": 1903,
+      "event": "Municipal Living Libraries open where citizens can consult reciters and copyists by the hour.",
+      "consequence": "Oral learning and hand copying become everyday public life, shaping schools, plazas and street architecture."
+    },
+    {
+      "year": 2026,
+      "event": "The Concord of Reciters links cities by traveling memory festivals and illuminated public panels.",
+      "consequence": "Handmade knowledge culture stays vibrant and peaceful, honored in calm gathering places and glowing picture walls."
+    }
+  ],
+  "eras": [
+    {
+      "year": -500,
+      "driver": "culture",
+      "structures": "predecessor",
+      "caption": "1526 · Hall of Copied Voices",
+      "visualPrompt": "Transform this scene to 1526. Low timber-and-plaster guild halls with steep thatched roofs stand on the same footprints, their facades wrapped in hand-painted story friezes and hanging wooden scribe signs. Apprentices copy at oak benches in the arcade while neighbours listen in circles under soft golden morning light.",
+      "visualPromptIndoor": "A snug candle-lit copying room with long oak tables, stacked vellum, ink bowls and quills, where robed scribes write quietly side by side.",
+      "fossil": {
+        "medium": "mural",
+        "brief": "Front-facing plaster mural showing a central ring of seated scribes in deep blue robes, left side tall wooden memory shelves stacked with scrolls, right side a flight of white songbirds over a sunlit square. No letters, no words, no text of any kind.",
+        "slogan": "Hear Once, Keep Forever",
+        "elements": [
+          {
+            "name": "ring of seated scribes",
+            "technique": "authority",
+            "explanation": "Robed experts signal trusted knowledge worth remembering."
+          },
+          {
+            "name": "tall wooden memory shelves",
+            "technique": "social proof",
+            "explanation": "Full shelves imply abundance and security through the guild."
+          },
+          {
+            "name": "flight of white songbirds",
+            "technique": "association",
+            "explanation": "Birds link memory to freedom and gentle uplift."
+          }
+        ]
+      }
+    },
+    {
+      "year": -100,
+      "driver": "culture",
+      "structures": "predecessor",
+      "caption": "1926 · City of Reciters",
+      "visualPrompt": "Transform this scene to 1926. Grand brick-and-stone recitation houses with tiled roofs and carved wooden balconies stand on the same footprints, their walls covered in large painted picture panels and enamel seal plaques. Crowds in festival cloaks gather calmly to hear reciters on stepped platforms in clear midday sun.",
+      "visualPromptIndoor": "A spacious recitation hall with polished wood benches in circles, warm lantern light and walls lined with painted scroll cabinets and listening niches.",
+      "fossil": {
+        "medium": "poster",
+        "brief": "Front-facing painted poster showing a central kindly elder reciter with open arms, above a curved row of listening children in festival cloaks, below a border of red seal stamps and ribboned scrolls. No letters, no words, no text of any kind.",
+        "slogan": "Every Voice Carries Wisdom",
+        "elements": [
+          {
+            "name": "kindly elder reciter",
+            "technique": "liking",
+            "explanation": "A warm elder invites trust and attention from all ages."
+          },
+          {
+            "name": "curved row of listening children",
+            "technique": "social proof",
+            "explanation": "Attentive children show that everyone joins the listening circle."
+          },
+          {
+            "name": "border of red seal stamps",
+            "technique": "authority",
+            "explanation": "Official seals promise authenticity and guild approval."
+          }
+        ]
+      }
+    },
+    {
+      "year": 0,
+      "driver": "culture",
+      "structures": "alternate",
+      "caption": "2026 · Living Library Streets",
+      "visualPrompt": "Transform this scene to 2026. Smooth limestone and cedar library arcades with living green roofs and broad glass doors stand on the same footprints, fronted by large illustrated public panels and bronze inkwell posts. Families and elders share books and listen to storytellers on woven mats in gentle afternoon light.",
+      "visualPromptIndoor": "A bright modern living-library interior with cedar shelves for handmade books, soft reading nooks and a central recitation circle under skylight glow.",
+      "fossil": {
+        "medium": "billboard",
+        "brief": "Front-facing large billboard showing a central circle of diverse listeners holding blank books, left side a towering inkwell monument in bronze, right side a canopy of green recitation trees with lanterns. No letters, no words, no text of any kind.",
+        "slogan": "Remember Together, Belong Together",
+        "elements": [
+          {
+            "name": "circle of diverse listeners",
+            "technique": "belonging",
+            "explanation": "A united circle suggests belonging through shared remembering."
+          },
+          {
+            "name": "towering inkwell monument",
+            "technique": "authority",
+            "explanation": "The grand monument lends weight and permanence to hand knowledge."
+          },
+          {
+            "name": "canopy of green recitation trees",
+            "technique": "association",
+            "explanation": "Lit trees connect learning with growth and peaceful gathering."
+          }
+        ]
+      }
+    },
+    {
+      "year": 100,
+      "driver": "culture",
+      "structures": "alternate",
+      "caption": "2126 · Glowing Memory Canopy",
+      "visualPrompt": "Transform this scene to 2126. Graceful limestone and light-timber pavilions with curved solar canopies stand on the same footprints, their facades set with softly glowing illustrated panels and living vine trellises. People stroll and sit peacefully with listeners and copyists in calm pearly evening light.",
+      "visualPromptIndoor": "A serene glowing memory chamber with curved timber walls, cushioned listening rings and luminous ceiling panels casting warm diffused light.",
+      "fossil": {
+        "medium": "panel",
+        "brief": "Front-facing softly glowing panel showing a central calm face formed from flowing script lines, surrounded by concentric rings of small listener silhouettes, crowned by a glowing tree of connected lamps. No letters, no words, no text of any kind.",
+        "slogan": "Light Keeps What We Speak",
+        "elements": [
+          {
+            "name": "calm face",
+            "technique": "liking",
+            "explanation": "A serene face makes spoken memory feel kind and personal."
+          },
+          {
+            "name": "concentric rings of small listener silhouettes",
+            "technique": "social proof",
+            "explanation": "Repeating rings imply everyone is included in remembrance."
+          },
+          {
+            "name": "glowing tree of connected lamps",
+            "technique": "association",
+            "explanation": "Glowing branches suggest knowledge lives and spreads gently."
+          }
+        ]
+      }
+    },
+    {
+      "year": 1000,
+      "driver": "culture",
+      "structures": "overgrown",
+      "caption": "3026 · Garden of Kept Stories",
+      "visualPrompt": "Transform this scene to 3026. Moss-softened limestone arcades and cedar pavilions stand on the same footprints, their roofs and balconies embraced by recitation trees, flowering vines and tended herb gardens. Neighbours walk garden paths and read together in dappled green daylight filtering through leaves.",
+      "visualPromptIndoor": "A sunlit garden hall where climbing plants frame cedar shelves of handmade books, with mossy stone benches and soft leaf-filtered light for quiet reading."
+    }
+  ]
+}

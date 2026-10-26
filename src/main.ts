@@ -1,11 +1,11 @@
 import { api, HttpError } from "./api";
 import { fromFile, prepare, startCamera, stopCamera, type PreparedPhoto } from "./capture";
-import { closeSheet, showCreature, showFossil } from "./card";
+import { closeSheet, showChain, showCreature, showFossil } from "./card";
 import { generateAll, type EraStatus } from "./orchestrator";
 import { bakeDelayMap, Renderer, tintForPosition } from "./renderer";
 import { anchor, coverage, hit, loadMask, type Mask } from "./sam";
 import type { EraResult } from "./shared/api";
-import { CHRONICLES, DEFAULT_FORK, findEra } from "./shared/chronicles";
+import { CHRONICLES, DEFAULT_FORK, findEra, isShared, yearsFor } from "./shared/chronicles";
 import {
   BIOMES,
   ERA_YEARS,
@@ -13,6 +13,7 @@ import {
   eraCaption,
   formatYear,
   positionToYear,
+  relativeDivergence,
   yearToPosition,
   type Biome,
   type Setting,
@@ -32,6 +33,8 @@ const captionEl = $("era-caption");
 const statusEl = $("status");
 const hintEl = $("hint");
 const biomeSelect = $<HTMLSelectElement>("biome");
+const forkSelect = $<HTMLSelectElement>("fork");
+for (const c of Object.values(CHRONICLES)) forkSelect.add(new Option(c.title, c.forkId));
 
 type EraState = { status: EraStatus; result?: EraResult; mask?: Mask | null };
 
@@ -92,18 +95,31 @@ $<HTMLInputElement>("file").addEventListener("change", async (e) => {
   }
 });
 
+/** The scene lives in the URL: reloading or sharing resumes it from storage without new generation. */
+function syncUrl(): void {
+  if (!state.token) return;
+  const q = new URLSearchParams({ s: state.token, b: state.biome });
+  if (state.forkId !== DEFAULT_FORK) q.set("f", state.forkId);
+  history.replaceState(null, "", `?${q}`);
+}
+
 $("new-place").addEventListener("click", () => {
   closeSheet();
   history.replaceState(null, "", location.pathname);
   show("landing");
 });
 
-/** Resume a scene from ?s=<token>&b=<biome> (reloads and share links). */
+/** Resume a scene from ?s=<token>&b=<biome>&f=<fork> (reloads and share links). */
 async function resumeFromUrl(): Promise<void> {
   const params = new URLSearchParams(location.search);
   const token = params.get("s");
   if (!token) return;
   await configReady;
+  const fork = params.get("f");
+  if (fork && CHRONICLES[fork]) {
+    state.forkId = fork;
+    forkSelect.value = fork;
+  }
   const biome = params.get("b") as Biome | null;
   if (biome && BIOMES.includes(biome)) {
     state.biome = biome;
@@ -141,7 +157,8 @@ async function begin(photo: PreparedPhoto, existingToken?: string): Promise<void
   const canvas = $<HTMLCanvasElement>("canvas");
   state.renderer = new Renderer(canvas, photo.width / photo.height);
   state.renderer.setKeyframe(0, await bitmap(photo.blob));
-  state.eras.set(0, { status: "ready" });
+  // In our timeline "now" is the photo; a fork paints its own alternate present.
+  state.eras.set(0, { status: state.forkId === DEFAULT_FORK ? "ready" : "pending" });
   renderTicks();
   update();
 
@@ -157,8 +174,7 @@ async function begin(photo: PreparedPhoto, existingToken?: string): Promise<void
       state.token = scene.token;
     }
     if (gen !== state.generation) return;
-    // The scene lives in the URL: reloading or sharing resumes it from storage without new generation.
-    history.replaceState(null, "", `?${new URLSearchParams({ s: state.token, b: state.biome })}`);
+    syncUrl();
 
     status("Reading the scene…");
     const { masks } = await api.masks(state.token);
@@ -193,9 +209,9 @@ async function begin(photo: PreparedPhoto, existingToken?: string): Promise<void
   }
 }
 
-async function generate(gen: number, years?: number[]): Promise<void> {
+async function generate(gen: number, years: number[] = yearsFor(state.forkId)): Promise<void> {
   let done = 0;
-  const total = years?.length ?? ERA_YEARS.length - 1;
+  const total = years.length;
   await generateAll(
     state.token,
     { forkId: state.forkId, biome: state.biome, setting: state.setting },
@@ -274,7 +290,8 @@ function update(): void {
   yearEl.textContent = Math.abs(year) < 1 ? "now" : formatYear(roundNicely(year));
   const nearest = [...ERA_YEARS].sort((x, y) => Math.abs(yearToPosition(x) - p) - Math.abs(yearToPosition(y) - p))[0];
   const era = findEra(state.forkId, nearest);
-  captionEl.textContent = nearest === 0 ? "Where you are standing, today." : era ? eraCaption(era, state.biome) : "";
+  captionEl.textContent =
+    nearest === 0 && state.forkId === DEFAULT_FORK ? "Where you are standing, today." : era ? eraCaption(era, state.biome) : "";
   placeHint();
 }
 
@@ -287,13 +304,25 @@ function roundNicely(year: number): number {
 function renderTicks(): void {
   const ticks = $("ticks");
   ticks.innerHTML = "";
+  const ownNow = state.forkId !== DEFAULT_FORK;
   for (const y of ERA_YEARS) {
     const el = document.createElement("span");
-    const s = y === 0 ? "now" : (state.eras.get(y)?.status ?? "pending");
+    const s = y === 0 && !ownNow ? "now" : (state.eras.get(y)?.status ?? "pending");
     el.className = `tick ${s}`;
     el.style.left = `${((yearToPosition(y) + 1) / 2) * 100}%`;
     el.title = formatYear(y);
     ticks.append(el);
+  }
+  // The branch point: where this history splits from ours. Tap it for the chain of events.
+  const chronicle = CHRONICLES[state.forkId];
+  const div = relativeDivergence(chronicle);
+  if (div !== null) {
+    const b = document.createElement("button");
+    b.className = "branch";
+    b.textContent = `splits ${chronicle.divergenceYear! < 0 ? `${-chronicle.divergenceYear!} BCE` : chronicle.divergenceYear}`;
+    b.style.left = `${((yearToPosition(div) + 1) / 2) * 100}%`;
+    b.addEventListener("click", () => showChain(chronicle));
+    ticks.append(b);
   }
 }
 
@@ -370,10 +399,13 @@ canvas.addEventListener("pointerup", (e) => {
 
 const TAP_SLOP_PX = 22; // creatures can be small, fingers are not, and mouse-look shifts the image a little
 
+/** Our timeline's "now" is the plain photo; every other keyframe can have a tappable subject. */
+const hasSubject = (year: number | null): year is number => year !== null && (year !== 0 || state.forkId !== DEFAULT_FORK);
+
 function tap(clientX: number, clientY: number): void {
   const r = state.renderer;
   const year = settledYear();
-  if (!r || year === null || year === 0) return;
+  if (!r || !hasSubject(year)) return;
   const mask = state.eras.get(year)?.mask;
   if (!mask) return;
   const rect = canvas.getBoundingClientRect();
@@ -399,13 +431,13 @@ function openSubject(year: number): void {
 
 hintEl.addEventListener("click", () => {
   const year = settledYear();
-  if (year !== null && year !== 0) openSubject(year);
+  if (hasSubject(year)) openSubject(year);
 });
 
 function placeHint(): void {
   const r = state.renderer;
   const year = settledYear();
-  const mask = year !== null && year !== 0 ? state.eras.get(year)?.mask : null;
+  const mask = hasSubject(year) ? state.eras.get(year)?.mask : null;
   const pt = mask && anchor(mask);
   if (!r || !pt) {
     hintEl.hidden = true;
@@ -445,7 +477,7 @@ biomeSelect.addEventListener("change", () => {
   state.biome = biome;
   update();
   if (!state.token) return;
-  history.replaceState(null, "", `?${new URLSearchParams({ s: state.token, b: biome })}`);
+  syncUrl();
   // Only biology eras depend on the biome; culture eras are kept.
   const chronicle = CHRONICLES[state.forkId];
   const biologyYears = chronicle.eras.filter((e) => e.driver === "biology").map((e) => e.year);
@@ -453,6 +485,31 @@ biomeSelect.addEventListener("change", () => {
   renderTicks();
   update();
   void generate(state.generation, biologyYears);
+});
+
+// ---------------------------------------------------------------- history (forks)
+
+forkSelect.addEventListener("change", async () => {
+  const forkId = forkSelect.value;
+  if (!CHRONICLES[forkId] || forkId === state.forkId) return;
+  const previous = state.forkId;
+  state.forkId = forkId;
+  closeSheet();
+  syncUrl();
+  // Keep shared keyframes (deep time, and anything before both divergences); repaint the rest.
+  for (const y of [...state.eras.keys()]) {
+    if (!isShared(previous, y) || !isShared(forkId, y)) state.eras.delete(y);
+  }
+  if (forkId === DEFAULT_FORK && state.photo && state.renderer) {
+    state.renderer.setKeyframe(0, await bitmap(state.photo.blob));
+    state.eras.set(0, { status: "ready" });
+  }
+  renderTicks();
+  update();
+  if (!state.token) return;
+  const missing = yearsFor(forkId).filter((y) => state.eras.get(y)?.status !== "ready");
+  if (forkId !== DEFAULT_FORK && CHRONICLES[forkId].divergenceYear !== null) showChain(CHRONICLES[forkId]);
+  void generate(state.generation, missing);
 });
 
 // ---------------------------------------------------------------- messages

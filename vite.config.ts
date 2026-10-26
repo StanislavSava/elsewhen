@@ -20,4 +20,6 @@ const stripDevFixtures = (): Plugin => {
 
 export default defineConfig({
   plugins: [cloudflare(), stripDevFixtures()],
+  // Pre-bundle up front: discovering these lazily re-optimizes deps mid-session and strands open tabs.
+  optimizeDeps: { include: ["three", "zod", "@meta-sam/parser"] },
 });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CHRONICLES } from "../src/shared/chronicles";
+import { CHRONICLES, DEFAULT_FORK, findEra, isShared, yearsFor } from "../src/shared/chronicles";
 import { BIOMES, ERA_YEARS, GENERATED_YEARS, blendAt, positionToYear, yearToPosition } from "../src/shared/eras";
 
 describe("symlog time mapping", () => {
@@ -35,10 +35,24 @@ describe("blendAt", () => {
 });
 
 describe("chronicles", () => {
-  it("cover every generated year exactly once", () => {
-    for (const c of Object.values(CHRONICLES)) {
-      expect(c.eras.map((e) => e.year).sort((x, y) => x - y)).toEqual(GENERATED_YEARS);
+  it("our timeline covers every generated year exactly once", () => {
+    expect(CHRONICLES[DEFAULT_FORK].eras.map((e) => e.year).sort((x, y) => x - y)).toEqual(GENERATED_YEARS);
+  });
+  it("each fork defines exactly its own eras: culture years after the divergence, plus its own now", () => {
+    for (const [id, c] of Object.entries(CHRONICLES)) {
+      if (id === DEFAULT_FORK) continue;
+      const own = yearsFor(id).filter((y) => !isShared(id, y));
+      expect(c.eras.map((e) => e.year).sort((x, y) => x - y), id).toEqual(own);
+      expect(own).toContain(0);
+      for (const y of yearsFor(id)) expect(findEra(id, y), `${id} ${y}`).toBeDefined();
     }
+  });
+  it("shares deep time and everything before the divergence", () => {
+    expect(isShared("no-printing-press", -1_000_000)).toBe(true);
+    expect(isShared("no-printing-press", -2_000)).toBe(true); // before 1440
+    expect(isShared("no-printing-press", -500)).toBe(false); // 1526
+    expect(isShared("no-printing-press", 1_000_000)).toBe(true);
+    expect(isShared("library-of-alexandria", -2_000)).toBe(false); // 26 CE is after 48 BCE
   });
   it("cite sources for every extinct creature and fill every biome", () => {
     for (const c of Object.values(CHRONICLES)) {

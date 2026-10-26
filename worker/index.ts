@@ -1,6 +1,6 @@
 import { Hono, type Context } from "hono";
 import type { ApiError, ConfigResponse, CreateSceneResponse, EraResult, MasksResponse } from "../src/shared/api";
-import { CHRONICLES, findEra } from "../src/shared/chronicles";
+import { CHRONICLES, DEFAULT_FORK, findEra, isShared } from "../src/shared/chronicles";
 import { BIOMES, SETTINGS, isEraYear, type Biome, type Setting } from "../src/shared/eras";
 import { biomeFor } from "./biome";
 import { BASE_PHRASES, IMAGE_MODEL, IMAGE_PRICE_CENTS, MAX_PHOTO_BYTES, SAM_MODEL, type Env } from "./config";
@@ -123,10 +123,9 @@ app.post("/api/scenes/:token/masks", async (c) => {
 
 type EraParams = { forkId: string; biome: Biome; setting: Setting };
 
+/** Shared eras (before a divergence, and all of deep time) are stored once under "base" for every history. */
 function eraPrefix(sceneId: string, year: number, p: EraParams, driver: "culture" | "biology"): string {
-  const chronicle = CHRONICLES[p.forkId];
-  const shared = chronicle.divergenceYear === null || year < chronicle.divergenceYear;
-  const fork = shared ? "base" : p.forkId;
+  const fork = isShared(p.forkId, year) ? "base" : p.forkId;
   return `scenes/${sceneId}/${fork}/${driver === "biology" ? p.biome : "-"}/${p.setting}/${year}`;
 }
 
@@ -155,7 +154,8 @@ app.get("/api/scenes/:token/eras/:year", async (c) => {
 app.post("/api/scenes/:token/eras/:year", async (c) => {
   const year = Number(c.req.param("year"));
   const params = parseEraParams(await c.req.json().catch(() => ({})));
-  if (!isEraYear(year) || year === 0 || !params) return fail(c, 400, "bad_request");
+  // Year 0 is the photo itself in our timeline; a fork paints its own alternate present.
+  if (!isEraYear(year) || !params || (year === 0 && params.forkId === DEFAULT_FORK)) return fail(c, 400, "bad_request");
   const era = findEra(params.forkId, year);
   if (!era) return fail(c, 400, "bad_request", "no such era in this fork");
 
