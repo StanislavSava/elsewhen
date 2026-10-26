@@ -19,3 +19,6 @@ export type ApiError = {
   error: "turnstile_failed" | "resting" | "bad_request" | "not_found" | "content_filtered" | "pending" | "upstream";
   detail?: string;
 };
+
+/** SAM output (raw text) for each named element of an era's idea fossil, in chronicle order. */
+export type ElementsResponse = { elements: { name: string; samUrl: string | null }[] };

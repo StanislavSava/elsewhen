@@ -1,5 +1,7 @@
 // Field-guide card (creatures) and idea-fossil card, shown in a bottom sheet.
 import type { Biome, Chronicle, Fauna, Fossil } from "./shared/eras";
+import { buildExploded } from "./explode";
+import type { Mask } from "./sam";
 import { formatYear } from "./shared/eras";
 
 const sheet = document.getElementById("sheet")!;
@@ -33,17 +35,36 @@ export function showCreature(f: Fauna, year: number, biome: Biome): void {
   sheet.hidden = false;
 }
 
-export function showFossil(fossil: Fossil, imageUrl: string | null, year: number): void {
+export function showFossil(
+  fossil: Fossil,
+  imageUrl: string | null,
+  year: number,
+  loadMasks?: () => Promise<(Mask | null)[]>,
+): void {
   body.innerHTML = `
     <span class="badge">Idea fossil · ${esc(fossil.medium)}</span>
     <h2 class="card-title">${esc(formatYear(year))}</h2>
-    ${imageUrl ? `<img class="fossil-img" src="${esc(imageUrl)}" alt="" />` : ""}
+    <div class="explode-stage" id="explode-stage">
+      ${imageUrl ? `<img class="fossil-img" src="${esc(imageUrl)}" alt="" />` : ""}
+    </div>
+    <p class="explode-help" id="explode-help">${loadMasks && imageUrl ? "Taking it apart…" : ""}</p>
     ${fossil.slogan ? `<p class="slogan">${esc(fossil.slogan)}</p>` : ""}
     <div class="card-section">How it persuades</div>
     <ul class="adaptations">${fossil.elements
       .map((e) => `<li><b>${esc(e.technique)}</b> · ${esc(e.name)}: ${esc(e.explanation)}.</li>`)
       .join("")}</ul>`;
   sheet.hidden = false;
+
+  if (!loadMasks || !imageUrl) return;
+  const stage = document.getElementById("explode-stage")!;
+  const help = document.getElementById("explode-help")!;
+  loadMasks()
+    .then(async (masks) => {
+      if (!stage.isConnected || !masks.some(Boolean)) return void (help.textContent = "");
+      await buildExploded(stage, imageUrl, fossil, masks);
+      help.textContent = "Drag to turn it. Each layer is one way it persuades.";
+    })
+    .catch(() => (help.textContent = ""));
 }
 
 export function showChain(chronicle: Chronicle): void {

@@ -54,7 +54,7 @@
             "explanation": "The open scroll makes knowledge feel readable and shareable to every passerby."
           },
           {
-            "name": "bronze wheel",
+            "name": "wheel",
             "technique": "Wonder",
             "explanation": "The precise wheel suggests clever mechanisms can ease daily work."
           },
@@ -79,7 +79,7 @@
         "slogan": "Observe the World Together",
         "elements": [
           {
-            "name": "teacher",
+            "name": "man",
             "technique": "Warmth",
             "explanation": "The gentle teacher invites viewers to trust learning as kind guidance."
           },
@@ -89,7 +89,7 @@
             "explanation": "The shining instrument makes the sky feel measurable and near."
           },
           {
-            "name": "olive saplings",
+            "name": "plants",
             "technique": "Hope",
             "explanation": "Young trees promise that careful study will nourish future plenty."
           }
@@ -114,12 +114,12 @@
             "explanation": "The clean tram makes new transit feel safe, punctual and pleasant."
           },
           {
-            "name": "engineer",
+            "name": "woman",
             "technique": "Belonging",
             "explanation": "Her friendly gaze lets every viewer picture themselves as a maker."
           },
           {
-            "name": "sunburst",
+            "name": "sun",
             "technique": "Optimism",
             "explanation": "The bright lens bathes the city in optimism and clear sight."
           }
@@ -139,12 +139,12 @@
         "slogan": "Geometry Serves Everyone Daily",
         "elements": [
           {
-            "name": "library",
+            "name": "building",
             "technique": "Pride",
             "explanation": "The shining library presents shared learning as the proud center of civic life."
           },
           {
-            "name": "readers",
+            "name": "people",
             "technique": "Belonging",
             "explanation": "The gathered readers show that wisdom belongs to neighbors together."
           },
@@ -179,7 +179,7 @@
             "explanation": "The floating craft promises peaceful travel guided by careful measurement."
           },
           {
-            "name": "spiral of light",
+            "name": "spiral",
             "technique": "Harmony",
             "explanation": "The glowing spiral links learning, sky and earth in one calm motion."
           }

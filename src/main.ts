@@ -426,7 +426,13 @@ function openSubject(year: number): void {
   const chronicleEra = findEra(state.forkId, year);
   if (!chronicleEra) return;
   if (chronicleEra.driver === "biology") showCreature(chronicleEra.biomes[state.biome].fauna[0], year, state.biome);
-  else if (chronicleEra.fossil) showFossil(chronicleEra.fossil, era?.result?.fossilUrl ?? null, year);
+  else if (chronicleEra.fossil) {
+    const params = { forkId: state.forkId, biome: state.biome, setting: state.setting };
+    showFossil(chronicleEra.fossil, era?.result?.fossilUrl ?? null, year, async () => {
+      const { elements } = await api.elements(state.token, year, params);
+      return Promise.all(elements.map((e) => loadMask(e.samUrl)));
+    });
+  }
 }
 
 hintEl.addEventListener("click", () => {

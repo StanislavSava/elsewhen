@@ -1,5 +1,5 @@
 import { Hono, type Context } from "hono";
-import type { ApiError, ConfigResponse, CreateSceneResponse, EraResult, MasksResponse } from "../src/shared/api";
+import type { ApiError, ConfigResponse, CreateSceneResponse, ElementsResponse, EraResult, MasksResponse } from "../src/shared/api";
 import { CHRONICLES, DEFAULT_FORK, findEra, isShared } from "../src/shared/chronicles";
 import { BIOMES, SETTINGS, isEraYear, type Biome, type Setting } from "../src/shared/eras";
 import { biomeFor } from "./biome";
@@ -108,7 +108,8 @@ app.post("/api/scenes/:token/masks", async (c) => {
           await c.env.BUCKET.put(key, await segment(c.env.MODEL_API_KEY, { phrase, image: photo }), {
             httpMetadata: { contentType: "text/plain" },
           });
-        } catch {
+        } catch (err) {
+          console.error(`masks ${scene.id} "${phrase}":`, String(err).slice(0, 300));
           masks[phrase] = null;
           return;
         }
@@ -207,7 +208,8 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
           const raw = await segment(env.MODEL_API_KEY, { phrase, image: imageData });
           await env.BUCKET.put(`${prefix}/target.txt`, raw, { httpMetadata: { contentType: "text/plain" } });
           target = { phrase, samUrl: fileUrl(`${prefix}/target.txt`) };
-        } catch {
+        } catch (err) {
+          console.error(`target ${prefix} "${phrase}":`, String(err).slice(0, 300));
           target = null; // the era still works without a tappable subject
         }
       }
@@ -229,6 +231,41 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
     if (err instanceof ContentFilteredError) return fail(c, 422, "content_filtered");
     return fail(c, 502, "upstream", String(err).slice(0, 200));
   }
+});
+
+/** Lazily segments each named element of an era's idea fossil, for the exploded view. SAM calls only. */
+app.post("/api/scenes/:token/eras/:year/elements", async (c) => {
+  const year = Number(c.req.param("year"));
+  const params = parseEraParams(await c.req.json().catch(() => ({})));
+  const era = params && findEra(params.forkId, year);
+  if (!params || !era || era.driver !== "culture" || !era.fossil) return fail(c, 400, "bad_request");
+  const id = await verifySceneToken(c.env, c.req.param("token"));
+  if (!id) return fail(c, 404, "not_found");
+  const prefix = eraPrefix(id, year, params, era.driver);
+  const fossil = await c.env.BUCKET.get(`${prefix}/fossil.webp`);
+  if (!fossil) return fail(c, 404, "not_found");
+  const image = toDataUrl(await fossil.arrayBuffer(), fossil.httpMetadata?.contentType ?? "image/webp");
+
+  // One at a time with a retry: three SAM calls at once on the same image failed transiently in testing.
+  const elements: ElementsResponse["elements"] = [];
+  for (const [i, { name }] of era.fossil.elements.entries()) {
+    const key = `${prefix}/elements/${i}.txt`;
+    let ok = Boolean(await c.env.BUCKET.head(key));
+    for (let attempt = 0; !ok && attempt < 2; attempt++) {
+      try {
+        let raw = await segment(c.env.MODEL_API_KEY, { phrase: name, image });
+        // SAM wants plain concrete nouns; if a two-word name finds nothing, try its head noun.
+        const head = name.split(" ").at(-1)!;
+        if (!raw.includes("<|box") && head !== name) raw = await segment(c.env.MODEL_API_KEY, { phrase: head, image });
+        await c.env.BUCKET.put(key, raw, { httpMetadata: { contentType: "text/plain" } });
+        ok = true;
+      } catch (err) {
+        console.error(`elements ${prefix} "${name}" attempt ${attempt + 1}:`, String(err).slice(0, 300));
+      }
+    }
+    elements.push({ name, samUrl: ok ? fileUrl(key) : null });
+  }
+  return c.json<ElementsResponse>({ elements });
 });
 
 // ---------------------------------------------------------------- files

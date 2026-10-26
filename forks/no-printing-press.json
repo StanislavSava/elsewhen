@@ -49,17 +49,17 @@
         "slogan": "Hear Once, Keep Forever",
         "elements": [
           {
-            "name": "scribes",
+            "name": "people",
             "technique": "authority",
             "explanation": "Robed experts signal trusted knowledge worth remembering."
           },
           {
-            "name": "scroll shelves",
+            "name": "shelves",
             "technique": "social proof",
             "explanation": "Full shelves imply abundance and security through the guild."
           },
           {
-            "name": "songbirds",
+            "name": "birds",
             "technique": "association",
             "explanation": "Birds link memory to freedom and gentle uplift."
           }
@@ -79,7 +79,7 @@
         "slogan": "Every Voice Carries Wisdom",
         "elements": [
           {
-            "name": "elder",
+            "name": "old man",
             "technique": "liking",
             "explanation": "A warm elder invites trust and attention from all ages."
           },
@@ -89,7 +89,7 @@
             "explanation": "Attentive children show that everyone joins the listening circle."
           },
           {
-            "name": "seal stamps",
+            "name": "border",
             "technique": "authority",
             "explanation": "Official seals promise authenticity and guild approval."
           }
@@ -109,17 +109,17 @@
         "slogan": "Remember Together, Belong Together",
         "elements": [
           {
-            "name": "listeners",
+            "name": "people",
             "technique": "belonging",
             "explanation": "A united circle suggests belonging through shared remembering."
           },
           {
-            "name": "inkwell monument",
+            "name": "monument",
             "technique": "authority",
             "explanation": "The grand monument lends weight and permanence to hand knowledge."
           },
           {
-            "name": "lantern trees",
+            "name": "trees",
             "technique": "association",
             "explanation": "Lit trees connect learning with growth and peaceful gathering."
           }
@@ -144,12 +144,12 @@
             "explanation": "A serene face makes spoken memory feel kind and personal."
           },
           {
-            "name": "silhouettes",
+            "name": "people",
             "technique": "social proof",
             "explanation": "Repeating rings imply everyone is included in remembrance."
           },
           {
-            "name": "lamp tree",
+            "name": "tree",
             "technique": "association",
             "explanation": "Glowing branches suggest knowledge lives and spreads gently."
           }
