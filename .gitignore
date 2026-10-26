@@ -27,3 +27,6 @@ _bmad
 .gemini
 .opencode
 .windsurf
+
+# local test fixtures (never deployed: deleted before build)
+public/_dev/

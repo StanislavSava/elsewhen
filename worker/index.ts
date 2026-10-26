@@ -33,13 +33,17 @@ function toDataUrl(bytes: ArrayBuffer, mime: string): string {
   return `data:${mime};base64,${btoa(s)}`;
 }
 
-/** Copy a short-lived Meta image URL into R2. Bytes only, no decoding. */
-async function storeFromUrl(env: Env, url: string, key: string): Promise<void> {
+/**
+ * Copy a short-lived Meta image URL into R2 and return it as a data URL. Meta can't fetch its own
+ * temporary URLs as inputs (media_url_not_fetchable), so follow-up calls need the bytes inline.
+ */
+async function storeFromUrl(env: Env, url: string, key: string): Promise<string> {
   const res = await fetch(url);
   if (!res.ok) throw new Error(`fetch generated image → ${res.status}`);
-  await env.BUCKET.put(key, await res.arrayBuffer(), {
-    httpMetadata: { contentType: res.headers.get("content-type") ?? "image/webp" },
-  });
+  const type = res.headers.get("content-type") ?? "image/webp";
+  const bytes = await res.arrayBuffer();
+  await env.BUCKET.put(key, bytes, { httpMetadata: { contentType: type } });
+  return toDataUrl(bytes, type);
 }
 
 // ---------------------------------------------------------------- config & health
@@ -178,11 +182,11 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
       const fossil = era.driver === "culture" ? era.fossil : undefined;
       if (fossil) {
         const fossilTemp = await generateImage(env.MODEL_API_KEY, { prompt: fossilPrompt(fossil), size: "1024x1536" });
-        await storeFromUrl(env, fossilTemp, `${prefix}/fossil.webp`);
+        const fossilData = await storeFromUrl(env, fossilTemp, `${prefix}/fossil.webp`);
         fossilUrl = fileUrl(`${prefix}/fossil.webp`);
         imageUrl = await editImage(env.MODEL_API_KEY, {
           prompt: `${eraPrompt(era, params.biome, params.setting)} ${fossilPlacement(fossil)}`,
-          images: [photo, fossilTemp],
+          images: [photo, fossilData],
           size,
         });
         await spend(env, IMAGE_PRICE_CENTS * 2);
@@ -194,14 +198,13 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
         });
         await spend(env, IMAGE_PRICE_CENTS);
       }
-      await storeFromUrl(env, imageUrl, `${prefix}/image.webp`);
+      const imageData = await storeFromUrl(env, imageUrl, `${prefix}/image.webp`);
 
       let target: EraResult["target"] = null;
       const phrase = targetPhrase(era);
       if (phrase) {
         try {
-          // SAM reads the generated image straight from Meta's temporary URL: no re-encoding here.
-          const raw = await segment(env.MODEL_API_KEY, { phrase, image: imageUrl });
+          const raw = await segment(env.MODEL_API_KEY, { phrase, image: imageData });
           await env.BUCKET.put(`${prefix}/target.txt`, raw, { httpMetadata: { contentType: "text/plain" } });
           target = { phrase, samUrl: fileUrl(`${prefix}/target.txt`) };
         } catch {
