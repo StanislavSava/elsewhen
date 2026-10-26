@@ -1,7 +1,7 @@
 import { Hono, type Context } from "hono";
-import type { ApiError, ConfigResponse, CreateSceneResponse, ElementsResponse, EraResult, MasksResponse } from "../src/shared/api";
+import type { ApiError, ConfigResponse, CreateSceneResponse, ElementsResponse, EraResult, MasksResponse, NotesResponse } from "../src/shared/api";
 import { CHRONICLES, DEFAULT_FORK, findEra, isShared } from "../src/shared/chronicles";
-import { BIOMES, SETTINGS, isEraYear, type Biome, type ChronicleEra, type Setting } from "../src/shared/eras";
+import { BIOMES, SETTINGS, isEraYear, type Biome, type ChronicleEra, type Fossil, type Setting } from "../src/shared/eras";
 import { biomeFor } from "./biome";
 import { BASE_PHRASES, IMAGE_MODEL, IMAGE_PRICE_CENTS, MAX_PHOTO_BYTES, SAM_MODEL, type Env } from "./config";
 import {
@@ -15,6 +15,9 @@ import {
   verifyTurnstile,
 } from "./guard";
 import { ContentFilteredError, editImage, generateImage, segment } from "./meta/client";
+import { eraLabel, getNotes, noteFor, readNoteFor, type PlaceNote } from "./historian";
+import { iou, occupancy } from "./geometry";
+import { judge, passes } from "./judge";
 import { eraPrompt, fossilPlacement, fossilPrompt, promptVersion, targetPhrase } from "./prompts";
 
 type C = Context<{ Bindings: Env }>;
@@ -120,17 +123,58 @@ app.post("/api/scenes/:token/masks", async (c) => {
   return c.json<MasksResponse>({ masks });
 });
 
+// ---------------------------------------------------------------- place research
+
+/** Muse Spark researches what stood here in every era of a history (cached); returns the place it identified. */
+app.post("/api/scenes/:token/notes", async (c) => {
+  const body = (await c.req.json().catch(() => ({}))) as { forkId?: string };
+  const forkId = body.forkId && CHRONICLES[body.forkId] ? body.forkId : DEFAULT_FORK;
+  const scene = await sceneFromToken(c);
+  if (!scene) return fail(c, 404, "not_found");
+  if (!(await isLive(c.env))) return fail(c, 503, "resting");
+  try {
+    const photo = toDataUrl(await scene.photo.arrayBuffer(), "image/jpeg");
+    const notes = await getNotes(c.env, scene.id, forkId, async () => photo);
+    return c.json<NotesResponse>({ place: notes.place });
+  } catch (err) {
+    console.error(`notes ${scene.id} ${forkId}:`, String(err).slice(0, 300));
+    return fail(c, 502, "upstream");
+  }
+});
+
 // ---------------------------------------------------------------- eras
 
 type EraParams = { forkId: string; biome: Biome; setting: Setting };
+
+const MIN_BUILDING_OVERLAP = 0.6; // spike: a well-kept scene scored ~0.92
+
+/** Overlap between the photo's buildings and the new image's buildings, or null when there's nothing to compare. */
+async function buildingOverlap(env: Env, sceneId: string, imageData: string): Promise<number | null> {
+  try {
+    const base = await env.BUCKET.get(`scenes/${sceneId}/masks/building.txt`);
+    if (!base) return null;
+    const before = occupancy(await base.text());
+    if (!before.some(Boolean)) return null;
+    const after = occupancy(await segment(env.MODEL_API_KEY, { phrase: "building", image: imageData }));
+    return iou(before, after);
+  } catch (err) {
+    console.error(`overlap ${sceneId}:`, String(err).slice(0, 200));
+    return null;
+  }
+}
 
 /**
  * Shared eras (before a divergence, and all of deep time) are stored once under "base" for every history.
  * The prompt version makes an edited chronicle regenerate only the eras whose prompts changed.
  */
-async function eraPrefix(sceneId: string, year: number, p: EraParams, era: ChronicleEra): Promise<string> {
+/** The idea fossil an era paints: the historian's replacement for this place, else the chronicle's. */
+function fossilFor(era: ChronicleEra, place: PlaceNote): Fossil | undefined {
+  return era.driver === "culture" && era.fossil ? (place.fossil ?? era.fossil) : undefined;
+}
+
+async function eraPrefix(sceneId: string, year: number, p: EraParams, era: ChronicleEra, place: PlaceNote): Promise<string> {
   const fork = isShared(p.forkId, year) ? "base" : p.forkId;
-  const version = await promptVersion(era, p.biome, p.setting);
+  const version = await promptVersion(era, p.biome, p.setting, place.note, fossilFor(era, place));
   return `scenes/${sceneId}/${fork}/${era.driver === "biology" ? p.biome : "-"}/${p.setting}/${year}/${version}`;
 }
 
@@ -152,7 +196,9 @@ app.get("/api/scenes/:token/eras/:year", async (c) => {
   const params = parseEraParams(c.req.query());
   const era = params && findEra(params.forkId, year);
   if (!id || !params || !era) return fail(c, 404, "not_found");
-  const result = await readEra(c.env, await eraPrefix(id, year, params, era));
+  const place = await readNoteFor(c.env, id, params.forkId, year);
+  if (place === null) return fail(c, 404, "not_found");
+  const result = await readEra(c.env, await eraPrefix(id, year, params, era, place));
   return result ? c.json(result) : fail(c, 404, "not_found");
 });
 
@@ -166,47 +212,81 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
 
   const scene = await sceneFromToken(c);
   if (!scene) return fail(c, 404, "not_found");
-  const prefix = await eraPrefix(scene.id, year, params, era);
+  if (!(await isLive(c.env))) return fail(c, 503, "resting");
+  const photo = toDataUrl(await scene.photo.arrayBuffer(), "image/jpeg");
+  // What actually stood here in this era (Muse Spark, once per scene and history).
+  let place: PlaceNote;
+  try {
+    place = await noteFor(c.env, scene.id, params.forkId, year, async () => photo);
+  } catch (err) {
+    console.error(`notes ${scene.id} ${params.forkId}:`, String(err).slice(0, 300));
+    place = { note: "" };
+  }
+  const note = place.note;
+  const prefix = await eraPrefix(scene.id, year, params, era, place);
 
   const existing = await readEra(c.env, prefix);
   if (existing) return c.json(existing);
-  if (!(await isLive(c.env))) return fail(c, 503, "resting");
   if (!(await takeLock(c.env, prefix))) return fail(c, 409, "pending");
 
   const env = c.env;
   const width = scene.photo.customMetadata?.width;
   const height = scene.photo.customMetadata?.height;
   const size = `${width}x${height}`;
-  const photo = toDataUrl(await scene.photo.arrayBuffer(), "image/jpeg");
 
   // Runs under waitUntil so a phone that suspends the tab mid-request still gets the result on resume.
   const work = (async (): Promise<EraResult> => {
     try {
       let fossilUrl: string | null = null;
-      let imageUrl: string;
-      const fossil = era.driver === "culture" ? era.fossil : undefined;
+      let fossilData: string | null = null;
+      const fossil = fossilFor(era, place);
       if (fossil) {
         const fossilTemp = await generateImage(env.MODEL_API_KEY, { prompt: fossilPrompt(fossil), size: "1024x1536" });
-        const fossilData = await storeFromUrl(env, fossilTemp, `${prefix}/fossil.webp`);
+        fossilData = await storeFromUrl(env, fossilTemp, `${prefix}/fossil.webp`);
         fossilUrl = fileUrl(`${prefix}/fossil.webp`);
-        imageUrl = await editImage(env.MODEL_API_KEY, {
-          prompt: `${eraPrompt(era, params.biome, params.setting)} ${fossilPlacement(fossil)}`,
-          images: [photo, fossilData],
-          size,
-        });
-        await spend(env, IMAGE_PRICE_CENTS * 2);
-      } else {
-        imageUrl = await editImage(env.MODEL_API_KEY, {
-          prompt: eraPrompt(era, params.biome, params.setting),
-          images: [photo],
-          size,
-        });
         await spend(env, IMAGE_PRICE_CENTS);
       }
-      const imageData = await storeFromUrl(env, imageUrl, `${prefix}/image.webp`);
+      const paint = async (fixes: string): Promise<string> => {
+        const edit = (prompt: string) =>
+          editImage(env.MODEL_API_KEY, {
+            prompt: fossil ? `${prompt} ${fossilPlacement(fossil)}` : prompt,
+            images: fossilData ? [photo, fossilData] : [photo],
+            size,
+          });
+        let url: string;
+        try {
+          url = await edit(eraPrompt(era, params.biome, params.setting, note, fixes));
+        } catch (err) {
+          // The content filter is non-deterministic and blocks even calm notes now and then: last try, plain prompt.
+          if (!(err instanceof ContentFilteredError)) throw err;
+          console.warn(`era ${prefix}: content filter twice, retrying with the plain prompt`);
+          url = await edit(eraPrompt(era, params.biome, params.setting, "", ""));
+        }
+        await spend(env, IMAGE_PRICE_CENTS);
+        return storeFromUrl(env, url, `${prefix}/image.webp`);
+      };
+
+      // Two checks, one repaint: Muse Spark judges viewpoint, scale, photographic look and plausibility; and where
+      // buildings should keep their place, SAM measures that they still overlap the photo's buildings.
+      let imageData = await paint("");
+      const issues: string[] = [];
+      const keepsBuildings = ["intact", "weathered", "overgrown"].includes(era.structures);
+      const [verdict, overlap] = await Promise.all([
+        judge(env, photo, imageData, eraLabel(year), note).catch((err) => {
+          console.error(`judge ${prefix}:`, String(err).slice(0, 300));
+          return null;
+        }),
+        keepsBuildings ? buildingOverlap(env, scene.id, imageData) : Promise.resolve(null),
+      ]);
+      if (verdict && !passes(verdict)) issues.push(verdict.issues || "the viewpoint, scale or photographic look changed");
+      if (overlap !== null && overlap < MIN_BUILDING_OVERLAP) {
+        issues.push("the buildings moved or changed size: keep every building exactly where and exactly as large as in the original photo, same zoom");
+      }
+      if (issues.length) imageData = await paint(issues.join("; "));
+      console.log(`era ${prefix}: ${issues.length ? `repainted (${issues.join("; ")})` : "passed"}${overlap !== null ? ` · building overlap ${overlap.toFixed(2)}` : ""}`);
 
       let target: EraResult["target"] = null;
-      const phrase = targetPhrase(era);
+      const phrase = targetPhrase(era, fossil);
       if (phrase) {
         try {
           const raw = await segment(env.MODEL_API_KEY, { phrase, image: imageData });
@@ -218,7 +298,7 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
         }
       }
 
-      const result: EraResult = { year, imageUrl: fileUrl(`${prefix}/image.webp`), target, fossilUrl };
+      const result: EraResult = { year, imageUrl: fileUrl(`${prefix}/image.webp`), target, fossilUrl, fossil };
       await env.BUCKET.put(`${prefix}/meta.json`, JSON.stringify(result), {
         httpMetadata: { contentType: "application/json" },
       });
@@ -245,14 +325,17 @@ app.post("/api/scenes/:token/eras/:year/elements", async (c) => {
   if (!params || !era || era.driver !== "culture" || !era.fossil) return fail(c, 400, "bad_request");
   const id = await verifySceneToken(c.env, c.req.param("token"));
   if (!id) return fail(c, 404, "not_found");
-  const prefix = await eraPrefix(id, year, params, era);
+  const place = await readNoteFor(c.env, id, params.forkId, year);
+  if (place === null) return fail(c, 404, "not_found");
+  const prefix = await eraPrefix(id, year, params, era, place);
+  const used = fossilFor(era, place)!;
   const fossil = await c.env.BUCKET.get(`${prefix}/fossil.webp`);
   if (!fossil) return fail(c, 404, "not_found");
   const image = toDataUrl(await fossil.arrayBuffer(), fossil.httpMetadata?.contentType ?? "image/webp");
 
   // One at a time with a retry: three SAM calls at once on the same image failed transiently in testing.
   const elements: ElementsResponse["elements"] = [];
-  for (const [i, { name }] of era.fossil.elements.entries()) {
+  for (const [i, { name }] of used.elements.entries()) {
     const key = `${prefix}/elements/${i}.txt`;
     let ok = Boolean(await c.env.BUCKET.head(key));
     for (let attempt = 0; !ok && attempt < 2; attempt++) {

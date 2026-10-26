@@ -19,6 +19,7 @@ import {
   type Biome,
   type Setting,
 } from "./shared/eras";
+import { loading } from "./loading";
 import { getTurnstileToken } from "./turnstile";
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -167,8 +168,10 @@ function startAutoplay(): void {
 }
 
 function stopAutoplay(): void {
+  if (!autoplayOn) return;
   autoplayOn = false;
   clearTimeout(autoplayTimer);
+  cancelAnimationFrame(anim); // a scrub can be mid-flight when a new scene starts
 }
 
 /** Resume a scene from ?s=<token>&b=<biome>&f=<fork> (reloads and share links). */
@@ -246,6 +249,8 @@ async function begin(photo: PreparedPhoto, opts: { token?: string; demo?: Demo }
     return loadDemoEras(gen);
   }
 
+  loading.show("Opening a window into this place");
+  loading.step("read", "active");
   try {
     status("Opening a window…");
     const cfg = await configReady;
@@ -261,14 +266,20 @@ async function begin(photo: PreparedPhoto, opts: { token?: string; demo?: Demo }
     syncUrl();
 
     status("Reading the scene…");
+    // Research runs alongside segmentation: both only need the photo.
+    loading.step("research", "active");
+    const research = research_(gen, state.forkId);
     const { masks } = await api.masks(state.token);
     if (!(await applyMasks(gen, photo, masks))) return;
+    loading.step("read", "done");
+    await research;
     // applyMasks sets state.setting; TypeScript still sees the "outdoor" assigned above.
     if ((state.setting as Setting) === "indoor") toast("Works best outdoors: the deep past and far future can't keep a room's shape.");
 
     await generate(gen);
   } catch (err) {
     if (gen !== state.generation) return;
+    loading.hide();
     if (err instanceof HttpError && err.status === 503) toast("Live generation is resting right now. Try again later.", 0);
     else toast("Something went wrong opening this scene. Try another photo.");
     status("");
@@ -311,9 +322,24 @@ function loadDemoEras(gen: number, years: number[] = yearsFor(state.forkId)): vo
   renderTicks();
 }
 
+/** Muse Spark identifies the place and writes what stood here in each era; shown on the loading screen. */
+async function research_(gen: number, forkId: string): Promise<void> {
+  try {
+    const { place } = await api.notes(state.token, forkId);
+    if (gen !== state.generation) return;
+    loading.place(place);
+    loading.step("research", "done");
+  } catch {
+    loading.step("research", "failed", "continuing without it");
+  }
+}
+
 async function generate(gen: number, years: number[] = yearsFor(state.forkId)): Promise<void> {
   let done = 0;
   const total = years.length;
+  loading.step("paint", "active");
+  loading.step("check", "active");
+  loading.progress(0, total);
   await generateAll(
     state.token,
     { forkId: state.forkId, biome: state.biome, setting: state.setting },
@@ -325,15 +351,24 @@ async function generate(gen: number, years: number[] = yearsFor(state.forkId)): 
         state.eras.set(year, era);
         if (s === "loading") {
           const e = findEra(state.forkId, year);
-          if (e) status(`Painting ${formatYear(year)} · ${eraCaption(e, state.biome)}`);
+          if (e) {
+            status(`Painting ${formatYear(year)} · ${eraCaption(e, state.biome)}`);
+            loading.caption(`${formatYear(year)} · ${eraCaption(e, state.biome)}`);
+          }
         }
         if (s === "ready" && result) {
           era.result = result;
           done++;
           void loadKeyframe(gen, year, result);
+          // The first finished era is enough to start exploring; the rest keep painting behind.
+          loading.hide();
         }
         if (s === "failed") done++;
-        if (done === total) status("");
+        loading.progress(done, total);
+        if (done === total) {
+          status("");
+          loading.hide();
+        }
         renderTicks();
       },
       onResting: () => toast("Live generation is resting right now. Try again later.", 0),
@@ -530,7 +565,9 @@ function openSubject(year: number): void {
   if (chronicleEra.driver === "biology") showCreature(chronicleEra.biomes[state.biome].fauna[0], year, state.biome);
   else if (chronicleEra.fossil) {
     const params = { forkId: state.forkId, biome: state.biome, setting: state.setting };
-    showFossil(chronicleEra.fossil, era?.result?.fossilUrl ?? null, year, async () => {
+    // The historian may have replaced the chronicle's fossil with one that fits this place.
+    const fossil = era?.result?.fossil ?? chronicleEra.fossil;
+    showFossil(fossil, era?.result?.fossilUrl ?? null, year, async () => {
       if (state.demo) return Promise.all(demoElementUrls(state.demo, state.forkId, year).map(loadMask));
       const { elements } = await api.elements(state.token, year, params);
       return Promise.all(elements.map((e) => loadMask(e.samUrl)));
@@ -619,7 +656,12 @@ forkSelect.addEventListener("change", async () => {
   if (forkId !== DEFAULT_FORK && CHRONICLES[forkId].divergenceYear !== null) showChain(CHRONICLES[forkId]);
   if (state.demo) return loadDemoEras(state.generation, missing);
   if (!state.token) return;
-  void generate(state.generation, missing);
+  // The chain-of-events sheet stays on top: something to read while this history is painted.
+  loading.show(`Rewriting history: ${CHRONICLES[forkId].title.toLowerCase()}`);
+  loading.step("read", "done");
+  loading.step("research", "active");
+  const gen = state.generation;
+  void research_(gen, forkId).then(() => generate(gen, missing));
 });
 
 // ---------------------------------------------------------------- messages

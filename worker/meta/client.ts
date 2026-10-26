@@ -1,6 +1,6 @@
 // Thin Meta Model API client. The Worker only moves bytes: images go in as data URLs or URLs
 // and come back as short-lived URLs (response_format: "url"), so nothing large is decoded here.
-import { IMAGE_MODEL, META_BASE_URL, SAM_MODEL } from "../config";
+import { IMAGE_MODEL, META_BASE_URL, SAM_MODEL, SPARK_MODEL } from "../config";
 
 export class ContentFilteredError extends Error {
   constructor(message: string) {
@@ -109,4 +109,27 @@ export async function segment(apiKey: string, opts: { phrase: string; image: str
     .filter((c) => c.type === "output_text")
     .map((c) => c.text ?? "")
     .join("");
+}
+
+type ContentPart = { type: "text"; text: string } | { type: "image_url"; image_url: { url: string } };
+
+/** Muse Spark with vision input and a JSON-schema response. */
+export async function sparkJson<T>(
+  apiKey: string,
+  opts: { system: string; content: ContentPart[]; name: string; schema: object },
+): Promise<T> {
+  const r = (await call(
+    apiKey,
+    "/chat/completions",
+    {
+      model: SPARK_MODEL,
+      messages: [
+        { role: "system", content: opts.system },
+        { role: "user", content: opts.content },
+      ],
+      response_format: { type: "json_schema", json_schema: { name: opts.name, schema: opts.schema } },
+    },
+    120_000,
+  )) as { choices: { message: { content: string } }[] };
+  return JSON.parse(r.choices[0].message.content) as T;
 }

@@ -1,5 +1,5 @@
 // Request/response shapes shared by the client and the Worker.
-import type { Biome } from "./eras";
+import type { Biome, Fossil } from "./eras";
 
 export type ConfigResponse = { turnstileSiteKey: string; live: boolean; biome: Biome };
 
@@ -13,6 +13,8 @@ export type EraResult = {
   /** Raw SAM text for the tappable subject (creature or idea fossil), decoded on the client. */
   target: { phrase: string; samUrl: string } | null;
   fossilUrl: string | null;
+  /** The idea fossil actually painted: the chronicle's, or the historian's replacement for this place. */
+  fossil?: Fossil;
 };
 
 export type ApiError = {
@@ -22,3 +24,6 @@ export type ApiError = {
 
 /** SAM output (raw text) for each named element of an era's idea fossil, in chronicle order. */
 export type ElementsResponse = { elements: { name: string; samUrl: string | null }[] };
+
+/** What Muse Spark identified the place as (for the loading screen). */
+export type NotesResponse = { place: string };

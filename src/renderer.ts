@@ -60,10 +60,11 @@ const fragmentShader = /* glsl */ `
     }
 
     // Era grading: warm past, cool future; then vignette and fine grain.
-    color = mix(color, color * uTint, 0.35);
-    float vig = smoothstep(1.15, 0.35, length(vUv - 0.5) * 1.4);
-    color *= mix(0.78, 1.0, vig);
-    color += (hash(vUv * 1000.0 + uTime) - 0.5) * 0.035;
+    // Kept subtle: heavier grading made photographs read as paintings.
+    color = mix(color, color * uTint, 0.12);
+    float vig = smoothstep(1.2, 0.4, length(vUv - 0.5) * 1.4);
+    color *= mix(0.9, 1.0, vig);
+    color += (hash(vUv * 1000.0 + uTime) - 0.5) * 0.015;
     gl_FragColor = vec4(color, 1.0);
   }
 `;

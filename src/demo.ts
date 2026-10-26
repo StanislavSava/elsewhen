@@ -1,12 +1,13 @@
 // Pre-generated demo scenes (public/demo/<name>/, exported by scripts/make-demo.ts). They play on the
 // landing page and load entirely from static files: no camera, no wait, no API calls.
 import type { EraResult } from "./shared/api";
-import type { Biome } from "./shared/eras";
+import type { Biome, Fossil } from "./shared/eras";
 
 type DemoEra = {
   image: string;
   target?: { phrase: string; sam: string };
   fossil?: string;
+  fossilSpec?: Fossil;
   elements?: (string | null)[];
 };
 
@@ -46,6 +47,7 @@ export function demoEras(demo: Demo, forkId: string): Map<number, EraResult> {
       imageUrl: demo.base + e.image,
       target: e.target ? { phrase: e.target.phrase, samUrl: demo.base + e.target.sam } : null,
       fossilUrl: e.fossil ? demo.base + e.fossil : null,
+      fossil: e.fossilSpec,
     });
   }
   return out;

@@ -12,7 +12,7 @@ const CONCURRENCY = 4;
 
 type Era = { year: number; driver: "culture" | "biology"; fossil?: { elements: { name: string }[] } };
 type Chronicle = { forkId: string; divergenceYear: number | null; eras: Era[] };
-type EraResult = { year: number; imageUrl: string; target: { phrase: string; samUrl: string } | null; fossilUrl: string | null };
+type EraResult = { year: number; imageUrl: string; target: { phrase: string; samUrl: string } | null; fossilUrl: string | null; fossil?: object };
 
 // Same sharing rules as src/shared/chronicles.ts (Node can't import its JSON without import attributes).
 const chronicles: Chronicle[] = readdirSync("forks")
@@ -118,6 +118,7 @@ async function main(): Promise<void> {
       if (r.target) entry.target = { phrase: r.target.phrase, sam: (await download(r.target.samUrl, join(out, `${key}.target.txt`)), `${key}.target.txt`) };
       if (r.fossilUrl) {
         entry.fossil = (await download(r.fossilUrl, join(out, `${key}.fossil.webp`)), `${key}.fossil.webp`);
+        if (r.fossil) entry.fossilSpec = r.fossil;
         const era = eraOf(c, year);
         if (era?.fossil) {
           const { elements } = await json<{ elements: { name: string; samUrl: string | null }[] }>(

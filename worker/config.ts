@@ -2,6 +2,7 @@
 export const META_BASE_URL = "https://api.meta.ai/v1";
 export const IMAGE_MODEL = "muse-image-1.0";
 export const SAM_MODEL = "sam-3.1";
+export const SPARK_MODEL = "muse-spark-1.3";
 
 export const IMAGE_PRICE_CENTS = 1;
 export const MAX_PHOTO_BYTES = 6 * 1024 * 1024;

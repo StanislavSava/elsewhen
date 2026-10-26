@@ -398,9 +398,9 @@
       "year": 1000,
       "driver": "culture",
       "structures": "overgrown",
-      "caption": "3026 · nature has gently reclaimed the place",
-      "visualPrompt": "Transform this scene to 1,000 years in the future. Nature has gently reclaimed this place: the buildings still stand but are weathered and overgrown, moss on the walls, vines across the facades, open empty window frames, young trees growing on the roofs. Peaceful, sunlit, serene.",
-      "visualPromptIndoor": "Transform this room to 1,000 years in the future, gently overgrown: soft moss across the floor, ferns and ivy on the walls, sunlight through the window. Peaceful, sunlit, serene."
+      "caption": "3026 · the city has grown into a garden",
+      "visualPrompt": "Transform this scene to 1,000 years in the future. The same buildings, lovingly preserved and grown into a living garden city: terraces, balconies and roofs planted with trees, ivy and flowering vines, footpaths through meadows and ponds where the roads were. Peaceful, sunlit, cared for.",
+      "visualPromptIndoor": "Transform this room to 1,000 years in the future: the same room, cared for and full of plants, ivy on the walls, a small tree by the sunlit window. Peaceful and calm."
     },
     {
       "year": 10000,
