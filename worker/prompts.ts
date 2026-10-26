@@ -48,6 +48,10 @@ const PRESERVE: Record<StructureState, Record<Setting, string>> = {
   },
 };
 
+/** Culture eras must look like this place, not like the chronicle author's Europe (spike: 1526 Tunisia came out half-timbered). */
+const REGIONAL =
+  "Use the building materials, architectural traditions, plants and climate of this place's own region, as seen in the photo.";
+
 export function eraPrompt(era: ChronicleEra, biome: Biome, setting: Setting): string {
   const text =
     era.driver === "biology"
@@ -55,7 +59,16 @@ export function eraPrompt(era: ChronicleEra, biome: Biome, setting: Setting): st
       : setting === "indoor" && era.visualPromptIndoor
         ? era.visualPromptIndoor
         : era.visualPrompt;
-  return `${text} ${PRESERVE[era.structures][setting]}`;
+  const regional = era.driver === "culture" && era.structures !== "overgrown" ? ` ${REGIONAL}` : "";
+  return `${text}${regional} ${PRESERVE[era.structures][setting]}`;
+}
+
+/** Short hash of everything that shapes an era's image, so editing a chronicle regenerates only what changed. */
+export async function promptVersion(era: ChronicleEra, biome: Biome, setting: Setting): Promise<string> {
+  const fossil = era.driver === "culture" && era.fossil ? `${fossilPrompt(era.fossil)}|${fossilPlacement(era.fossil)}` : "";
+  const bytes = new TextEncoder().encode(`${eraPrompt(era, biome, setting)}|${fossil}`);
+  const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", bytes));
+  return [...digest.slice(0, 4)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 export function fossilPrompt(fossil: Fossil): string {

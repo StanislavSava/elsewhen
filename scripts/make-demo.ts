@@ -72,12 +72,15 @@ async function download(url: string, out: string): Promise<string> {
 }
 
 async function main(): Promise<void> {
-  const [name, photoPath, biome, credit] = process.argv.slice(2);
-  if (!name || !photoPath || !biome) throw new Error("usage: make-demo.ts <name> <prepared.jpg> <biome> <credit>");
+  const [name, photoPath, biome, credit, existingToken] = process.argv.slice(2);
+  if (!name || !photoPath || !biome) throw new Error("usage: make-demo.ts <name> <prepared.jpg> <biome> <credit> [scene token]");
   const photo = readFileSync(photoPath); // already cropped to 1536×1152 (4:3)
 
+  // Reusing a scene regenerates only eras whose prompts changed (the cache key includes a prompt hash).
   // Local dev uses Cloudflare's always-pass Turnstile secret, which accepts this dummy token.
-  const scene = await json<{ token: string; id: string; width: number; height: number; photoUrl: string }>(
+  const scene = existingToken
+    ? { token: existingToken, id: existingToken.split(".")[0], width: 1536, height: 1152, photoUrl: `/api/files/scenes/${existingToken.split(".")[0]}/photo.jpg` }
+    : await json<{ token: string; id: string; width: number; height: number; photoUrl: string }>(
     await fetch(`${BASE}/api/scenes`, {
       method: "POST",
       headers: {

@@ -279,8 +279,8 @@
       "year": -2000,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "The first century · timber, thatch and a carved stone",
-      "visualPrompt": "Transform this scene to the early first century. Modest timber-and-thatch houses and a few stone buildings on the same footprints, a packed-earth road, wattle fences, smoke from a hearth, no modern objects.",
+      "caption": "The first century · modest homes and a carved stone",
+      "visualPrompt": "Transform this scene to the early first century. Modest buildings of local stone, mud brick or timber on the same footprints, a packed-earth road, simple fences and gardens, smoke from a hearth, no modern objects.",
       "visualPromptIndoor": "Transform this room to the early first century: rough plaster and timber walls, a packed-earth floor, a low wooden bench, clay pots, daylight from a small opening.",
       "fossil": {
         "medium": "relief",
@@ -309,12 +309,12 @@
       "year": -500,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "1526 · timber-framed houses and a painted guild sign",
-      "visualPrompt": "Transform this scene to the year 1526. Timber-framed and stone buildings on the same footprints, unpaved ground, no modern objects, no electricity, no vehicles, candle and daylight only.",
+      "caption": "1526 · an old town and a painted shop sign",
+      "visualPrompt": "Transform this scene to the year 1526. The town as it was then, built in the region's own traditional architecture and materials on the same footprints, unpaved ground, no modern objects, no electricity, no vehicles, daylight only.",
       "visualPromptIndoor": "Transform this room to the year 1526: timber beams, plaster walls, a wooden bench and chair, a woven rug, candles, a small leaded window.",
       "fossil": {
         "medium": "sign",
-        "brief": "A painted wooden shop sign of a bakers' guild hanging from a wrought-iron bracket: two crossed loaves of bread, a golden wheat sheaf and a crown-shaped pretzel on a deep red field, gilded edges, weathered paint. No letters, no words, no text of any kind.",
+        "brief": "A painted wooden bakery sign hanging from a wrought-iron bracket: two crossed loaves of bread, a golden wheat sheaf and a crown-shaped pretzel on a deep red field, gilded edges, weathered paint. No letters, no words, no text of any kind.",
         "elements": [
           {
             "name": "bread",
@@ -338,8 +338,8 @@
       "year": -100,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "1926 · trams, chimneys and a public-health poster",
-      "visualPrompt": "Transform this scene to the year 1926. Older brick and stucco buildings on the same footprints, cobblestones, gas lamps, a few vintage cars and a tram line, chimney smoke, period details.",
+      "caption": "1926 · an older town and a public-health poster",
+      "visualPrompt": "Transform this scene to the year 1926. The buildings of that time in the region's own style on the same footprints, period street details, a few vintage cars, soft period light.",
       "visualPromptIndoor": "Transform this room to the year 1926: patterned wallpaper, a wooden sideboard, an upholstered armchair, a gas lamp, lace curtains.",
       "fossil": {
         "medium": "poster",

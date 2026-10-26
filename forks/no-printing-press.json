@@ -41,7 +41,7 @@
       "driver": "culture",
       "structures": "predecessor",
       "caption": "1526 · Hall of Copied Voices",
-      "visualPrompt": "Transform this scene to 1526. Low timber-and-plaster guild halls with steep thatched roofs stand on the same footprints, their facades wrapped in hand-painted story friezes and hanging wooden scribe signs. Oak copying benches and lecterns wait in the arcade under soft golden morning light.",
+      "visualPrompt": "Transform this scene to 1526. Guild halls of scribes and memorizers in the region's own building tradition stand on the same footprints, their facades wrapped in hand-painted story friezes and hanging painted scribe signs. Copying benches and lecterns wait in shaded arcades under soft golden morning light.",
       "visualPromptIndoor": "A snug candle-lit copying room with long oak tables, stacked vellum, ink bowls and quills laid out for the day's work.",
       "fossil": {
         "medium": "mural",
@@ -71,7 +71,7 @@
       "driver": "culture",
       "structures": "predecessor",
       "caption": "1926 · City of Reciters",
-      "visualPrompt": "Transform this scene to 1926. Grand brick-and-stone recitation houses with tiled roofs and carved wooden balconies stand on the same footprints, their walls covered in large painted picture panels and enamel seal plaques. Stepped speaking platforms and festival banners fill the open spaces in clear midday sun.",
+      "visualPrompt": "Transform this scene to 1926. Grand recitation houses in the region's own architectural style stand on the same footprints, their walls covered in large painted picture panels and enamel seal plaques. Stepped speaking platforms and festival banners fill the open spaces in clear midday sun.",
       "visualPromptIndoor": "A spacious recitation hall with polished wood benches in circles, warm lantern light and walls lined with painted scroll cabinets and listening niches.",
       "fossil": {
         "medium": "poster",

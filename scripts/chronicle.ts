@@ -55,8 +55,10 @@ const STYLE = `You write chronicles for Elsewhen, an app that repaints a user's 
 an alternate history. Each era's visualPrompt is an image-edit instruction applied to the user's photo.
 
 Rules:
-- visualPrompt starts with "Transform this scene to <calendar year or period>." then describes architecture,
-  materials, street life and light concretely, always "on the same footprints". 2-3 sentences, photographic.
+- visualPrompt starts with "Transform this scene to <calendar year or period>." then describes what the
+  buildings are and do in this world (halls, workshops, signs, street furniture, light), always "on the same
+  footprints" and "in the region's own building tradition". Never name region-specific materials or styles
+  (no "timber-framed", "thatched", "half-timbered"): the photo can be anywhere on Earth. 2-3 sentences.
 - visualPromptIndoor: same era as an interior, 1-2 sentences.
 - caption: max 60 characters, format "<year or period> · <short evocative phrase>".
 - Everything is calm and peaceful. Never describe war, violence, ruins, destruction, collapse, decay,

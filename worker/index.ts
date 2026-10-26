@@ -1,7 +1,7 @@
 import { Hono, type Context } from "hono";
 import type { ApiError, ConfigResponse, CreateSceneResponse, ElementsResponse, EraResult, MasksResponse } from "../src/shared/api";
 import { CHRONICLES, DEFAULT_FORK, findEra, isShared } from "../src/shared/chronicles";
-import { BIOMES, SETTINGS, isEraYear, type Biome, type Setting } from "../src/shared/eras";
+import { BIOMES, SETTINGS, isEraYear, type Biome, type ChronicleEra, type Setting } from "../src/shared/eras";
 import { biomeFor } from "./biome";
 import { BASE_PHRASES, IMAGE_MODEL, IMAGE_PRICE_CENTS, MAX_PHOTO_BYTES, SAM_MODEL, type Env } from "./config";
 import {
@@ -15,7 +15,7 @@ import {
   verifyTurnstile,
 } from "./guard";
 import { ContentFilteredError, editImage, generateImage, segment } from "./meta/client";
-import { eraPrompt, fossilPlacement, fossilPrompt, targetPhrase } from "./prompts";
+import { eraPrompt, fossilPlacement, fossilPrompt, promptVersion, targetPhrase } from "./prompts";
 
 type C = Context<{ Bindings: Env }>;
 
@@ -124,10 +124,14 @@ app.post("/api/scenes/:token/masks", async (c) => {
 
 type EraParams = { forkId: string; biome: Biome; setting: Setting };
 
-/** Shared eras (before a divergence, and all of deep time) are stored once under "base" for every history. */
-function eraPrefix(sceneId: string, year: number, p: EraParams, driver: "culture" | "biology"): string {
+/**
+ * Shared eras (before a divergence, and all of deep time) are stored once under "base" for every history.
+ * The prompt version makes an edited chronicle regenerate only the eras whose prompts changed.
+ */
+async function eraPrefix(sceneId: string, year: number, p: EraParams, era: ChronicleEra): Promise<string> {
   const fork = isShared(p.forkId, year) ? "base" : p.forkId;
-  return `scenes/${sceneId}/${fork}/${driver === "biology" ? p.biome : "-"}/${p.setting}/${year}`;
+  const version = await promptVersion(era, p.biome, p.setting);
+  return `scenes/${sceneId}/${fork}/${era.driver === "biology" ? p.biome : "-"}/${p.setting}/${year}/${version}`;
 }
 
 async function readEra(env: Env, prefix: string): Promise<EraResult | null> {
@@ -148,7 +152,7 @@ app.get("/api/scenes/:token/eras/:year", async (c) => {
   const params = parseEraParams(c.req.query());
   const era = params && findEra(params.forkId, year);
   if (!id || !params || !era) return fail(c, 404, "not_found");
-  const result = await readEra(c.env, eraPrefix(id, year, params, era.driver));
+  const result = await readEra(c.env, await eraPrefix(id, year, params, era));
   return result ? c.json(result) : fail(c, 404, "not_found");
 });
 
@@ -162,7 +166,7 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
 
   const scene = await sceneFromToken(c);
   if (!scene) return fail(c, 404, "not_found");
-  const prefix = eraPrefix(scene.id, year, params, era.driver);
+  const prefix = await eraPrefix(scene.id, year, params, era);
 
   const existing = await readEra(c.env, prefix);
   if (existing) return c.json(existing);
@@ -241,7 +245,7 @@ app.post("/api/scenes/:token/eras/:year/elements", async (c) => {
   if (!params || !era || era.driver !== "culture" || !era.fossil) return fail(c, 400, "bad_request");
   const id = await verifySceneToken(c.env, c.req.param("token"));
   if (!id) return fail(c, 404, "not_found");
-  const prefix = eraPrefix(id, year, params, era.driver);
+  const prefix = await eraPrefix(id, year, params, era);
   const fossil = await c.env.BUCKET.get(`${prefix}/fossil.webp`);
   if (!fossil) return fail(c, 404, "not_found");
   const image = toDataUrl(await fossil.arrayBuffer(), fossil.httpMetadata?.contentType ?? "image/webp");
