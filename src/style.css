@@ -32,11 +32,18 @@ button, select, input { font: inherit; color: inherit; }
   display: grid;
   place-items: center;
   padding: 24px 16px;
+  z-index: 5;
   background:
     radial-gradient(120% 80% at 50% 110%, rgba(231, 199, 106, 0.18), transparent 60%),
     radial-gradient(90% 60% at 50% -10%, rgba(120, 160, 200, 0.16), transparent 60%),
     var(--bg);
 }
+/* Over a playing demo scene the landing turns into a translucent veil. */
+body.overlay #landing { background: radial-gradient(80% 70% at 50% 50%, rgba(10, 10, 9, 0.62), rgba(10, 10, 9, 0.25)); }
+body.overlay .topbar, body.overlay .timebar .slider-wrap, body.overlay #hint { visibility: hidden; }
+.link { background: none; border: none; color: var(--muted); text-decoration: underline; margin-top: 14px; cursor: pointer; font-size: 0.9rem; }
+.credit { position: absolute; right: 12px; bottom: calc(4px + env(safe-area-inset-bottom)); z-index: 2; font-size: 0.68rem; color: var(--muted); }
+.credit a { color: inherit; }
 .landing-inner { max-width: 520px; text-align: center; }
 .wordmark { font-family: var(--serif); font-weight: 400; letter-spacing: 0.02em; font-size: clamp(3rem, 12vw, 5.5rem); margin: 0; }
 .wordmark.small { font-size: 1.25rem; }

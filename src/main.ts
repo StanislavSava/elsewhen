@@ -1,7 +1,8 @@
 import { api, HttpError } from "./api";
 import { fromFile, prepare, startCamera, stopCamera, type PreparedPhoto } from "./capture";
 import { closeSheet, showChain, showCreature, showFossil } from "./card";
-import { generateAll, type EraStatus } from "./orchestrator";
+import { demoElementUrls, demoEras, demoMaskUrls, loadDemo, loadDemoIndex, type Demo, type DemoIndexEntry } from "./demo";
+import { generateAll, nearestFirst, type EraStatus } from "./orchestrator";
 import { bakeDelayMap, Renderer, tintForPosition } from "./renderer";
 import { anchor, coverage, hit, loadMask, type Mask } from "./sam";
 import type { EraResult } from "./shared/api";
@@ -23,8 +24,12 @@ import { getTurnstileToken } from "./turnstile";
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 
 const screens = { landing: $("landing"), camera: $("camera"), viewer: $("viewer") };
+/** The landing is an overlay: when a scene (usually a demo) is loaded, it plays underneath. */
 function show(name: keyof typeof screens): void {
   for (const [k, el] of Object.entries(screens)) el.hidden = k !== name;
+  if (name === "landing" && state.renderer) screens.viewer.hidden = false;
+  document.body.classList.toggle("overlay", name === "landing" && Boolean(state.renderer));
+  if (name !== "landing") stopAutoplay();
 }
 
 const slider = $<HTMLInputElement>("slider");
@@ -50,6 +55,8 @@ const state = {
   displaySize: { width: 0, height: 0 },
   stream: null as MediaStream | null,
   generation: 0, // bumps on every new scene so stale callbacks are ignored
+  demo: null as Demo | null,
+  demoIndex: [] as DemoIndexEntry[],
 };
 
 // ---------------------------------------------------------------- bootstrap
@@ -97,6 +104,11 @@ $<HTMLInputElement>("file").addEventListener("change", async (e) => {
 
 /** The scene lives in the URL: reloading or sharing resumes it from storage without new generation. */
 function syncUrl(): void {
+  if (state.demo) {
+    const q = new URLSearchParams({ demo: state.demo.manifest.name });
+    if (state.forkId !== DEFAULT_FORK) q.set("f", state.forkId);
+    return history.replaceState(null, "", `?${q}`);
+  }
   if (!state.token) return;
   const q = new URLSearchParams({ s: state.token, b: state.biome });
   if (state.forkId !== DEFAULT_FORK) q.set("f", state.forkId);
@@ -109,17 +121,75 @@ $("new-place").addEventListener("click", () => {
   show("landing");
 });
 
+$("explore").addEventListener("click", () => {
+  show("viewer");
+  syncUrl();
+});
+
+$("another-place").addEventListener("click", () => {
+  const list = state.demoIndex;
+  if (!list.length || !state.demo) return;
+  const i = list.findIndex((d) => d.name === state.demo!.manifest.name);
+  void openDemo(list[(i + 1) % list.length].name, false);
+});
+
+async function openDemo(name: string, withLanding: boolean): Promise<void> {
+  const demo = await loadDemo(name);
+  if (!demo) return;
+  const blob = await (await fetch(demo.base + demo.manifest.photo)).blob();
+  const photo: PreparedPhoto = { blob, width: demo.manifest.width, height: demo.manifest.height, url: "" };
+  const started = begin(photo, { demo });
+  // begin() creates the renderer; show the landing over it (or the viewer) once it exists.
+  await new Promise((r) => requestAnimationFrame(r));
+  show(withLanding ? "landing" : "viewer");
+  await started;
+  if (withLanding) startAutoplay();
+  else syncUrl();
+}
+
+// ---------------------------------------------------------------- landing autoplay
+
+let autoplayTimer = 0;
+let autoplayOn = false;
+
+/** now → +1M → −1M → now, slowly, while the landing overlay is up. */
+function startAutoplay(): void {
+  autoplayOn = true;
+  const legs = [1, -1, 0];
+  let leg = 0;
+  const next = () => {
+    if (!autoplayOn) return;
+    animateTo(legs[leg % legs.length], 3600);
+    leg++;
+    autoplayTimer = window.setTimeout(next, 3600 + 1400);
+  };
+  autoplayTimer = window.setTimeout(next, 1500);
+}
+
+function stopAutoplay(): void {
+  autoplayOn = false;
+  clearTimeout(autoplayTimer);
+}
+
 /** Resume a scene from ?s=<token>&b=<biome>&f=<fork> (reloads and share links). */
 async function resumeFromUrl(): Promise<void> {
   const params = new URLSearchParams(location.search);
   const token = params.get("s");
-  if (!token) return;
-  await configReady;
   const fork = params.get("f");
   if (fork && CHRONICLES[fork]) {
     state.forkId = fork;
     forkSelect.value = fork;
   }
+  state.demoIndex = await loadDemoIndex();
+  const demoName = params.get("demo");
+  if (!token) {
+    // A shared demo link opens straight into it; otherwise a demo plays behind the landing.
+    if (demoName) return openDemo(demoName, false);
+    const first = state.demoIndex[0];
+    if (first) await openDemo(first.name, true);
+    return;
+  }
+  await configReady;
   const biome = params.get("b") as Biome | null;
   if (biome && BIOMES.includes(biome)) {
     state.biome = biome;
@@ -132,21 +202,30 @@ async function resumeFromUrl(): Promise<void> {
   const bmp = await createImageBitmap(blob);
   const photo: PreparedPhoto = { blob, width: bmp.width, height: bmp.height, url: URL.createObjectURL(blob) };
   bmp.close();
-  await begin(photo, token);
+  await begin(photo, { token });
 }
 void resumeFromUrl();
 
 // ---------------------------------------------------------------- a new scene
 
-async function begin(photo: PreparedPhoto, existingToken?: string): Promise<void> {
+async function begin(photo: PreparedPhoto, opts: { token?: string; demo?: Demo } = {}): Promise<void> {
   const gen = ++state.generation;
   closeSheet();
   state.photo = photo;
   state.eras = new Map();
   state.token = "";
   state.setting = "outdoor";
+  state.demo = opts.demo ?? null;
   slider.value = "0";
-  show("viewer");
+  if (!opts.demo) show("viewer");
+  // Demo scenes were generated for one biome; live scenes can switch.
+  biomeSelect.disabled = Boolean(opts.demo);
+  if (opts.demo) {
+    state.biome = opts.demo.manifest.biome;
+    biomeSelect.value = state.biome;
+  }
+  $("credit").innerHTML = opts.demo ? opts.demo.manifest.credit : "";
+  $("another-place").hidden = !opts.demo || state.demoIndex.length < 2;
 
   // Phones get ≤1280 px textures so ~10 keyframes fit in iOS GPU memory.
   const maxEdge = matchMedia("(pointer: coarse)").matches ? 1280 : 1536;
@@ -162,11 +241,16 @@ async function begin(photo: PreparedPhoto, existingToken?: string): Promise<void
   renderTicks();
   update();
 
+  if (opts.demo) {
+    await applyMasks(gen, photo, demoMaskUrls(opts.demo));
+    return loadDemoEras(gen);
+  }
+
   try {
     status("Opening a window…");
     const cfg = await configReady;
-    if (existingToken) {
-      state.token = existingToken;
+    if (opts.token) {
+      state.token = opts.token;
     } else {
       if (!cfg.live) return status("");
       const token = await getTurnstileToken(state.turnstileSiteKey, $("turnstile"));
@@ -178,27 +262,9 @@ async function begin(photo: PreparedPhoto, existingToken?: string): Promise<void
 
     status("Reading the scene…");
     const { masks } = await api.masks(state.token);
-    const decoded = Object.fromEntries(
-      await Promise.all(Object.entries(masks).map(async ([k, url]) => [k, await loadMask(url)] as const)),
-    ) as Record<string, Mask | null>;
-    if (gen !== state.generation) return;
-
-    // Indoors: a ceiling, or almost no sky.
-    state.setting = coverage(decoded.ceiling) > 0.03 || coverage(decoded.sky) < 0.01 ? "indoor" : "outdoor";
-    if (state.setting === "indoor") toast("Works best outdoors: the deep past and far future can't keep a room's shape.");
-
-    state.renderer.setDelayMap(
-      bakeDelayMap(photo.width, photo.height, [
-        { mask: decoded.ceiling, delay: 0.1 },
-        { mask: decoded.sky, delay: 0 },
-        { mask: decoded.tree, delay: 0.3 },
-        { mask: decoded.grass, delay: 0.35 },
-        { mask: decoded.building, delay: 0.65 },
-        { mask: decoded.wall, delay: 0.65 },
-        { mask: decoded.floor, delay: 0.85 },
-        { mask: decoded.street, delay: 0.85 },
-      ]),
-    );
+    if (!(await applyMasks(gen, photo, masks))) return;
+    // applyMasks sets state.setting; TypeScript still sees the "outdoor" assigned above.
+    if ((state.setting as Setting) === "indoor") toast("Works best outdoors: the deep past and far future can't keep a room's shape.");
 
     await generate(gen);
   } catch (err) {
@@ -207,6 +273,42 @@ async function begin(photo: PreparedPhoto, existingToken?: string): Promise<void
     else toast("Something went wrong opening this scene. Try another photo.");
     status("");
   }
+}
+
+/** Decodes the base masks into the transition delay map and detects indoor scenes. False if superseded. */
+async function applyMasks(gen: number, photo: PreparedPhoto, masks: Record<string, string | null>): Promise<boolean> {
+  const decoded = Object.fromEntries(
+    await Promise.all(Object.entries(masks).map(async ([k, url]) => [k, await loadMask(url)] as const)),
+  ) as Record<string, Mask | null>;
+  if (gen !== state.generation || !state.renderer) return false;
+  // Indoors: a ceiling, or almost no sky.
+  state.setting = coverage(decoded.ceiling) > 0.03 || coverage(decoded.sky) < 0.01 ? "indoor" : "outdoor";
+  state.renderer.setDelayMap(
+    bakeDelayMap(photo.width, photo.height, [
+      { mask: decoded.ceiling, delay: 0.1 },
+      { mask: decoded.sky, delay: 0 },
+      { mask: decoded.tree, delay: 0.3 },
+      { mask: decoded.grass, delay: 0.35 },
+      { mask: decoded.building, delay: 0.65 },
+      { mask: decoded.wall, delay: 0.65 },
+      { mask: decoded.floor, delay: 0.85 },
+      { mask: decoded.street, delay: 0.85 },
+    ]),
+  );
+  return true;
+}
+
+/** Demo scenes: every era is already a static file, loaded nearest-to-now first. */
+function loadDemoEras(gen: number, years: number[] = yearsFor(state.forkId)): void {
+  if (!state.demo) return;
+  const eras = demoEras(state.demo, state.forkId);
+  for (const year of nearestFirst(years)) {
+    const result = eras.get(year);
+    if (!result) continue;
+    state.eras.set(year, { status: "ready", result });
+    void loadKeyframe(gen, year, result);
+  }
+  renderTicks();
 }
 
 async function generate(gen: number, years: number[] = yearsFor(state.forkId)): Promise<void> {
@@ -351,12 +453,12 @@ document.addEventListener("keydown", (e) => {
 });
 
 let anim = 0;
-function animateTo(target: number): void {
+function animateTo(target: number, ms = 700): void {
   cancelAnimationFrame(anim);
   const from = Number(slider.value);
   const start = performance.now();
   const step = (now: number) => {
-    const k = Math.min(1, (now - start) / 700);
+    const k = Math.min(1, (now - start) / ms);
     const ease = k < 0.5 ? 2 * k * k : 1 - (-2 * k + 2) ** 2 / 2;
     slider.value = String(from + (target - from) * ease);
     update();
@@ -429,6 +531,7 @@ function openSubject(year: number): void {
   else if (chronicleEra.fossil) {
     const params = { forkId: state.forkId, biome: state.biome, setting: state.setting };
     showFossil(chronicleEra.fossil, era?.result?.fossilUrl ?? null, year, async () => {
+      if (state.demo) return Promise.all(demoElementUrls(state.demo, state.forkId, year).map(loadMask));
       const { elements } = await api.elements(state.token, year, params);
       return Promise.all(elements.map((e) => loadMask(e.samUrl)));
     });
@@ -479,7 +582,7 @@ tiltBtn.addEventListener("click", async () => {
 
 biomeSelect.addEventListener("change", () => {
   const biome = biomeSelect.value as Biome;
-  if (!BIOMES.includes(biome) || biome === state.biome) return;
+  if (!BIOMES.includes(biome) || biome === state.biome || state.demo) return;
   state.biome = biome;
   update();
   if (!state.token) return;
@@ -512,9 +615,10 @@ forkSelect.addEventListener("change", async () => {
   }
   renderTicks();
   update();
-  if (!state.token) return;
   const missing = yearsFor(forkId).filter((y) => state.eras.get(y)?.status !== "ready");
   if (forkId !== DEFAULT_FORK && CHRONICLES[forkId].divergenceYear !== null) showChain(CHRONICLES[forkId]);
+  if (state.demo) return loadDemoEras(state.generation, missing);
+  if (!state.token) return;
   void generate(state.generation, missing);
 });
 

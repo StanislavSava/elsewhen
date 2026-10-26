@@ -5,6 +5,10 @@ Each task has an ID, an estimate, its dependencies and a "done when". Days are s
 
 **Clock check (if you're on Romanian time, EET):** the hackathon opens **Sun Oct 26, 18:00 your time** (12:00 PM ET), and the deadline is **Tue Nov 4, 9:00 PM ET = Wed Nov 5, 04:00 your time**. The plan's "submit by 5 PM ET" target is **midnight Nov 4→5 your time**. Day 1 is therefore an evening session.
 
+## Progress (updated 2026-10-26, day 1)
+
+Ahead of plan. Done on day 1: D1.x foundations, D2.x capture + scene creation, D3.x era generation, most of D4 (renderer, symlog slider, desktop input, history picker + chain sheet), the D5 transition shader and look-around, D6 creatures + field-guide card, D7 exploded idea fossils, D8.1 demo scenes (in progress) and the landing overlay with autoplay. Forks drafted by Muse Spark (W2–W3). Not yet: deploy (waiting for go-ahead), Turnstile hostname, share-link OG image, budget/kill-switch test on the deployed Worker, hint chips, video.
+
 ---
 
 ## Phase 0 — Before the API key arrives (Oct 21–25)
