@@ -1,14 +1,12 @@
 // Pre-generated demo scenes (public/demo/<name>/, exported by scripts/make-demo.ts). They play on the
 // landing page and load entirely from static files: no camera, no wait, no API calls.
-import type { EraResult } from "./shared/api";
-import type { Biome, Fossil } from "./shared/eras";
+import type { EraResult, NotesResponse } from "./shared/api";
+import type { Biome } from "./shared/eras";
 
 type DemoEra = {
   image: string;
   target?: { phrase: string; sam: string };
-  fossil?: string;
-  fossilSpec?: Fossil;
-  elements?: (string | null)[];
+  cells?: string[] | null;
 };
 
 export type DemoManifest = {
@@ -20,6 +18,8 @@ export type DemoManifest = {
   photo: string;
   masks: Record<string, string | null>;
   forks: Record<string, Record<string, DemoEra>>;
+  /** The historian's notes per history, exactly as the live API returns them. */
+  notes?: Record<string, NotesResponse>;
 };
 
 export type Demo = { base: string; manifest: DemoManifest };
@@ -46,15 +46,10 @@ export function demoEras(demo: Demo, forkId: string): Map<number, EraResult> {
       year: Number(year),
       imageUrl: demo.base + e.image,
       target: e.target ? { phrase: e.target.phrase, samUrl: demo.base + e.target.sam } : null,
-      fossilUrl: e.fossil ? demo.base + e.fossil : null,
-      fossil: e.fossilSpec,
+      cells: e.cells ?? null,
     });
   }
   return out;
-}
-
-export function demoElementUrls(demo: Demo, forkId: string, year: number): (string | null)[] {
-  return (demo.manifest.forks[forkId]?.[String(year)]?.elements ?? []).map((f) => (f ? demo.base + f : null));
 }
 
 export function demoMaskUrls(demo: Demo): Record<string, string | null> {

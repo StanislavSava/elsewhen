@@ -10,9 +10,10 @@ const BASE = process.env.ELSEWHEN_DEV_URL ?? "http://localhost:5181";
 const CURRENT_YEAR = 2026;
 const CONCURRENCY = 4;
 
-type Era = { year: number; driver: "culture" | "biology"; fossil?: { elements: { name: string }[] } };
+type Era = { year: number; driver: "culture" | "biology" };
 type Chronicle = { forkId: string; divergenceYear: number | null; eras: Era[] };
-type EraResult = { year: number; imageUrl: string; target: { phrase: string; samUrl: string } | null; fossilUrl: string | null; fossil?: object };
+type EraResult = { year: number; imageUrl: string; target: { phrase: string; samUrl: string } | null; cells?: string[] | null };
+type Notes = { place: string; eras: Record<string, string>; cells: string[] | null };
 
 // Same sharing rules as src/shared/chronicles.ts (Node can't import its JSON without import attributes).
 const chronicles: Chronicle[] = readdirSync("forks")
@@ -24,8 +25,6 @@ const isShared = (c: Chronicle, year: number) =>
   base.eras.find((e) => e.year === year)?.driver === "biology" ||
   (c.divergenceYear !== null && year < c.divergenceYear - CURRENT_YEAR);
 const yearsFor = (c: Chronicle) => (c === base ? base.eras.map((e) => e.year) : [...base.eras.map((e) => e.year), 0]);
-const eraOf = (c: Chronicle, year: number) =>
-  (c !== base && !isShared(c, year) ? c.eras : base.eras).find((e) => e.year === year);
 
 async function json<T>(res: Response): Promise<T> {
   if (!res.ok) throw new Error(`${res.url} → ${res.status} ${await res.text()}`);
@@ -56,14 +55,13 @@ async function pool<T>(items: T[], fn: (t: T) => Promise<void>): Promise<void> {
   }));
 }
 
-/** Images are re-encoded smaller (eras 1280 px, fossils 768 px): a demo scene must load fast on a phone. */
+/** Images are re-encoded smaller (1280 px): a demo scene must load fast on a phone. */
 async function download(url: string, out: string): Promise<string> {
   const res = await fetch(`${BASE}${url}`);
   if (!res.ok) throw new Error(`download ${url} → ${res.status}`);
   const bytes = Buffer.from(await res.arrayBuffer());
   if (/\.(webp|jpg)$/.test(out)) {
-    const maxEdge = out.endsWith(".fossil.webp") ? 768 : 1280;
-    const img = sharp(bytes).resize({ width: maxEdge, height: maxEdge, fit: "inside", withoutEnlargement: true });
+    const img = sharp(bytes).resize({ width: 1280, height: 1280, fit: "inside", withoutEnlargement: true });
     writeFileSync(out, await (out.endsWith(".jpg") ? img.jpeg({ quality: 82 }) : img.webp({ quality: 72 })).toBuffer());
   } else {
     writeFileSync(out, bytes);
@@ -106,17 +104,21 @@ async function main(): Promise<void> {
   }
 
   const forks: Record<string, Record<number, object>> = {};
-  for (const c of [base, ...chronicles.filter((x) => x !== base)]) {
+  const notes: Record<string, Notes> = {};
+  // FORKS=our-timeline,... limits a run to some histories (for trying a change on one scene).
+  const only = process.env.FORKS?.split(",");
+  for (const c of [base, ...chronicles.filter((x) => x !== base)].filter((x) => !only || only.includes(x.forkId))) {
     const params = { forkId: c.forkId, biome, setting: "outdoor" };
     // Research first (Muse Spark, once per history), so parallel eras all read the same notes.
-    const { place } = await json<{ place: string }>(
+    const research = await json<Notes>(
       await fetch(`${BASE}/api/scenes/${scene.token}/notes`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ forkId: c.forkId }),
       }),
     );
-    console.log(`  ${c.forkId}: ${place}`);
+    notes[c.forkId] = research;
+    console.log(`  ${c.forkId}: ${research.place}`);
     const years = yearsFor(c).filter((y) => !(c === base && y === 0));
     const eras: Record<number, object> = {};
     await pool(years, async (year) => {
@@ -132,30 +134,14 @@ async function main(): Promise<void> {
       const entry: Record<string, unknown> = { image: `${key}.webp` };
       await download(r.imageUrl, join(out, `${key}.webp`));
       if (r.target) entry.target = { phrase: r.target.phrase, sam: (await download(r.target.samUrl, join(out, `${key}.target.txt`)), `${key}.target.txt`) };
-      if (r.fossilUrl) {
-        entry.fossil = (await download(r.fossilUrl, join(out, `${key}.fossil.webp`)), `${key}.fossil.webp`);
-        if (r.fossil) entry.fossilSpec = r.fossil;
-        const era = eraOf(c, year);
-        if (era?.fossil) {
-          const { elements } = await json<{ elements: { name: string; samUrl: string | null }[] }>(
-            await fetch(`${BASE}/api/scenes/${scene.token}/eras/${year}/elements`, {
-              method: "POST",
-              headers: { "content-type": "application/json" },
-              body: JSON.stringify(params),
-            }),
-          );
-          entry.elements = await Promise.all(
-            elements.map(async (e, i) => (e.samUrl ? (await download(e.samUrl, join(out, `${key}.el${i}.txt`)), `${key}.el${i}.txt`) : null)),
-          );
-        }
-      }
+      if (r.cells) entry.cells = r.cells;
       eras[year] = entry;
       console.log(`  ${c.forkId} ${year} ✓`);
     });
     forks[c.forkId] = eras;
   }
 
-  const manifest = { name, credit, biome, setting: "outdoor", width: scene.width, height: scene.height, photo: "photo.jpg", masks: maskFiles, forks };
+  const manifest = { name, credit, biome, setting: "outdoor", width: scene.width, height: scene.height, photo: "photo.jpg", masks: maskFiles, forks, notes };
   writeFileSync(join(out, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
 
   const indexPath = join("public", "demo", "index.json");

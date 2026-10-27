@@ -1,13 +1,13 @@
 import { api, HttpError } from "./api";
 import { fromFile, prepare, startCamera, stopCamera, type PreparedPhoto } from "./capture";
 import { closeSheet, showCreature } from "./card";
-import { closeExploded, explodeFossil } from "./explode";
 import { playFracture } from "./fracture";
-import { demoElementUrls, demoEras, demoMaskUrls, loadDemo, loadDemoIndex, type Demo, type DemoIndexEntry } from "./demo";
+import { closeTimeCore, isTimeCoreOpen, openTimeCore, type Slice } from "./timecore";
+import { demoEras, demoMaskUrls, loadDemo, loadDemoIndex, type Demo, type DemoIndexEntry } from "./demo";
 import { generateAll, nearestFirst, type EraStatus } from "./orchestrator";
 import { bakeDelayMap, Renderer, tintForPosition } from "./renderer";
 import { anchor, coverage, hit, loadMask, type Mask } from "./sam";
-import type { EraResult } from "./shared/api";
+import type { EraResult, NotesResponse } from "./shared/api";
 import { CHRONICLES, DEFAULT_FORK, findEra, isShared, yearsFor } from "./shared/chronicles";
 import {
   BIOMES,
@@ -33,7 +33,12 @@ function show(name: keyof typeof screens): void {
   if (name === "landing" && state.renderer) screens.viewer.hidden = false;
   document.body.classList.toggle("overlay", name === "landing" && Boolean(state.renderer));
   if (name !== "landing") stopAutoplay();
+  if (name === "viewer" && !tapHinted) {
+    tapHinted = true;
+    setTimeout(() => toast("Tap anywhere to see that spot through time."), 2500);
+  }
 }
+let tapHinted = false;
 
 const slider = $<HTMLInputElement>("slider");
 const yearEl = $("era-year");
@@ -69,6 +74,8 @@ const state = {
   generation: 0, // bumps on every new scene so stale callbacks are ignored
   demo: null as Demo | null,
   demoIndex: [] as DemoIndexEntry[],
+  /** The historian's notes for each history researched so far in this scene. */
+  notes: new Map<string, NotesResponse>(),
 };
 
 // ---------------------------------------------------------------- bootstrap
@@ -131,7 +138,7 @@ function syncUrl(): void {
 
 $("new-place").addEventListener("click", () => {
   closeSheet();
-  closeExploded();
+  closeTimeCore();
   history.replaceState(null, "", location.pathname);
   show("landing");
 });
@@ -152,7 +159,7 @@ async function openDemo(name: string, withLanding: boolean): Promise<void> {
   const demo = await loadDemo(name);
   if (!demo) return;
   const blob = await (await fetch(demo.base + demo.manifest.photo)).blob();
-  const photo: PreparedPhoto = { blob, width: demo.manifest.width, height: demo.manifest.height, url: "" };
+  const photo: PreparedPhoto = { blob, width: demo.manifest.width, height: demo.manifest.height, url: demo.base + demo.manifest.photo };
   const started = begin(photo, { demo });
   // begin() creates the renderer; show the landing over it (or the viewer) once it exists.
   await new Promise((r) => requestAnimationFrame(r));
@@ -228,9 +235,10 @@ void resumeFromUrl();
 async function begin(photo: PreparedPhoto, opts: { token?: string; demo?: Demo } = {}): Promise<void> {
   const gen = ++state.generation;
   closeSheet();
-  closeExploded();
+  closeTimeCore();
   state.photo = photo;
   state.eras = new Map();
+  state.notes = new Map(Object.entries(opts.demo?.manifest.notes ?? {}));
   state.token = "";
   state.setting = "outdoor";
   state.demo = opts.demo ?? null;
@@ -311,16 +319,21 @@ async function applyMasks(gen: number, photo: PreparedPhoto, masks: Record<strin
   // Indoors: a ceiling, or almost no sky.
   state.setting = coverage(decoded.ceiling) > 0.03 || coverage(decoded.sky) < 0.01 ? "indoor" : "outdoor";
   state.renderer.setDelayMap(
-    bakeDelayMap(photo.width, photo.height, [
-      { mask: decoded.ceiling, delay: 0.1 },
-      { mask: decoded.sky, delay: 0 },
-      { mask: decoded.tree, delay: 0.3 },
-      { mask: decoded.grass, delay: 0.35 },
-      { mask: decoded.building, delay: 0.65 },
-      { mask: decoded.wall, delay: 0.65 },
-      { mask: decoded.floor, delay: 0.85 },
-      { mask: decoded.street, delay: 0.85 },
-    ]),
+    bakeDelayMap(
+      photo.width,
+      photo.height,
+      [
+        { mask: decoded.ceiling, delay: 0.1 },
+        { mask: decoded.sky, delay: 0 },
+        { mask: decoded.tree, delay: 0.3 },
+        { mask: decoded.grass, delay: 0.35 },
+        { mask: decoded.building, delay: 0.65 },
+        { mask: decoded.wall, delay: 0.65 },
+        { mask: decoded.floor, delay: 0.85 },
+        { mask: decoded.street, delay: 0.85 },
+      ],
+      [decoded.building, decoded.wall],
+    ),
   );
   return true;
 }
@@ -341,9 +354,16 @@ function loadDemoEras(gen: number, years: number[] = yearsFor(state.forkId)): vo
 /** Muse Spark identifies the place and writes what stood here in each era; shown on the loading screen. */
 async function research_(gen: number, forkId: string): Promise<void> {
   try {
-    const { place } = await api.notes(state.token, forkId);
+    // A history's own eras are described by its notes, the eras it shares with ours by our timeline's.
+    const [notes] = await Promise.all(
+      [forkId, DEFAULT_FORK].filter((f, i) => i === 0 || f !== forkId).map(async (f) => {
+        const n = state.notes.get(f) ?? (await api.notes(state.token, f));
+        state.notes.set(f, n);
+        return n;
+      }),
+    );
     if (gen !== state.generation) return;
-    loading.place(place);
+    loading.place(notes.place);
     loading.step("research", "done");
   } catch {
     loading.step("research", "failed", "continuing without it");
@@ -437,7 +457,8 @@ function update(): void {
   if (!r || !avail.length) return;
   const p = Number(slider.value);
   const { a, b, t } = blendAt(p, avail);
-  r.show(a, b, t, tintForPosition(p));
+  // Buildings rise through the past and wear away in the far future (+1000 years on).
+  r.show(a, b, t, tintForPosition(p), b <= 0 ? 1 : a >= 1000 ? -1 : 0);
 
   const year = Math.round(positionToYear(p));
   yearEl.textContent = Math.abs(year) < 1 ? "now" : formatYear(roundNicely(year));
@@ -493,6 +514,7 @@ $("viewer").addEventListener(
 );
 
 document.addEventListener("keydown", (e) => {
+  if (isTimeCoreOpen()) return; // it has its own keys
   if (screens.viewer.hidden) return;
   const p = Number(slider.value);
   const positions = availableYears().map(yearToPosition);
@@ -552,69 +574,90 @@ canvas.addEventListener("pointerup", (e) => {
 
 const TAP_SLOP_PX = 22; // creatures can be small, fingers are not, and mouse-look shifts the image a little
 
-/** Our timeline's "now" is the plain photo; every other keyframe can have a tappable subject. */
-const hasSubject = (year: number | null): year is number => year !== null && (year !== 0 || state.forkId !== DEFAULT_FORK);
+/** Only deep-time eras have a tappable subject: their creature. */
+const hasSubject = (year: number | null): year is number => year !== null && Boolean(state.eras.get(year)?.mask);
 
 function tap(clientX: number, clientY: number): void {
   const r = state.renderer;
-  const year = settledYear();
-  if (!r || !hasSubject(year)) return;
-  const mask = state.eras.get(year)?.mask;
-  if (!mask) return;
+  if (!r || !availableYears().length) return;
   const rect = canvas.getBoundingClientRect();
   const x = clientX - rect.left;
   const y = clientY - rect.top;
-  let inside = false;
-  for (let dy = -TAP_SLOP_PX; dy <= TAP_SLOP_PX && !inside; dy += TAP_SLOP_PX / 2) {
-    for (let dx = -TAP_SLOP_PX; dx <= TAP_SLOP_PX && !inside; dx += TAP_SLOP_PX / 2) {
+  const year = settledYear();
+  const mask = hasSubject(year) ? state.eras.get(year)!.mask! : null;
+  for (let dy = -TAP_SLOP_PX; mask && dy <= TAP_SLOP_PX; dy += TAP_SLOP_PX / 2) {
+    for (let dx = -TAP_SLOP_PX; dx <= TAP_SLOP_PX; dx += TAP_SLOP_PX / 2) {
       const { u, v } = r.screenToImage(x + dx, y + dy);
-      inside = hit(mask, u, v);
+      if (hit(mask, u, v)) return openCreature(year!);
     }
   }
-  if (inside) openSubject(year);
+  openSpot(x, y);
 }
 
-function openSubject(year: number): void {
-  const era = state.eras.get(year);
-  const chronicleEra = findEra(state.forkId, year);
-  if (!chronicleEra) return;
-  if (chronicleEra.driver === "biology") showCreature(chronicleEra.biomes[state.biome].fauna[0], year, state.biome);
-  else if (chronicleEra.fossil && era?.result?.fossilUrl) {
-    const params = { forkId: state.forkId, biome: state.biome, setting: state.setting };
-    // The historian may have replaced the chronicle's fossil with one that fits this place.
-    const fossil = era.result.fossil ?? chronicleEra.fossil;
-    void explodeFossil({
-      fossil,
-      imageUrl: era.result.fossilUrl,
-      year,
-      from: subjectRect(year),
-      // The scene behind pushes back a little while the poster is off the wall.
-      onStage: (on) => state.renderer?.setZoomBoost(on ? 1.12 : 1),
-      loadMasks: async () => {
-        if (state.demo) return Promise.all(demoElementUrls(state.demo, state.forkId, year).map(loadMask));
-        const { elements } = await api.elements(state.token, year, params);
-        return Promise.all(elements.map((e) => loadMask(e.samUrl)));
-      },
-    });
-  }
+function openCreature(year: number): void {
+  const era = findEra(state.forkId, year);
+  if (era?.driver === "biology") showCreature(era.biomes[state.biome].fauna[0], year, state.biome);
 }
 
-/** Where an era's tappable subject sits on screen right now (the explosion starts from there). */
-function subjectRect(year: number): { left: number; top: number; width: number; height: number } | null {
-  const mask = state.eras.get(year)?.mask;
+const PATCH_SIDE = 0.4; // of the image's short side
+const CELLS = 3; // the historian labels a 3×3 grid of every image
+
+/** The time core: the tapped patch of the scene, in every era of this history. */
+function openSpot(x: number, y: number): void {
   const r = state.renderer;
-  if (!mask || !r) return null;
-  const b = [...mask.boxes].sort((a, c) => (c.x2 - c.x1) * (c.y2 - c.y1) - (a.x2 - a.x1) * (a.y2 - a.y1))[0];
-  if (!b) return null;
+  const photo = state.photo;
+  if (!r || !photo) return;
+  const { u, v } = r.screenToImage(x, y);
+  if (u < 0 || u > 1 || v < 0 || v > 1) return;
+  const side = PATCH_SIDE * Math.min(photo.width, photo.height);
+  const hw = side / photo.width / 2;
+  const hh = side / photo.height / 2;
+  const cu = Math.min(1 - hw, Math.max(hw, u));
+  const cv = Math.min(1 - hh, Math.max(hh, v));
+  const patch = { u0: cu - hw, v0: cv - hh, u1: cu + hw, v1: cv + hh };
+  const cell = Math.min(CELLS - 1, Math.floor(v * CELLS)) * CELLS + Math.min(CELLS - 1, Math.floor(u * CELLS));
+
+  const slices = availableYears()
+    .map((year) => sliceFor(year, cell))
+    .filter((s): s is Slice => s !== null);
+  if (!slices.length) return;
+  const p = Number(slider.value);
+  const current = slices.reduce(
+    (best, s, i) => (Math.abs(yearToPosition(s.year) - p) < Math.abs(yearToPosition(slices[best].year) - p) ? i : best),
+    0,
+  );
   const rect = canvas.getBoundingClientRect();
-  const p1 = r.imageToScreen(b.x1 / mask.width, b.y1 / mask.height);
-  const p2 = r.imageToScreen((b.x2 + 1) / mask.width, (b.y2 + 1) / mask.height);
-  return { left: rect.left + p1.x, top: rect.top + p1.y, width: p2.x - p1.x, height: p2.y - p1.y };
+  const p1 = r.imageToScreen(patch.u0, patch.v0);
+  const p2 = r.imageToScreen(patch.u1, patch.v1);
+  stopAutoplay();
+  void openTimeCore({
+    slices,
+    current,
+    patch,
+    aspect: (hw * photo.width) / (hh * photo.height),
+    from: { left: rect.left + p1.x, top: rect.top + p1.y, width: p2.x - p1.x, height: p2.y - p1.y },
+    // The scene behind pushes back a little while the spot is lifted out of it.
+    onStage: (on) => state.renderer?.setZoomBoost(on ? 1.12 : 1),
+    onTravel: (year) => animateTo(yearToPosition(year), 1600),
+  });
+}
+
+function sliceFor(year: number, cell: number): Slice | null {
+  const era = state.eras.get(year);
+  const ownNow = year === 0 && state.forkId === DEFAULT_FORK; // the photo itself
+  const imageUrl = ownNow ? state.photo?.url : era?.result?.imageUrl;
+  if (!imageUrl) return null;
+  const notes = state.notes.get(isShared(state.forkId, year) ? DEFAULT_FORK : state.forkId);
+  const cells = ownNow ? notes?.cells : era?.result?.cells;
+  const chronicleEra = findEra(state.forkId, year);
+  // Captions lead with their year ("1526 · …"); the time core shows the year on its own.
+  const caption = ownNow ? "where you are standing" : chronicleEra ? eraCaption(chronicleEra, state.biome).replace(/^[\d,]+( BCE| CE)? · /, "") : "";
+  return { year, imageUrl, label: cells?.[cell] ?? null, caption, note: notes?.eras[String(year)] ?? "" };
 }
 
 hintEl.addEventListener("click", () => {
   const year = settledYear();
-  if (hasSubject(year)) openSubject(year);
+  if (hasSubject(year)) openCreature(year);
 });
 
 function placeHint(): void {

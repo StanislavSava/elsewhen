@@ -1,5 +1,7 @@
 // Full-screen three.js quad that blends two keyframes. Each pixel changes on its own schedule from a
 // delay map baked from the photo's SAM masks: sky first, plants next, structures last, with a noisy edge.
+// Structures also change along their height, block by block: they rise from the ground while a place is being
+// built up and come down from the roofline as it weathers away, so nothing simply pops in or out.
 import * as THREE from "three";
 
 const vertexShader = /* glsl */ `
@@ -21,6 +23,7 @@ const fragmentShader = /* glsl */ `
   uniform vec2 uOffset;
   uniform vec3 uTint;
   uniform float uTime;
+  uniform float uBuild; // +1 structures grow from A to B, −1 they wear away, 0 neither
 
   float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453); }
   float noise(vec2 p) {
@@ -38,11 +41,15 @@ const fragmentShader = /* glsl */ `
     vec2 uv = (vUv - 0.5) * scale + 0.5 + uOffset * slack * 0.5;
 
     // Each pixel transitions over a window of length L that starts later for higher delays.
-    float delay = texture2D(uDelay, uv).r;
+    // r: when this pixel changes; g: how much it belongs to a structure.
+    vec2 d = texture2D(uDelay, uv).rg;
+    float delay = clamp(d.r + d.g * uBuild * (uv.y - 0.5) * 0.7, 0.0, 1.0);
     const float L = 0.45;
     float start = delay * (1.0 - L);
     float n = noise(uv * 18.0) * 0.6 + noise(uv * 64.0) * 0.4;
-    float jitter = (n - 0.5) * 0.18 * sin(3.14159 * uT); // no jitter at the keyframes themselves
+    // Structures go block by block, like courses of stone, instead of melting.
+    float blocks = hash(floor(uv * vec2(56.0, 84.0))) - 0.5;
+    float jitter = ((n - 0.5) * 0.18 + blocks * 0.22 * d.g * abs(uBuild)) * sin(3.14159 * uT); // none at the keyframes
     float local = clamp(smoothstep(start, start + L, uT + jitter), 0.0, 1.0);
 
     vec3 color;
@@ -91,7 +98,7 @@ export class Renderer {
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     const blank = new THREE.DataTexture(new Uint8Array([0, 0, 0, 255]), 1, 1);
     blank.needsUpdate = true;
-    const delay = new THREE.DataTexture(new Uint8Array([128, 128, 128, 255]), 1, 1);
+    const delay = new THREE.DataTexture(new Uint8Array([128, 0, 128, 255]), 1, 1);
     delay.needsUpdate = true;
     this.material = new THREE.ShaderMaterial({
       vertexShader,
@@ -100,6 +107,7 @@ export class Renderer {
         uA: { value: blank },
         uB: { value: blank },
         uDelay: { value: delay },
+        uBuild: { value: 0 },
         uT: { value: 0 },
         uImgAspect: { value: imgAspect },
         uViewAspect: { value: 1 },
@@ -188,13 +196,15 @@ export class Renderer {
     this.material.uniforms.uDelay.value = tex;
   }
 
-  show(a: number, b: number, t: number, tint: [number, number, number]): void {
+  /** build: +1 when structures grow from keyframe a to b, −1 when they wear away, 0 otherwise. */
+  show(a: number, b: number, t: number, tint: [number, number, number], build = 0): void {
     const ta = this.textures.get(a);
     const tb = this.textures.get(b);
     if (!ta || !tb) return;
     this.material.uniforms.uA.value = ta;
     this.material.uniforms.uB.value = tb;
     this.material.uniforms.uT.value = t;
+    this.material.uniforms.uBuild.value = build;
     (this.material.uniforms.uTint.value as THREE.Vector3).set(...tint);
   }
 
@@ -232,17 +242,36 @@ export class Renderer {
   }
 }
 
-/** Grey delay map from base masks: sky 0 → plants → structures → ground 1. Painted in that order. */
+type MaskLike = { width: number; height: number; data: Uint8Array };
+
+/**
+ * Delay map from base masks. Red: when each pixel changes, sky 0 → plants → structures → ground 1, painted in
+ * that order. Green: where the structures are, for the rise-and-fall sweep.
+ */
 export function bakeDelayMap(
   width: number,
   height: number,
-  layers: { mask: { width: number; height: number; data: Uint8Array } | null; delay: number }[],
+  layers: { mask: MaskLike | null; delay: number }[],
+  structures: (MaskLike | null)[],
 ): HTMLCanvasElement {
+  const delay = paintLayers(width, height, "rgb(128,128,128)", layers);
+  const solid = paintLayers(width, height, "rgb(0,0,0)", structures.map((mask) => ({ mask, delay: 1 })));
+  const d = delay.getContext("2d")!.getImageData(0, 0, width, height);
+  const s = solid.getContext("2d")!.getImageData(0, 0, width, height).data;
+  for (let i = 0; i < d.data.length; i += 4) d.data[i + 1] = s[i];
+  const out = document.createElement("canvas");
+  out.width = width;
+  out.height = height;
+  out.getContext("2d")!.putImageData(d, 0, 0);
+  return out;
+}
+
+function paintLayers(width: number, height: number, ground: string, layers: { mask: MaskLike | null; delay: number }[]): HTMLCanvasElement {
   const canvas = document.createElement("canvas");
   canvas.width = width;
   canvas.height = height;
   const ctx = canvas.getContext("2d")!;
-  ctx.fillStyle = "rgb(128,128,128)";
+  ctx.fillStyle = ground;
   ctx.fillRect(0, 0, width, height);
   for (const { mask, delay } of layers) {
     if (!mask) continue;

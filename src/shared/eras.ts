@@ -61,7 +61,7 @@ export function formatYear(year: number): string {
 
 // ---------------------------------------------------------------- chronicle schema
 
-const StructureState = z.enum(["unbuilt", "predecessor", "alternate", "intact", "weathered", "overgrown", "buried", "gone"]);
+const StructureState = z.enum(["unbuilt", "predecessor", "alternate", "intact", "weathered", "overgrown", "remains", "buried", "gone"]);
 export type StructureState = z.infer<typeof StructureState>;
 
 const Fauna = z.object({
@@ -84,14 +84,6 @@ const BiologyVariant = z.object({
 });
 export type BiologyVariant = z.infer<typeof BiologyVariant>;
 
-const Fossil = z.object({
-  medium: z.string(), // relief, sign, poster, panel…
-  brief: z.string(), // composition + style; the generated image never contains text
-  slogan: z.string().optional(), // set as real typography in the exploded view
-  elements: z.array(z.object({ name: z.string(), technique: z.string(), explanation: z.string() })),
-});
-export type Fossil = z.infer<typeof Fossil>;
-
 const CultureEra = z.object({
   year: z.number(),
   driver: z.literal("culture"),
@@ -99,7 +91,6 @@ const CultureEra = z.object({
   caption: z.string().max(70),
   visualPrompt: z.string(),
   visualPromptIndoor: z.string().optional(),
-  fossil: Fossil.optional(),
 });
 
 const BiologyEra = z.object({

@@ -51,14 +51,6 @@ const FORKS: Record<string, { title: string; divergenceYear: number; premise: st
   },
 };
 
-const MEDIA: Record<number, string> = {
-  [-2000]: "a carved stone relief",
-  [-500]: "a painted mural or a hanging painted sign",
-  [-100]: "a printed or painted poster (or this world's equivalent)",
-  [0]: "a large illustrated public panel or billboard",
-  [100]: "a softly glowing illuminated panel",
-};
-
 const STATES: Record<number, string> = {
   [-2000]: "predecessor",
   [-500]: "predecessor",
@@ -80,8 +72,8 @@ an alternate history. Each era's visualPrompt is an image-edit instruction appli
 
 Rules:
 - visualPrompt starts with "Transform this scene to <calendar year or period>." then describes what the
-  buildings are and do in this world (halls, workshops, signs, street furniture, light), always "on the same
-  footprints" and "in the region's own building tradition". Never name region-specific materials or styles
+  buildings are and do in this world (halls, workshops, signs, street furniture, light), always "in the
+  region's own building tradition" (never "on the same footprints": a place may have had no buildings yet). Never name region-specific materials or styles
   (no "timber-framed", "thatched", "half-timbered"): the photo can be anywhere on Earth. 2-3 sentences.
 - visualPromptIndoor: same era as an interior, 1-2 sentences.
 - caption: max 60 characters, format "<year or period> · <short evocative phrase>".
@@ -89,16 +81,7 @@ Rules:
   abandonment, disaster, death or people leaving (an image content filter blocks those). Futures are serene.
 - Ideologies and institutions are fictional and benign (no real political movements, parties, leaders,
   flags or religious symbols). Persuasion can be grand, but never hateful.
-- fossil = the "idea fossil" of the era: the artifact through which the winning idea of that world persuades.
-  medium: one word (relief, mural, sign, poster, billboard, panel...).
-  brief: a front-facing image description of the artifact with 3-4 clearly separate visual elements,
-  and it MUST end with "No letters, no words, no text of any kind." (image models garble text).
-  slogan: a short line (max 6 words) that the app sets as real typography.
-  elements: 3 items; each name is a plain, concrete, common noun of 1-2 words for one visual element in the
-  brief, the kind an object detector finds (e.g. "old man", "children", "tram", "border", "trees"; never
-  abstract or literary words like "elder", "wisdom", "seal stamps"). It is used to segment the image.
-  technique = a persuasion technique, explanation = one sentence.
-- The 1000-years-ahead era has no fossil; it shows nature gently reclaiming this world's buildings.
+- The 1000-years-ahead era shows nature gently reclaiming this world's buildings.
 - chain: 5-7 events from the divergence to ${CURRENT_YEAR}, each with a calendar year (negative = BCE),
   what happened, and its consequence. Plausible and causally linked.`;
 
@@ -120,7 +103,7 @@ async function draft(forkId: string): Promise<void> {
     .map((y) => {
       const cal = CURRENT_YEAR + y;
       const when = cal < 0 ? `${-cal} BCE` : `${cal}`;
-      return `- year ${y} (calendar ${when}): structures "${STATES[y]}"${MEDIA[y] ? `; fossil medium: ${MEDIA[y]}` : "; no fossil"}`;
+      return `- year ${y} (calendar ${when}): structures "${STATES[y]}"`;
     })
     .join("\n");
 

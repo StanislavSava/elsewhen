@@ -41,157 +41,47 @@
       "driver": "culture",
       "structures": "predecessor",
       "caption": "26 CE · Gate of Patient Giants",
-      "visualPrompt": "Transform this scene to 26 CE. Low gathering halls and wool workshops stand on the same footprints in the region's own building tradition, with extra-wide trails and tall gates for passing mammoths, hitched posts and hanging lanterns. Handlers brush wool flocks in open yards under soft morning light.",
-      "visualPromptIndoor": "Inside a low hall, wide doorways and low benches hold baskets of combed wool, with a hearth glow and carved posts showing mammoths.",
-      "fossil": {
-        "medium": "relief",
-        "brief": "Front-facing carved stone relief showing a large mammoth in the center, a herder holding a staff on the left, and a wide gate under a round sun on the right. No letters, no words, no text of any kind.",
-        "slogan": "Walk Slowly, Carry Together",
-        "elements": [
-          {
-            "name": "mammoth",
-            "technique": "Nurture appeal",
-            "explanation": "The calm giant makes shared care feel strong and trustworthy."
-          },
-          {
-            "name": "man",
-            "technique": "Role modeling",
-            "explanation": "The steady herder invites viewers to copy patient tending."
-          },
-          {
-            "name": "gate",
-            "technique": "Belonging cue",
-            "explanation": "The wide gate suggests everyone has a place in the herd commons."
-          }
-        ]
-      }
+      "visualPrompt": "Transform this scene to 26 CE. Low gathering halls and wool workshops in the region's own building tradition, with extra-wide trails and tall gates for passing mammoths, hitched posts and hanging lanterns. Handlers brush wool flocks in open yards under soft morning light.",
+      "visualPromptIndoor": "Inside a low hall, wide doorways and low benches hold baskets of combed wool, with a hearth glow and carved posts showing mammoths."
     },
     {
       "year": -500,
       "driver": "culture",
       "structures": "predecessor",
       "caption": "1526 · Wool Halls and Wide Trails",
-      "visualPrompt": "Transform this scene to 1526. Busy wool halls and draft yards stand on the same footprints in the region's own building tradition, with broad gates, covered stalls for mammoth teams, and painted signs and warm lamps along the trail. Harnesses dry on rails while carts wait in calm order.",
-      "visualPromptIndoor": "Inside a wool sorting hall, long tables hold soft fleece piles under high windows, with painted wall bands and wide doors open to the mammoth yard.",
-      "fossil": {
-        "medium": "mural",
-        "brief": "Front-facing painted mural showing a mammoth caravan in the middle, stacked wool bales on the left, and tall trees along a wide trail on the right in warm earth colors. No letters, no words, no text of any kind.",
-        "slogan": "Soft Wool, Strong Roads",
-        "elements": [
-          {
-            "name": "mammoth",
-            "technique": "Social proof",
-            "explanation": "The steady caravan makes the herding life look prosperous and reliable."
-          },
-          {
-            "name": "bales",
-            "technique": "Abundance cue",
-            "explanation": "Piled wool signals shared wealth from patient work."
-          },
-          {
-            "name": "trees",
-            "technique": "Setting promise",
-            "explanation": "Green trees frame the trail as safe and welcoming."
-          }
-        ]
-      }
+      "visualPrompt": "Transform this scene to 1526. Busy wool halls and draft yards in the region's own building tradition, with broad gates, covered stalls for mammoth teams, and painted signs and warm lamps along the trail. Harnesses dry on rails while carts wait in calm order.",
+      "visualPromptIndoor": "Inside a wool sorting hall, long tables hold soft fleece piles under high windows, with painted wall bands and wide doors open to the mammoth yard."
     },
     {
       "year": -100,
       "driver": "culture",
       "structures": "predecessor",
       "caption": "1926 · Mammoth Post and Timetable",
-      "visualPrompt": "Transform this scene to 1926. Tall post halls and travel lodges stand on the same footprints in the region's own building tradition, with wide arched gates for mammoth teams, ticket boards, benches and glowing street lamps. Timetables and wool awnings line the calm boarding yard.",
-      "visualPromptIndoor": "Inside a post hall waiting room, long benches face a warm stove, with harness hooks on the walls and large windows watching the mammoth yard.",
-      "fossil": {
-        "medium": "poster",
-        "brief": "Front-facing printed poster showing a large mammoth pulling a cart in the center, a smiling driver holding reins above, and a rising sun over low hills below. No letters, no words, no text of any kind.",
-        "slogan": "Ride Calm, Arrive Together",
-        "elements": [
-          {
-            "name": "mammoth",
-            "technique": "Authority of strength",
-            "explanation": "The powerful mammoth makes slow travel feel steady and sure."
-          },
-          {
-            "name": "man",
-            "technique": "Friendly guide",
-            "explanation": "The friendly driver invites viewers to trust the post service."
-          },
-          {
-            "name": "sun",
-            "technique": "Optimism cue",
-            "explanation": "The bright sun promises a fresh start for every journey."
-          }
-        ]
-      }
+      "visualPrompt": "Transform this scene to 1926. Tall post halls and travel lodges in the region's own building tradition, with wide arched gates for mammoth teams, ticket boards, benches and glowing street lamps. Timetables and wool awnings line the calm boarding yard.",
+      "visualPromptIndoor": "Inside a post hall waiting room, long benches face a warm stove, with harness hooks on the walls and large windows watching the mammoth yard."
     },
     {
       "year": 0,
       "driver": "culture",
       "structures": "alternate",
       "caption": "2026 · City of Gentle Haulers",
-      "visualPrompt": "Transform this scene to 2026. Modern herd commons and market halls stand on the same footprints in the region's own building tradition, with extra-wide gates, mammoth wash stations, shaded waiting seats and soft evening lighting. Wool banners and route signs guide gentle teams through the plaza.",
-      "visualPromptIndoor": "Inside a bright commons hall with a high welcome desk, wool rugs, wooden counters and a glass wall looking out to the mammoth court.",
-      "fossil": {
-        "medium": "billboard",
-        "brief": "Front-facing large billboard showing a family feeding a mammoth in the center, tall houses with green roofs behind, and a small tram in front. No letters, no words, no text of any kind.",
-        "slogan": "Giants Keep Us Kind",
-        "elements": [
-          {
-            "name": "family",
-            "technique": "Identification",
-            "explanation": "The caring family makes city life with giants feel warm and possible."
-          },
-          {
-            "name": "mammoth",
-            "technique": "Affection appeal",
-            "explanation": "The gentle mammoth turns civic pride into kindness."
-          },
-          {
-            "name": "tram",
-            "technique": "Progress proof",
-            "explanation": "The small tram shows slow streets working smoothly together."
-          }
-        ]
-      }
+      "visualPrompt": "Transform this scene to 2026. Modern herd commons and market halls in the region's own building tradition, with extra-wide gates, mammoth wash stations, shaded waiting seats and soft evening lighting. Wool banners and route signs guide gentle teams through the plaza.",
+      "visualPromptIndoor": "Inside a bright commons hall with a high welcome desk, wool rugs, wooden counters and a glass wall looking out to the mammoth court."
     },
     {
       "year": 100,
       "driver": "culture",
       "structures": "alternate",
       "caption": "2126 · Glowing Herd Commons",
-      "visualPrompt": "Transform this scene to 2126. Airy learning halls and quiet herd pavilions stand on the same footprints in the region's own building tradition, with sensor gates, moss gardens, smooth benches and soft glowing path lights.",
-      "visualPromptIndoor": "Inside a quiet study pavilion, curved seats face a glowing wall display, with wool blankets and a wide window open to the resting mammoths.",
-      "fossil": {
-        "medium": "panel",
-        "brief": "Front-facing softly glowing panel showing a child brushing a mammoth in the center, floating light dots around the top, and soft grass along the bottom. No letters, no words, no text of any kind.",
-        "slogan": "Learn Slow, Grow Kind",
-        "elements": [
-          {
-            "name": "child",
-            "technique": "Hope appeal",
-            "explanation": "The caring child makes future herd keeping feel tender and hopeful."
-          },
-          {
-            "name": "mammoth",
-            "technique": "Comfort cue",
-            "explanation": "The calm mammoth reassures viewers that giants belong in the city."
-          },
-          {
-            "name": "grass",
-            "technique": "Purity cue",
-            "explanation": "The soft grass promises a clean and gentle commons for all."
-          }
-        ]
-      }
+      "visualPrompt": "Transform this scene to 2126. Airy learning halls and quiet herd pavilions in the region's own building tradition, with sensor gates, moss gardens, smooth benches and soft glowing path lights.",
+      "visualPromptIndoor": "Inside a quiet study pavilion, curved seats face a glowing wall display, with wool blankets and a wide window open to the resting mammoths."
     },
     {
       "year": 1000,
       "driver": "culture",
       "structures": "overgrown",
       "caption": "3026 · Green Trails Remember",
-      "visualPrompt": "Transform this scene to 3026. Serene grove halls and herd trails stand on the same footprints in the region's own building tradition, with wide gates softened by moss, living trees, flowering vines and gentle pools of light. Mammoths rest along calm garden paths beside quiet reading porches.",
+      "visualPrompt": "Transform this scene to 3026. Serene grove halls and herd trails in the region's own building tradition, with wide gates softened by moss, living trees, flowering vines and gentle pools of light. Mammoths rest along calm garden paths beside quiet reading porches.",
       "visualPromptIndoor": "Inside a green hall, sunlight falls through vine-framed openings onto mossy seats and wool mats, with a calm mammoth yard beyond."
     }
   ]

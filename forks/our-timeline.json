@@ -279,90 +279,25 @@
       "year": -2000,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "The first century · modest homes and a carved stone",
-      "visualPrompt": "Transform this scene to the early first century. Modest buildings of local stone, mud brick or timber on the same footprints, a packed-earth road, simple fences and gardens, smoke from a hearth, no modern objects.",
-      "visualPromptIndoor": "Transform this room to the early first century: rough plaster and timber walls, a packed-earth floor, a low wooden bench, clay pots, daylight from a small opening.",
-      "fossil": {
-        "medium": "relief",
-        "brief": "A carved limestone relief panel of a harvest festival: a woman holding a basket of fruit, sheaves of wheat, a ram, and a border of grapevines. Weathered stone, soft relief carving, no inscription, no letters, no text of any kind.",
-        "slogan": "Felicitas temporum · the happiness of the times",
-        "elements": [
-          {
-            "name": "woman",
-            "technique": "Personification",
-            "explanation": "Plenty itself, shown as a calm, generous figure"
-          },
-          {
-            "name": "wheat",
-            "technique": "Abundance",
-            "explanation": "Full harvests promise that the order of things works"
-          },
-          {
-            "name": "grapevine",
-            "technique": "Frame of prosperity",
-            "explanation": "The border makes the whole scene feel fertile"
-          }
-        ]
-      }
+      "caption": "26 CE · huts, fields and the first paths",
+      "visualPrompt": "Transform this scene to the early first century. The land as it was then: where people lived here at all, only a few small, simple dwellings of local timber, wattle, mud brick or stone, fences, garden plots and packed-earth paths, smoke from a hearth; no modern objects.",
+      "visualPromptIndoor": "Transform this room to the early first century: rough plaster and timber walls, a packed-earth floor, a low wooden bench, clay pots, daylight from a small opening."
     },
     {
       "year": -500,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "1526 · an old town and a painted shop sign",
-      "visualPrompt": "Transform this scene to the year 1526. The town as it was then, built in the region's own traditional architecture and materials on the same footprints, unpaved ground, no modern objects, no electricity, no vehicles, daylight only.",
-      "visualPromptIndoor": "Transform this room to the year 1526: timber beams, plaster walls, a wooden bench and chair, a woven rug, candles, a small leaded window.",
-      "fossil": {
-        "medium": "sign",
-        "brief": "A painted wooden bakery sign hanging from a wrought-iron bracket: two crossed loaves of bread, a golden wheat sheaf and a crown-shaped pretzel on a deep red field, gilded edges, weathered paint. No letters, no words, no text of any kind.",
-        "elements": [
-          {
-            "name": "bread",
-            "technique": "Instant recognition",
-            "explanation": "Most people couldn't read; pictures said what was sold"
-          },
-          {
-            "name": "pretzel",
-            "technique": "Guild emblem",
-            "explanation": "A shared symbol signalled a trusted, regulated trade"
-          },
-          {
-            "name": "gold frame",
-            "technique": "Prestige",
-            "explanation": "Gold paint claimed wealth and respectability"
-          }
-        ]
-      }
+      "caption": "1526 · an older, smaller place",
+      "visualPrompt": "Transform this scene to the year 1526. What stood here then, in the region’s own traditional architecture and materials: usually far fewer and smaller buildings than today, or none, on unpaved ground; no modern objects, no electricity, no vehicles, daylight only.",
+      "visualPromptIndoor": "Transform this room to the year 1526: timber beams, plaster walls, a wooden bench and chair, a woven rug, candles, a small leaded window."
     },
     {
       "year": -100,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "1926 · an older town and a public-health poster",
-      "visualPrompt": "Transform this scene to the year 1926. The buildings of that time in the region's own style on the same footprints, period street details, a few vintage cars, soft period light.",
-      "visualPromptIndoor": "Transform this room to the year 1926: patterned wallpaper, a wooden sideboard, an upholstered armchair, a gas lamp, lace curtains.",
-      "fossil": {
-        "medium": "poster",
-        "brief": "A 1920s public-health poster encouraging people to drink clean water: a stylized woman pouring water from a pitcher, a glowing sun behind her, a geometric Art Deco border, bold flat colours, paper texture. No text, no letters, no words, no numbers, no writing of any kind.",
-        "slogan": "Clean water, healthy home",
-        "elements": [
-          {
-            "name": "woman",
-            "technique": "Idealized everyday hero",
-            "explanation": "Hygiene shown as the graceful thing a modern person does"
-          },
-          {
-            "name": "sun",
-            "technique": "Halo of virtue",
-            "explanation": "The glow borrows the language of saints for a public-health habit"
-          },
-          {
-            "name": "water",
-            "technique": "Purity made visible",
-            "explanation": "Clear, flowing water stands for health and progress"
-          }
-        ]
-      }
+      "caption": "1926 · the town a century ago",
+      "visualPrompt": "Transform this scene to the year 1926. The buildings that stood here then in the region’s own style, some of them older or smaller predecessors of today’s, period street details, a few vintage cars, soft period light.",
+      "visualPromptIndoor": "Transform this room to the year 1926: patterned wallpaper, a wooden sideboard, an upholstered armchair, a gas lamp, lace curtains."
     },
     {
       "year": 100,
@@ -370,29 +305,7 @@
       "structures": "intact",
       "caption": "2126 · green roofs, quiet trams, gardens on every street",
       "visualPrompt": "Transform this scene to the year 2126. The same buildings, refurbished with green roofs, climbing plants and solar facades, quiet electric trams and wide tree-lined walkways. Peaceful, sunlit, optimistic.",
-      "visualPromptIndoor": "Transform this room to the year 2126: the same layout, warm natural materials, plants along the window, soft integrated lighting, simple elegant furniture. Peaceful and sunlit.",
-      "fossil": {
-        "medium": "panel",
-        "brief": "A softly glowing illuminated street panel showing hands planting a seedling in rich soil, surrounded by stylized leaves and sun rays, clean modern illustration in green and gold. No letters, no words, no text of any kind.",
-        "slogan": "Grow your street",
-        "elements": [
-          {
-            "name": "hands",
-            "technique": "Shared agency",
-            "explanation": "Anonymous hands invite anyone to see themselves in the act"
-          },
-          {
-            "name": "seedling",
-            "technique": "Hopeful future",
-            "explanation": "Something small and fragile that you can help grow"
-          },
-          {
-            "name": "sun",
-            "technique": "Optimism",
-            "explanation": "Light frames the message as a good, natural direction"
-          }
-        ]
-      }
+      "visualPromptIndoor": "Transform this room to the year 2126: the same layout, warm natural materials, plants along the window, soft integrated lighting, simple elegant furniture. Peaceful and sunlit."
     },
     {
       "year": 1000,
@@ -405,12 +318,12 @@
     {
       "year": 10000,
       "driver": "biology",
-      "structures": "buried",
+      "structures": "remains",
       "biomes": {
         "temperate": {
-          "caption": "10,000 years on · old forest over quiet green mounds",
-          "environment": "Old-growth forest growing over low, mossy mounds where buildings once stood.",
-          "visualPrompt": "Transform this scene to 10,000 years in the future. A wild, peaceful old-growth forest; only low mossy mounds and a few weathered stones hint that anything ever stood here. One large ground-dwelling raven, long-legged and glossy black, walks across a clearing, clearly visible in the mid-ground. Sunlit and serene.",
+          "caption": "10,000 years on · roofless walls in an old forest",
+          "environment": "Old-growth forest growing up through the roofless stone walls of the old buildings.",
+          "visualPrompt": "Transform this scene to 10,000 years in the future. A wild, peaceful old-growth forest has grown up through the old buildings: their lower stone walls still stand in the same places, roofless and open to the sky, covered in moss and ivy, with trees growing inside them. One large ground-dwelling raven, long-legged and glossy black, walks across a clearing, clearly visible in the mid-ground. Sunlit and serene.",
           "fauna": [
             {
               "kind": "speculative",
@@ -436,9 +349,9 @@
           ]
         },
         "arid": {
-          "caption": "10,000 years on · scrub and stone where streets were",
-          "environment": "Rocky scrubland with low stone mounds and hardy shrubs.",
-          "visualPrompt": "Transform this scene to 10,000 years in the future. A quiet, open scrubland of hardy shrubs, warm sand and low weathered stone mounds where buildings once stood. One long-legged pale desert fox with huge ears trots across the ground, clearly visible in the mid-ground. Golden, peaceful light.",
+          "caption": "10,000 years on · sand-worn walls in the scrub",
+          "environment": "Open scrubland around the roofless, sand-worn walls of the old buildings.",
+          "visualPrompt": "Transform this scene to 10,000 years in the future. A quiet, open scrubland: the lower walls of the old buildings still stand in the same places, roofless, smoothed by wind and half-buried in warm sand, hardy shrubs growing inside them. One long-legged pale desert fox with huge ears trots across the ground, clearly visible in the mid-ground. Golden, peaceful light.",
           "fauna": [
             {
               "kind": "speculative",
@@ -464,9 +377,9 @@
           ]
         },
         "tropical": {
-          "caption": "10,000 years on · rainforest over vine-covered stones",
-          "environment": "Dense rainforest with vine-covered stone mounds.",
-          "visualPrompt": "Transform this scene to 10,000 years in the future. A dense, peaceful rainforest with tall trees, hanging vines and vine-covered stone mounds where buildings once stood. One brilliantly green gliding parakeet with wide skin flaps between its legs glides between branches, clearly visible in the mid-ground. Soft green light.",
+          "caption": "10,000 years on · rainforest through roofless walls",
+          "environment": "Dense rainforest growing through the roofless walls of the old buildings.",
+          "visualPrompt": "Transform this scene to 10,000 years in the future. A dense, peaceful rainforest: the lower walls of the old buildings still stand in the same places, roofless and wrapped in roots and hanging vines, tall trees growing inside them. One brilliantly green gliding parakeet with wide skin flaps between its legs glides between branches, clearly visible in the mid-ground. Soft green light.",
           "fauna": [
             {
               "kind": "speculative",
@@ -492,9 +405,9 @@
           ]
         },
         "cold": {
-          "caption": "10,000 years on · tundra over low mounds",
-          "environment": "Open tundra and dwarf birch over low mounds.",
-          "visualPrompt": "Transform this scene to 10,000 years in the future. Open, peaceful tundra with dwarf birch, lichen and low grassy mounds where buildings once stood. One shaggy, long-haired reindeer descendant with broad flat antlers grazes, clearly visible in the mid-ground. Soft northern light.",
+          "caption": "10,000 years on · tundra and low stone walls",
+          "environment": "Open tundra around the roofless, lichen-covered walls of the old buildings.",
+          "visualPrompt": "Transform this scene to 10,000 years in the future. Open, peaceful tundra: the lower stone walls of the old buildings still stand in the same places, roofless, covered in lichen and moss, dwarf birch growing inside them. One shaggy, long-haired reindeer descendant with broad flat antlers grazes, clearly visible in the mid-ground. Soft northern light.",
           "fauna": [
             {
               "kind": "speculative",

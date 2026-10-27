@@ -1,7 +1,7 @@
 import { Hono, type Context } from "hono";
-import type { ApiError, ConfigResponse, CreateSceneResponse, ElementsResponse, EraResult, MasksResponse, NotesResponse } from "../src/shared/api";
+import type { ApiError, ConfigResponse, CreateSceneResponse, EraResult, MasksResponse, NotesResponse } from "../src/shared/api";
 import { CHRONICLES, DEFAULT_FORK, findEra, isShared } from "../src/shared/chronicles";
-import { BIOMES, SETTINGS, isEraYear, type Biome, type ChronicleEra, type Fossil, type Setting } from "../src/shared/eras";
+import { BIOMES, SETTINGS, isEraYear, type Biome, type ChronicleEra, type Setting } from "../src/shared/eras";
 import { biomeFor } from "./biome";
 import { BASE_PHRASES, IMAGE_MODEL, IMAGE_PRICE_CENTS, MAX_PHOTO_BYTES, SAM_MODEL, type Env } from "./config";
 import {
@@ -14,11 +14,12 @@ import {
   verifySceneToken,
   verifyTurnstile,
 } from "./guard";
-import { ContentFilteredError, editImage, generateImage, segment } from "./meta/client";
-import { eraLabel, getNotes, noteFor, readNoteFor, type PlaceNote } from "./historian";
+import { describeCells } from "./cells";
+import { ContentFilteredError, editImage, segment } from "./meta/client";
+import { eraLabel, getNotes, noteFor, readNoteFor } from "./historian";
 import { iou, occupancy } from "./geometry";
 import { judge, passes } from "./judge";
-import { eraPrompt, fossilPlacement, fossilPrompt, promptVersion, targetPhrase } from "./prompts";
+import { CREATURE_PHRASE, eraPrompt, promptVersion } from "./prompts";
 
 type C = Context<{ Bindings: Env }>;
 
@@ -135,7 +136,7 @@ app.post("/api/scenes/:token/notes", async (c) => {
   try {
     const photo = toDataUrl(await scene.photo.arrayBuffer(), "image/jpeg");
     const notes = await getNotes(c.env, scene.id, forkId, async () => photo);
-    return c.json<NotesResponse>({ place: notes.place });
+    return c.json<NotesResponse>({ place: notes.place, eras: notes.eras, cells: notes.cells ?? null });
   } catch (err) {
     console.error(`notes ${scene.id} ${forkId}:`, String(err).slice(0, 300));
     return fail(c, 502, "upstream");
@@ -167,14 +168,9 @@ async function buildingOverlap(env: Env, sceneId: string, imageData: string): Pr
  * Shared eras (before a divergence, and all of deep time) are stored once under "base" for every history.
  * The prompt version makes an edited chronicle regenerate only the eras whose prompts changed.
  */
-/** The idea fossil an era paints: the historian's replacement for this place, else the chronicle's. */
-function fossilFor(era: ChronicleEra, place: PlaceNote): Fossil | undefined {
-  return era.driver === "culture" && era.fossil ? (place.fossil ?? era.fossil) : undefined;
-}
-
-async function eraPrefix(sceneId: string, year: number, p: EraParams, era: ChronicleEra, place: PlaceNote): Promise<string> {
+async function eraPrefix(sceneId: string, year: number, p: EraParams, era: ChronicleEra, note: string): Promise<string> {
   const fork = isShared(p.forkId, year) ? "base" : p.forkId;
-  const version = await promptVersion(era, p.biome, p.setting, place.note, fossilFor(era, place));
+  const version = await promptVersion(era, p.biome, p.setting, note);
   return `scenes/${sceneId}/${fork}/${era.driver === "biology" ? p.biome : "-"}/${p.setting}/${year}/${version}`;
 }
 
@@ -196,9 +192,9 @@ app.get("/api/scenes/:token/eras/:year", async (c) => {
   const params = parseEraParams(c.req.query());
   const era = params && findEra(params.forkId, year);
   if (!id || !params || !era) return fail(c, 404, "not_found");
-  const place = await readNoteFor(c.env, id, params.forkId, year);
-  if (place === null) return fail(c, 404, "not_found");
-  const result = await readEra(c.env, await eraPrefix(id, year, params, era, place));
+  const note = await readNoteFor(c.env, id, params.forkId, year);
+  if (note === null) return fail(c, 404, "not_found");
+  const result = await readEra(c.env, await eraPrefix(id, year, params, era, note));
   return result ? c.json(result) : fail(c, 404, "not_found");
 });
 
@@ -215,15 +211,14 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
   if (!(await isLive(c.env))) return fail(c, 503, "resting");
   const photo = toDataUrl(await scene.photo.arrayBuffer(), "image/jpeg");
   // What actually stood here in this era (Muse Spark, once per scene and history).
-  let place: PlaceNote;
+  let note: string;
   try {
-    place = await noteFor(c.env, scene.id, params.forkId, year, async () => photo);
+    note = await noteFor(c.env, scene.id, params.forkId, year, async () => photo);
   } catch (err) {
     console.error(`notes ${scene.id} ${params.forkId}:`, String(err).slice(0, 300));
-    place = { note: "" };
+    note = "";
   }
-  const note = place.note;
-  const prefix = await eraPrefix(scene.id, year, params, era, place);
+  const prefix = await eraPrefix(scene.id, year, params, era, note);
 
   const existing = await readEra(c.env, prefix);
   if (existing) return c.json(existing);
@@ -237,22 +232,8 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
   // Runs under waitUntil so a phone that suspends the tab mid-request still gets the result on resume.
   const work = (async (): Promise<EraResult> => {
     try {
-      let fossilUrl: string | null = null;
-      let fossilData: string | null = null;
-      const fossil = fossilFor(era, place);
-      if (fossil) {
-        const fossilTemp = await generateImage(env.MODEL_API_KEY, { prompt: fossilPrompt(fossil), size: "1024x1536" });
-        fossilData = await storeFromUrl(env, fossilTemp, `${prefix}/fossil.webp`);
-        fossilUrl = fileUrl(`${prefix}/fossil.webp`);
-        await spend(env, IMAGE_PRICE_CENTS);
-      }
       const paint = async (fixes: string): Promise<string> => {
-        const edit = (prompt: string) =>
-          editImage(env.MODEL_API_KEY, {
-            prompt: fossil ? `${prompt} ${fossilPlacement(fossil)}` : prompt,
-            images: fossilData ? [photo, fossilData] : [photo],
-            size,
-          });
+        const edit = (prompt: string) => editImage(env.MODEL_API_KEY, { prompt, images: [photo], size });
         let url: string;
         try {
           url = await edit(eraPrompt(era, params.biome, params.setting, note, fixes));
@@ -285,20 +266,21 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
       if (issues.length) imageData = await paint(issues.join("; "));
       console.log(`era ${prefix}: ${issues.length ? `repainted (${issues.join("; ")})` : "passed"}${overlap !== null ? ` · building overlap ${overlap.toFixed(2)}` : ""}`);
 
-      let target: EraResult["target"] = null;
-      const phrase = targetPhrase(era, fossil);
-      if (phrase) {
+      // Deep time's creature to tap, and labels for every part of the image (the time core).
+      const findCreature = async (): Promise<EraResult["target"]> => {
+        if (era.driver !== "biology") return null;
         try {
-          const raw = await segment(env.MODEL_API_KEY, { phrase, image: imageData });
+          const raw = await segment(env.MODEL_API_KEY, { phrase: CREATURE_PHRASE, image: imageData });
           await env.BUCKET.put(`${prefix}/target.txt`, raw, { httpMetadata: { contentType: "text/plain" } });
-          target = { phrase, samUrl: fileUrl(`${prefix}/target.txt`) };
+          return { phrase: CREATURE_PHRASE, samUrl: fileUrl(`${prefix}/target.txt`) };
         } catch (err) {
-          console.error(`target ${prefix} "${phrase}":`, String(err).slice(0, 300));
-          target = null; // the era still works without a tappable subject
+          console.error(`target ${prefix}:`, String(err).slice(0, 300));
+          return null; // the era still works without a tappable creature
         }
-      }
+      };
+      const [target, cells] = await Promise.all([findCreature(), describeCells(env, imageData, eraLabel(year), note)]);
 
-      const result: EraResult = { year, imageUrl: fileUrl(`${prefix}/image.webp`), target, fossilUrl, fossil };
+      const result: EraResult = { year, imageUrl: fileUrl(`${prefix}/image.webp`), target, cells };
       await env.BUCKET.put(`${prefix}/meta.json`, JSON.stringify(result), {
         httpMetadata: { contentType: "application/json" },
       });
@@ -315,44 +297,6 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
     if (err instanceof ContentFilteredError) return fail(c, 422, "content_filtered");
     return fail(c, 502, "upstream", String(err).slice(0, 200));
   }
-});
-
-/** Lazily segments each named element of an era's idea fossil, for the exploded view. SAM calls only. */
-app.post("/api/scenes/:token/eras/:year/elements", async (c) => {
-  const year = Number(c.req.param("year"));
-  const params = parseEraParams(await c.req.json().catch(() => ({})));
-  const era = params && findEra(params.forkId, year);
-  if (!params || !era || era.driver !== "culture" || !era.fossil) return fail(c, 400, "bad_request");
-  const id = await verifySceneToken(c.env, c.req.param("token"));
-  if (!id) return fail(c, 404, "not_found", "scene");
-  // Same fallback as era generation: without notes, the era was painted from the chronicle alone.
-  const place = (await readNoteFor(c.env, id, params.forkId, year)) ?? { note: "" };
-  const prefix = await eraPrefix(id, year, params, era, place);
-  const used = fossilFor(era, place)!;
-  const fossil = await c.env.BUCKET.get(`${prefix}/fossil.webp`);
-  if (!fossil) return fail(c, 404, "not_found", "fossil");
-  const image = toDataUrl(await fossil.arrayBuffer(), fossil.httpMetadata?.contentType ?? "image/webp");
-
-  // One at a time with a retry: three SAM calls at once on the same image failed transiently in testing.
-  const elements: ElementsResponse["elements"] = [];
-  for (const [i, { name }] of used.elements.entries()) {
-    const key = `${prefix}/elements/${i}.txt`;
-    let ok = Boolean(await c.env.BUCKET.head(key));
-    for (let attempt = 0; !ok && attempt < 2; attempt++) {
-      try {
-        let raw = await segment(c.env.MODEL_API_KEY, { phrase: name, image });
-        // SAM wants plain concrete nouns; if a two-word name finds nothing, try its head noun.
-        const head = name.split(" ").at(-1)!;
-        if (!raw.includes("<|box") && head !== name) raw = await segment(c.env.MODEL_API_KEY, { phrase: head, image });
-        await c.env.BUCKET.put(key, raw, { httpMetadata: { contentType: "text/plain" } });
-        ok = true;
-      } catch (err) {
-        console.error(`elements ${prefix} "${name}" attempt ${attempt + 1}:`, String(err).slice(0, 300));
-      }
-    }
-    elements.push({ name, samUrl: ok ? fileUrl(key) : null });
-  }
-  return c.json<ElementsResponse>({ elements });
 });
 
 // ---------------------------------------------------------------- files

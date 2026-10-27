@@ -1,4 +1,4 @@
-import type { ApiError, ConfigResponse, CreateSceneResponse, ElementsResponse, EraResult, MasksResponse, NotesResponse } from "./shared/api";
+import type { ApiError, ConfigResponse, CreateSceneResponse, EraResult, MasksResponse, NotesResponse } from "./shared/api";
 import type { Biome, Setting } from "./shared/eras";
 
 export class HttpError extends Error {
@@ -42,13 +42,6 @@ export const api = {
 
   getEra: (token: string, year: number, p: { forkId: string; biome: Biome; setting: Setting }) =>
     fetch(`/api/scenes/${token}/eras/${year}?${new URLSearchParams(p)}`).then(json<EraResult>),
-
-  elements: (token: string, year: number, p: { forkId: string; biome: Biome; setting: Setting }) =>
-    fetch(`/api/scenes/${token}/eras/${year}/elements`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(p),
-    }).then(json<ElementsResponse>),
 
   createEra: (token: string, year: number, p: { forkId: string; biome: Biome; setting: Setting }) =>
     fetch(`/api/scenes/${token}/eras/${year}`, {

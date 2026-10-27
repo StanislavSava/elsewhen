@@ -41,157 +41,47 @@
       "driver": "culture",
       "structures": "predecessor",
       "caption": "26 CE · Scrolls in Sunlight",
-      "visualPrompt": "Transform this scene to 26 CE. Low limestone halls with timber colonnades stand on the same footprints, their papyrus awnings shading tables of scrolls and bronze instruments in warm golden morning light.",
-      "visualPromptIndoor": "A quiet scriptorium interior with cedar tables, clay oil lamps and tall niches holding rolled scrolls in soft lamplight.",
-      "fossil": {
-        "medium": "relief",
-        "brief": "Front view of a pale sandstone relief showing a central unrolled scroll, a toothed bronze wheel on the left, a perched owl on the right, framed by a carved laurel border. No letters, no words, no text of any kind.",
-        "slogan": "Copy, Measure, Share Light",
-        "elements": [
-          {
-            "name": "scroll",
-            "technique": "Clarity",
-            "explanation": "The open scroll makes knowledge feel readable and shareable to every passerby."
-          },
-          {
-            "name": "wheel",
-            "technique": "Wonder",
-            "explanation": "The precise wheel suggests clever mechanisms can ease daily work."
-          },
-          {
-            "name": "owl",
-            "technique": "Authority",
-            "explanation": "The calm owl lends patient wisdom to the practice of copying."
-          }
-        ]
-      }
+      "visualPrompt": "Transform this scene to 26 CE. Low limestone halls with timber colonnades, their papyrus awnings shading tables of scrolls and bronze instruments in warm golden morning light.",
+      "visualPromptIndoor": "A quiet scriptorium interior with cedar tables, clay oil lamps and tall niches holding rolled scrolls in soft lamplight."
     },
     {
       "year": -500,
       "driver": "culture",
       "structures": "predecessor",
       "caption": "1526 · Astrolabes in Marble Light",
-      "visualPrompt": "Transform this scene to 1526. Grand marble porticoes with brass-trimmed domes stand on the same footprints, fronted by paved colonnaded walkways, bubbling fountain channels and stalls of instruments and flowers in clear late-afternoon sunlight.",
-      "visualPromptIndoor": "Inside a high frescoed lecture hall with marble benches, brass armillary spheres and tall shuttered windows glowing with daylight.",
-      "fossil": {
-        "medium": "mural",
-        "brief": "Front view of a warm plaster mural showing a serene bearded teacher, a large brass astrolabe overhead, potted olive saplings below, bordered by a blue geometric frieze. No letters, no words, no text of any kind.",
-        "slogan": "Observe the World Together",
-        "elements": [
-          {
-            "name": "man",
-            "technique": "Warmth",
-            "explanation": "The gentle teacher invites viewers to trust learning as kind guidance."
-          },
-          {
-            "name": "astrolabe",
-            "technique": "Wonder",
-            "explanation": "The shining instrument makes the sky feel measurable and near."
-          },
-          {
-            "name": "plants",
-            "technique": "Hope",
-            "explanation": "Young trees promise that careful study will nourish future plenty."
-          }
-        ]
-      }
+      "visualPrompt": "Transform this scene to 1526. Grand marble porticoes with brass-trimmed domes, fronted by paved colonnaded walkways, bubbling fountain channels and stalls of instruments and flowers in clear late-afternoon sunlight.",
+      "visualPromptIndoor": "Inside a high frescoed lecture hall with marble benches, brass armillary spheres and tall shuttered windows glowing with daylight."
     },
     {
       "year": -100,
       "driver": "culture",
       "structures": "predecessor",
       "caption": "1926 · Trams and Lenses Glow",
-      "visualPrompt": "Transform this scene to 1926. Elegant white marble facades with cast-iron and glass verandas stand on the same footprints, linked by polished steam-tram rails and lens-topped lamp posts, under bright midday sun filtered through plane trees.",
-      "visualPromptIndoor": "Inside a bright reading room with white columns, oak card catalogs and brass reading lamps under a frosted skylight.",
-      "fossil": {
-        "medium": "poster",
-        "brief": "Front view of a cream printed poster showing a white steam tram on the left, a smiling female engineer in the center, a radiant sunburst lens above, and a marble colonnade below. No letters, no words, no text of any kind.",
-        "slogan": "Reason Lights Every Street",
-        "elements": [
-          {
-            "name": "tram",
-            "technique": "Comfort",
-            "explanation": "The clean tram makes new transit feel safe, punctual and pleasant."
-          },
-          {
-            "name": "woman",
-            "technique": "Belonging",
-            "explanation": "Her friendly gaze lets every viewer picture themselves as a maker."
-          },
-          {
-            "name": "sun",
-            "technique": "Optimism",
-            "explanation": "The bright lens bathes the city in optimism and clear sight."
-          }
-        ]
-      }
+      "visualPrompt": "Transform this scene to 1926. Elegant white marble facades with cast-iron and glass verandas, linked by polished steam-tram rails and lens-topped lamp posts, under bright midday sun filtered through plane trees.",
+      "visualPromptIndoor": "Inside a bright reading room with white columns, oak card catalogs and brass reading lamps under a frosted skylight."
     },
     {
       "year": 0,
       "driver": "culture",
       "structures": "alternate",
       "caption": "2026 · Luminous Halls of Reason",
-      "visualPrompt": "Transform this scene to 2026. Luminous fluted marble buildings with brass louvers and solar-lens glass stand on the same footprints, their arcades sheltering bookstalls and quiet steam-transit stops in soft clear daylight with a gentle lens glow.",
-      "visualPromptIndoor": "Inside a serene atrium library with marble mosaic floor, brass shelves of glass scroll-cases and a domed oculus pouring daylight in.",
-      "fossil": {
-        "medium": "billboard",
-        "brief": "Front view of a large civic billboard showing a gleaming marble library, a diverse circle of readers on its steps, and a giant glowing geometric lens radiating beams over a green garden strip. No letters, no words, no text of any kind.",
-        "slogan": "Geometry Serves Everyone Daily",
-        "elements": [
-          {
-            "name": "building",
-            "technique": "Pride",
-            "explanation": "The shining library presents shared learning as the proud center of civic life."
-          },
-          {
-            "name": "people",
-            "technique": "Belonging",
-            "explanation": "The gathered readers show that wisdom belongs to neighbors together."
-          },
-          {
-            "name": "lens",
-            "technique": "Optimism",
-            "explanation": "The beaming lens suggests reason gently brightens every home."
-          }
-        ]
-      }
+      "visualPrompt": "Transform this scene to 2026. Luminous fluted marble buildings with brass louvers and solar-lens glass, their arcades sheltering bookstalls and quiet steam-transit stops in soft clear daylight with a gentle lens glow.",
+      "visualPromptIndoor": "Inside a serene atrium library with marble mosaic floor, brass shelves of glass scroll-cases and a domed oculus pouring daylight in."
     },
     {
       "year": 100,
       "driver": "culture",
       "structures": "alternate",
       "caption": "2126 · Gentle Light Ahead",
-      "visualPrompt": "Transform this scene to 2126. Slender ivory marble pavilions with pearlescent solar glass and brass vine trellises stand on the same footprints, linked by silent gliding walkways, mist fountains and floating lanterns in calm opalescent evening light.",
-      "visualPromptIndoor": "Inside a circular learning lounge with living jasmine walls, mother-of-pearl desks and a ceiling lens diffusing warm star-like light.",
-      "fossil": {
-        "medium": "panel",
-        "brief": "Front view of a softly glowing wall panel showing a tranquil child with a star chart, a hovering brass airship above olive trees, and a luminous spiral of light connecting them over pale marble. No letters, no words, no text of any kind.",
-        "slogan": "Keep Curiosity Kind and Bright",
-        "elements": [
-          {
-            "name": "child",
-            "technique": "Tenderness",
-            "explanation": "The curious child makes the future feel tender and personally inviting."
-          },
-          {
-            "name": "airship",
-            "technique": "Wonder",
-            "explanation": "The floating craft promises peaceful travel guided by careful measurement."
-          },
-          {
-            "name": "spiral",
-            "technique": "Harmony",
-            "explanation": "The glowing spiral links learning, sky and earth in one calm motion."
-          }
-        ]
-      }
+      "visualPrompt": "Transform this scene to 2126. Slender ivory marble pavilions with pearlescent solar glass and brass vine trellises, linked by silent gliding walkways, mist fountains and floating lanterns in calm opalescent evening light.",
+      "visualPromptIndoor": "Inside a circular learning lounge with living jasmine walls, mother-of-pearl desks and a ceiling lens diffusing warm star-like light."
     },
     {
       "year": 1000,
       "driver": "culture",
       "structures": "overgrown",
       "caption": "3026 · Gardens Keep the Books",
-      "visualPrompt": "Transform this scene to 3026. Graceful marble colonnades softened by fig vines and flowering jasmine stand on the same footprints, their brass lenses dappled by tall plane trees beside clear reflecting pools in golden daylight.",
+      "visualPrompt": "Transform this scene to 3026. Graceful marble colonnades softened by fig vines and flowering jasmine, their brass lenses dappled by tall plane trees beside clear reflecting pools in golden daylight.",
       "visualPromptIndoor": "Inside a vine-framed marble hall with open skylights, ferns along the sills and stone tables in gentle green-filtered daylight."
     }
   ]

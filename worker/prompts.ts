@@ -1,6 +1,6 @@
 // Every prompt is built here, server-side, from the committed chronicles and the historian's notes for this
 // place. The client never sends prompt text.
-import type { Biome, ChronicleEra, Fossil, Setting, StructureState } from "../src/shared/eras";
+import type { Biome, ChronicleEra, Setting, StructureState } from "../src/shared/eras";
 
 /** What happens to the human-made parts of the scene. Never "same footprints" for the past: most places had none. */
 const STRUCTURES: Record<StructureState, Record<Setting, string>> = {
@@ -30,6 +30,11 @@ const STRUCTURES: Record<StructureState, Record<Setting, string>> = {
     outdoor: "Keep the large structures in the same places and at the same size, gently overgrown.",
     indoor: "Keep the room layout, gently overgrown.",
   },
+  remains: {
+    outdoor:
+      "Where the buildings stood, only their lower walls remain, in the same places and at the same width, roofless and open to the sky, with plants and trees growing inside them.",
+    indoor: "Only the lower walls of this room remain, roofless and open to the sky, with plants growing inside.",
+  },
   buried: {
     outdoor: "Only low mounds and stones remain where structures stood.",
     indoor: "Nothing of the room remains: show the land at this spot from the camera's eye height.",
@@ -44,7 +49,7 @@ const STRUCTURES: Record<StructureState, Record<Setting, string>> = {
 const CAMERA_LOCK =
   "Same camera, same position, same lens and framing: do not zoom in or out, do not crop, do not change the perspective or camera height. The horizon line, distant hills, mountains and skyline keep exactly the same height, size and position in the frame.";
 
-/** Painted/CGI drift was the other one; a painted sign or poster inside the scene is fine. */
+/** Painted/CGI drift was the other one. */
 const PHOTOREAL =
   "The result is a real, unretouched documentary photograph with natural light, true-to-life colours and textures and the same photographic quality as the original: not a painting, illustration, render or concept art. Remove any people.";
 
@@ -65,32 +70,14 @@ export function eraPrompt(era: ChronicleEra, biome: Biome, setting: Setting, not
 }
 
 /** Bump when how an era is painted or checked changes (not just its prompt), so old results aren't served. */
-const PIPELINE_VERSION = 2; // 2: Spark critic + SAM building-overlap check, one repaint
+const PIPELINE_VERSION = 3; // 2: Spark critic + SAM building-overlap check, one repaint; 3: no idea fossils, cell labels
 
 /** Short hash of everything that shapes an era's image, so editing a chronicle regenerates only what changed. */
-export async function promptVersion(
-  era: ChronicleEra,
-  biome: Biome,
-  setting: Setting,
-  note: string,
-  fossilUsed?: Fossil,
-): Promise<string> {
-  const fossil = fossilUsed ? `${fossilPrompt(fossilUsed)}|${fossilPlacement(fossilUsed)}` : "";
-  const bytes = new TextEncoder().encode(`${PIPELINE_VERSION}|${eraPrompt(era, biome, setting, note)}|${fossil}`);
+export async function promptVersion(era: ChronicleEra, biome: Biome, setting: Setting, note: string): Promise<string> {
+  const bytes = new TextEncoder().encode(`${PIPELINE_VERSION}|${eraPrompt(era, biome, setting, note)}`);
   const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", bytes));
   return [...digest.slice(0, 4)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-export function fossilPrompt(fossil: Fossil): string {
-  return `${fossil.brief} Flat, front-facing, filling the whole frame.`;
-}
-
-export function fossilPlacement(fossil: Fossil): string {
-  return `Place the ${fossil.medium} from the second image into the first image as a real physical object where it fits naturally (on a wall, facade, post, standing board or rock facing the camera), large enough to be clearly seen, with correct perspective, lighting and weathering. Keep the ${fossil.medium}'s artwork unchanged, and keep everything else in the first image photographic.`;
-}
-
-/** The noun phrase SAM uses to find the tappable subject of an era. */
-export function targetPhrase(era: ChronicleEra, fossil?: Fossil): string | null {
-  if (era.driver === "biology") return "animal";
-  return fossil ? fossil.medium : null;
-}
+/** Deep-time eras have a creature to tap; SAM finds it by this phrase. */
+export const CREATURE_PHRASE = "animal";
