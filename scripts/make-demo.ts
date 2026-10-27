@@ -120,7 +120,14 @@ async function main(): Promise<void> {
     const years = yearsFor(c).filter((y) => !(c === base && y === 0));
     const eras: Record<number, object> = {};
     await pool(years, async (year) => {
-      const r = await generateEra(scene.token, year, params);
+      let r: EraResult;
+      try {
+        r = await generateEra(scene.token, year, params);
+      } catch (err) {
+        // The viewer skips missing eras; one stubborn content-filter block shouldn't sink the whole demo.
+        console.warn(`  ${c.forkId} ${year} skipped: ${(err as Error).message}`);
+        return;
+      }
       const key = `${isShared(c, year) ? "base" : c.forkId}_${year}`;
       const entry: Record<string, unknown> = { image: `${key}.webp` };
       await download(r.imageUrl, join(out, `${key}.webp`));
