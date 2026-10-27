@@ -56,6 +56,10 @@ const PHOTOREAL =
 const REGIONAL =
   "Use the building materials, architectural traditions, plants and climate of this place's own region, as seen in the photo.";
 
+/** Deep-time eras have an animal in them; asking for it to be "clearly visible" made the model zoom in to show it. */
+const WILDLIFE_SCALE =
+  "Any animal appears at its true size for its distance from this camera, even if small; never move the camera closer to show it.";
+
 export function eraPrompt(era: ChronicleEra, biome: Biome, setting: Setting, note: string, fixes = ""): string {
   const theme =
     era.driver === "biology"
@@ -64,13 +68,13 @@ export function eraPrompt(era: ChronicleEra, biome: Biome, setting: Setting, not
         ? era.visualPromptIndoor
         : era.visualPrompt;
   const here = note ? ` At this exact place in this era: ${note}` : "";
-  const regional = era.driver === "culture" ? ` ${REGIONAL}` : "";
+  const regional = era.driver === "culture" ? ` ${REGIONAL}` : ` ${WILDLIFE_SCALE}`;
   const fix = fixes ? ` A previous attempt had these problems, avoid them: ${fixes}` : "";
   return `${theme}${here}${regional} ${STRUCTURES[era.structures][setting]} ${CAMERA_LOCK} ${PHOTOREAL}${fix}`;
 }
 
 /** Bump when how an era is painted or checked changes (not just its prompt), so old results aren't served. */
-const PIPELINE_VERSION = 3; // 2: Spark critic + SAM building-overlap check, one repaint; 3: no idea fossils, cell labels
+const PIPELINE_VERSION = 4; // 2: critic + SAM building overlap; 3: no idea fossils, cell labels; 4: repaints re-checked
 
 /** Short hash of everything that shapes an era's image, so editing a chronicle regenerates only what changed. */
 export async function promptVersion(era: ChronicleEra, biome: Biome, setting: Setting, note: string): Promise<string> {

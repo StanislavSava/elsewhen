@@ -13,7 +13,7 @@
         "temperate": {
           "caption": "Early Pleistocene · mammoths graze a wooded floodplain",
           "environment": "A temperate floodplain of open woodland, tall grass and a slow, meandering river.",
-          "visualPrompt": "Transform this scene to one million years ago, in the Early Pleistocene. A temperate landscape of open woodland, tall grasses and a meandering river. One southern mammoth (Mammuthus meridionalis) grazes, clearly visible in the mid-ground.",
+          "visualPrompt": "Transform this scene to one million years ago, in the Early Pleistocene. A temperate landscape of open woodland, tall grasses and a meandering river. One southern mammoth (Mammuthus meridionalis) grazes, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "extinct",
@@ -45,7 +45,7 @@
         "arid": {
           "caption": "Early Pleistocene · giraffe-cousins browse a dry savanna",
           "environment": "A dry savanna of scattered acacias and a sandy, seasonal riverbed.",
-          "visualPrompt": "Transform this scene to one million years ago, in the Early Pleistocene. A dry, open savanna with scattered acacia trees, golden grass and a sandy seasonal riverbed. One Sivatherium, a massive short-necked giraffe relative with broad antler-like ossicones, stands clearly visible in the mid-ground.",
+          "visualPrompt": "Transform this scene to one million years ago, in the Early Pleistocene. A dry, open savanna with scattered acacia trees, golden grass and a sandy seasonal riverbed. One Sivatherium, a massive short-necked giraffe relative with broad antler-like ossicones, stands, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "extinct",
@@ -77,7 +77,7 @@
         "tropical": {
           "caption": "Early Pleistocene · a hoe-tusker wades the swamp edge",
           "environment": "Lush tropical woodland around a reedy swamp.",
-          "visualPrompt": "Transform this scene to one million years ago, in the Early Pleistocene. Lush tropical woodland around a reedy swamp, palms and tall grasses, warm humid light. One Deinotherium, a huge elephant relative with tusks curving downward from its lower jaw, stands clearly visible in the mid-ground.",
+          "visualPrompt": "Transform this scene to one million years ago, in the Early Pleistocene. Lush tropical woodland around a reedy swamp, palms and tall grasses, warm humid light. One Deinotherium, a huge elephant relative with tusks curving downward from its lower jaw, stands, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "extinct",
@@ -109,7 +109,7 @@
         "cold": {
           "caption": "Early Pleistocene · steppe mammoths cross the frost",
           "environment": "A cold, open steppe with scattered larches and frost-hardened grass.",
-          "visualPrompt": "Transform this scene to one million years ago, in the Early Pleistocene. A cold, open steppe with scattered larch trees, frost on pale grass and a wide grey sky. One steppe mammoth (Mammuthus trogontherii), huge and shaggy, walks clearly visible in the mid-ground.",
+          "visualPrompt": "Transform this scene to one million years ago, in the Early Pleistocene. A cold, open steppe with scattered larch trees, frost on pale grass and a wide grey sky. One steppe mammoth (Mammuthus trogontherii), huge and shaggy, walks, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "extinct",
@@ -148,7 +148,7 @@
         "temperate": {
           "caption": "End of the ice age · aurochs among birch and late snow",
           "environment": "Cold steppe giving way to birch and pine woodland, patches of late snow.",
-          "visualPrompt": "Transform this scene to 10,000 years ago, at the end of the last ice age. Cold steppe giving way to birch and pine woodland, patches of late snow. One aurochs stands, clearly visible in the mid-ground.",
+          "visualPrompt": "Transform this scene to 10,000 years ago, at the end of the last ice age. Cold steppe giving way to birch and pine woodland, patches of late snow. One aurochs stands, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "extinct",
@@ -180,7 +180,7 @@
         "arid": {
           "caption": "The Green Sahara · giant buffalo graze where desert is now",
           "environment": "Where desert is today, a grassy savanna with shallow lakes.",
-          "visualPrompt": "Transform this scene to 10,000 years ago, during the humid period when today's deserts were green. A grassy savanna with a shallow lake, scattered trees and soft light. One Pelorovis, a giant buffalo with enormous curving horns, grazes clearly visible in the mid-ground.",
+          "visualPrompt": "Transform this scene to 10,000 years ago, during the humid period when today's deserts were green. A grassy savanna with a shallow lake, scattered trees and soft light. One Pelorovis, a giant buffalo with enormous curving horns, grazes, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "extinct",
@@ -212,7 +212,7 @@
         "tropical": {
           "caption": "Late Pleistocene · a giant ground sloth in the forest",
           "environment": "Warm forest edge with palms and open clearings.",
-          "visualPrompt": "Transform this scene to 10,000 years ago. A warm forest edge with palms, ferns and an open clearing. One giant ground sloth (Megatherium), the size of an elephant, rears up to feed on leaves, clearly visible in the mid-ground.",
+          "visualPrompt": "Transform this scene to 10,000 years ago. A warm forest edge with palms, ferns and an open clearing. One giant ground sloth (Megatherium), the size of an elephant, rears up to feed on leaves, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "extinct",
@@ -244,7 +244,7 @@
         "cold": {
           "caption": "End of the ice age · the last woolly mammoths",
           "environment": "Tundra and mammoth steppe, low willows, lingering snow.",
-          "visualPrompt": "Transform this scene to 10,000 years ago, at the end of the last ice age. Open tundra and pale steppe grass, low willows, lingering snow under a wide sky. One woolly mammoth walks, clearly visible in the mid-ground.",
+          "visualPrompt": "Transform this scene to 10,000 years ago, at the end of the last ice age. Open tundra and pale steppe grass, low willows, lingering snow under a wide sky. One woolly mammoth walks, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "extinct",
@@ -323,7 +323,7 @@
         "temperate": {
           "caption": "10,000 years on · roofless walls in an old forest",
           "environment": "Old-growth forest growing up through the roofless stone walls of the old buildings.",
-          "visualPrompt": "Transform this scene to 10,000 years in the future. A wild, peaceful old-growth forest has grown up through the old buildings: their lower stone walls still stand in the same places, roofless and open to the sky, covered in moss and ivy, with trees growing inside them. One large ground-dwelling raven, long-legged and glossy black, walks across a clearing, clearly visible in the mid-ground. Sunlit and serene.",
+          "visualPrompt": "Transform this scene to 10,000 years in the future. A wild, peaceful old-growth forest has grown up through the old buildings: their lower stone walls still stand in the same places, roofless and open to the sky, covered in moss and ivy, with trees growing inside them. One large ground-dwelling raven, long-legged and glossy black, walks across a clearing, at its true size for its distance from the camera. Sunlit and serene.",
           "fauna": [
             {
               "kind": "speculative",
@@ -351,7 +351,7 @@
         "arid": {
           "caption": "10,000 years on · sand-worn walls in the scrub",
           "environment": "Open scrubland around the roofless, sand-worn walls of the old buildings.",
-          "visualPrompt": "Transform this scene to 10,000 years in the future. A quiet, open scrubland: the lower walls of the old buildings still stand in the same places, roofless, smoothed by wind and half-buried in warm sand, hardy shrubs growing inside them. One long-legged pale desert fox with huge ears trots across the ground, clearly visible in the mid-ground. Golden, peaceful light.",
+          "visualPrompt": "Transform this scene to 10,000 years in the future. A quiet, open scrubland: the lower walls of the old buildings still stand in the same places, roofless, smoothed by wind and half-buried in warm sand, hardy shrubs growing inside them. One long-legged pale desert fox with huge ears trots across the ground, at its true size for its distance from the camera. Golden, peaceful light.",
           "fauna": [
             {
               "kind": "speculative",
@@ -379,7 +379,7 @@
         "tropical": {
           "caption": "10,000 years on · rainforest through roofless walls",
           "environment": "Dense rainforest growing through the roofless walls of the old buildings.",
-          "visualPrompt": "Transform this scene to 10,000 years in the future. A dense, peaceful rainforest: the lower walls of the old buildings still stand in the same places, roofless and wrapped in roots and hanging vines, tall trees growing inside them. One brilliantly green gliding parakeet with wide skin flaps between its legs glides between branches, clearly visible in the mid-ground. Soft green light.",
+          "visualPrompt": "Transform this scene to 10,000 years in the future. A dense, peaceful rainforest: the lower walls of the old buildings still stand in the same places, roofless and wrapped in roots and hanging vines, tall trees growing inside them. One brilliantly green gliding parakeet with wide skin flaps between its legs glides between branches, at its true size for its distance from the camera. Soft green light.",
           "fauna": [
             {
               "kind": "speculative",
@@ -407,7 +407,7 @@
         "cold": {
           "caption": "10,000 years on · tundra and low stone walls",
           "environment": "Open tundra around the roofless, lichen-covered walls of the old buildings.",
-          "visualPrompt": "Transform this scene to 10,000 years in the future. Open, peaceful tundra: the lower stone walls of the old buildings still stand in the same places, roofless, covered in lichen and moss, dwarf birch growing inside them. One shaggy, long-haired reindeer descendant with broad flat antlers grazes, clearly visible in the mid-ground. Soft northern light.",
+          "visualPrompt": "Transform this scene to 10,000 years in the future. Open, peaceful tundra: the lower stone walls of the old buildings still stand in the same places, roofless, covered in lichen and moss, dwarf birch growing inside them. One shaggy, long-haired reindeer descendant with broad flat antlers grazes, at its true size for its distance from the camera. Soft northern light.",
           "fauna": [
             {
               "kind": "speculative",
@@ -442,7 +442,7 @@
         "temperate": {
           "caption": "One million years on · a new forest, new creatures",
           "environment": "A lush, unfamiliar temperate ecosystem.",
-          "visualPrompt": "Transform this scene to one million years in the future. A lush, unfamiliar ecosystem has evolved where the structures once stood. One speculative creature descended from the pigeon, much larger, flightless and long-legged, stands clearly visible in the mid-ground.",
+          "visualPrompt": "Transform this scene to one million years in the future. A lush, unfamiliar ecosystem has evolved where the structures once stood. One speculative creature descended from the pigeon, much larger, flightless and long-legged, stands, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "speculative",
@@ -470,7 +470,7 @@
         "arid": {
           "caption": "One million years on · hopping rats on the red plain",
           "environment": "A wide, open red plain with strange succulents.",
-          "visualPrompt": "Transform this scene to one million years in the future. A wide, open red-earth plain with strange tall succulents where the structures once stood, warm golden light. One speculative kangaroo-like hopping rat, the size of a dog, with long hind legs and a balancing tail, stands clearly visible in the mid-ground.",
+          "visualPrompt": "Transform this scene to one million years in the future. A wide, open red-earth plain with strange tall succulents where the structures once stood, warm golden light. One speculative kangaroo-like hopping rat, the size of a dog, with long hind legs and a balancing tail, stands, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "speculative",
@@ -498,7 +498,7 @@
         "tropical": {
           "caption": "One million years on · giant herons browse tree ferns",
           "environment": "A misty forest of giant tree ferns.",
-          "visualPrompt": "Transform this scene to one million years in the future. A misty, peaceful forest of giant tree ferns and broad-leaved plants where the structures once stood. One speculative giant long-necked heron descendant, taller than a person, browses fern fronds, clearly visible in the mid-ground.",
+          "visualPrompt": "Transform this scene to one million years in the future. A misty, peaceful forest of giant tree ferns and broad-leaved plants where the structures once stood. One speculative giant long-necked heron descendant, taller than a person, browses fern fronds, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "speculative",
@@ -526,7 +526,7 @@
         "cold": {
           "caption": "One million years on · seals that walk the shore",
           "environment": "A cold coast of moss, rock and pale grass.",
-          "visualPrompt": "Transform this scene to one million years in the future. A cold, peaceful landscape of moss, rock and pale grass where the structures once stood, low silver light. One speculative seal descendant that walks on land on four sturdy flippers, with thick grey fur, stands clearly visible in the mid-ground.",
+          "visualPrompt": "Transform this scene to one million years in the future. A cold, peaceful landscape of moss, rock and pale grass where the structures once stood, low silver light. One speculative seal descendant that walks on land on four sturdy flippers, with thick grey fur, stands, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "speculative",

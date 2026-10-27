@@ -26,7 +26,9 @@ const SCHEMA = {
 const SYSTEM = `You are a strict photo editor checking an AI time-travel edit of a real photo. Image 1 is the
 original photo. Image 2 must show the SAME place, from the SAME camera position, focal length and framing, at
 another time. Judge: sameViewpoint (camera position, direction and horizon height unchanged), sameScale (no zoom
-in or out: distant landmarks, hills and the skyline keep the same apparent size and position), photographic
+in or out: distant landmarks, hills and the skyline keep the same apparent size and position; if image 2 looks
+taken from closer, lower or with a longer lens, e.g. a high view over a city that became a close view of a
+clearing so an animal can be seen, sameScale is false), photographic
 (looks like a real, unretouched photograph, not a painting, illustration or CGI render; a painted sign or poster
 inside the scene is fine), plausibleForEra (matches the era description: buildings only where it says they stood,
 no modern objects in the past). issues: one short sentence of concrete problems, empty if none.`;

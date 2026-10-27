@@ -37,19 +37,6 @@ function toDataUrl(bytes: ArrayBuffer, mime: string): string {
   return `data:${mime};base64,${btoa(s)}`;
 }
 
-/**
- * Copy a short-lived Meta image URL into R2 and return it as a data URL. Meta can't fetch its own
- * temporary URLs as inputs (media_url_not_fetchable), so follow-up calls need the bytes inline.
- */
-async function storeFromUrl(env: Env, url: string, key: string): Promise<string> {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`fetch generated image → ${res.status}`);
-  const type = res.headers.get("content-type") ?? "image/webp";
-  const bytes = await res.arrayBuffer();
-  await env.BUCKET.put(key, bytes, { httpMetadata: { contentType: type } });
-  return toDataUrl(bytes, type);
-}
-
 // ---------------------------------------------------------------- config & health
 
 app.get("/api/config", async (c) => {
@@ -148,6 +135,7 @@ app.post("/api/scenes/:token/notes", async (c) => {
 type EraParams = { forkId: string; biome: Biome; setting: Setting };
 
 const MIN_BUILDING_OVERLAP = 0.6; // spike: a well-kept scene scored ~0.92
+const MAX_REPAINTS = 2;
 
 /** Overlap between the photo's buildings and the new image's buildings, or null when there's nothing to compare. */
 async function buildingOverlap(env: Env, sceneId: string, imageData: string): Promise<number | null> {
@@ -232,7 +220,8 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
   // Runs under waitUntil so a phone that suspends the tab mid-request still gets the result on resume.
   const work = (async (): Promise<EraResult> => {
     try {
-      const paint = async (fixes: string): Promise<string> => {
+      type Painting = { bytes: ArrayBuffer; type: string; data: string };
+      const paint = async (fixes: string): Promise<Painting> => {
         const edit = (prompt: string) => editImage(env.MODEL_API_KEY, { prompt, images: [photo], size });
         let url: string;
         try {
@@ -244,27 +233,44 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
           url = await edit(eraPrompt(era, params.biome, params.setting, "", ""));
         }
         await spend(env, IMAGE_PRICE_CENTS);
-        return storeFromUrl(env, url, `${prefix}/image.webp`);
+        // Meta can't fetch its own temporary URLs as inputs (media_url_not_fetchable): checks need the bytes inline.
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`fetch generated image → ${res.status}`);
+        const type = res.headers.get("content-type") ?? "image/webp";
+        const bytes = await res.arrayBuffer();
+        return { bytes, type, data: toDataUrl(bytes, type) };
       };
 
-      // Two checks, one repaint: Muse Spark judges viewpoint, scale, photographic look and plausibility; and where
-      // buildings should keep their place, SAM measures that they still overlap the photo's buildings.
-      let imageData = await paint("");
-      const issues: string[] = [];
+      // Two checks: Muse Spark judges viewpoint, scale, photographic look and plausibility; and where buildings
+      // should keep their place, SAM measures that they still overlap the photo's buildings. Every repaint is
+      // checked again (an unchecked repaint let zoomed-in deep-time eras through); the best attempt is kept.
       const keepsBuildings = ["intact", "weathered", "overgrown"].includes(era.structures);
-      const [verdict, overlap] = await Promise.all([
-        judge(env, photo, imageData, eraLabel(year), note).catch((err) => {
-          console.error(`judge ${prefix}:`, String(err).slice(0, 300));
-          return null;
-        }),
-        keepsBuildings ? buildingOverlap(env, scene.id, imageData) : Promise.resolve(null),
-      ]);
-      if (verdict && !passes(verdict)) issues.push(verdict.issues || "the viewpoint, scale or photographic look changed");
-      if (overlap !== null && overlap < MIN_BUILDING_OVERLAP) {
-        issues.push("the buildings moved or changed size: keep every building exactly where and exactly as large as in the original photo, same zoom");
+      const check = async (img: string): Promise<string[]> => {
+        const [verdict, overlap] = await Promise.all([
+          judge(env, photo, img, eraLabel(year), note).catch((err) => {
+            console.error(`judge ${prefix}:`, String(err).slice(0, 300));
+            return null;
+          }),
+          keepsBuildings ? buildingOverlap(env, scene.id, img) : Promise.resolve(null),
+        ]);
+        const issues: string[] = [];
+        if (verdict && !passes(verdict)) issues.push(verdict.issues || "the viewpoint, scale or photographic look changed");
+        if (overlap !== null && overlap < MIN_BUILDING_OVERLAP) {
+          issues.push("the buildings moved or changed size: keep every building exactly where and exactly as large as in the original photo, same zoom");
+        }
+        return issues;
+      };
+      let best = await paint("");
+      let bestIssues = await check(best.data);
+      for (let repaint = 1; bestIssues.length && repaint <= MAX_REPAINTS; repaint++) {
+        console.log(`era ${prefix}: repaint ${repaint} (${bestIssues.join("; ")})`);
+        const next = await paint(bestIssues.join("; "));
+        const nextIssues = await check(next.data);
+        if (nextIssues.length <= bestIssues.length) [best, bestIssues] = [next, nextIssues];
       }
-      if (issues.length) imageData = await paint(issues.join("; "));
-      console.log(`era ${prefix}: ${issues.length ? `repainted (${issues.join("; ")})` : "passed"}${overlap !== null ? ` · building overlap ${overlap.toFixed(2)}` : ""}`);
+      console.log(`era ${prefix}: ${bestIssues.length ? `kept with issues (${bestIssues.join("; ")})` : "passed"}`);
+      await env.BUCKET.put(`${prefix}/image.webp`, best.bytes, { httpMetadata: { contentType: best.type } });
+      const imageData = best.data;
 
       // Deep time's creature to tap, and labels for every part of the image (the time core).
       const findCreature = async (): Promise<EraResult["target"]> => {

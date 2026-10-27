@@ -48,8 +48,8 @@ const fragmentShader = /* glsl */ `
     float start = delay * (1.0 - L);
     float n = noise(uv * 18.0) * 0.6 + noise(uv * 64.0) * 0.4;
     // Structures go block by block, like courses of stone, instead of melting.
-    float blocks = hash(floor(uv * vec2(56.0, 84.0))) - 0.5;
-    float jitter = ((n - 0.5) * 0.18 + blocks * 0.22 * d.g * abs(uBuild)) * sin(3.14159 * uT); // none at the keyframes
+    float blocks = hash(floor(uv * vec2(120.0, 170.0))) - 0.5;
+    float jitter = ((n - 0.5) * 0.18 + blocks * 0.14 * d.g * abs(uBuild)) * sin(3.14159 * uT); // none at the keyframes
     float local = clamp(smoothstep(start, start + L, uT + jitter), 0.0, 1.0);
 
     vec3 color;
