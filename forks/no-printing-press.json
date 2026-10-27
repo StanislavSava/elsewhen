@@ -132,30 +132,27 @@
       "year": 100,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2126 · Voice posts and roof gardens",
-      "visualPrompt": "Transform this scene to 2126 in a world where the printing press was never invented. Planted courtyard housing in the region's own building tradition with mural walls, voice posts and roof gardens along narrow lanes with trams and pedal cabs and no text screens or cars.",
-      "visualPromptIndoor": "A bright memory school hall in the region's own building tradition with semicircle seating, a speaker's stand, picture panels and hand-copied scrolls, learners reciting together.",
+      "caption": "2126 · A city that speaks in pictures",
+      "visualPrompt": "Transform this scene to 2126 in a world where the printing press was never invented. Buildings in the region's own building tradition are covered from street to roof in huge painted murals and carved picture reliefs telling stories in images, with bell and speaker towers at street corners and slow trams, and no written words anywhere.",
+      "visualPromptIndoor": "This room in 2126 without printing: walls painted with picture stories, a carved image panel, a listening horn instead of shelves of books.",
       "world": {
         "differences": [
-          "five- to seven-storey planted courtyard housing instead of taller tower districts (because memory training and voice coordination keep schools and firms small and streets human-scaled)",
-          "battery trams, pedal cabs and horse-drawn service carts instead of self-driving cars and delivery drones (because repair and routing knowledge passes orally and operations stay neighborhood-based)",
-          "large mural walls and carved image panels with voice posts instead of text screens and printed signage (because public information remains spoken and pictorial)",
-          "low sound poles and courtyard listening rooms instead of data kiosks and display facades (because investment favors acoustic voice networks over text networks)",
-          "narrow planted lanes with permeable paving instead of wide asphalt roads with lane paint (because slow shared movement needs less hard surfacing)"
+          "whole facades painted with picture stories and carved image reliefs instead of signs and billboards with text (because few people read and messages are pictures)",
+          "tall bell and speaker towers at street corners instead of screens (because news and orders are spoken aloud)",
+          "five-storey courtyard blocks instead of office towers (because firms stay small without printed paperwork)",
+          "slow trams and bicycles instead of heavy car traffic (because mass production and manuals came late)"
         ],
         "absent": [
-          "private cars",
-          "text display screens",
-          "printed books and newspapers",
+          "written words or letters on buildings",
+          "screens",
+          "billboards with text",
           "glass skyscrapers",
-          "motorways",
-          "parking structures",
-          "traffic lights"
+          "heavy car traffic"
         ],
         "kept": [
-          "hills, rivers and soils",
-          "mature trees and garden plants",
-          "the region's own building tradition in form and roofs"
+          "terrain and climate",
+          "street trees",
+          "the region's building tradition"
         ]
       }
     },
@@ -163,30 +160,24 @@
       "year": 1000,
       "driver": "culture",
       "structures": "overgrown",
-      "caption": "3026 · Garden roofs over old town fabric",
-      "visualPrompt": "Transform this scene to 3026 in a world where the printing press was never invented. Cared-for courtyard homes in the region's own building tradition with living roofs, orchards and vine-covered picture walls along footpaths and rail lines, trees and gardens growing over every surface.",
-      "visualPromptIndoor": "A sunlit hall garden room in the region's own building tradition with plants trailing over beams, low tables with hand-copied volumes, picture panels and a circle of stools for recitation.",
+      "caption": "3026 · Story facades of stone and coloured glass",
+      "visualPrompt": "Transform this scene to 3026 in a world where the printing press was never invented. Buildings in the region's own building tradition carry a thousand years of carved stone stories and great coloured-glass picture windows, mellowed by time and framed by trees and gardens; footpaths and small trams, no writing anywhere.",
+      "visualPromptIndoor": "This room in 3026 without printing: a carved story panel, light through a coloured-glass picture window, plants along the sill.",
       "world": {
         "differences": [
-          "three- to five-storey courtyard clusters with living roofs and garden terraces instead of high-rise districts (because small voice-taught households and crafts remain the basic economic unit)",
-          "footpaths, cycle tracks and light rail lines instead of car roads and air lanes (because daily movement stays muscle-powered and rail-based at local scale)",
-          "vine-covered image walls and hand-cut story panels instead of illuminated signs and printed facades (because history is kept in pictures and recitation)",
-          "rain cisterns, orchards and terraced food beds between houses instead of concrete plazas and fuel courts (because water and food stay visible, local and hand-tended)",
-          "small timber voice poles with lamps instead of tall grid pylons and signal towers (because networks are neighborhood-scale and low-power)"
+          "facades of carved stone story panels and coloured-glass picture windows instead of plain walls with signage (because a millennium of memory is kept in images)",
+          "low courtyard buildings among trees instead of towers (because the city grew slowly and was kept)",
+          "footpaths and small trams instead of roads (because daily life stays local)"
         ],
         "absent": [
+          "written words or letters",
+          "screens",
           "cars",
-          "skyscrapers",
-          "motorways",
-          "billboards",
-          "airports",
-          "parking lots",
-          "traffic lights"
+          "skyscrapers"
         ],
         "kept": [
-          "hills, rivers and soils",
-          "old trees and climate patterns",
-          "the region's own building tradition in stone, timber and clay"
+          "terrain and climate",
+          "the region's building tradition"
         ]
       }
     }

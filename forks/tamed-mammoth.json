@@ -158,59 +158,51 @@
       "year": 100,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2126 · garden avenues with mammoth trams",
-      "visualPrompt": "Transform this scene to 2126 in a world where humans tamed the mammoth. Tree-lined low buildings in the region's own building tradition face a green avenue where guided mammoth teams pull quiet freight trams beside pedestrian and cycle lanes.",
-      "visualPromptIndoor": "Show a calm future living room with tall windows onto gardens, light timber furniture, washable wall panels, and thick mammoth-wool carpets and throws, lit by daylight and slim ceiling lights.",
+      "caption": "2126 · Low felt-roofed city with mammoth avenues",
+      "visualPrompt": "Transform this scene to 2126 in a world where humans tamed the mammoth. Low, wide buildings in the region's own building tradition with thick felted wool roofs and very tall gateways stand along broad grass avenues where mammoth teams pull freight wagons, with paddocks, hay lofts and water troughs between blocks.",
+      "visualPromptIndoor": "This room in 2126 where mammoths are tamed: thick wool felt hangings, a very tall doorway, a window onto a paddock.",
       "world": {
         "differences": [
-          "four- to six-story garden blocks with roof planting instead of high-rise slabs (because planning keeps sunlight for gardens and room for animals at street level)",
-          "guided mammoth freight trams and shared electric pods instead of private self-driving cars (because city freight and transit use animal lanes with machine assist)",
-          "green avenues with sensor posts and water troughs instead of multilane asphalt roads (because traffic is slow, wide and shared with large animals)",
-          "neighborhood fodder gardens and wool workshops instead of fuel stations and car decks (because feed and fiber remain part of daily supply)",
-          "buried grids with sidewalk service hatches instead of overhead lines and pylons (because clear airspace is kept for trees and tall teams)"
+          "two- to four-storey buildings with very tall gateways instead of high-rises (because streets and doors are sized for mammoths)",
+          "broad grass avenues with mammoth freight wagons instead of asphalt roads with trucks (because heavy haulage is still done by mammoth teams)",
+          "thick felted wool roofs and awnings instead of tin, tar and plastic (because mammoth wool is the cheapest cladding)",
+          "paddocks, hay lofts and water troughs between blocks instead of car parks (because the city's animals live in it)"
         ],
         "absent": [
-          "private self-driving cars",
-          "overhead power lines",
-          "glass skyscrapers",
-          "gas stations",
-          "concrete freeways",
-          "asphalt parking structures"
+          "trucks",
+          "private cars",
+          "high-rise towers",
+          "car parks",
+          "overhead power lines"
         ],
         "kept": [
-          "terrain, rivers and climate",
-          "electric transit controls and lighting",
-          "planting in the region's own garden tradition"
+          "terrain and climate",
+          "the region's building tradition"
         ]
       }
     },
     {
       "year": 1000,
       "driver": "culture",
-      "structures": "overgrown",
-      "caption": "3026 · garden streets with grazing lawns",
-      "visualPrompt": "Transform this scene to 3026 in a world where humans tamed the mammoth. Well-kept low buildings in the region's own building tradition stand among mature trees and terraced gardens, with wide grass lanes where small mammoth herds graze beside footpaths.",
-      "visualPromptIndoor": "Show a sunlit garden room with living plants, timber seats, thick mammoth-wool weavings, and open doors to trees and lawns, clean and well kept.",
+      "structures": "alternate",
+      "caption": "3026 · A mammoth steppe with herds in the town",
+      "visualPrompt": "Transform this scene to 3026 in a world where humans tamed the mammoth. Mammoth herds have kept the land as open grassland steppe: wide grass plains with few trees run right into a low town of felt-roofed buildings in the region's own building tradition, with herds grazing between them.",
+      "visualPromptIndoor": "This room in 3026 where mammoths are tamed: wool felt walls, a low wide window looking onto grassland and a grazing herd.",
       "world": {
         "differences": [
-          "one- to three-story planted houses with soil roofs instead of tall sealed towers (because low mass is easy to tend and supports gardens and animal yards)",
-          "grass lanes and footpaths with herded mammoths instead of paved roads for motor traffic (because movement is on foot and by animal teams among trees)",
-          "terraced vegetable beds and orchard rows between houses instead of fenced lots and driveways (because food and fodder grow where streets once parked cars)",
-          "stone cisterns, troughs and hand pumps beside lanes instead of fuel pumps and vents (because water for people, gardens and animals is handled at the surface)",
-          "thick mammoth-wool awnings and felt screens instead of plastic signs and metal shutters (because local fiber remains the main outdoor cloth)"
+          "open grassland steppe with scattered trees instead of forest or farmland (because grazing mammoths keep the land open, as in the ice age)",
+          "a low, spread-out town of felt-roofed buildings instead of a dense city (because land is shared with herds)",
+          "mammoth herds grazing between houses instead of traffic (because the animals are part of everyday life)"
         ],
         "absent": [
           "cars",
-          "traffic lights",
-          "overhead power lines",
-          "glass office towers",
-          "asphalt parking lots",
-          "neon billboards"
+          "roads of asphalt",
+          "high-rises",
+          "power lines"
         ],
         "kept": [
-          "local terrain and streams",
-          "mature trees and garden soils",
-          "building forms in the region's own building tradition"
+          "hills, rivers and climate",
+          "the region's building tradition"
         ]
       }
     }

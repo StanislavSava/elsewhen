@@ -101,29 +101,29 @@
       "year": 100,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2126 · Pipe-bound city with air trams",
-      "visualPrompt": "Transform this scene to 2126 in a world where electricity was never harnessed. Show broad low quarters in the region's own building tradition with rooftop gardens and water tanks, served by steam tramways and compressed-air road engines.",
-      "visualPromptIndoor": "Interior of a municipal tabulating hall under skylights and gas light, with towering clockwork calculators, card sorters and pneumatic post walls.",
+      "caption": "2126 · Cable trams, steam pipes and wind pumps",
+      "visualPrompt": "Transform this scene to 2126 in a world where electricity was never harnessed. A dense brick and iron city in the region's own building tradition: steam-hauled cable trams in slots in the street, iron footbridges between buildings, insulated steam pipes on facades, and rooftops crowded with wind pumps, water tanks and chimneys under a light haze.",
+      "visualPromptIndoor": "This room in 2126 without electricity: brass gas lamps, a clockwork calculator on the desk, steam radiators and a pneumatic tube station in the wall.",
       "world": {
         "differences": [
-          "Broad six-storey courtyard blocks around rail yards instead of high-rise tower districts (because hydraulic lifts and daylight limit height while rail lines pull steady growth outward)",
-          "Steam tramways and compressed-air delivery vans instead of electric metros and electronic cars (because street pipes and coal depots power all public movement)",
-          "Rows of gas lanterns and insulated heat mains on brackets instead of electric lighting columns and cable ducts (because town gas and central boilers heat and light whole streets)",
-          "Painted enamel timetables and printed bulletin kiosks instead of digital displays (because punched-card presses and optical relays circulate information on paper)",
-          "Market gardens, orchards and coal-oil yards at the city edge instead of logistics parks for container trucks (because steam tractors and horse teams work nearby fields for food and fuel)"
+          "cable trams pulled by underground cables from steam winding houses instead of electric trams and buses (because there are no electric motors)",
+          "rooftops crowded with wind pumps, water towers and chimneys instead of solar panels and air conditioners (because power is mechanical, stored as pressure and heat)",
+          "iron footbridges and pipe bridges spanning streets instead of overhead wires (because power and heat move through pipes, not cables)",
+          "warm gaslight in windows and lanterns instead of LED and neon light (because light comes from gas mantles)",
+          "eight-storey brick and iron blocks instead of glass towers (because lifts are hydraulic and daylight still matters)"
         ],
         "absent": [
-          "overhead power lines",
-          "glass and steel skyscrapers",
-          "electric cars and traffic lights",
-          "glowing billboards and screens",
-          "radio towers and satellite dishes",
-          "airliners and solar farms"
+          "overhead power lines or pylons",
+          "electric streetlights",
+          "screens or LED signs",
+          "solar panels",
+          "glass skyscrapers",
+          "satellite dishes"
         ],
         "kept": [
-          "terrain, rivers and climate",
-          "mature street trees and hedgerows",
-          "the region's own building tradition in masonry and timber"
+          "terrain and climate",
+          "street trees",
+          "the region's building tradition in brick, stone and timber"
         ]
       }
     },
@@ -131,29 +131,26 @@
       "year": 1000,
       "driver": "culture",
       "structures": "overgrown",
-      "caption": "3026 · Garden city of steam and trees",
-      "visualPrompt": "Transform this scene to 3026 in a world where electricity was never harnessed. Show loved low buildings in the region's own building tradition wrapped in rooftop gardens and street trees, with quiet steam rails and gas lamps beneath green canopies.",
-      "visualPromptIndoor": "Interior of a sunlit reading room with vines at the windows, heated by tiled stoves and lit by gas mantles, with brass instruments, paper archives and wooden furniture.",
+      "caption": "3026 · A wind-and-water city of canals and sails",
+      "visualPrompt": "Transform this scene to 3026 in a world where electricity was never harnessed. The city has turned to wind and water: canals where streets were, sailing barges, tall windmills and water wheels between brick buildings softened by trees and gardens, with no wires anywhere.",
+      "visualPromptIndoor": "This room in 3026 without electricity: a gas lamp, a wooden clockwork mechanism on the wall, plants at a window looking out on a canal and a windmill.",
       "world": {
         "differences": [
-          "Low tended masonry quarters draped in gardens instead of tall glass districts (because hydraulic care and daylight keep buildings low while planting cools rooms)",
-          "Tree-lined steam rail paths and cycle ways instead of multi-lane motor roads (because slow steam and muscle power move people between garden districts)",
-          "Mossed gas lanterns and vine-covered heat mains instead of electric lighting grids (because town gas and piped hot water still heat and light tended streets)",
-          "Canal basins, orchards and timber fuel yards between blocks instead of parking structures (because barges, horses and steam haulers bring coal, timber and food)",
-          "Rooftop orchards, ponds and glasshouses instead of rooftop machinery (because each block grows food and stores rainwater above clockwork workshops)"
+          "tall windmills and water wheels driving workshops instead of power stations (because coal ran short and mechanical power took over)",
+          "canals with sailing barges instead of roads (because water is the cheapest way to move goods without engines)",
+          "old brick blocks cared for under trees and gardens instead of new construction (because building is slow and things are kept)",
+          "lanterns and skylights instead of electric lighting (because light still comes from gas, oil and the sun)"
         ],
         "absent": [
-          "overhead power lines and pylons",
+          "power lines",
+          "electric lights",
+          "cars",
           "glass towers",
-          "electric traffic lights",
-          "glowing signs and screens",
-          "radio masts and satellite dishes",
-          "solar panels and wind turbines"
+          "screens"
         ],
         "kept": [
-          "terrain, soils and climate",
-          "mature trees and garden plants",
-          "the region's own building tradition in masonry and timber"
+          "terrain and climate",
+          "the region's building tradition in brick and stone"
         ]
       }
     }

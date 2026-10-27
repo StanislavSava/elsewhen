@@ -470,7 +470,7 @@
         "arid": {
           "caption": "One million years on · hopping rats on the red plain",
           "environment": "A wide, open red plain with strange succulents.",
-          "visualPrompt": "Transform this scene to one million years in the future. A wide, open red-earth plain with strange tall succulents where the structures once stood, warm golden light. One speculative kangaroo-like hopping rat, the size of a dog, with long hind legs and a balancing tail, stands, at its true size for its distance from the camera.",
+          "visualPrompt": "Transform this scene to one million years in the future. A wide, open red-earth plain of drought-adapted shrubs, grasses and tall plants descended from this region’s own desert flora where the structures once stood, warm golden light. One speculative kangaroo-like hopping rat, the size of a dog, with long hind legs and a balancing tail, stands, at its true size for its distance from the camera.",
           "fauna": [
             {
               "kind": "speculative",

@@ -131,29 +131,29 @@
       "year": 100,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2126 · Terraced garden blocks on rail streets",
-      "visualPrompt": "Transform this scene to 2126 in a world where the roman empire never fell. Show terraced garden blocks in the region's own building tradition along a tree-lined rail street with fountains and Latin signs at street level.",
-      "visualPromptIndoor": "A high communal library hall in the region's own building tradition with tall windows, wooden shelves full of paper and digital readers, and readers at long tables under soft electric light.",
+      "caption": "2126 · An imperial city of domes and viaducts",
+      "visualPrompt": "Transform this scene to 2126 in a world where the Roman Empire never fell. A monumental, unbroken classical city in the region's own building tradition: great concrete domes, colonnaded avenues lined with cypresses and stone pines, and tall arched viaducts carrying rail lines across the city like aqueducts.",
+      "visualPromptIndoor": "This room in 2126 in a world where Rome never fell: coffered concrete ceiling, marble and mosaic floor, a colonnaded window onto a courtyard with a fountain.",
       "world": {
         "differences": [
-          "Eight- to ten-storey garden blocks with setback terraces instead of supertall isolated towers (because height limits and sunlight law keep streets bright and dense)",
-          "Silent rail coaches and trams instead of car highways (because movement stays on guided public rail)",
-          "Covered aqueduct power channels and buried cable ducts instead of overhead pylons (because power law keeps wires below ground along highways)",
-          "Paved streets with mist fountains and continuous tree rows instead of asphalt arterials (because municipal water grids cool dense districts)",
-          "Large communal laundries, baths and libraries on ground floors instead of private basements and garages (because block codes require shared services)"
+          "concrete domes and vaulted halls on every district centre instead of glass office towers (because Roman concrete building never stopped and grew to vast spans)",
+          "tall arched viaducts carrying trains across the city instead of motorway flyovers (because the empire's transport grew from aqueducts and paved highways into rail)",
+          "straight colonnaded avenues with cypresses and stone pines instead of car roads (because the imperial street grid was kept and widened for walking and trams)",
+          "carved stone inscriptions and bronze lettering on public buildings instead of illuminated advertising (because public building, not commerce, speaks in the street)",
+          "public baths, fountains and forums at every crossroads instead of shopping malls and car parks (because civic building codes survived for two thousand years)"
         ],
         "absent": [
-          "supertall skyscrapers",
+          "glass skyscrapers",
           "private cars",
           "motorways",
-          "high-voltage pylons",
+          "neon or LED billboards",
           "petrol stations",
-          "surface parking lots"
+          "surface car parks"
         ],
         "kept": [
-          "terrain, rivers and climate",
-          "mature native trees",
-          "the region's traditional courtyard layouts and facade rhythms"
+          "hills, rivers and climate",
+          "the region's trees",
+          "the region's roof pitch and courtyard layouts"
         ]
       }
     },
@@ -161,30 +161,26 @@
       "year": 1000,
       "driver": "culture",
       "structures": "overgrown",
-      "caption": "3026 · Garden blocks under mature trees",
-      "visualPrompt": "Transform this scene to 3026 in a world where the roman empire never fell. Show loved garden blocks in the region's own building tradition softened by mature trees, roof orchards and ponds, with narrow rail paths and fountains kept clear and bright.",
-      "visualPromptIndoor": "A sunlit plant-filled atrium living room in the region's own building tradition with vine-framed windows, wooden seats, clay pots of herbs and a small trickling fountain.",
+      "caption": "3026 · Old domes under stone pines",
+      "visualPrompt": "Transform this scene to 3026 in a world where the Roman Empire never fell. The same monumental domes, colonnades and viaducts stand golden and weathered by a thousand more years, cared for and shaded by huge stone pines and cypresses, with gardens and fountains in every forum.",
+      "visualPromptIndoor": "This room in 3026 in a world where Rome never fell: worn marble, a mosaic floor softened by time, ivy at the arched window, a quiet fountain.",
       "world": {
         "differences": [
-          "Six- to nine-storey cared-for garden blocks with deep planted terraces instead of isolated glass towers and open car parks (because long-term block trusts fund planting and repair)",
-          "Narrow rail paths and walking lanes shaded by mature trees instead of wide car roads (because movement uses light rail and footpaths under tree cover)",
-          "Open aqueduct channels with fish ponds and reed beds instead of piped drains and culverts (because water law keeps channels open and planted)",
-          "Roof orchards, vine frames and beehives instead of bare mechanical roofs (because food and shade codes pay residents to tend roof soil)",
-          "Hand-cut stone benches and small Latin milestones instead of metal guardrails and traffic lights (because street furniture follows durable low-energy patterns)"
+          "honey-coloured weathered concrete and travertine domes instead of steel and glass (because the empire builds to last in stone and concrete)",
+          "giant stone pines and cypress avenues instead of street lamps and wires (because centuries of planting line every imperial road)",
+          "still-working arched viaducts with slow trains instead of roads (because the network is kept, not replaced)",
+          "forums full of fountains and gardens instead of plazas of paving (because water still arrives by aqueduct)"
         ],
         "absent": [
-          "private cars",
+          "glass towers",
+          "cars",
           "motorways",
-          "glass skyscrapers",
-          "high-voltage pylons",
-          "petrol stations",
-          "plastic signage",
-          "surface car parks"
+          "billboards",
+          "overhead power pylons"
         ],
         "kept": [
           "hills, rivers and climate",
-          "native forests and garden trees",
-          "the region's traditional building forms and courtyard patterns"
+          "the layout of the city's main avenues"
         ]
       }
     }

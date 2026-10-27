@@ -96,6 +96,14 @@ body.overlay .topbar, body.overlay .timebar .slider-wrap, body.overlay #hint { v
 .chip select { background: transparent; border: none; padding: 0; cursor: pointer; }
 .chip select option { color: #111; }
 .chip-label { color: var(--muted); }
+/* Phones: the chips get their own row under the wordmark, and long history titles are cut short. */
+@media (max-width: 600px) {
+  .topbar { flex-wrap: wrap; row-gap: 8px; }
+  .topbar-actions { flex: 1 1 100%; min-width: 0; justify-content: flex-start; gap: 6px; }
+  .chip { padding: 5px 10px; font-size: 0.8rem; min-width: 0; }
+  .chip-label { display: none; }
+  .chip select { max-width: 44vw; text-overflow: ellipsis; }
+}
 
 .timebar {
   position: absolute; left: 0; right: 0; bottom: 0; z-index: 1;

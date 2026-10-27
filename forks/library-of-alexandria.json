@@ -165,59 +165,52 @@
       "year": 100,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2126 · Sky bridges and quiet transit",
-      "visualPrompt": "Transform this scene to 2126 in a world where the library of alexandria never burned. Show stacked garden towers in the region's own building tradition linked by inhabited bridges, magnetic shuttle lanes and shaded arcades with orchard roofs.",
-      "visualPromptIndoor": "Interior of a shared growing and living hall with orchard views, water tanks, daylight controls and quiet ventilation.",
+      "caption": "2126 · Towers far beyond ours, quiet streets below",
+      "visualPrompt": "Transform this scene to 2126 in a world where the Library of Alexandria never burned, eight centuries ahead of ours. Very tall slender towers of pale stone and glass with planted terraces rise far above the photo's skyline, with wide quiet streets, silent trams and fountains below.",
+      "visualPromptIndoor": "This room in 2126 eight centuries ahead: pale stone, a full-height window looking out over a city of slender towers, a wall of books.",
       "world": {
         "differences": [
-          "Sixty-story courtyard towers linked by inhabited bridges instead of isolated office slabs (because ultra-light frames and quiet lifts let neighborhoods stack vertically with gardens)",
-          "Silent magnetic shuttle lanes and aerial cable cabins instead of private cars on asphalt streets (because regional transit grids carry most daily trips without street parking)",
-          "Living roofs with orchards and water tanks instead of bare tar and gravel roofs (because water and food rules reward roof planting and rain storage)",
-          "Shaded arcades with mist cooling and path lighting instead of open concrete sidewalks (because district power and water loops cool public ways)",
-          "Market greenhouses and seed rooms at block centers instead of distant truck depots (because neighborhood growing houses shorten fresh food hauling)"
+          "slender towers of a hundred storeys and more instead of mid-rise buildings (because structural engineering is centuries ahead)",
+          "wide quiet streets with silent trams and no traffic jams instead of car roads (because transport was solved long ago)",
+          "pale stone, glass and planted terraces on towers instead of concrete and asphalt (because building materials matured over centuries)",
+          "great libraries and observatories as landmarks instead of shopping centres (because the city grew around learning)"
         ],
         "absent": [
-          "private gasoline cars",
-          "asphalt parking lots",
+          "cars stuck in traffic",
           "overhead power lines",
-          "diesel truck depots",
-          "concrete highway overpasses",
-          "roadside fuel stations"
+          "smog",
+          "billboards",
+          "petrol stations"
         ],
         "kept": [
-          "terrain and coastline shape",
-          "seasonal sun, wind and rain",
-          "native trees and garden plants"
+          "terrain and climate",
+          "the region's trees"
         ]
       }
     },
     {
       "year": 1000,
       "driver": "culture",
-      "structures": "overgrown",
-      "caption": "3026 · Tended gardens over stone streets",
-      "visualPrompt": "Transform this scene to 3026 in a world where the library of alexandria never burned. Show cared low halls in the region's own building tradition grown over with tended gardens and trees, footpaths with vine trellises and rain pools.",
-      "visualPromptIndoor": "Interior of a sunlit hall with tended wall plants, soil beds, wooden tables, paper books and soft daylight from garden windows.",
+      "structures": "alternate",
+      "caption": "3026 · Parkland over a city that went underground",
+      "visualPrompt": "Transform this scene to 3026 in a world where the Library of Alexandria never burned. Most of the city has moved below ground: the surface is open parkland, meadows and woods, with only a few slender pale towers, skylights and garden domes rising from it.",
+      "visualPromptIndoor": "This room in 3026 eight centuries ahead: a calm underground hall lit by a skylight from the park above.",
       "world": {
         "differences": [
-          "Low broad stone and timber halls under garden trees instead of tall glass office towers (because long care favors durable mid-rise rooms shaded by planting)",
-          "Footpaths and slow cycle tracks with vine trellises instead of multi-lane car roads (because daily travel uses walking, cycling and small electric carriers)",
-          "Tended orchards and vegetable terraces between houses instead of parking courts (because food growing is folded into housing plots)",
-          "Rain pools, channels and stone cisterns in streets instead of buried storm drains only (because visible water storage waters gardens and cools lanes)",
-          "Climbing plants and balcony soil beds on every facade instead of bare concrete walls (because planting rules keep walls planted and tended)"
+          "open parkland and woods at the surface instead of streets and buildings (because the city's homes and transport moved underground)",
+          "a few slender pale towers and glass skylights instead of a skyline of blocks (because only landmarks stay above ground)",
+          "meadows and streams instead of paved squares (because the surface is given back to nature)"
         ],
         "absent": [
-          "private gasoline cars",
-          "asphalt parking lots",
-          "overhead power lines",
-          "highway overpasses",
-          "roadside fuel stations",
-          "large neon billboards"
+          "roads",
+          "cars",
+          "dense rows of buildings",
+          "power lines",
+          "billboards"
         ],
         "kept": [
-          "terrain and watercourses",
-          "seasonal climate and native trees",
-          "the region's own courtyard and roof patterns"
+          "hills, rivers and climate",
+          "the region's native trees"
         ]
       }
     }
