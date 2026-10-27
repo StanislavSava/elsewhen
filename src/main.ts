@@ -285,7 +285,10 @@ async function begin(photo: PreparedPhoto, opts: { token?: string; demo?: Demo }
       state.token = opts.token;
     } else {
       if (!cfg.live) return status("");
-      const token = await getTurnstileToken(state.turnstileSiteKey, $("turnstile"));
+      // If Cloudflare wants a click, the widget shows above the loading screen with a word of explanation.
+      const token = await getTurnstileToken(state.turnstileSiteKey, $("turnstile"), (visible) =>
+        loading.caption(visible ? "One quick check that you're human, then we start." : ""),
+      );
       const scene = await api.createScene(photo.blob, photo.width, photo.height, token);
       state.token = scene.token;
     }

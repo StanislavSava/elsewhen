@@ -140,7 +140,8 @@ body.overlay .topbar, body.overlay .timebar .slider-wrap, body.overlay #hint { v
   max-width: min(92vw, 480px); padding: 10px 14px; border-radius: 12px;
   background: rgba(14, 14, 13, 0.82); border: 1px solid var(--faint); font-size: 0.9rem; text-align: center;
 }
-.turnstile { position: absolute; left: 50%; top: 40%; transform: translateX(-50%); }
+/* Above the loading screen (z-index 4): when Cloudflare asks for a click, it must be reachable. */
+.turnstile { position: absolute; left: 50%; bottom: calc(9% + env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 6; }
 
 /* ---------- field-guide sheet ---------- */
 .sheet { position: fixed; inset: 0; z-index: 10; background: rgba(0, 0, 0, 0.45); display: flex; align-items: flex-end; justify-content: center; }

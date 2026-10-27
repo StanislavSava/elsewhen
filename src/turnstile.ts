@@ -23,12 +23,19 @@ function load(): Promise<void> {
   return loading;
 }
 
-export async function getTurnstileToken(sitekey: string, container: HTMLElement): Promise<string> {
+/** onInteractive(true) when Cloudflare needs the visitor to click (show the widget), false once they have. */
+export async function getTurnstileToken(
+  sitekey: string,
+  container: HTMLElement,
+  onInteractive?: (visible: boolean) => void,
+): Promise<string> {
   await load();
   return new Promise((resolve, reject) => {
     const id = window.turnstile!.render(container, {
       sitekey,
       appearance: "interaction-only", // invisible unless Cloudflare needs the visitor to click
+      "before-interactive-callback": () => onInteractive?.(true),
+      "after-interactive-callback": () => onInteractive?.(false),
       callback: (token: string) => {
         resolve(token);
         setTimeout(() => window.turnstile?.remove(id), 0);
