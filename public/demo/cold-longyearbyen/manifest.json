@@ -1,0 +1,1038 @@
+{
+  "name": "cold-longyearbyen",
+  "credit": "Photo: <a href=\"https://commons.wikimedia.org/wiki/File:Residential_houses_from_N_NE_part_of_Longyearbyen_Svalbard_Sukkertoppen_in_background_May_23_2025.jpg\">R. Henrik Nilsson</a>, <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a> (altered)",
+  "biome": "cold",
+  "setting": "outdoor",
+  "width": 1536,
+  "height": 1152,
+  "photo": "photo.jpg",
+  "masks": {
+    "sky": "mask-sky.txt",
+    "building": "mask-building.txt",
+    "tree": "mask-tree.txt",
+    "grass": "mask-grass.txt",
+    "street": "mask-street.txt",
+    "wall": "mask-wall.txt",
+    "ceiling": "mask-ceiling.txt",
+    "floor": "mask-floor.txt"
+  },
+  "forks": {
+    "our-timeline": {
+      "100": {
+        "image": "base_100.webp",
+        "cells": [
+          "clear blue morning sky",
+          "pale blue sky with wisps",
+          "blue sky with white clouds",
+          "distant snowy peak with turbines",
+          "wind turbines on snowy slope",
+          "snow-patched mountain summit with terraces",
+          "sheltered vegetable garden beds",
+          "colourful houses with solar roofs",
+          "low tram embankment with birches"
+        ]
+      },
+      "1000": {
+        "image": "base_1000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "blue sky with wispy clouds",
+          "distant snowy mountain peak",
+          "snow patched mountain slope",
+          "snowy rounded mountain summit",
+          "flower gardens with winding waterways",
+          "low timber houses among birches",
+          "ivy pavilions beside stone paths"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "empty midday blue sky",
+          "blue sky with thin clouds",
+          "distant snow-capped mountain peak",
+          "snowy mountain slope with rock",
+          "snow-covered rounded mountain summit",
+          "grazing reindeer in wetland",
+          "mossy roofless ruin walls",
+          "overgrown ruined walls by meadow"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "clear pale blue sky",
+          "pale blue sky",
+          "snowy mountain peak under clouds",
+          "distant snowy mountain",
+          "snow-streaked dark mountainside",
+          "snow-covered mountain slope",
+          "mossy tundra with pools",
+          "shallow pools and moss",
+          "stocky gray tundra mammal"
+        ]
+      },
+      "-500": {
+        "image": "base_-500.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "blue sky with white clouds",
+          "blue sky above snowy ridge",
+          "blue sky over brown mountainside",
+          "snow-patched mountain summit",
+          "open brown tundra plain",
+          "two canvas tents on gravel",
+          "turf hut with timber stack"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "clear blue sky",
+          "pale blue sky",
+          "white clouds in blue sky",
+          "distant snowy mountain ridge",
+          "mountain slope with snow patches",
+          "snowy rounded mountain summit",
+          "shallow stony tundra pools",
+          "brown gold moss wetland",
+          "mossy stones by pool"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "overcast grey cloudy sky",
+          "thick grey overcast clouds",
+          "pale grey cloudy sky",
+          "distant snowy mountain peak",
+          "woolly mammoth on frozen plain",
+          "snow covered mountain slope",
+          "frosted grassy tundra with larch",
+          "braided glacial meltwater streams",
+          "frosted bank with sparse larches"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "cloudy sky over snowy summit",
+          "distant snow-capped mountain",
+          "patchy snow on dark mountainside",
+          "mossy slope with solitary mammoth",
+          "braided melt ponds on gravel",
+          "gravel bars with dwarf willow",
+          "snow patch among dwarf willow"
+        ]
+      },
+      "-100": {
+        "image": "base_-100.webp",
+        "cells": [
+          "clear blue sky",
+          "pale blue sky",
+          "blue sky with clouds",
+          "distant snowy mountain peak",
+          "dark mountainside with trestles",
+          "snow-covered mountain summit",
+          "grey stilted wooden houses",
+          "colorful stilted barracks rows",
+          "open tundra with pipeline"
+        ]
+      }
+    },
+    "library-of-alexandria": {
+      "0": {
+        "image": "library-of-alexandria_0.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "cloudy blue sky",
+          "green rooftop garden towers",
+          "snowy Sukkertoppen mountain slope",
+          "suspended cable cabins",
+          "brown open tundra foreground",
+          "terraced houses with pod lane",
+          "foreground pipeline crossing tundra"
+        ]
+      },
+      "100": {
+        "image": "library-of-alexandria_100.webp",
+        "cells": [
+          "clear blue sky",
+          "pale blue sky",
+          "thin clouds in sky",
+          "terraced towers above houses",
+          "snow patched mountain slope",
+          "snowy dome with cable cabins",
+          "arcaded greenhouses with fountains",
+          "magnetic shuttle at fountain plaza",
+          "tundra meadow with shuttle track"
+        ]
+      },
+      "1000": {
+        "image": "library-of-alexandria_1000.webp",
+        "cells": [
+          "clear blue daytime sky",
+          "blue sky with wispy clouds",
+          "blue sky with scattered clouds",
+          "snowy distant peak over birches",
+          "weathered timber hall on terrace",
+          "snow mountain dome with towers",
+          "vegetable terraces with vine trellis",
+          "footpath and rain water channel",
+          "vine trellises over stone channels"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "empty midday blue sky",
+          "blue sky with thin clouds",
+          "distant snow-capped mountain peak",
+          "snowy mountain slope with rock",
+          "snow-covered rounded mountain summit",
+          "grazing reindeer in wetland",
+          "mossy roofless ruin walls",
+          "overgrown ruined walls by meadow"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "clear pale blue sky",
+          "pale blue sky",
+          "snowy mountain peak under clouds",
+          "distant snowy mountain",
+          "snow-streaked dark mountainside",
+          "snow-covered mountain slope",
+          "mossy tundra with pools",
+          "shallow pools and moss",
+          "stocky gray tundra mammal"
+        ]
+      },
+      "-500": {
+        "image": "library-of-alexandria_-500.webp",
+        "cells": [
+          "clear blue sky",
+          "empty blue sky",
+          "blue sky with clouds",
+          "distant snow-capped peaks",
+          "patchy snow mountainside slope",
+          "snowy mountain summit",
+          "three skin tents on tundra",
+          "driftwood hut with survey poles",
+          "stacked timber and coal piles"
+        ]
+      },
+      "-2000": {
+        "image": "library-of-alexandria_-2000.webp",
+        "cells": [
+          "clear cold Arctic sky",
+          "clear blue Arctic sky",
+          "wispy white Arctic clouds",
+          "distant snow-covered mountain peak",
+          "snow-patched Sukkertoppen mountainside",
+          "snowy Sukkertoppen dome summit",
+          "brown moss tundra pools",
+          "shallow tundra melt pools",
+          "low willow lichen gravel"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "overcast grey cloudy sky",
+          "thick grey overcast clouds",
+          "pale grey cloudy sky",
+          "distant snowy mountain peak",
+          "woolly mammoth on frozen plain",
+          "snow covered mountain slope",
+          "frosted grassy tundra with larch",
+          "braided glacial meltwater streams",
+          "frosted bank with sparse larches"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "cloudy sky over snowy summit",
+          "distant snow-capped mountain",
+          "patchy snow on dark mountainside",
+          "mossy slope with solitary mammoth",
+          "braided melt ponds on gravel",
+          "gravel bars with dwarf willow",
+          "snow patch among dwarf willow"
+        ]
+      },
+      "-100": {
+        "image": "library-of-alexandria_-100.webp",
+        "cells": [
+          "clear evening sky",
+          "pale blue sky",
+          "cloudy blue sky",
+          "distant snowy mountain",
+          "patchy snowy mountainside slope",
+          "steel towers on snowy slope",
+          "red timber house rows",
+          "lit houses along gravel lanes",
+          "station shed with battery carts"
+        ]
+      }
+    },
+    "no-electricity": {
+      "0": {
+        "image": "no-electricity_0.webp",
+        "cells": [
+          "clear blue sky",
+          "empty blue sky",
+          "blue sky with clouds",
+          "distant snowy mountain peak",
+          "snow-streaked Sukkertoppen slope",
+          "snowy summit above chimney",
+          "tundra foreground with train",
+          "painted shops with lorries",
+          "shopfronts with gas lanterns"
+        ]
+      },
+      "100": {
+        "image": "no-electricity_100.webp",
+        "cells": [
+          "clear blue morning sky",
+          "clear blue sky",
+          "pale cloudy blue sky",
+          "distant snow-covered mountain peak",
+          "snow-patched Sukkertoppen mountainside",
+          "snowy slope with avalanche barriers",
+          "low painted courtyard housing blocks",
+          "steam tramway with gas lanterns",
+          "insulated heat mains beside glasshouse"
+        ]
+      },
+      "1000": {
+        "image": "no-electricity_1000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "soft white clouds",
+          "snowy mountain with windmill",
+          "snow-patched mountain slope",
+          "windmill before snowy mountain",
+          "canal pond with boat",
+          "moored wooden cargo boat",
+          "stone canal with gas lanterns"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "empty midday blue sky",
+          "blue sky with thin clouds",
+          "distant snow-capped mountain peak",
+          "snowy mountain slope with rock",
+          "snow-covered rounded mountain summit",
+          "grazing reindeer in wetland",
+          "mossy roofless ruin walls",
+          "overgrown ruined walls by meadow"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "clear pale blue sky",
+          "pale blue sky",
+          "snowy mountain peak under clouds",
+          "distant snowy mountain",
+          "snow-streaked dark mountainside",
+          "snow-covered mountain slope",
+          "mossy tundra with pools",
+          "shallow pools and moss",
+          "stocky gray tundra mammal"
+        ]
+      },
+      "-500": {
+        "image": "base_-500.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "blue sky with white clouds",
+          "blue sky above snowy ridge",
+          "blue sky over brown mountainside",
+          "snow-patched mountain summit",
+          "open brown tundra plain",
+          "two canvas tents on gravel",
+          "turf hut with timber stack"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "clear blue sky",
+          "pale blue sky",
+          "white clouds in blue sky",
+          "distant snowy mountain ridge",
+          "mountain slope with snow patches",
+          "snowy rounded mountain summit",
+          "shallow stony tundra pools",
+          "brown gold moss wetland",
+          "mossy stones by pool"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "overcast grey cloudy sky",
+          "thick grey overcast clouds",
+          "pale grey cloudy sky",
+          "distant snowy mountain peak",
+          "woolly mammoth on frozen plain",
+          "snow covered mountain slope",
+          "frosted grassy tundra with larch",
+          "braided glacial meltwater streams",
+          "frosted bank with sparse larches"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "cloudy sky over snowy summit",
+          "distant snow-capped mountain",
+          "patchy snow on dark mountainside",
+          "mossy slope with solitary mammoth",
+          "braided melt ponds on gravel",
+          "gravel bars with dwarf willow",
+          "snow patch among dwarf willow"
+        ]
+      },
+      "-100": {
+        "image": "no-electricity_-100.webp",
+        "cells": [
+          "clear blue sky",
+          "pale blue midday sky",
+          "blue sky with clouds",
+          "distant snow-capped mountain",
+          "timber trestles on slope",
+          "hilltop semaphore signal post",
+          "canvas tents and steam tractor",
+          "stacked timber and coal sacks",
+          "log barracks with gas lamps"
+        ]
+      }
+    },
+    "no-printing-press": {
+      "0": {
+        "image": "no-printing-press_0.webp",
+        "cells": [
+          "clear blue sky",
+          "blue sky with faint clouds",
+          "blue sky with white clouds",
+          "distant snowy mountain peak",
+          "partly snowy mountain slope",
+          "snow-covered rounded mountain dome",
+          "colorful courtyard housing blocks",
+          "brown tundra with tram rails",
+          "mural housing with speaker pole"
+        ]
+      },
+      "100": {
+        "image": "no-printing-press_100.webp",
+        "cells": [
+          "clear blue sky",
+          "bright blue sky",
+          "blue sky with clouds",
+          "snowy peaks and bell towers",
+          "patchy snowy mountain slope",
+          "snowy mountain summit slope",
+          "soil roofed mural courtyard blocks",
+          "battery track pedal sled cars",
+          "voice posts beside battery track"
+        ]
+      },
+      "1000": {
+        "image": "no-printing-press_1000.webp",
+        "cells": [
+          "clear blue sky",
+          "empty blue sky",
+          "wispy clouds over summit",
+          "distant snowy mountain peak",
+          "snow-streaked mountain slope",
+          "snowy summit above houses",
+          "tundra meadow with voice poles",
+          "story-panel house with roof terraces",
+          "light rail embankment through meadow"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "empty midday blue sky",
+          "blue sky with thin clouds",
+          "distant snow-capped mountain peak",
+          "snowy mountain slope with rock",
+          "snow-covered rounded mountain summit",
+          "grazing reindeer in wetland",
+          "mossy roofless ruin walls",
+          "overgrown ruined walls by meadow"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "clear pale blue sky",
+          "pale blue sky",
+          "snowy mountain peak under clouds",
+          "distant snowy mountain",
+          "snow-streaked dark mountainside",
+          "snow-covered mountain slope",
+          "mossy tundra with pools",
+          "shallow pools and moss",
+          "stocky gray tundra mammal"
+        ]
+      },
+      "-500": {
+        "image": "no-printing-press_-500.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "blue sky with thin clouds",
+          "distant snow-capped peak",
+          "snow-streaked mountain slope",
+          "snow-covered dome summit",
+          "mossy tundra with meltwater streams",
+          "two skin tents and timber pile",
+          "drying rack with painted hide"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "clear blue sky",
+          "pale blue sky",
+          "white clouds in blue sky",
+          "distant snowy mountain ridge",
+          "mountain slope with snow patches",
+          "snowy rounded mountain summit",
+          "shallow stony tundra pools",
+          "brown gold moss wetland",
+          "mossy stones by pool"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "overcast grey cloudy sky",
+          "thick grey overcast clouds",
+          "pale grey cloudy sky",
+          "distant snowy mountain peak",
+          "woolly mammoth on frozen plain",
+          "snow covered mountain slope",
+          "frosted grassy tundra with larch",
+          "braided glacial meltwater streams",
+          "frosted bank with sparse larches"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "cloudy sky over snowy summit",
+          "distant snow-capped mountain",
+          "patchy snow on dark mountainside",
+          "mossy slope with solitary mammoth",
+          "braided melt ponds on gravel",
+          "gravel bars with dwarf willow",
+          "snow patch among dwarf willow"
+        ]
+      },
+      "-100": {
+        "image": "no-printing-press_-100.webp",
+        "cells": [
+          "clear blue sky",
+          "clear midday blue sky",
+          "blue sky white clouds",
+          "distant snowy mountain ridge",
+          "snow patched mountain slope",
+          "snow covered mountain summit",
+          "red timber rows snow roofs",
+          "horse wagon dirt track",
+          "painted walls hand-lettered boards"
+        ]
+      }
+    },
+    "rome-never-fell": {
+      "0": {
+        "image": "rome-never-fell_0.webp",
+        "cells": [
+          "clear blue sky",
+          "blue sky with clouds",
+          "partly cloudy blue sky",
+          "distant snowy mountain peak",
+          "snow-streaked mountain slope",
+          "snow-covered mountain summit",
+          "colorful colonnaded perimeter blocks",
+          "stone plaza with fountain",
+          "tundra with tram rails"
+        ]
+      },
+      "100": {
+        "image": "rome-never-fell_100.webp",
+        "cells": [
+          "clear blue sky",
+          "blue sky with clouds",
+          "pale blue cloudy sky",
+          "stone aqueduct over glasshouses",
+          "snowy mountain slope above terraces",
+          "silent rail coach on viaduct",
+          "public laundry and library colonnades",
+          "public bath with mist fountain",
+          "dry meadow with buried duct"
+        ]
+      },
+      "1000": {
+        "image": "rome-never-fell_1000.webp",
+        "cells": [
+          "clear blue sky",
+          "pale blue sky",
+          "thin white clouds",
+          "distant snowy mountain",
+          "stone rail viaduct",
+          "snowy mountain summit",
+          "mature birch willow grove",
+          "mossy terraced stone blocks",
+          "milestone by reed ponds"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "empty midday blue sky",
+          "blue sky with thin clouds",
+          "distant snow-capped mountain peak",
+          "snowy mountain slope with rock",
+          "snow-covered rounded mountain summit",
+          "grazing reindeer in wetland",
+          "mossy roofless ruin walls",
+          "overgrown ruined walls by meadow"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "clear pale blue sky",
+          "pale blue sky",
+          "snowy mountain peak under clouds",
+          "distant snowy mountain",
+          "snow-streaked dark mountainside",
+          "snow-covered mountain slope",
+          "mossy tundra with pools",
+          "shallow pools and moss",
+          "stocky gray tundra mammal"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "clear blue sky",
+          "pale blue sky",
+          "white clouds in blue sky",
+          "distant snowy mountain ridge",
+          "mountain slope with snow patches",
+          "snowy rounded mountain summit",
+          "shallow stony tundra pools",
+          "brown gold moss wetland",
+          "mossy stones by pool"
+        ]
+      },
+      "-500": {
+        "image": "rome-never-fell_-500.webp",
+        "cells": [
+          "clear blue sky",
+          "pale blue sky",
+          "blue sky with clouds",
+          "distant snowy mountain peak",
+          "two hide tents",
+          "snowy rounded mountain summit",
+          "driftwood stack on tundra",
+          "Latin-cut stone marker",
+          "hide tent on brown tundra"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "overcast grey cloudy sky",
+          "thick grey overcast clouds",
+          "pale grey cloudy sky",
+          "distant snowy mountain peak",
+          "woolly mammoth on frozen plain",
+          "snow covered mountain slope",
+          "frosted grassy tundra with larch",
+          "braided glacial meltwater streams",
+          "frosted bank with sparse larches"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "cloudy sky over snowy summit",
+          "distant snow-capped mountain",
+          "patchy snow on dark mountainside",
+          "mossy slope with solitary mammoth",
+          "braided melt ponds on gravel",
+          "gravel bars with dwarf willow",
+          "snow patch among dwarf willow"
+        ]
+      },
+      "-100": {
+        "image": "rome-never-fell_-100.webp",
+        "cells": [
+          "clear blue sky",
+          "empty midday sky",
+          "white clouds in blue sky",
+          "long painted barracks block",
+          "snow-covered mountain slope",
+          "arched market with Latin tablets",
+          "walled vegetable garden plots",
+          "green trams and coal tubs",
+          "parked green passenger tram"
+        ]
+      }
+    },
+    "tamed-mammoth": {
+      "0": {
+        "image": "tamed-mammoth_0.webp",
+        "cells": [
+          "clear blue sky",
+          "blue sky with clouds",
+          "white clouds in sky",
+          "distant snowy mountain peak",
+          "patchy snow mountainside slope",
+          "snow-covered mountain summit",
+          "grassy meadow with haystacks",
+          "mammoth hauled hay wagons",
+          "battery van and cabinets"
+        ]
+      },
+      "100": {
+        "image": "tamed-mammoth_100.webp",
+        "cells": [
+          "clear blue morning sky",
+          "empty blue sky",
+          "blue sky with clouds",
+          "distant snowy mountain peak",
+          "patchy snow mountainside slope",
+          "snowy mountain summit",
+          "mammoth pulling fodder wagon",
+          "terraced blocks with roof planting",
+          "water troughs beside tram rails"
+        ]
+      },
+      "1000": {
+        "image": "tamed-mammoth_1000.webp",
+        "cells": [
+          "clear blue sky",
+          "vast clear blue sky",
+          "wispy clouds in blue sky",
+          "distant snow-capped peak",
+          "snowy mountainside above orchards",
+          "snow-covered mountain summit",
+          "mammoths grazing on grass lane",
+          "vegetable beds before sod houses",
+          "stone cisterns and hand pump"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "empty midday blue sky",
+          "blue sky with thin clouds",
+          "distant snow-capped mountain peak",
+          "snowy mountain slope with rock",
+          "snow-covered rounded mountain summit",
+          "grazing reindeer in wetland",
+          "mossy roofless ruin walls",
+          "overgrown ruined walls by meadow"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "clear pale blue sky",
+          "pale blue sky",
+          "snowy mountain peak under clouds",
+          "distant snowy mountain",
+          "snow-streaked dark mountainside",
+          "snow-covered mountain slope",
+          "mossy tundra with pools",
+          "shallow pools and moss",
+          "stocky gray tundra mammal"
+        ]
+      },
+      "-2000": {
+        "image": "tamed-mammoth_-2000.webp",
+        "cells": [
+          "clear blue sky",
+          "vast clear blue sky",
+          "white clouds in blue sky",
+          "distant snow-capped mountain",
+          "snow-streaked mountain slope",
+          "snowy mountain summit",
+          "stacked driftwood pile",
+          "hide tents around hollow",
+          "two harnessed woolly mammoths"
+        ]
+      },
+      "-500": {
+        "image": "tamed-mammoth_-500.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "cloudy blue sky",
+          "distant snowy mountain peak",
+          "snow-patched mountain slope",
+          "snowy mountain summit",
+          "haystack beside wicker fence",
+          "mammoth pulling hay wagon",
+          "mammoth hauling hay wagon"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "overcast grey cloudy sky",
+          "thick grey overcast clouds",
+          "pale grey cloudy sky",
+          "distant snowy mountain peak",
+          "woolly mammoth on frozen plain",
+          "snow covered mountain slope",
+          "frosted grassy tundra with larch",
+          "braided glacial meltwater streams",
+          "frosted bank with sparse larches"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "cloudy sky over snowy summit",
+          "distant snow-capped mountain",
+          "patchy snow on dark mountainside",
+          "mossy slope with solitary mammoth",
+          "braided melt ponds on gravel",
+          "gravel bars with dwarf willow",
+          "snow patch among dwarf willow"
+        ]
+      },
+      "-100": {
+        "image": "tamed-mammoth_-100.webp",
+        "cells": [
+          "clear blue sky",
+          "pale blue sky",
+          "blue sky with clouds",
+          "distant snowy mountain peak",
+          "patchy snow mountain slope",
+          "snowy mountain summit",
+          "red timber outbuildings and meadow",
+          "mammoth hay wagons on boulevard",
+          "red wool hay store"
+        ]
+      }
+    }
+  },
+  "notes": {
+    "our-timeline": {
+      "place": "Longyearbyen, Svalbard, Norway",
+      "eras": {
+        "100": "New since a century ago, the same blocks of colourful houses still stand on the same plots with added insulated cladding, red roofs and deep green sedum roofs, joined by a low tram embankment and sheltered vegetable gardens and birch plantings on every street. The same mountain behind carries patchy snow, with wind turbines and planted terraces on its lower slope and meadow tundra in the foreground.",
+        "1000": "New since the last time, the same streets remain with lower timber houses and glasshouse pavilions set among broad meadows, berry gardens and rows of hardy birch and willow, all carefully tended with stone paths and water channels. The same rounded mountain behind keeps its snow patches above the greened lower slopes.",
+        "10000": "The lower concrete and timber walls of the colourful blocks still stand in the same places, roofless and weathered and gently overgrown with moss, grass and small birch and willow trees growing inside them. The foreground has returned to wet tundra meadow with ponds, and the same rounded mountain rises behind with snow and bare rock.",
+        "1000000": "Every trace of the houses has gone, leaving open rolling tundra of moss, lichen, gravel and shallow pools across the foreground and mid-ground. The same rounded mountain rises behind, snow-streaked over dark rock under a blue sky.",
+        "-1000000": "The flat valley floor lies buried under thick glacial ice and grey moraine, with meltwater shining on its surface. The same rounded mountain rises behind, almost fully white under ice with only dark rock ribs showing.",
+        "-10000": "The ice has withdrawn to leave a bare gravel outwash plain with shallow braided melt ponds and patches of snow in the foreground. The same rounded mountain behind shows patchy snow on dark rock, with low moss and dwarf willow beginning to cover the ground.",
+        "-2000": "The foreground is open autumn tundra of brown-gold moss, lichen and scattered stones with shallow pools and faint reindeer trails. The same rounded mountain behind carries summer snow on its upper slopes above bare rock.",
+        "-500": "New since the last time, a small shore camp stands on the mid-ground where the later houses will stand: two low tents and one small driftwood-and-turf hut beside a rack of stacked timber and a cleared gravel plot with a faint track. The foreground remains open tundra and the same snow-streaked mountain rises behind.",
+        "-100": "New since the camp, rows of small wooden barracks and gabled houses in red, yellow and grey now stand across the mid-ground on wooden posts, with gravel tracks and tall cable trestles climbing the lower slope of the same mountain. The foreground is still open tundra with a piped water line crossing it."
+      },
+      "cells": [
+        "clear blue sky",
+        "pale blue sky",
+        "blue sky with clouds",
+        "distant snowy mountain peak",
+        "snow-patched mountain slope",
+        "snow-covered mountain side",
+        "colorful hillside houses",
+        "brown tundra field",
+        "grey apartment blocks"
+      ]
+    },
+    "library-of-alexandria": {
+      "place": "Longyearbyen, Adventdalen, Svalbard, Norway - colorful mining town on Arctic tundra below Sukkertoppen mountain",
+      "eras": {
+        "0": "The same low two- to four-story colour-panel houses stand densely terraced under Sukkertoppen, now with glass sunrooms, rooftop plantings and solar canopies, permeable paths with rain gardens and cycle tracks, low-energy text panels and wayfinding lights, and automated electric pods on a reserved lane with buried grid and no overhead lines. New since 1926 are the insulated facades, roof gardens, pod lane and cable cabins reusing the old ore-tower line, while height, mountain snow and open tundra foreground with its pipeline remain.",
+        "100": "Terraced three- to four-story insulated houses with living sedum roofs and glass greenhouses at block centers stand linked by enclosed warm walkways and inhabited bridges, with a silent magnetic shuttle lane and aerial cable cabins above, shaded arcades with mist cooling and path lighting, and orchard seedlings in indoor roof houses. New since 2026 are the connecting bridges, shuttle lane and centre greenhouses with water tanks, while the low skyline, tundra meadow and snowy dome stay, with no private cars, asphalt lots or fuel stations.",
+        "1000": "Low broad stone-and-timber halls with soil beds and climbing hardy greens on every facade stand on the same terraces under garden birch and willow, joined by footpaths and slow cycle tracks with vine trellises, tended vegetable terraces, rain pools, channels and stone cisterns cooling the lanes. The earlier house frames still stand, weathered and gently overgrown with moss and balcony plantings, with orchard greenhouses and meadows between them, the mountain dome and tundra intact and no car roads or neon signs.",
+        "-2000": "Open brown moss tundra with shallow melt pools stretches to the snow-patched dome of Sukkertoppen, with no houses, streets or fences in view. Low willow, lichen and gravel cover the valley floor under a cold Arctic sky.",
+        "-500": "On the lower slope where later rows will stand, three skin tents and a low driftwood hut stand beside a cleared gravel plot with stacked timber, coal lumps and a line of survey poles marking a track. New since the open tundra are these seasonal shelters, fuel stacks and pole track, while the mountain snows, valley moss and melt pools remain, with no brick blocks, rails or lamps.",
+        "-100": "In rows up the snowy slope stand two- to three-story timber and brick houses painted red, yellow and grey, with gravel lanes, buried power cables and bright electric streetlights, and steel aerial ore-cable towers crossing the hillside behind them. New since the tent camp are the year-round house rows, a station shed with battery carts on a short rail, and lit windows with printed timetables, but no tall towers or overhead wires, the valley moss and mountain snow unchanged."
+      },
+      "cells": null
+    },
+    "no-electricity": {
+      "place": "Longyearbyen, Adventdalen, Svalbard, Norway, looking across tundra valley floor toward Sukkertoppen mountain, Arctic permafrost climate",
+      "eras": {
+        "0": "The valley view keeps the same snow-streaked Sukkertoppen and brown tundra foreground, now edged by gravel roads, but the hillside is packed with two- to three-storey painted timber houses with red roofs in dense low quarters instead of glass towers, lit by round gas lanterns and served by facade gas and steam pipes. New since 1926 are the larger Lia rows on the same plots, rooftop coal bunkers, water tanks and greenhouses, district boiler chimneys, heavy diesel lorries with air starters, steam tractors and pedal cycles, and painted shop boards and bulletin kiosks, with no overhead power lines, LED lights, neon signs, radio masts or satellite dishes because coal-gas, steam and compressed air power everything.",
+        "100": "The same low town under Sukkertoppen remains tightly packed in broad low courtyard blocks around a narrow steam-rail siding, still two to four storeys in painted masonry and timber, with rows of gas lanterns and insulated heat mains on brackets and rooftop bunkers and glasshouses instead of electric columns and cable ducts. New since 2026 are the steam tramway track and compressed-air delivery vans on the valley road, enamel timetables and printed bulletin kiosks, and heated market glasshouses and coal-oil yards at the edge worked by steam tractors, with no power lines, skyscrapers, screens or radio towers because pipes, rail and optical relay carry power and news.",
+        "1000": "The same slope below Sukkertoppen still holds low tended masonry and timber quarters with red roofs, weathered and gently overgrown with moss, dwarf willow and garden terraces, linked by steam-rail paths and cycle ways bordered by hardy shrubs instead of motor roads. Still standing with mossed gas lanterns, vine-covered heat mains, canal ponds, rooftop orchards under glass and timber fuel yards between blocks, the blocks grow food and store rainwater above clockwork workshops, with no power lines, glass towers, glowing signs or satellite dishes because town gas and piped hot water still heat and light the cared-for streets.",
+        "-100": "Open brown tundra foreground holds only a sledge track, stacked timber, coal sacks and a small tent camp where the later foreground blocks will stand, while the slope below snow-patched Sukkertoppen holds low timber barracks, a low boiler house with chimney and wooden coal-cableway trestles instead of the later dense rows. New since the empty tundra are tall cast-iron gas lamps with mantles, a coal yard and cinder tracks for horse sledges and a hissing steam tractor, with a hilltop semaphore post and no electric lights, petrol cars or wires because town gas and steam provide heat, light and haulage for the coal depot."
+      },
+      "cells": null
+    },
+    "no-printing-press": {
+      "place": "Longyearbyen in Adventdalen, Spitsbergen, Svalbard, Norway, looking east over tundra foreground to the town below the snow-patched dome of Sukkertoppen",
+      "eras": {
+        "0": "New since the small rows, the same plots now hold larger three- to four-storey panel-and-timber courtyard blocks in red, yellow, blue and grey, with insulated roofs and glasshouse beds and stable yards between, below the unchanged snowy dome. Stone-set lanes and packed-earth sidetracks with timber speaker poles and small listening shelters carry sled tracks, bicycles and few shared motor vans, with hand-painted picture walls and chalk boards and no glass towers, cars, glowing billboards or parking lots, since reading stays rare and coordination stays by voice.",
+        "100": "New since the present blocks, the same courtyard blocks stand a storey taller with soil roofs, glasshouse terraces and moss-willow planting, walls carrying large mural pictures and carved panels beside low timber voice posts with lamps. Narrow planted lanes with permeable gravel link footpaths and a small battery-track line for pedal sleds and shared service vans, with orchard glasshouses and cistern beds between houses, and no private cars, text screens or motorways, as voice networks keep movement slow and local.",
+        "1000": "The same courtyard clusters still stand as three- to five-storey timber-and-stone houses with deep living roofs of moss, grasses and vegetable terraces, glasshouse orchards and rain cisterns between, below the same snow-streaked mountain, weathered and gently overgrown. Hardy greens grow over hand-cut story panels and image walls beside small timber voice poles with lamps, linked only by footpaths, cycle tracks and a light rail embankment, with meadows reaching to the tundra.",
+        "-500": "Broad brown-green tundra moss with meltwater threads stretches to the same snow-streaked dome under blue sky, with no streets or large houses. On the flat where later blocks will stand are only two low skin tents beside a driftwood skid, a stacked timber pile and a drying rack with a hand-painted hide mark, since slow hand-copied charts leave this far valley without a town.",
+        "-100": "New since the tents, low two- to three-storey timber rows painted red, ochre and grey now stand on the same flats, with small storehouses and fenced yards between, roofs snow-topped below the same white mountain. Large painted picture walls and hand-lettered boards replace printed signs, narrow sled tracks and handcart ruts cross packed earth with a low voice-pole line and mild gas lamps, and no cars, billboards or electric signals, because voice orders and hand ledgers keep firms small and local."
+      },
+      "cells": null
+    },
+    "rome-never-fell": {
+      "place": "Longyearbyen, Svalbard, Norway, valley floor looking toward Sukkertoppen mountain, Arctic tundra and permafrost, polar climate",
+      "eras": {
+        "0": "Since 1926 the same rows have grown denser into four- to five-storey mixed-use stone-concrete perimeter blocks in the same red, ochre and blue, with stone-paved plazas, a covered fountain colonnade and rooftop glasshouses and courtyard gardens, served by twin-track tram rails and buried cable ducts with uniform Latin enamel plaques. No private cars, petrol stations, glass towers or asphalt lots exist, and the meadow tundra foreground and snow-streaked mountain stand unchanged behind.",
+        "100": "Since 2026 the blocks on the same footprints have risen to six storeys with setback planted terraces, willow rows and glasshouse roofs, their ground floors holding a communal bath, laundry and library under Latin tablets. Movement is by silent rail coaches and foot lanes with mist fountains along the stone-paved street, power in covered channels and buried ducts, with the meadow foreground and mountain unchanged and no cars, motorways or pylons.",
+        "1000": "Since 2126 the same terraced blocks still stand, weathered stone gently overgrown with moss, peat gardens, vine frames and roof soil with beehive boxes, fronted by narrow rail foot lanes shaded by mature sheltered birch-willow groves. Open stone water channels with reed beds and small fish ponds feed the meadow foreground, with hand-cut benches and small Latin milestones, and no cars, motorways, glass towers or plastic signage.",
+        "-500": "The foreground is open brown moss tundra and the snow-streaked rounded mountain stands with no town. On the terrace where later rows will stand is a first seasonal camp of three hide tents, a driftwood stack and a Latin-cut stone marker with a cleared sledge track.",
+        "-100": "Since the tent camp, a compact coal hamlet now lines the lower slope on the same footprint: two- to three-storey stone barracks painted red, yellow and grey with a small arched market hall bearing Latin tablets, linked by a straight stone-paved track with side drains and a stone-railed wagonway for coal tubs. The tundra foreground and snow mountain remain open, with copper wire on poles and no private cars, palisades or muddy lanes."
+      },
+      "cells": null
+    },
+    "tamed-mammoth": {
+      "place": "Longyearbyen, Svalbard, Norway",
+      "eras": {
+        "0": "New since 1926: the same hillside now holds three- to four-story colorful mixed blocks with set-back yards and felt workshops, still low and spread out. In front lie turfed mammoth freight lanes with electric-assist wagons and small battery vans, linear hay meadows, water troughs and ground power cabinets, with buried lines and no private cars, poles or asphalt parking.",
+        "100": "New since 2026: the same blocks now stand four- to five-story with roof planting and garden terraces, linked by green avenues with sensor posts, water troughs and guided mammoth-tram rails. Between them lie neighborhood fodder gardens and wool workshops served by buried grids with sidewalk hatches, with no private cars or overhead lines.",
+        "1000": "New since 2126: the blocks have opened into lower one- to three-story planted houses with soil roofs standing weathered and gently overgrown on the same hillside. Around them lie grass lanes with grazing mammoths, terraced vegetable beds and orchard rows, stone cisterns, troughs and hand pumps, and thick mammoth-wool awnings, with the mountain and tundra still behind.",
+        "-2000": "The snow-streaked mountain and brown tundra valley lie open with no permanent houses. On the lower slope where houses will later stand are three hide tents around a trampled grazing hollow with mammoth dung, a sledge track and a stacked driftwood pile.",
+        "-500": "New since the camp: low turf-and-driftwood houses with large yards and timber-earth fodder barns now stand on the same slope. A very wide packed-earth lane with water troughs and hitching posts runs between them, lined with haystacks, drying frames and woven mammoth-wool felt fences, with high-wheeled mammoth wagons resting beside outer hayfields.",
+        "-100": "New since the hamlet: the same plots now hold larger two- to three-story wooden blocks with stable yards and red, yellow and grey cladding. Between them run very wide earth-and-gravel boulevards with separate mammoth lanes, iron lamp posts on buried cables, troughs, urban hay meadows and large painted wool signs, with no cars or overhead wires."
+      },
+      "cells": null
+    }
+  }
+}

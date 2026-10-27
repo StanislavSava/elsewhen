@@ -1,0 +1,1024 @@
+{
+  "name": "tropical-paraty",
+  "credit": "Photo: <a href=\"https://commons.wikimedia.org/wiki/File:Brazil_Paraty_Street.JPG\">Whatsinaname (Wikitravel shared)</a>, public domain (altered)",
+  "biome": "tropical",
+  "setting": "outdoor",
+  "width": 1536,
+  "height": 1152,
+  "photo": "photo.jpg",
+  "masks": {
+    "sky": "mask-sky.txt",
+    "building": "mask-building.txt",
+    "tree": "mask-tree.txt",
+    "grass": "mask-grass.txt",
+    "street": "mask-street.txt",
+    "wall": "mask-wall.txt",
+    "ceiling": "mask-ceiling.txt",
+    "floor": "mask-floor.txt"
+  },
+  "forks": {
+    "our-timeline": {
+      "100": {
+        "image": "base_100.webp",
+        "cells": [
+          "white colonial facade with windows",
+          "pale daytime sky",
+          "green rooftop with vines",
+          "vine-covered arched doorways",
+          "green roofs with young trees",
+          "white houses with green roofs",
+          "planted street garden beds",
+          "cobbled street with tram rails",
+          "potted fruit trees by wall"
+        ]
+      },
+      "1000": {
+        "image": "base_1000.webp",
+        "cells": [
+          "white house arched windows",
+          "pale sunny sky",
+          "rooftop garden trees",
+          "vine covered house doorways",
+          "tall leafy canopy trees",
+          "ivy covered white houses",
+          "mossy cobbled walkway planters",
+          "lily covered water channel",
+          "mossy cobbled garden path"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "tall mossy rainforest trees",
+          "dense hanging vines and canopy",
+          "bright closed Atlantic forest canopy",
+          "mossy ruined wall with bromeliads",
+          "roofless overgrown stone house walls",
+          "green parrot flying over ruins",
+          "moss-covered ancient street wall base",
+          "mossy leaf-covered cobble street path",
+          "mossy stone ruin topped with bromeliad"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "mossy tree trunk with vines",
+          "pale misty sky over forest",
+          "mossy branches over tree fern",
+          "tall tree ferns with fronds",
+          "dense misty rainforest interior",
+          "arching green tree fern fronds",
+          "muddy mangrove bank with log",
+          "slow brown tidal creek",
+          "grey heron on creek bank"
+        ]
+      },
+      "-500": {
+        "image": "base_-500.webp",
+        "cells": [
+          "overcast grey sky",
+          "cloudy sky with palm crown",
+          "pale cloudy sky",
+          "banana plants above thatched roofs",
+          "large leafy tree with palms",
+          "distant palm over green treeline",
+          "wattle hut with thatched roof",
+          "packed-earth path with woven fences",
+          "thatched huts with fenced gardens"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "dense tall forest canopy",
+          "pale overcast sky",
+          "towering rainforest tree crown",
+          "smoking thatched wattle hut",
+          "sandy footpath into forest",
+          "open thatched stick hut",
+          "fenced manioc beds left",
+          "sandy footpath foreground",
+          "fenced manioc beds right"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "bromeliad-covered rainforest trees",
+          "tall palms under cloudy sky",
+          "leafy treetops and grey sky",
+          "giant tree ferns understory",
+          "dense humid forest interior",
+          "giant ground sloth climbing",
+          "mossy muddy creek bank",
+          "slow muddy tidal creek",
+          "mangrove thicket with prop roots"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "tall fan palms trunks",
+          "moss-draped broadleaf tree limb",
+          "overcast grey cloudy sky",
+          "dense rainforest trunks understory",
+          "tusked elephant at treeline",
+          "dense palm rainforest canopy",
+          "tall bankside reeds leaf litter",
+          "winding shallow brackish channel",
+          "tall cattail reeds sandy bank"
+        ]
+      },
+      "-100": {
+        "image": "base_-100.webp",
+        "cells": [
+          "two-storey whitewashed corner house",
+          "overcast grey sky",
+          "white house red tile roof",
+          "ochre doors iron lantern",
+          "white row houses tiled roofs",
+          "white houses colorful doors",
+          "vintage black open car",
+          "cobbled street vintage cars",
+          "cobbled sidewalk white wall"
+        ]
+      }
+    },
+    "library-of-alexandria": {
+      "0": {
+        "image": "library-of-alexandria_0.webp",
+        "cells": [
+          "white facade with arched windows",
+          "garden terrace towers with solar canopies",
+          "pale sky over old rooftops",
+          "vintage lamp on colonial wall",
+          "tiled roofs with rooftop plantings",
+          "cable cabin line above",
+          "rain gardens beside permeable paving",
+          "reserved lane with electric pods",
+          "wayfinding lights among rain gardens"
+        ]
+      },
+      "100": {
+        "image": "library-of-alexandria_100.webp",
+        "cells": [
+          "pale garden tower with terraces",
+          "overcast grey sky",
+          "tall planted garden towers",
+          "white colonial building with windows",
+          "large mature tree canopy",
+          "garden tower with planted balconies",
+          "white houses with blue doors",
+          "modern tram on stone tracks",
+          "low white colonial row houses"
+        ]
+      },
+      "1000": {
+        "image": "library-of-alexandria_1000.webp",
+        "cells": [
+          "vine-covered stone tower top",
+          "cloudy sky over tall trees",
+          "overgrown pale stone tower top",
+          "vine-covered stone tower shaft",
+          "large leafy tree in meadow",
+          "overgrown stone tower with vines",
+          "round glass skylight in grass",
+          "shallow rocky stream rapids",
+          "glass skylights among garden ferns"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "tall mossy rainforest trees",
+          "dense hanging vines and canopy",
+          "bright closed Atlantic forest canopy",
+          "mossy ruined wall with bromeliads",
+          "roofless overgrown stone house walls",
+          "green parrot flying over ruins",
+          "moss-covered ancient street wall base",
+          "mossy leaf-covered cobble street path",
+          "mossy stone ruin topped with bromeliad"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "mossy tree trunk with vines",
+          "pale misty sky over forest",
+          "mossy branches over tree fern",
+          "tall tree ferns with fronds",
+          "dense misty rainforest interior",
+          "arching green tree fern fronds",
+          "muddy mangrove bank with log",
+          "slow brown tidal creek",
+          "grey heron on creek bank"
+        ]
+      },
+      "-500": {
+        "image": "library-of-alexandria_-500.webp",
+        "cells": [
+          "white brick tenement upper floors",
+          "pale overcast evening sky",
+          "brick and white tenement tops",
+          "white tenement arched windows",
+          "cloudy sky above distant hills",
+          "lit brick tenement balconied windows",
+          "lit shopfronts and stone sidewalk",
+          "stone tracks with steam locomotive",
+          "gaslit station wall with timetables"
+        ]
+      },
+      "-2000": {
+        "image": "library-of-alexandria_-2000.webp",
+        "cells": [
+          "tall dense forest trees",
+          "overcast grey sky",
+          "tall slender forest trees",
+          "wattle hut with thatched roof",
+          "distant forested hill backdrop",
+          "cluster of thatched huts",
+          "fenced garden plot",
+          "sandy foot track",
+          "stacked poles and thatch"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "bromeliad-covered rainforest trees",
+          "tall palms under cloudy sky",
+          "leafy treetops and grey sky",
+          "giant tree ferns understory",
+          "dense humid forest interior",
+          "giant ground sloth climbing",
+          "mossy muddy creek bank",
+          "slow muddy tidal creek",
+          "mangrove thicket with prop roots"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "tall fan palms trunks",
+          "moss-draped broadleaf tree limb",
+          "overcast grey cloudy sky",
+          "dense rainforest trunks understory",
+          "tusked elephant at treeline",
+          "dense palm rainforest canopy",
+          "tall bankside reeds leaf litter",
+          "winding shallow brackish channel",
+          "tall cattail reeds sandy bank"
+        ]
+      },
+      "-100": {
+        "image": "library-of-alexandria_-100.webp",
+        "cells": [
+          "tall white tower facade",
+          "overcast cloudy sky",
+          "tall white tower windows",
+          "colonial building with arched windows",
+          "palm tree against cloudy sky",
+          "tall white tower midsection",
+          "colonial corner shopfront with signage",
+          "green tram on tracks",
+          "parked blue delivery van"
+        ]
+      }
+    },
+    "no-electricity": {
+      "0": {
+        "image": "no-electricity_0.webp",
+        "cells": [
+          "whitewashed colonial upper windows",
+          "cloudy sky over tall trees",
+          "rooftop water tank and glasshouse",
+          "gas-lit shopfronts with black pipes",
+          "rooftop coal bunkers and greenhouses",
+          "glowing gas lanterns along facade",
+          "cobblestone street with bicycles",
+          "vintage steam lorry on tracks",
+          "iron pneumatic cabinet at corner"
+        ]
+      },
+      "100": {
+        "image": "no-electricity_100.webp",
+        "cells": [
+          "dark brick upper facade",
+          "misty sky above treetops",
+          "rooftop water tower with steam",
+          "glowing gas lantern and pipes",
+          "tile rooftops with steaming chimneys",
+          "iron pipe bridge spanning street",
+          "stone base and cobbled sidewalk",
+          "cobbled street with tram rail",
+          "potted banana plant and lanterns"
+        ]
+      },
+      "1000": {
+        "image": "no-electricity_1000.webp",
+        "cells": [
+          "wooden windmill behind rooftops",
+          "mango and palm tree crowns",
+          "rooftop vegetable terraces with vines",
+          "whitewashed row with oil lanterns",
+          "iron footbridge over tidal canal",
+          "vine covered white houses with lanterns",
+          "moored wooden sail barge",
+          "shallow tidal canal water",
+          "stone canal walkway with planters"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "tall mossy rainforest trees",
+          "dense hanging vines and canopy",
+          "bright closed Atlantic forest canopy",
+          "mossy ruined wall with bromeliads",
+          "roofless overgrown stone house walls",
+          "green parrot flying over ruins",
+          "moss-covered ancient street wall base",
+          "mossy leaf-covered cobble street path",
+          "mossy stone ruin topped with bromeliad"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "mossy tree trunk with vines",
+          "pale misty sky over forest",
+          "mossy branches over tree fern",
+          "tall tree ferns with fronds",
+          "dense misty rainforest interior",
+          "arching green tree fern fronds",
+          "muddy mangrove bank with log",
+          "slow brown tidal creek",
+          "grey heron on creek bank"
+        ]
+      },
+      "-500": {
+        "image": "base_-500.webp",
+        "cells": [
+          "overcast grey sky",
+          "cloudy sky with palm crown",
+          "pale cloudy sky",
+          "banana plants above thatched roofs",
+          "large leafy tree with palms",
+          "distant palm over green treeline",
+          "wattle hut with thatched roof",
+          "packed-earth path with woven fences",
+          "thatched huts with fenced gardens"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "dense tall forest canopy",
+          "pale overcast sky",
+          "towering rainforest tree crown",
+          "smoking thatched wattle hut",
+          "sandy footpath into forest",
+          "open thatched stick hut",
+          "fenced manioc beds left",
+          "sandy footpath foreground",
+          "fenced manioc beds right"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "bromeliad-covered rainforest trees",
+          "tall palms under cloudy sky",
+          "leafy treetops and grey sky",
+          "giant tree ferns understory",
+          "dense humid forest interior",
+          "giant ground sloth climbing",
+          "mossy muddy creek bank",
+          "slow muddy tidal creek",
+          "mangrove thicket with prop roots"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "tall fan palms trunks",
+          "moss-draped broadleaf tree limb",
+          "overcast grey cloudy sky",
+          "dense rainforest trunks understory",
+          "tusked elephant at treeline",
+          "dense palm rainforest canopy",
+          "tall bankside reeds leaf litter",
+          "winding shallow brackish channel",
+          "tall cattail reeds sandy bank"
+        ]
+      },
+      "-100": {
+        "image": "no-electricity_-100.webp",
+        "cells": [
+          "two-storey white corner house",
+          "pale sky over palm crown",
+          "white rooftops with chimney smoke",
+          "gas lantern and shop sign",
+          "red tile rooftops behind steam",
+          "semaphore post and brick chimney",
+          "leaning bicycle by arched doors",
+          "horse cart and steam engine",
+          "iron pneumatic kiosk and coal"
+        ]
+      }
+    },
+    "no-printing-press": {
+      "0": {
+        "image": "no-printing-press_0.webp",
+        "cells": [
+          "white building with brown trim",
+          "overcast grey sky",
+          "white building with blue trim",
+          "white facade with arched windows",
+          "cloudy sky above treeline",
+          "white balconied buildings green trim",
+          "chalkboards on painted shop doors",
+          "cobblestone lane with tram tracks",
+          "garden beds with basket cart"
+        ]
+      },
+      "100": {
+        "image": "no-printing-press_100.webp",
+        "cells": [
+          "mural-covered upper building corner",
+          "bell and speaker tower top",
+          "painted bell tower with speakers",
+          "painted facade with arched windows",
+          "rooftop garden terrace with trees",
+          "potted fruit trees on terrace",
+          "arched doorways with parked bicycles",
+          "cobblestone street with tram rails",
+          "painted lower facade with trees"
+        ]
+      },
+      "1000": {
+        "image": "no-printing-press_1000.webp",
+        "cells": [
+          "carved facade with stained glass",
+          "cloudy grey sky above trees",
+          "weathered building with tree mosaic",
+          "carved wall with colorful windows",
+          "red tile rooftops behind trees",
+          "overgrown eaves with hanging plants",
+          "mossy cobbled street corner",
+          "cobblestone street with tram tracks",
+          "potted plants along stone wall"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "tall mossy rainforest trees",
+          "dense hanging vines and canopy",
+          "bright closed Atlantic forest canopy",
+          "mossy ruined wall with bromeliads",
+          "roofless overgrown stone house walls",
+          "green parrot flying over ruins",
+          "moss-covered ancient street wall base",
+          "mossy leaf-covered cobble street path",
+          "mossy stone ruin topped with bromeliad"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "mossy tree trunk with vines",
+          "pale misty sky over forest",
+          "mossy branches over tree fern",
+          "tall tree ferns with fronds",
+          "dense misty rainforest interior",
+          "arching green tree fern fronds",
+          "muddy mangrove bank with log",
+          "slow brown tidal creek",
+          "grey heron on creek bank"
+        ]
+      },
+      "-500": {
+        "image": "no-printing-press_-500.webp",
+        "cells": [
+          "overcast sky above hills",
+          "overcast sky with palm top",
+          "grey overcast sky",
+          "forested hillside with trees",
+          "tall palm and broadleaf tree",
+          "thatched hut among banana plants",
+          "stacked timber beside wattle fence",
+          "narrow packed-earth track",
+          "stacked logs and cloth bundles"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "dense tall forest canopy",
+          "pale overcast sky",
+          "towering rainforest tree crown",
+          "smoking thatched wattle hut",
+          "sandy footpath into forest",
+          "open thatched stick hut",
+          "fenced manioc beds left",
+          "sandy footpath foreground",
+          "fenced manioc beds right"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "bromeliad-covered rainforest trees",
+          "tall palms under cloudy sky",
+          "leafy treetops and grey sky",
+          "giant tree ferns understory",
+          "dense humid forest interior",
+          "giant ground sloth climbing",
+          "mossy muddy creek bank",
+          "slow muddy tidal creek",
+          "mangrove thicket with prop roots"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "tall fan palms trunks",
+          "moss-draped broadleaf tree limb",
+          "overcast grey cloudy sky",
+          "dense rainforest trunks understory",
+          "tusked elephant at treeline",
+          "dense palm rainforest canopy",
+          "tall bankside reeds leaf litter",
+          "winding shallow brackish channel",
+          "tall cattail reeds sandy bank"
+        ]
+      },
+      "-100": {
+        "image": "no-printing-press_-100.webp",
+        "cells": [
+          "white house with ochre windows",
+          "overcast grey sky",
+          "white building with blue balconies",
+          "wall-mounted gas street lamp",
+          "tall palm and orchard trees",
+          "blue balconied white street houses",
+          "fruit-laden wooden handcart",
+          "horse-drawn carriage on cobbles",
+          "painted wall with potted plants"
+        ]
+      }
+    },
+    "rome-never-fell": {
+      "0": {
+        "image": "rome-never-fell_0.webp",
+        "cells": [
+          "upper white block with plants",
+          "pale overcast sky with wire",
+          "rooftop garden with small trees",
+          "plant-filled balconies with palms",
+          "cloudy sky crossed by wires",
+          "white facades with blue balconies",
+          "shaded colonnade with Latin tablets",
+          "stone fountain on paved plaza",
+          "colonnade lined with potted plants"
+        ]
+      },
+      "100": {
+        "image": "rome-never-fell_100.webp",
+        "cells": [
+          "weathered dome with lantern",
+          "pale overcast sky",
+          "stone pine canopy",
+          "inscribed travertine colonnade",
+          "arched rail viaduct with train",
+          "colonnade with inscribed frieze",
+          "lion head street fountain",
+          "cobbled avenue with tram tracks",
+          "small tiled fountain shrine"
+        ]
+      },
+      "1000": {
+        "image": "rome-never-fell_1000.webp",
+        "cells": [
+          "weathered stone building upper facade",
+          "giant umbrella stone pine canopy",
+          "classical stone building upper facade",
+          "ivy-covered vaulted house wall",
+          "arched viaduct carrying slow train",
+          "twin travertine domes behind gardens",
+          "lion fountain with stone basin",
+          "central garden water channel",
+          "right lion fountain and hedges"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "tall mossy rainforest trees",
+          "dense hanging vines and canopy",
+          "bright closed Atlantic forest canopy",
+          "mossy ruined wall with bromeliads",
+          "roofless overgrown stone house walls",
+          "green parrot flying over ruins",
+          "moss-covered ancient street wall base",
+          "mossy leaf-covered cobble street path",
+          "mossy stone ruin topped with bromeliad"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "mossy tree trunk with vines",
+          "pale misty sky over forest",
+          "mossy branches over tree fern",
+          "tall tree ferns with fronds",
+          "dense misty rainforest interior",
+          "arching green tree fern fronds",
+          "muddy mangrove bank with log",
+          "slow brown tidal creek",
+          "grey heron on creek bank"
+        ]
+      },
+      "-500": {
+        "image": "rome-never-fell_-500.webp",
+        "cells": [
+          "dense palm forest edge",
+          "cloudy sky over treetops",
+          "tall palms under cloudy sky",
+          "palm trunks in dense forest",
+          "wattle hut and canvas tents",
+          "sandy track into distant forest",
+          "cut logs and inscribed stone",
+          "sandy track with drainage ditches",
+          "stacked timber and stone blocks"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "dense tall forest canopy",
+          "pale overcast sky",
+          "towering rainforest tree crown",
+          "smoking thatched wattle hut",
+          "sandy footpath into forest",
+          "open thatched stick hut",
+          "fenced manioc beds left",
+          "sandy footpath foreground",
+          "fenced manioc beds right"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "bromeliad-covered rainforest trees",
+          "tall palms under cloudy sky",
+          "leafy treetops and grey sky",
+          "giant tree ferns understory",
+          "dense humid forest interior",
+          "giant ground sloth climbing",
+          "mossy muddy creek bank",
+          "slow muddy tidal creek",
+          "mangrove thicket with prop roots"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "tall fan palms trunks",
+          "moss-draped broadleaf tree limb",
+          "overcast grey cloudy sky",
+          "dense rainforest trunks understory",
+          "tusked elephant at treeline",
+          "dense palm rainforest canopy",
+          "tall bankside reeds leaf litter",
+          "winding shallow brackish channel",
+          "tall cattail reeds sandy bank"
+        ]
+      },
+      "-100": {
+        "image": "rome-never-fell_-100.webp",
+        "cells": [
+          "tall white plastered apartment facade",
+          "cloudy grey sky above rooftops",
+          "white building with blue windows",
+          "mid facade with balconies wiring",
+          "distant apartment blocks and poles",
+          "white facade with blue balconies",
+          "vintage green tram on rails",
+          "cobbled street with twin rails",
+          "public stone fountain on sidewalk"
+        ]
+      }
+    },
+    "tamed-mammoth": {
+      "0": {
+        "image": "tamed-mammoth_0.webp",
+        "cells": [
+          "white upper storey windows",
+          "pale overcast sky",
+          "weathered tile roof eaves",
+          "brown felt workshop sign",
+          "terracotta rooftops behind trees",
+          "white building arched doorways",
+          "stacked felt rolls by door",
+          "mammoth pulling hay wagon",
+          "small blue electric van"
+        ]
+      },
+      "100": {
+        "image": "tamed-mammoth_100.webp",
+        "cells": [
+          "white building with thatched roof",
+          "pale overcast sky",
+          "thick thatched roof edge",
+          "tall arched gateway",
+          "distant thatched rooftops and trees",
+          "row of white thatched buildings",
+          "two mammoths with hay wagon",
+          "grass avenue with wooden troughs",
+          "wooden water trough by fence"
+        ]
+      },
+      "1000": {
+        "image": "tamed-mammoth_1000.webp",
+        "cells": [
+          "white felt roof corner",
+          "pale overcast sky",
+          "white felt roof overhang",
+          "white houses with arched doorways",
+          "palm dotted grass steppe",
+          "white houses with blue balconies",
+          "large brown woolly mammoth",
+          "mammoth adult with calf",
+          "wooden water troughs beside haystack"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "tall mossy rainforest trees",
+          "dense hanging vines and canopy",
+          "bright closed Atlantic forest canopy",
+          "mossy ruined wall with bromeliads",
+          "roofless overgrown stone house walls",
+          "green parrot flying over ruins",
+          "moss-covered ancient street wall base",
+          "mossy leaf-covered cobble street path",
+          "mossy stone ruin topped with bromeliad"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "mossy tree trunk with vines",
+          "pale misty sky over forest",
+          "mossy branches over tree fern",
+          "tall tree ferns with fronds",
+          "dense misty rainforest interior",
+          "arching green tree fern fronds",
+          "muddy mangrove bank with log",
+          "slow brown tidal creek",
+          "grey heron on creek bank"
+        ]
+      },
+      "-2000": {
+        "image": "tamed-mammoth_-2000.webp",
+        "cells": [
+          "dense Atlantic Forest canopy",
+          "tall broadleaf treetops",
+          "humid canopy foliage overhead",
+          "tall tree trunks vines",
+          "dense broadleaf trees palms",
+          "tangled vines undergrowth",
+          "damp leaf litter ground",
+          "faint animal trail mud",
+          "damp tidal forest floor"
+        ]
+      },
+      "-500": {
+        "image": "tamed-mammoth_-500.webp",
+        "cells": [
+          "cloudy sky over green hills",
+          "grey clouds above tall palms",
+          "overcast sky over distant hills",
+          "remaining palms shading fenced plots",
+          "broad mango tree by track",
+          "staked vegetable plots with cloths",
+          "wattle hut with felt awning",
+          "wide packed-earth track",
+          "wattle hut with clay pots"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "bromeliad-covered rainforest trees",
+          "tall palms under cloudy sky",
+          "leafy treetops and grey sky",
+          "giant tree ferns understory",
+          "dense humid forest interior",
+          "giant ground sloth climbing",
+          "mossy muddy creek bank",
+          "slow muddy tidal creek",
+          "mangrove thicket with prop roots"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "tall fan palms trunks",
+          "moss-draped broadleaf tree limb",
+          "overcast grey cloudy sky",
+          "dense rainforest trunks understory",
+          "tusked elephant at treeline",
+          "dense palm rainforest canopy",
+          "tall bankside reeds leaf litter",
+          "winding shallow brackish channel",
+          "tall cattail reeds sandy bank"
+        ]
+      }
+    }
+  },
+  "notes": {
+    "our-timeline": {
+      "place": "Largo de Santa Rita in the historic centre of Paraty, Rio de Janeiro coast, Brazil - flat cobbled colonial street on a humid Atlantic Forest coastal plain near the sea",
+      "eras": {
+        "100": "The same whitewashed colonial houses still line the preserved cobbled street, now with soil-covered green roofs, inset tram rails and clipped street gardens and potted fruit trees along the facades. New since a century ago are the green roofs, the quiet tram track and planted beds softening the cobbles.",
+        "1000": "The street alignment remains with the same white houses standing beneath deep garden roofs, terraced planters and large canopy trees rooted between the cobbles, walls veiled in vines and flowering beds. Tended mossy cobbles, water channels and orchard terraces keep the street as a shaded garden courtyard.",
+        "10000": "The lower whitewashed stone walls of the same street houses still stand in place, roofless and gently overgrown with moss and ferns, with tall forest trees growing inside the wall lines. Leaf humus and roots cover the old cobble line under a closed Atlantic forest canopy.",
+        "1000000": "Dense Atlantic rainforest and palm grove cover the flat coastal plain with ferns and mangrove around a slow tidal creek, with no trace of walls or street remaining in the deep leaf soil.",
+        "-1000000": "A flat coastal plain covered by dense Atlantic rainforest with tall palms and broadleaf trees over sandy tidal soil, with a shallow brackish channel winding through leaf litter.",
+        "-10000": "The same flat coastal plain holds dense humid Atlantic forest with palms, ferns and mangrove thickets around a slow tidal creek, the ground soft and shaded with no clearing.",
+        "-2000": "A small cleared plot in the forest holds two low wattle-and-thatch huts and manioc beds exactly where the later street houses will stand, with a narrow sandy footpath and a low stick fence marking the future street line.",
+        "-500": "On the same plots now stands a continuous row of small wattle-and-daub houses with palm-thatch roofs lining a widened packed-earth path. New since the earlier clearing are more joined houses forming the street frontage with fenced garden plots behind.",
+        "-100": "A continuous row of one- and two-storey whitewashed masonry houses with red clay tile roofs and blue and ochre doors lines pe-de-moleque cobbles fitted with iron lanterns. New since the thatched village are stone masonry walls, tiled roofs and a second storey on the corner house."
+      },
+      "cells": [
+        "white building with arched windows",
+        "tall palm tree canopy",
+        "weathered colonial building eaves",
+        "arched doorways with street lamp",
+        "row of white colonial houses",
+        "white buildings with blue balconies",
+        "stone building corner on cobblestones",
+        "cobblestone street with bicycles",
+        "potted plants along white wall"
+      ]
+    },
+    "library-of-alexandria": {
+      "place": "Largo de Santa Rita colonial street in the historic centre of Paraty, Rio de Janeiro state, Brazil - flat coastal town edge at Atlantic Forest",
+      "eras": {
+        "0": "Since the electric-tower era the plots carry slender forty-story towers with garden terraces, rooftop plantings and solar canopies over buried grids, fronting permeable paving with rain gardens and cycle tracks. Automated electric pods use reserved lanes and a cable cabin line above, guided by low-energy text panels and wayfinding lights, with no private gasoline cars, asphalt lots, overhead wires or paper billboards.",
+        "100": "Since the garden-tower era the same street line is flanked by slender hundred-storey pale stone and glass towers with planted terraces, and a domed library and observatory stands among mature trees behind where the large trees stood. Below lie wide quiet stone lanes with silent trams and no jams or smog, with no cars in traffic, overhead lines, billboards or petrol stations.",
+        "1000": "Since the hundred-storey era the surface on this flat coastal ground has become tended parkland and woods with meadows and a clear stream where the street ran, with planted terraces and garden paths kept neat around glass skylights that light homes below. A few slender pale stone towers still stand weathered and gently overgrown with vines and roof gardens, with no roads, dense rows, power lines or billboards and nature grown over the old paving.",
+        "-2000": "A small Tupinamba clearing in flat Atlantic Forest holds a few low wattle-and-thatch huts and a fenced garden plot and sandy foot track on the line of the later street, with stacked poles and palm thatch where the white rows will later stand. Mediterranean brick manuals, paved drains and copy stalls have not reached this coast, so thatched roofs, hand querns and unlined wells remain and the tall green trees behind stand over dense forest.",
+        "-500": "Since the clearing era the plots hold dense four- to six-story brick tenements and workshops with iron beams lining a wide paved stone avenue with sidewalks and iron drains on the same alignment, with a rail line and small station yard behind and piped gas lamps and lit shop windows with printed timetables and price lists. Early ocean steamers brought a Portuguese port town here centuries early, so thatched huts, horse rails, wooden gates and mud lanes are gone, replaced by steam locomotives, freight wagons and evening gas light while the flat ground and big coastal trees remain.",
+        "-100": "Since the gaslit era the same frontages have been heightened to dense twenty-story steel-frame towers with shops below, lining asphalt lanes carrying battery trams and electric delivery vans under bright electric streetlights fed by buried cables. Illuminated display panels and clock timetables, paved sidewalks with planted trees and piped drains remain in tropical green, with no overhead tram wires, gas lamps, coal smoke, wooden poles or steam locomotives."
+      },
+      "cells": null
+    },
+    "no-electricity": {
+      "place": "Historic centre of Paraty, Rio de Janeiro State, Brazil - the cobbled Rua da Lapa at Largo de Santa Rita, low Portuguese colonial street on the Atlantic coastal plain",
+      "eras": {
+        "0": "The same low colonial rows still stand tightly packed with whitewash and tile roofs, now with round gas lanterns and black district steam and coal-gas pipes running along the facades and painted wooden boards in gas-lit display windows. New since 1926 are rooftop water tanks, coal bunkers and glass greenhouses above the workshops, iron pneumatic cabinets at the corner, and a heavy diesel lorry with air-start bottles parked with pedal bicycles on the cobbles, with no power lines, traffic lights or glowing signs, and the same large trees rising behind.",
+        "100": "The same white colonial street walls still stand, weathered and gently overgrown with potted gardens and vines, with low set-back brick upper floors and roof terraces behind the tile ridges. New since 2026 are narrow cable-tram rails set in the cobbles from the steam winding house, an iron footbridge and pipe bridge spanning the street carrying steam and compressed-air mains, and rooftops crowded with small wind pumps, water towers and chimneys under warm gas lanterns.",
+        "1000": "The same low whitewashed rows still stand, cared for under spreading mango and palm crowns with garden planters, climbing vines and rooftop vegetable terraces and skylights. New since 2126 are a shallow tidal canal with stone edges and small wooden sail barges along the centre of the cobbles crossed by little iron footbridges, and taller wooden windmill pumps and a water wheel behind the roofs driving workshop shafts, lit by oil lanterns and sunlight.",
+        "-100": "The cobbled street is lined by low whitewashed masonry houses with red tile roofs and arched blue and ochre doors, with the two-storey corner house at Largo de Santa Rita on the left and the same mango and palm crowns behind. Tall cast-iron gas wall lanterns and painted shop boards line the walls, a rooftop semaphore post and small iron pneumatic-tube kiosk stand above the tiles, and horse teams, leaning bicycles and a hissing coal-fired steam traction engine share the stones beside a low boiler-house chimney and coal yard, with no electric wires or petrol cars."
+      },
+      "cells": null
+    },
+    "no-printing-press": {
+      "place": "Largo de Santa Rita street in the historic colonial centre of Paraty, Rio de Janeiro state, Brazil, on the flat humid Atlantic coast",
+      "eras": {
+        "0": "Two-storey white courtyard blocks with red tile roofs and coloured trim edge an uneven stone-set lane with wall lanterns, speaker poles and small roofed shelters, hand-painted picture walls and chalk boards, bicycles and small motor vans, potted plants, fruit trees and garden plots between houses. New since 1926 are evened stone paving, completed upper floors, lanterns and speaker poles, with no private cars, glowing billboards, parking lots or traffic lights.",
+        "100": "Three-storey white courtyard blocks with red tile roofs line stone lanes with slow tram rails and bicycles, whole facades covered in painted picture stories and carved reliefs without letters, with bell and speaker towers at the corners and fruit trees and garden terraces between houses. New since 2026 are the added floor, full picture facades, corner towers and tram rails, with no screens, glass towers or heavy car traffic.",
+        "1000": "Low white courtyard buildings with red tile roofs stand among dense fruit trees, gardens and planted terraces, their facades made of carved stone story panels and coloured-glass picture windows without letters, with narrow footpaths, small tram lines and stone benches. New since 2126 are stone panels and glass pictures in place of paint and more trees over footpaths, all structures still standing weathered and gently overgrown.",
+        "-500": "Flat sandy coastal ground at the edge of dense Atlantic forest with tall palms and broadleaf trees, crossed by a narrow packed-earth track on the line of the later lane. On the track edges stand a small wattle-and-thatch hut, a fenced garden plot and stacked timber where the white street rows will later stand.",
+        "-100": "Low one- to two-storey whitewashed street houses with red tile roofs and blue and ochre door frames line a cobbled lane, with large daylight windows, hand-painted picture walls, carved marks and stone speaking platforms, and horse paths, bicycles, handcarts, mild gas lamps and orchards and stable yards between homes. New since the hut plots are full masonry rows, cobbles and tile roofs, with no cars, printed billboards or electric signals."
+      },
+      "cells": null
+    },
+    "rome-never-fell": {
+      "place": "Largo de Santa Rita, historic centre of Paraty, Rio de Janeiro state, Brazil",
+      "eras": {
+        "0": "A stone-paved street-plaza lined with six- to eight-storey plastered mixed-use blocks with tiled roofs, shaded colonnades, fountains, stone Latin tablets and tram wires, with no cars. Since the last era the blocks have grown taller around planted courtyards and rooftop gardens with potted palms and orchard trees.",
+        "100": "The street has become a straight colonnaded avenue of concrete and travertine with vaulted halls and a dome on the district centre, shaded by cypresses and stone pines, with a tall arched rail viaduct behind the roofs and fountains and a small bathhouse at the crossroads. Since the last era the older blocks have been rebuilt in larger vaulted forms around garden courts, with tram lines still set in the paving.",
+        "1000": "The same colonnaded avenue remains, flanked by honey-coloured weathered concrete and travertine domes and vaulted houses still standing under giant stone pines, cypresses and courtyard orchards, with fountains and garden beds fed by aqueduct and the arched viaduct still carrying slow trains. Since the last era planting has thickened into tall groves over the masonry, which stands tended with terraced meadows and gardens.",
+        "-500": "A sandy track runs through dense Atlantic forest of palms and broadleaf trees, with a small fenced clearing holding canvas tents, a wattle hut and stacks of cut timber and stone markers on the future street line. This shore camp on cleared plots is the first sign of the port to come.",
+        "-100": "A straight stone-paved street with side drains and twin tram rails runs between five-storey plastered masonry apartment blocks with tiled roofs, an arcaded market hall, public fountains and copper wire on poles. Since the camp era the plots have filled with dense blocks, with irrigated gardens and palms kept in courtyards behind."
+      },
+      "cells": null
+    },
+    "tamed-mammoth": {
+      "place": "Largo de Santa Rita in the historic centre of Paraty, Rio de Janeiro State, Brazil — flat colonial street on the coastal bay plain, humid tropical Atlantic Forest zone with palms and mango trees",
+      "eras": {
+        "0": "The same low white blocks stand two to three storeys with set-back side yards, tile roofs and felt awnings, fronting a turfed avenue with a central linear hay meadow and gravel mammoth lanes. Iron lamps, ground power cabinets with buried lines, painted felt-workshop signs, and electric-assist wagons and small battery vans on grass replace cobbles and wires, with potted plants and banana leaves along the walls.",
+        "100": "New tall arched gateways lead through two- to four-storey white blocks with thick grey felt roofs and awnings, fronting a broad grass avenue with paired wagon ruts and stone troughs. Paddocks, hay lofts, planted trees and walled gardens with terraces fill the space between blocks, with meadow strips and shrubs among the houses.",
+        "1000": "Open mammoth-grazed grass steppe with scattered palms and low trees holds a low spread-out town of white felt-roofed houses with tall gates, garden terraces and meadows. Broad grass avenues with water troughs, haystacks and paddocks run between the houses where mammoth herds graze, with buried lines and no asphalt, wires or high-rises, all green and cared for.",
+        "-2000": "Dense humid Atlantic Forest with tall broadleaf trees, palms and vines covers the flat tidal ground, with damp leaf litter and a faint animal trail and no houses, streets or clearings.",
+        "-500": "Newly cleared since the forest time, two low wattle-and-daub huts with palm-thatch roofs and a low stick fence stand on the line of the later houses, joined by a wide packed-earth track on the line of the later street. Remaining palms and a broad mango tree shade the plots, with a strip of grey woven felt stretched as an awning over one hut.",
+        "-100": "Full rows of whitewashed one- to two-storey houses with red tile roofs and blue, green and ochre doors now line the view, fronting a very wide packed-earth and gravel boulevard with grass verges, stone water troughs, hitching posts and iron lamp posts with no overhead wires. Large wool drying frames, felt awnings and painted wall signs stand along the walls, with high-wheeled wagons at rest and open hay meadow and trees behind the roofs."
+      },
+      "cells": null
+    }
+  }
+}

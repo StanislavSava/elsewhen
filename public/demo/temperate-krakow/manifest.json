@@ -1,0 +1,1038 @@
+{
+  "name": "temperate-krakow",
+  "credit": "Photo: <a href=\"https://commons.wikimedia.org/wiki/File:Jan_Nowak-Jeziora%C5%84ski_Square,_2025._Krak%C3%B3w._Poland.jpg\">Igor123121</a>, <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a> (altered)",
+  "biome": "temperate",
+  "setting": "outdoor",
+  "width": 1536,
+  "height": 1152,
+  "photo": "photo.jpg",
+  "masks": {
+    "sky": "mask-sky.txt",
+    "building": "mask-building.txt",
+    "tree": "mask-tree.txt",
+    "grass": "mask-grass.txt",
+    "street": "mask-street.txt",
+    "wall": "mask-wall.txt",
+    "ceiling": "mask-ceiling.txt",
+    "floor": "mask-floor.txt"
+  },
+  "forks": {
+    "our-timeline": {
+      "100": {
+        "image": "base_100.webp",
+        "cells": [
+          "clear blue morning sky",
+          "clear blue daytime sky",
+          "clear blue sky background",
+          "tree-lined avenue with buildings",
+          "green-roofed platform canopies and station",
+          "historic stone tower among rooftops",
+          "solar panels on green roof",
+          "orchard gardens and planted beds",
+          "grassed tram lines with trams"
+        ]
+      },
+      "1000": {
+        "image": "base_1000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "rooftop orchards on market halls",
+          "tree-lined earthen banks over tracks",
+          "weathered water tower among trees",
+          "ivy-covered building with vegetable beds",
+          "shallow ponds with stone paths",
+          "overgrown station buildings with orchards"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense green forest canopy",
+          "tall birches above mossy ruins",
+          "tall birch forest edge",
+          "ivy covered roofless station wall",
+          "wet meadow with meandering stream",
+          "mossy roofless market hall wall"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense oak-lime forest canopy",
+          "woodland edge over marshy meadow",
+          "open glade with scattered oaks",
+          "sunlit oak treetops in foreground",
+          "meandering stream through marsh grass",
+          "grassy marsh meadow with pools"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "vast cloudless blue sky",
+          "bright clear blue sky",
+          "distant hills and forest",
+          "braided meltwater channels",
+          "wide marshy braided plain",
+          "willow scrub marsh meadow",
+          "winding streams and willows",
+          "mammoth on dry grassland"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "fenced green barley plots",
+          "fenced clearing with stacked timber",
+          "dry pasture with fenced huts",
+          "wattle huts with garden plots",
+          "dirt crossroads with thatched huts",
+          "fenced homestead with thatched huts"
+        ]
+      },
+      "-500": {
+        "image": "base_-500.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "golden grain fields and orchards",
+          "small wooden chapel graveyard",
+          "thatched houses beside ploughed fields",
+          "large thatched timber farmhouses",
+          "fenced gardens and thatched sheds",
+          "shingled houses with fenced yards"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense pine birch forest",
+          "wet meadow with ponds",
+          "mixed birch pine woodland",
+          "snowy pine forest floor",
+          "winding stream through reeds",
+          "reedy marsh with channels"
+        ]
+      },
+      "-100": {
+        "image": "base_-100.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "distant brick warehouses and fields",
+          "railway tracks with platform sheds",
+          "distant town with church tower",
+          "large brick tenement warehouses",
+          "cobbled forecourt with tram rails",
+          "brick station houses with red roofs"
+        ]
+      }
+    },
+    "library-of-alexandria": {
+      "0": {
+        "image": "library-of-alexandria_0.webp",
+        "cells": [
+          "clear blue sky",
+          "aerial cable cabin sky",
+          "distant cable cabins sky",
+          "tall towers with garden terraces",
+          "expansive rooftop solar canopies",
+          "glass towers over old town",
+          "building with rooftop plantings",
+          "paved square with rain gardens",
+          "solar roofs and pod lanes"
+        ]
+      },
+      "100": {
+        "image": "library-of-alexandria_100.webp",
+        "cells": [
+          "tall garden towers against sky",
+          "slender tower tops in sky",
+          "clear blue sky",
+          "glass-domed library below towers",
+          "garden towers over green roofs",
+          "old town rooftops and tower",
+          "pale library colonnade with fountains",
+          "formal plaza with fountain pools",
+          "red-roof halls with silent tram"
+        ]
+      },
+      "1000": {
+        "image": "library-of-alexandria_1000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "pale tower with planted terraces",
+          "meadow with glass skylights",
+          "pale tower among green trees",
+          "tower base with garden beds",
+          "glass skylights in meadow grass",
+          "clear winding stream with reeds"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense green forest canopy",
+          "tall birches above mossy ruins",
+          "tall birch forest edge",
+          "ivy covered roofless station wall",
+          "wet meadow with meandering stream",
+          "mossy roofless market hall wall"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense oak-lime forest canopy",
+          "woodland edge over marshy meadow",
+          "open glade with scattered oaks",
+          "sunlit oak treetops in foreground",
+          "meandering stream through marsh grass",
+          "grassy marsh meadow with pools"
+        ]
+      },
+      "-500": {
+        "image": "library-of-alexandria_-500.webp",
+        "cells": [
+          "clear evening sky",
+          "clear evening sky",
+          "clear evening sky",
+          "smoky brick tenement rooftops",
+          "rail tracks with coal piles",
+          "brick railway station building",
+          "gaslit cobbled side street",
+          "brick shop with price signs",
+          "steam locomotive with freight wagons"
+        ]
+      },
+      "-2000": {
+        "image": "library-of-alexandria_-2000.webp",
+        "cells": [
+          "clear blue sky",
+          "pale blue midday sky",
+          "hazy horizon sky",
+          "dense pine forest edge",
+          "wagon ruts crossing wet meadow",
+          "open marshy plain with oaks",
+          "grassy clearing with oak trees",
+          "log hut with stacked timber",
+          "wooden waterwheel and paper stall"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "vast cloudless blue sky",
+          "bright clear blue sky",
+          "distant hills and forest",
+          "braided meltwater channels",
+          "wide marshy braided plain",
+          "willow scrub marsh meadow",
+          "winding streams and willows",
+          "mammoth on dry grassland"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense pine birch forest",
+          "wet meadow with ponds",
+          "mixed birch pine woodland",
+          "snowy pine forest floor",
+          "winding stream through reeds",
+          "reedy marsh with channels"
+        ]
+      },
+      "-100": {
+        "image": "library-of-alexandria_-100.webp",
+        "cells": [
+          "clear daytime sky above towers",
+          "central brick tower tops",
+          "distant city skyline under sky",
+          "library sign and clock display",
+          "dense brick steel-frame towers",
+          "tree-lined avenue with battery trams",
+          "battery trams and delivery vans",
+          "tree-lined sidewalk with streetlights",
+          "electric station building with sign"
+        ]
+      }
+    },
+    "no-electricity": {
+      "0": {
+        "image": "no-electricity_0.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "red-tiled market quarter rooftops",
+          "distant modern apartment blocks",
+          "brick water tower and tenements",
+          "five-storey brick market building",
+          "market stalls around ice sheet",
+          "old station with steam trains"
+        ]
+      },
+      "100": {
+        "image": "no-electricity_100.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "brick rooftops with wind pumps",
+          "iron pipe bridges over street",
+          "steaming rooftops with water towers",
+          "cobbled square with gas lanterns",
+          "brick steam winding house",
+          "cable tram beside water leat"
+        ]
+      },
+      "1000": {
+        "image": "no-electricity_1000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "rooftop windmills and greenhouses",
+          "tall rooftop windmills over gardens",
+          "distant leafy city skyline",
+          "ivy-covered weathered apartment block",
+          "wooden barges beside terraced gardens",
+          "weathered station with water wheels"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense green forest canopy",
+          "tall birches above mossy ruins",
+          "tall birch forest edge",
+          "ivy covered roofless station wall",
+          "wet meadow with meandering stream",
+          "mossy roofless market hall wall"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense oak-lime forest canopy",
+          "woodland edge over marshy meadow",
+          "open glade with scattered oaks",
+          "sunlit oak treetops in foreground",
+          "meandering stream through marsh grass",
+          "grassy marsh meadow with pools"
+        ]
+      },
+      "-500": {
+        "image": "base_-500.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "golden grain fields and orchards",
+          "small wooden chapel graveyard",
+          "thatched houses beside ploughed fields",
+          "large thatched timber farmhouses",
+          "fenced gardens and thatched sheds",
+          "shingled houses with fenced yards"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "fenced green barley plots",
+          "fenced clearing with stacked timber",
+          "dry pasture with fenced huts",
+          "wattle huts with garden plots",
+          "dirt crossroads with thatched huts",
+          "fenced homestead with thatched huts"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "vast cloudless blue sky",
+          "bright clear blue sky",
+          "distant hills and forest",
+          "braided meltwater channels",
+          "wide marshy braided plain",
+          "willow scrub marsh meadow",
+          "winding streams and willows",
+          "mammoth on dry grassland"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense pine birch forest",
+          "wet meadow with ponds",
+          "mixed birch pine woodland",
+          "snowy pine forest floor",
+          "winding stream through reeds",
+          "reedy marsh with channels"
+        ]
+      },
+      "-100": {
+        "image": "no-electricity_-100.webp",
+        "cells": [
+          "clear pale blue sky",
+          "clear pale blue sky",
+          "clear pale blue sky",
+          "smoking brick tenement rooftops",
+          "soot-dark steam railway tracks",
+          "distant town with church tower",
+          "four-storey brick tenement block",
+          "cobbled square with steam engine",
+          "white station with red roofs"
+        ]
+      }
+    },
+    "no-printing-press": {
+      "0": {
+        "image": "no-printing-press_0.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "distant low-rise outskirts",
+          "distant cityscape with tramway",
+          "historic tower and red roofs",
+          "green tram beside mural building",
+          "market gardens with orchard trees",
+          "station halls with shared vans"
+        ]
+      },
+      "100": {
+        "image": "no-printing-press_100.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "distant city skyline with trees",
+          "hazy distant city skyline",
+          "distant rooftops and church tower",
+          "mural-covered courtyard block facade",
+          "carved bell and speaker towers",
+          "trams and bicycles by murals"
+        ]
+      },
+      "1000": {
+        "image": "no-printing-press_1000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "distant modern city blocks",
+          "distant city skyline and trees",
+          "distant rooftops and tree canopy",
+          "grass roofed stone building",
+          "carved stone building with glass",
+          "stone buildings with small trams"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense green forest canopy",
+          "tall birches above mossy ruins",
+          "tall birch forest edge",
+          "ivy covered roofless station wall",
+          "wet meadow with meandering stream",
+          "mossy roofless market hall wall"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense oak-lime forest canopy",
+          "woodland edge over marshy meadow",
+          "open glade with scattered oaks",
+          "sunlit oak treetops in foreground",
+          "meandering stream through marsh grass",
+          "grassy marsh meadow with pools"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "fenced green barley plots",
+          "fenced clearing with stacked timber",
+          "dry pasture with fenced huts",
+          "wattle huts with garden plots",
+          "dirt crossroads with thatched huts",
+          "fenced homestead with thatched huts"
+        ]
+      },
+      "-500": {
+        "image": "no-printing-press_-500.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "red tiled rooftops",
+          "stacked timber piles",
+          "red-roofed houses and sheds",
+          "painted timber workshop building",
+          "stone speaking platform",
+          "stable yard with carts"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "vast cloudless blue sky",
+          "bright clear blue sky",
+          "distant hills and forest",
+          "braided meltwater channels",
+          "wide marshy braided plain",
+          "willow scrub marsh meadow",
+          "winding streams and willows",
+          "mammoth on dry grassland"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense pine birch forest",
+          "wet meadow with ponds",
+          "mixed birch pine woodland",
+          "snowy pine forest floor",
+          "winding stream through reeds",
+          "reedy marsh with channels"
+        ]
+      },
+      "-100": {
+        "image": "no-printing-press_-100.webp",
+        "cells": [
+          "clear blue daytime sky",
+          "clear blue daytime sky",
+          "clear blue daytime sky",
+          "red-roofed brick street blocks",
+          "iron train sheds and tracks",
+          "distant town with church tower",
+          "brick block with painted murals",
+          "horse tram beside fenced gardens",
+          "two-storey red-roofed station buildings"
+        ]
+      }
+    },
+    "rome-never-fell": {
+      "0": {
+        "image": "rome-never-fell_0.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "distant modern city blocks",
+          "covered rail station roofs",
+          "red-roofed historic old town",
+          "stone arcade with rooftop garden",
+          "stone plaza with central fountain",
+          "stone arcades with green tram"
+        ]
+      },
+      "100": {
+        "image": "rome-never-fell_100.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "triple domed stone baths facade",
+          "distant flat city skyline",
+          "arched stone viaduct with train",
+          "formal fountain forum gardens",
+          "colonnaded avenue lined with cypresses",
+          "basilica thermae columned facade"
+        ]
+      },
+      "1000": {
+        "image": "rome-never-fell_1000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "weathered domes with rooftop orchards",
+          "arched viaduct with slow train",
+          "vine-covered viaduct and tracks",
+          "stone facade with rooftop garden",
+          "fountain plaza with cypress",
+          "mossy domes among stone pines"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense green forest canopy",
+          "tall birches above mossy ruins",
+          "tall birch forest edge",
+          "ivy covered roofless station wall",
+          "wet meadow with meandering stream",
+          "mossy roofless market hall wall"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense oak-lime forest canopy",
+          "woodland edge over marshy meadow",
+          "open glade with scattered oaks",
+          "sunlit oak treetops in foreground",
+          "meandering stream through marsh grass",
+          "grassy marsh meadow with pools"
+        ]
+      },
+      "-500": {
+        "image": "rome-never-fell_-500.webp",
+        "cells": [
+          "clear blue daytime sky",
+          "clear blue daytime sky",
+          "clear blue daytime sky",
+          "tiled roof brick tenements",
+          "long arched aqueduct arcade",
+          "tiled roof brick tenements",
+          "mule wagon on pavement",
+          "stone fountain with milestones",
+          "mule wagon beside arcade"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "fenced green barley plots",
+          "fenced clearing with stacked timber",
+          "dry pasture with fenced huts",
+          "wattle huts with garden plots",
+          "dirt crossroads with thatched huts",
+          "fenced homestead with thatched huts"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "vast cloudless blue sky",
+          "bright clear blue sky",
+          "distant hills and forest",
+          "braided meltwater channels",
+          "wide marshy braided plain",
+          "willow scrub marsh meadow",
+          "winding streams and willows",
+          "mammoth on dry grassland"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense pine birch forest",
+          "wet meadow with ponds",
+          "mixed birch pine woodland",
+          "snowy pine forest floor",
+          "winding stream through reeds",
+          "reedy marsh with channels"
+        ]
+      },
+      "-100": {
+        "image": "rome-never-fell_-100.webp",
+        "cells": [
+          "clear blue sky",
+          "blue sky with faint cloud",
+          "clear blue sky",
+          "stone villa among trees",
+          "long stone aqueduct arcade",
+          "aqueduct crossing distant farmland",
+          "arcaded stone market block",
+          "electric trams on twin tracks",
+          "irrigated market gardens with channel"
+        ]
+      }
+    },
+    "tamed-mammoth": {
+      "0": {
+        "image": "tamed-mammoth_0.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "apartment blocks with wool awnings",
+          "distant hay meadow and treeline",
+          "historic wool workshops and tower",
+          "mammoth pulling hay wagon",
+          "fenced mammoth paddock with trough",
+          "mammoth wagon and wool racks"
+        ]
+      },
+      "100": {
+        "image": "tamed-mammoth_100.webp",
+        "cells": [
+          "clear bright blue sky",
+          "clear bright blue sky",
+          "clear bright blue sky",
+          "distant modern city blocks",
+          "tall stone gateway arch",
+          "distant skyline with trees",
+          "felt-roofed block with awnings",
+          "fenced hay paddocks trough",
+          "mammoth pulling freight wagon"
+        ]
+      },
+      "1000": {
+        "image": "tamed-mammoth_1000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "distant steppe and village houses",
+          "flat steppe with town rooftops",
+          "open steppe with scattered trees",
+          "thatched houses with arched gateway",
+          "grazing mammoths and haystacks",
+          "mammoths grazing by fenced gardens"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense green forest canopy",
+          "tall birches above mossy ruins",
+          "tall birch forest edge",
+          "ivy covered roofless station wall",
+          "wet meadow with meandering stream",
+          "mossy roofless market hall wall"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense oak-lime forest canopy",
+          "woodland edge over marshy meadow",
+          "open glade with scattered oaks",
+          "sunlit oak treetops in foreground",
+          "meandering stream through marsh grass",
+          "grassy marsh meadow with pools"
+        ]
+      },
+      "-2000": {
+        "image": "tamed-mammoth_-2000.webp",
+        "cells": [
+          "clear blue daytime sky",
+          "clear blue daytime sky",
+          "clear blue daytime sky",
+          "scattered timber houses with fences",
+          "mammoth sledge track junction",
+          "thatched barns and haystacks",
+          "fenced timber house with haystacks",
+          "mammoth pulling timber sledge",
+          "thatched timber barn with fence"
+        ]
+      },
+      "-500": {
+        "image": "tamed-mammoth_-500.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "thatched courtyard houses and fields",
+          "thatched houses along earth avenue",
+          "outer hayfields and wool sheds",
+          "mammoth hay wagon on avenue",
+          "crossroads with water troughs and wagons",
+          "mammoths hauling hay wagons"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "vast cloudless blue sky",
+          "bright clear blue sky",
+          "distant hills and forest",
+          "braided meltwater channels",
+          "wide marshy braided plain",
+          "willow scrub marsh meadow",
+          "winding streams and willows",
+          "mammoth on dry grassland"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "dense pine birch forest",
+          "wet meadow with ponds",
+          "mixed birch pine woodland",
+          "snowy pine forest floor",
+          "winding stream through reeds",
+          "reedy marsh with channels"
+        ]
+      },
+      "-100": {
+        "image": "tamed-mammoth_-100.webp",
+        "cells": [
+          "clear blue daytime sky",
+          "clear blue midday sky",
+          "pale blue clear sky",
+          "distant city beyond treeline",
+          "red-roof brick stable blocks",
+          "fenced hay paddocks and sheds",
+          "brick wool warehouse building",
+          "mammoth hay wagons on boulevard",
+          "brick railway station building"
+        ]
+      }
+    }
+  },
+  "notes": {
+    "our-timeline": {
+      "place": "Kraków Główny railway station forecourt and Galeria Krakowska, Kraków, Lesser Poland, Poland",
+      "eras": {
+        "100": "The same brick station buildings and glass market hall still stand in the same places, now with sedum green roofs, ivy terraces and trees growing on balconies and platform canopies. New since a century ago are grassed tram lines, orchard gardens and planted beds covering the forecourt and trackside, all neatly kept with meadow strips between the rails.",
+        "1000": "The same station and market buildings still stand in the same places, weathered and gently overgrown, their roofs and courtyards turned into terraced orchards, flower meadows and tended vegetable beds. New since the last era are tree-lined earthen banks over the tracks and shallow ponds in the forecourt, all cared for with stone paths and grafted fruit trees.",
+        "10000": "The lower brick and concrete walls of the station and market hall still stand in the same places, roofless and gently overgrown with moss and ivy, with tall oaks and birches growing inside the enclosures. The flat plain around is wet meadow and young forest with a meandering stream, with no roofs, rails or streets remaining.",
+        "1000000": "The same flat lowland plain holds mixed oak-lime forest, open glades and marshy meadows crossed by a slow meandering stream. No wall, track or foundation remains in this view, only deep soils, leaf litter and dense woodland under a wide sky.",
+        "-1000000": "A flat, low glacial plain stretches under a wide sky, crossed by shallow braided meltwater channels and marshy meadows. Low grasses, willow scrub and scattered pines cover the damp ground where the station will one day stand.",
+        "-10000": "New since the glacial steppe, the same flat plain holds dense oak-pine forest with hazel clearings and wet meadows dotted with small ponds. A slow stream meanders through reeds across the future station ground, with no track or structure.",
+        "-2000": "Small square barley plots, pasture and wattle-and-daub huts with thatched roofs dot the cleared flat ground, crossed by narrow dirt paths. New since the wild forest is a fenced clearing with stacked timber and a trodden track on the future station and market ground, marking the first plot of the place to come.",
+        "-500": "Low timber-framed farmhouses and workshops with thatched and shingled roofs line a dusty north road where the tracks and forecourt will later lie, surrounded by walled gardens, orchards and grain fields. New since the scattered huts are more houses, a small wooden chapel and fenced yards on the same plots, with the suburb edge reaching this flat ground.",
+        "-100": "Brick station houses with red-tiled roofs already stand on the right on the same plots as the old farmhouses, fronting many iron-railed tracks with long steel-and-glass platform sheds. New since the suburb are large brick tenements, warehouses and a cobbled forecourt with tram rails where the glass market hall will later stand, with fields gone from this view."
+      },
+      "cells": [
+        "clear deep blue sky",
+        "clear bright blue sky",
+        "clear vivid blue sky",
+        "distant apartment blocks under haze",
+        "white apartment blocks near station",
+        "church tower over hazy cityscape",
+        "modern gray commercial building",
+        "festive plaza with Christmas trees",
+        "historic station with red roofs"
+      ]
+    },
+    "library-of-alexandria": {
+      "place": "Kraków Główny station forecourt and Galeria Krakowska, Kraków, Poland, on the flat Vistula plain",
+      "eras": {
+        "0": "Slender forty-story towers with garden terraces, rooftop plantings and solar canopies stand on the steel-tower lines around permeable paved squares with rain gardens and cycle tracks. Automated electric pods move on reserved lanes with aerial cable cabins overhead and low-energy text panels and wayfinding lights, new since the tram-tower era being the garden terraces, pod lanes and buried grids.",
+        "100": "Slender hundred-storey pale stone and glass towers with planted terraces rise on the garden-tower foundations around wide quiet streets with silent trams. A great library with observatory dome forms the landmark on the old square, new since the forty-storey era being the added height, pale cladding and learning halls.",
+        "1000": "Open tended parkland and light woods with meadows and a clear stream cover the surface where rail yards and blocks lay, with mown paths, garden beds and glass skylights set among grass. A few slender pale towers still stand weathered and gently overgrown with planted terraces above, new since the hundred-storey era being the move of homes and transit below ground and the return of the surface to meadow and trees.",
+        "-2000": "Flat Vistula plain of wet meadow and oak-pine woods with a rectangular cleared plot holding a low log hut with plank roof, stacked timber and a straight beaten track on the line of the future yard. A small waterwheel and wooden screw pump stand at the side stream beside mule-wagon ruts and an open stall stacked with paper sheets, with no brick rows or stone paving yet in this northern clearing.",
+        "-500": "Dense four- to six-story brick tenements and workshops with iron beams line wide paved avenues with sidewalks, iron drains and piped gas lamps around an iron-railed station yard with steam locomotives on the old cleared plot and track. Printed paper signs, timetables and price lists fill lit shop windows, new since the hut clearing being the tall rental blocks, rail yard and gas mains.",
+        "-100": "Twenty-story steel-frame towers with lifts and air vents stand in dense rows on the old brick lines, with asphalt lanes carrying battery trams and electric delivery vans. Buried power cables feed bright electric streetlights, illuminated display panels and clock timetables above tree-lined sidewalks with piped drains, new since the steam-rail era being the steel frames, electric transit and underground mains."
+      },
+      "cells": null
+    },
+    "no-electricity": {
+      "place": "View northeast over Kraków Główny station square and Galeria Krakowska site, Kraków, Lesser Poland Plain, temperate continental climate",
+      "eras": {
+        "0": "New since 1926, the left and centre tenements stand rebuilt as a dense five-storey masonry market quarter with red tile roofs, round gas lanterns, facade district steam pipes, painted shop boards and gas-lit display windows, while the old station still stands with its red roofs beside broad steam tracks. Rooftop greenhouses, coal bunkers and water tanks crown the quarter, and heavy diesel lorries and pedal cycles stand on the paved square around market stalls and an ice sheet, with no glass towers or overhead lines.",
+        "100": "New since 2026, the same market quarter and station still stand raised to eight storeys in brick and iron with skylights, planted terraces and street trees, and rooftops carry wind pumps, water towers and chimneys with iron footbridges and steam and air pipe bridges spanning the streets. A cable-tram track with a low steam winding house crosses the square lit by warm gas lanterns, and a narrow water leat with tow path runs beside the many steam tracks.",
+        "1000": "New since 2126, the former rail cutting holds a broad canal with wooden sailing barges and tow paths, and the old brick station and eight-storey blocks still stand weathered and gently overgrown under tall rooftop windmills, water wheels, skylights and gas lanterns. Terraced gardens, orchard trees, meadows and greenhouse roofs cover the square and rooftops around the water, kept trimmed and planted.",
+        "-100": "The white two-storey station with red roofs stands on the right beside many soot-dark steam tracks, and four-storey brick tenements and low boiler houses with chimneys and coal yards fill the left and centre where the later market quarter will stand. Tall cast-iron gas lamps, wall gas pipes, rooftop semaphore posts and a street pneumatic-tube kiosk line the cobbled square with horse teams, bicycles and hissing steam traction engines, and with no overhead wires the flat plain and winter haze remain as today."
+      },
+      "cells": null
+    },
+    "no-printing-press": {
+      "place": "Kraków, Poland - forecourt of Kraków Główny station and site of Galeria Krakowska, on the flat Vistula plain north of the Old Town, temperate climate",
+      "eras": {
+        "0": "The station halls and red roofs still stand in the same place, now fronted by a stone-set plaza with speaker poles and listening shelters and edged by four- to six-storey courtyard blocks with hand-painted picture walls, carved marks and chalk price boards. New since the earlier town are paved tram lines with slow trams, bicycles, handcarts and shared motor vans, with market gardens, fruit trees and stable yards between the houses and no glass towers, cars, glowing signs or parking lots.",
+        "100": "On the same flat ground the five-storey courtyard blocks still stand, now with whole facades covered in painted picture stories and carved image reliefs without any written letters, and tall bell and speaker towers at the street corners. New since the earlier plaza are more trees, terrace gardens and listening shelters among the blocks, with slow trams and bicycles on stone paths and no screens, glass towers or heavy car traffic.",
+        "1000": "On the same flat plain the low courtyard buildings still stand, weathered and gently overgrown, their facades now of carved stone story panels and coloured-glass picture windows without any written letters, set among mature trees, meadows, terraced gardens and orchards. New since the earlier city are footpaths and small quiet tram lines threading between the houses, with planted terraces and ponds kept green and tidy around the stone and glass walls.",
+        "-500": "On flat ground just north of Kraków's walled Old Town, low two- to three-storey timber and brick houses with large daylight copying rooms and tiled roofs line cobbled lanes with a stone speaking platform and reading benches, their walls bearing large hand-painted picture walls and carved shop marks with inner drying yards and small vellum stores and stable yards for pack horses and handcarts. To the north the lanes open to fenced garden plots, stacked timber and a beaten horse track where larger blocks and a station will later stand.",
+        "-100": "The fenced plots have become a two-storey red-roofed station with iron train sheds and many tracks crossing the middle ground, flanked by three- to four-storey brick courtyard blocks with large painted murals and hand-lettered price boards. New since the earlier lanes are horse-tram rails, bicycles and handcarts with few shared motor vans, mild gas lamps on main streets, and compact quarters with gardens, orchards and stable yards between homes."
+      },
+      "cells": null
+    },
+    "rome-never-fell": {
+      "place": "Forecourt of Krakow Glowny station and Galeria Krakowska site, Krakow, Lesser Poland on the flat Vistula plain, temperate continental",
+      "eras": {
+        "0": "Here six- to eight-storey mixed-use stone-and-concrete perimeter blocks with shop arcades, stone tablets and enamel plaques and rooftop gardens and courtyard orchards enclose a stone-paved plaza with fountains and shaded colonnades crossed by dense electric tram and regional rail lines. New since 1926 are two added storeys, the fountain plaza with colonnades and planted roofs in place of glass facades, steel canopies and asphalt lots; no private cars, glass towers, pylons, petrol stations or billboards stand here.",
+        "100": "On the same flat plain the blocks carry concrete domes and vaulted halls with carved stone inscriptions and bronze lettering around a straight colonnaded avenue lined with cypresses and stone pines, while a tall arched stone viaduct carrying trains crosses the district and public baths, fountains and forum gardens fill the crossroads plaza. New since 2026 are the domes, vaulted halls, viaduct and bath-forum with avenue trees and courtyard meadows; no glass skyscrapers, private cars, motorways or illuminated billboards stand here.",
+        "1000": "Here honey-coloured weathered concrete and travertine domes and the tall arched viaduct with slow trains still stand, gently overgrown with vines and shaded by giant stone pines and cypress avenues, with aqueduct-fed fountains and forum gardens filling the plaza. New since 2126 are deeper rooftop terraces, courtyard orchards and meadow borders weaving through the still-used masonry, a calm green and stone townscape with no glass towers, cars, motorways or pylons.",
+        "-500": "On this flat Vistula plain the station forecourt and mall site hold three- to four-storey brick-and-concrete tenements with tiled roofs around a straight stone-paved highway with side drains and milestones, an arched aqueduct channel feeding stone street fountains, and a tiled market hall with painted Latin tablets served by mule-drawn railed wagons. No thatched cottages, castle walls, palisades, mud lanes or open cesspools stand here; the roadside town stands dense, paved and tiled far larger than scattered timber hamlets.",
+        "-100": "On the same flat ground the tenements have grown to five- to six-storey stone-and-concrete perimeter blocks with arcaded market fronts, copper wire on highway poles and aqueduct power channels, crossed by twin-track electric trams and paved-highway steam coaches. New since 1526 are the added storeys, tram tracks, wires and stone market arcades, with irrigated market gardens and tree-lined villa plots at the rear; no private cars, glass towers, petrol stations or neon signs stand here."
+      },
+      "cells": null
+    },
+    "tamed-mammoth": {
+      "place": "Forecourt of Krakow Glowny station and Galeria Krakowska, Krakow, Poland, on the flat Vistula valley floor",
+      "eras": {
+        "0": "New three- to five-story mixed blocks with set-back yards and felted-wool awnings stand on the same plots, with turfed mammoth freight lanes and linear hay meadows across the flat forecourt. Electric-assist mammoth wagons and small battery vans stand by district wool-washing and felt workshops, with buried power and water in ground cabinets, paddocks, troughs and street trees throughout.",
+        "100": "Lower two- to four-storey blocks with very tall gateways and thick felted wool roofs and awnings stand on the same plots, renewed with planted terraces and garden yards. Broad grass avenues with mammoth freight wagons run between them, with paddocks, hay lofts and water troughs between blocks and street trees and meadow strips throughout.",
+        "1000": "A low spread-out town of felt-roofed two-storey blocks with tall gateways, garden terraces and meadows stands on the same flat plain under open sky, with scattered planted trees throughout. Open grassland steppe with grazing mammoth herds and hay meadows reaches between the houses, with wide grass lanes, troughs and hay lofts in daily use among tended gardens.",
+        "-2000": "Low scattered one-story timber-and-earth houses with large fenced yards stand on the flat Vistula plain where the station and mall forecourt will later stand, linked by very wide packed-earth lanes with paired mammoth sledge tracks. Beside each house stand large timber-and-earth fodder barns, haystacks and woven mammoth-wool felt fences and awnings.",
+        "-500": "New sprawling one- to two-story timber-and-clay courtyard houses stand on the same plots, larger and joined around yards with more wool sheds. Broad level earth avenues with water troughs and hitching posts run between them, lined with large wool sheds, drying frames and felt awnings, with high-wheeled mammoth wagons alongside and outer hayfields and winter paddocks reaching to the houses.",
+        "-100": "New two- to three-story brick blocks with stable yards and hay lofts stand on the same plots, taller than the earlier courtyard houses, along very wide earth-and-gravel boulevards with separate mammoth lanes. Buried electric cables feed low iron lamp posts, urban hay meadows and paddocks open between districts, and large painted wall signs and wool banners face the slow lanes."
+      },
+      "cells": null
+    }
+  }
+}

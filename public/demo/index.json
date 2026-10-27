@@ -1,0 +1,22 @@
+[
+  {
+    "name": "temperate-krakow",
+    "biome": "temperate",
+    "credit": "Photo: <a href=\"https://commons.wikimedia.org/wiki/File:Jan_Nowak-Jeziora%C5%84ski_Square,_2025._Krak%C3%B3w._Poland.jpg\">Igor123121</a>, <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a> (altered)"
+  },
+  {
+    "name": "arid-tozeur",
+    "biome": "arid",
+    "credit": "Photo: <a href=\"https://commons.wikimedia.org/wiki/File:Tozeur(js)7.jpg\">Jerzy Strzelecki</a>, <a href=\"https://creativecommons.org/licenses/by/3.0/\">CC BY 3.0</a> (altered)"
+  },
+  {
+    "name": "tropical-paraty",
+    "biome": "tropical",
+    "credit": "Photo: <a href=\"https://commons.wikimedia.org/wiki/File:Brazil_Paraty_Street.JPG\">Whatsinaname (Wikitravel shared)</a>, public domain (altered)"
+  },
+  {
+    "name": "cold-longyearbyen",
+    "biome": "cold",
+    "credit": "Photo: <a href=\"https://commons.wikimedia.org/wiki/File:Residential_houses_from_N_NE_part_of_Longyearbyen_Svalbard_Sukkertoppen_in_background_May_23_2025.jpg\">R. Henrik Nilsson</a>, <a href=\"https://creativecommons.org/licenses/by/4.0/\">CC BY 4.0</a> (altered)"
+  }
+]

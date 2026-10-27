@@ -1,0 +1,1024 @@
+{
+  "name": "arid-tozeur",
+  "credit": "Photo: <a href=\"https://commons.wikimedia.org/wiki/File:Tozeur(js)7.jpg\">Jerzy Strzelecki</a>, <a href=\"https://creativecommons.org/licenses/by/3.0/\">CC BY 3.0</a> (altered)",
+  "biome": "arid",
+  "setting": "outdoor",
+  "width": 1536,
+  "height": 1152,
+  "photo": "photo.jpg",
+  "masks": {
+    "sky": "mask-sky.txt",
+    "building": "mask-building.txt",
+    "tree": "mask-tree.txt",
+    "grass": "mask-grass.txt",
+    "street": "mask-street.txt",
+    "wall": "mask-wall.txt",
+    "ceiling": "mask-ceiling.txt",
+    "floor": "mask-floor.txt"
+  },
+  "forks": {
+    "our-timeline": {
+      "100": {
+        "image": "base_100.webp",
+        "cells": [
+          "tall date palm with streetlamp",
+          "brick minaret top with greenery",
+          "clear sky with palm fronds",
+          "brick buildings with solar panels",
+          "minaret above ivy-covered arcade",
+          "date palm row with street lamps",
+          "garden beds with timber pergola",
+          "modern tram on grass tracks",
+          "pale paved sidewalk with planters"
+        ]
+      },
+      "1000": {
+        "image": "base_1000.webp",
+        "cells": [
+          "sunlit date palm fronds",
+          "pale sky over vine-covered tower",
+          "date palm fronds in sky",
+          "earth-brick house with flowering vines",
+          "vine-covered arcade with planted roof",
+          "distant vine-covered houses among palms",
+          "meadow path beside brick house",
+          "water channel with reeds and stones",
+          "stone path through flowering meadow"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "tall date palm crown",
+          "clear pale desert sky",
+          "palm fronds against pale sky",
+          "palm trunk beside low ruins",
+          "roofless brick walls and minaret base",
+          "dense date palms over ruins",
+          "sandy ground with low walls",
+          "sandy old street bed",
+          "low ruined wall stubs"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "tall date-palm crown",
+          "clear pale blue sky",
+          "dense date-palm fronds",
+          "drooping date-palm fronds",
+          "distant wild date-palms",
+          "dense date-palm foliage",
+          "sandy ground with scrub",
+          "shallow sandy groundwater hollow",
+          "small hopping desert mammal"
+        ]
+      },
+      "-500": {
+        "image": "base_-500.webp",
+        "cells": [
+          "tall date palm crown",
+          "clear pale blue sky",
+          "date palm fronds in sky",
+          "mudbrick houses with palm arcade",
+          "pale sky over distant hills",
+          "date palm beside mudbrick house",
+          "grain sacks outside mud shop",
+          "unpaved lane with clay pots",
+          "adobe compound wall along lane"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "wild date-palm crown",
+          "dry pale sky",
+          "wild date-palm fronds",
+          "drooping palm fronds",
+          "antlered animal on salt flat",
+          "hanging palm fronds",
+          "tamarisk scrub and dry grasses",
+          "sandy gravel plain with scrub",
+          "dry grasses beside palm trunk"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "palm fronds against sky",
+          "clear blue sky",
+          "date palm fronds sky",
+          "tall date palm trunk",
+          "green hills with acacias",
+          "large flat-topped acacia",
+          "marshy spring with cattails",
+          "wild buffalo grazing marsh",
+          "tamarisk bush by water"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "tall date palm crown",
+          "clear blue morning sky",
+          "date palm fronds right",
+          "distant arid rocky hills",
+          "three mud thatched huts",
+          "dense palm foliage right",
+          "irrigated garden plots foreground",
+          "narrow dirt track center",
+          "young palms in fenced plots"
+        ]
+      },
+      "-100": {
+        "image": "base_-100.webp",
+        "cells": [
+          "overhanging palm fronds",
+          "clear sky with minaret top",
+          "palm canopy and blue sky",
+          "ochre houses with shutters",
+          "minaret shaft over arcade",
+          "palms over distant buildings",
+          "arched shops with fabric awnings",
+          "wide packed earth street",
+          "brick arcade with striped awnings"
+        ]
+      }
+    },
+    "library-of-alexandria": {
+      "0": {
+        "image": "library-of-alexandria_0.webp",
+        "cells": [
+          "terraced pale stone tower",
+          "slender garden terrace tower",
+          "tall garden terrace tower",
+          "solar canopy over storefronts",
+          "old brick tower with palms",
+          "aerial cable cabins overhead",
+          "rain garden with agave plantings",
+          "automated electric pods on paving",
+          "fenced construction site with panels"
+        ]
+      },
+      "100": {
+        "image": "library-of-alexandria_100.webp",
+        "cells": [
+          "pale-stone tower upper facade",
+          "clear daytime sky",
+          "tower tops with planted terraces",
+          "stone tower balconies with palms",
+          "weathered ancient brick tower",
+          "domed observatory hall",
+          "date palms beside glass skylights",
+          "silent tram on wide street",
+          "stone fountain with planted beds"
+        ]
+      },
+      "1000": {
+        "image": "library-of-alexandria_1000.webp",
+        "cells": [
+          "tall date palm canopy",
+          "overgrown brick tower top",
+          "palm fronds against sky",
+          "date palm trunk in meadow",
+          "ancient overgrown brick tower",
+          "twin slender pale towers",
+          "round glass skylight dome",
+          "clear rocky meadow stream",
+          "glass skylight among wildflowers"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "tall date palm crown",
+          "clear pale desert sky",
+          "palm fronds against pale sky",
+          "palm trunk beside low ruins",
+          "roofless brick walls and minaret base",
+          "dense date palms over ruins",
+          "sandy ground with low walls",
+          "sandy old street bed",
+          "low ruined wall stubs"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "tall date-palm crown",
+          "clear pale blue sky",
+          "dense date-palm fronds",
+          "drooping date-palm fronds",
+          "distant wild date-palms",
+          "dense date-palm foliage",
+          "sandy ground with scrub",
+          "shallow sandy groundwater hollow",
+          "small hopping desert mammal"
+        ]
+      },
+      "-2000": {
+        "image": "library-of-alexandria_-2000.webp",
+        "cells": [
+          "date palm fronds overhead",
+          "clear pale blue sky",
+          "tall date palm canopy",
+          "two-story brick houses",
+          "distant brick watch tower",
+          "date palms and waterwheel",
+          "reed stalls stacked with scrolls",
+          "mule wagons on paved street",
+          "covered stone street gutters"
+        ]
+      },
+      "-500": {
+        "image": "library-of-alexandria_-500.webp",
+        "cells": [
+          "palm crown beside brick tenement",
+          "pale evening sky",
+          "tall brick tenement arches",
+          "palm trunk and balconied facade",
+          "distant domed brick tower",
+          "arched tenement with gas lamps",
+          "fenced yard with iron rails",
+          "street rails toward station yard",
+          "lit shops with sidewalk drain"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "wild date-palm crown",
+          "dry pale sky",
+          "wild date-palm fronds",
+          "drooping palm fronds",
+          "antlered animal on salt flat",
+          "hanging palm fronds",
+          "tamarisk scrub and dry grasses",
+          "sandy gravel plain with scrub",
+          "dry grasses beside palm trunk"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "palm fronds against sky",
+          "clear blue sky",
+          "date palm fronds sky",
+          "tall date palm trunk",
+          "green hills with acacias",
+          "large flat-topped acacia",
+          "marshy spring with cattails",
+          "wild buffalo grazing marsh",
+          "tamarisk bush by water"
+        ]
+      },
+      "-100": {
+        "image": "library-of-alexandria_-100.webp",
+        "cells": [
+          "tall steel-frame tower facade",
+          "clear evening sky",
+          "upper pale stone tower",
+          "illuminated shop signs and clock",
+          "weathered domed brick tower",
+          "glowing electric street lamps",
+          "vintage electric delivery van",
+          "battery tram on tracks",
+          "fenced garden construction plot"
+        ]
+      }
+    },
+    "no-electricity": {
+      "0": {
+        "image": "no-electricity_0.webp",
+        "cells": [
+          "palm fronds against pale sky",
+          "minaret top in clear sky",
+          "clear sky with palm fronds",
+          "patterned-brick shops with pipes",
+          "minaret above rooftop greenhouses",
+          "brick facade with gas pipes",
+          "parked pedal bicycles by shop",
+          "paved street with diesel lorry",
+          "diesel air-start tanker lorry"
+        ]
+      },
+      "100": {
+        "image": "no-electricity_100.webp",
+        "cells": [
+          "palm fronds over brick balconies",
+          "rooftop wind pumps and water tower",
+          "palm canopy and smoking chimney",
+          "brick facade with gas lamps",
+          "iron pipe bridge and minaret",
+          "rear pipe bridge over street",
+          "low steam winding house",
+          "steaming cable tram on tracks",
+          "brick sidewalk with gas lamps"
+        ]
+      },
+      "1000": {
+        "image": "no-electricity_1000.webp",
+        "cells": [
+          "palm fronds with oil lantern",
+          "weathered minaret in clear sky",
+          "tall palms under clear sky",
+          "vine-covered brick shops with awnings",
+          "vine-covered arcades along distant canal",
+          "wooden windmill above brick arcade",
+          "moored sailing barge with produce",
+          "shallow canal with sailing barges",
+          "wooden water wheel on canal"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "tall date palm crown",
+          "clear pale desert sky",
+          "palm fronds against pale sky",
+          "palm trunk beside low ruins",
+          "roofless brick walls and minaret base",
+          "dense date palms over ruins",
+          "sandy ground with low walls",
+          "sandy old street bed",
+          "low ruined wall stubs"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "tall date-palm crown",
+          "clear pale blue sky",
+          "dense date-palm fronds",
+          "drooping date-palm fronds",
+          "distant wild date-palms",
+          "dense date-palm foliage",
+          "sandy ground with scrub",
+          "shallow sandy groundwater hollow",
+          "small hopping desert mammal"
+        ]
+      },
+      "-500": {
+        "image": "base_-500.webp",
+        "cells": [
+          "tall date palm crown",
+          "clear pale blue sky",
+          "date palm fronds in sky",
+          "mudbrick houses with palm arcade",
+          "pale sky over distant hills",
+          "date palm beside mudbrick house",
+          "grain sacks outside mud shop",
+          "unpaved lane with clay pots",
+          "adobe compound wall along lane"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "tall date palm crown",
+          "clear blue morning sky",
+          "date palm fronds right",
+          "distant arid rocky hills",
+          "three mud thatched huts",
+          "dense palm foliage right",
+          "irrigated garden plots foreground",
+          "narrow dirt track center",
+          "young palms in fenced plots"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "wild date-palm crown",
+          "dry pale sky",
+          "wild date-palm fronds",
+          "drooping palm fronds",
+          "antlered animal on salt flat",
+          "hanging palm fronds",
+          "tamarisk scrub and dry grasses",
+          "sandy gravel plain with scrub",
+          "dry grasses beside palm trunk"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "palm fronds against sky",
+          "clear blue sky",
+          "date palm fronds sky",
+          "tall date palm trunk",
+          "green hills with acacias",
+          "large flat-topped acacia",
+          "marshy spring with cattails",
+          "wild buffalo grazing marsh",
+          "tamarisk bush by water"
+        ]
+      },
+      "-100": {
+        "image": "no-electricity_-100.webp",
+        "cells": [
+          "palm fronds against clear sky",
+          "slender domed minaret top",
+          "clear sky over palm trees",
+          "steaming chimneys over brick shops",
+          "minaret shaft over brick arcade",
+          "gas lamps among tall palms",
+          "sun-brick shop with reed awning",
+          "horse carts and traction engine",
+          "horse wagon loaded with produce"
+        ]
+      }
+    },
+    "no-printing-press": {
+      "0": {
+        "image": "no-printing-press_0.webp",
+        "cells": [
+          "painted facade with lattice windows",
+          "pale sky with tram wire",
+          "clear sky above brick rooftops",
+          "mural arcade with cloth awning",
+          "tall brick minaret tower",
+          "iron speaker pole with horns",
+          "bicycles beside chalk price boards",
+          "stone lane with tram tracks",
+          "produce handcart by wooden shelter"
+        ]
+      },
+      "100": {
+        "image": "no-printing-press_100.webp",
+        "cells": [
+          "carved bell tower top",
+          "clear pale morning sky",
+          "right bell tower top",
+          "painted ochre courtyard facade",
+          "tall brick minaret center",
+          "painted ochre courtyard block",
+          "parked bicycles by arches",
+          "yellow tram on rails",
+          "fruit handcart on street"
+        ]
+      },
+      "1000": {
+        "image": "no-printing-press_1000.webp",
+        "cells": [
+          "spreading date palm fronds",
+          "vine-covered minaret upper tower",
+          "right date palm fronds",
+          "carved story panels coloured windows",
+          "weathered minaret tower among vines",
+          "distant stone tower hillside",
+          "stone footpath with tram tracks",
+          "cobbled lane with tram rails",
+          "garden terraces stepped water channel"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "tall date palm crown",
+          "clear pale desert sky",
+          "palm fronds against pale sky",
+          "palm trunk beside low ruins",
+          "roofless brick walls and minaret base",
+          "dense date palms over ruins",
+          "sandy ground with low walls",
+          "sandy old street bed",
+          "low ruined wall stubs"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "tall date-palm crown",
+          "clear pale blue sky",
+          "dense date-palm fronds",
+          "drooping date-palm fronds",
+          "distant wild date-palms",
+          "dense date-palm foliage",
+          "sandy ground with scrub",
+          "shallow sandy groundwater hollow",
+          "small hopping desert mammal"
+        ]
+      },
+      "-500": {
+        "image": "no-printing-press_-500.webp",
+        "cells": [
+          "palm-beam roof copying house",
+          "clear daytime sky",
+          "palm thatch roof edge",
+          "hand-painted picture wall",
+          "squat mud-brick minaret",
+          "painted map mud wall",
+          "hide-drying yard vellum",
+          "packed-earth lane handcarts",
+          "parchment bundle crates"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "wild date-palm crown",
+          "dry pale sky",
+          "wild date-palm fronds",
+          "drooping palm fronds",
+          "antlered animal on salt flat",
+          "hanging palm fronds",
+          "tamarisk scrub and dry grasses",
+          "sandy gravel plain with scrub",
+          "dry grasses beside palm trunk"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "tall date palm crown",
+          "clear blue morning sky",
+          "date palm fronds right",
+          "distant arid rocky hills",
+          "three mud thatched huts",
+          "dense palm foliage right",
+          "irrigated garden plots foreground",
+          "narrow dirt track center",
+          "young palms in fenced plots"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "palm fronds against sky",
+          "clear blue sky",
+          "date palm fronds sky",
+          "tall date palm trunk",
+          "green hills with acacias",
+          "large flat-topped acacia",
+          "marshy spring with cattails",
+          "wild buffalo grazing marsh",
+          "tamarisk bush by water"
+        ]
+      },
+      "-100": {
+        "image": "no-printing-press_-100.webp",
+        "cells": [
+          "overhanging date palm fronds",
+          "clear morning sky",
+          "wooden utility pole with wires",
+          "brick arcade with painted murals",
+          "tall rebuilt brick minaret",
+          "date palms and wired poles",
+          "parked bicycles by murals",
+          "horse cart on stone lane",
+          "old motor van on lane"
+        ]
+      }
+    },
+    "rome-never-fell": {
+      "0": {
+        "image": "rome-never-fell_0.webp",
+        "cells": [
+          "upper stone facades with balconies",
+          "clear pale blue sky",
+          "rooftop gardens above stone facade",
+          "arcaded shops with Latin plaques",
+          "slender stone tower behind blocks",
+          "planted balconies above stone colonnade",
+          "stone paved plaza with tram tracks",
+          "tiered stone fountains in plaza",
+          "potted trees along stone colonnade"
+        ]
+      },
+      "100": {
+        "image": "rome-never-fell_100.webp",
+        "cells": [
+          "hanging street lantern",
+          "cloudy blue sky",
+          "stone pine tree crown",
+          "colonnaded bath hall facade",
+          "high arched stone viaduct",
+          "tall cypress trees",
+          "dolphin fountain with basin",
+          "tram tracks on cobbles",
+          "tiered forum fountain"
+        ]
+      },
+      "1000": {
+        "image": "rome-never-fell_1000.webp",
+        "cells": [
+          "giant stone pine canopy",
+          "clear pale blue sky",
+          "giant stone pine crowns",
+          "vine-covered stone colonnade",
+          "train on arched viaduct",
+          "honey-coloured arched colonnade",
+          "circular garden fountain basin",
+          "central fountain water channel",
+          "terraced fountain garden pools"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "tall date palm crown",
+          "clear pale desert sky",
+          "palm fronds against pale sky",
+          "palm trunk beside low ruins",
+          "roofless brick walls and minaret base",
+          "dense date palms over ruins",
+          "sandy ground with low walls",
+          "sandy old street bed",
+          "low ruined wall stubs"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "tall date-palm crown",
+          "clear pale blue sky",
+          "dense date-palm fronds",
+          "drooping date-palm fronds",
+          "distant wild date-palms",
+          "dense date-palm foliage",
+          "sandy ground with scrub",
+          "shallow sandy groundwater hollow",
+          "small hopping desert mammal"
+        ]
+      },
+      "-500": {
+        "image": "rome-never-fell_-500.webp",
+        "cells": [
+          "arched aqueduct above roofs",
+          "tall date palm crown",
+          "domed civic tower top",
+          "brick tenement with Latin tablets",
+          "distant aqueduct bridge and hills",
+          "brick belfry tower midsection",
+          "stone street fountain basin",
+          "mule carts on grooved paving",
+          "stone milestone beside arcades"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "wild date-palm crown",
+          "dry pale sky",
+          "wild date-palm fronds",
+          "drooping palm fronds",
+          "antlered animal on salt flat",
+          "hanging palm fronds",
+          "tamarisk scrub and dry grasses",
+          "sandy gravel plain with scrub",
+          "dry grasses beside palm trunk"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "tall date palm crown",
+          "clear blue morning sky",
+          "date palm fronds right",
+          "distant arid rocky hills",
+          "three mud thatched huts",
+          "dense palm foliage right",
+          "irrigated garden plots foreground",
+          "narrow dirt track center",
+          "young palms in fenced plots"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "palm fronds against sky",
+          "clear blue sky",
+          "date palm fronds sky",
+          "tall date palm trunk",
+          "green hills with acacias",
+          "large flat-topped acacia",
+          "marshy spring with cattails",
+          "wild buffalo grazing marsh",
+          "tamarisk bush by water"
+        ]
+      },
+      "-100": {
+        "image": "rome-never-fell_-100.webp",
+        "cells": [
+          "left stone block upper facade",
+          "clear blue sky with wire",
+          "right stone block upper facade",
+          "shuttered balconies over market arcade",
+          "tall stone tower behind rooftops",
+          "tram pole with hanging lamp",
+          "arcaded market stalls with produce",
+          "steam tram on twin rails",
+          "cobbled tram street with arcade"
+        ]
+      }
+    },
+    "tamed-mammoth": {
+      "0": {
+        "image": "tamed-mammoth_0.webp",
+        "cells": [
+          "date palm fronds overhead",
+          "domed brick minaret top",
+          "palm canopy in pale sky",
+          "wool wash workshop storefront",
+          "arcaded brick market buildings",
+          "pale buildings behind palms",
+          "wool baskets and drying racks",
+          "mammoth hauling wool wagon",
+          "battery van and utility cabinets"
+        ]
+      },
+      "100": {
+        "image": "tamed-mammoth_100.webp",
+        "cells": [
+          "date palm fronds against sky",
+          "weathered minaret tower top",
+          "date palm fronds and sky",
+          "brick block with arched gateways",
+          "vine-covered minaret base",
+          "thatched brick blocks on right",
+          "stone water trough by palm",
+          "mammoth pulling freight wagon",
+          "fenced hay paddock with trough"
+        ]
+      },
+      "1000": {
+        "image": "tamed-mammoth_1000.webp",
+        "cells": [
+          "date palm fronds in sky",
+          "clear blue midday sky",
+          "palm crowns under blue sky",
+          "thatched mudbrick houses",
+          "tall ancient minaret tower",
+          "row of date palms",
+          "walled garden with trough",
+          "grazing mammoths on grass avenue",
+          "mammoth beside walled gardens"
+        ]
+      },
+      "10000": {
+        "image": "base_10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_10000.target.txt"
+        },
+        "cells": [
+          "tall date palm crown",
+          "clear pale desert sky",
+          "palm fronds against pale sky",
+          "palm trunk beside low ruins",
+          "roofless brick walls and minaret base",
+          "dense date palms over ruins",
+          "sandy ground with low walls",
+          "sandy old street bed",
+          "low ruined wall stubs"
+        ]
+      },
+      "1000000": {
+        "image": "base_1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_1000000.target.txt"
+        },
+        "cells": [
+          "tall date-palm crown",
+          "clear pale blue sky",
+          "dense date-palm fronds",
+          "drooping date-palm fronds",
+          "distant wild date-palms",
+          "dense date-palm foliage",
+          "sandy ground with scrub",
+          "shallow sandy groundwater hollow",
+          "small hopping desert mammal"
+        ]
+      },
+      "-2000": {
+        "image": "tamed-mammoth_-2000.webp",
+        "cells": [
+          "tall palm under clear sky",
+          "clear blue sky",
+          "palm fronds against blue sky",
+          "mud hut with straw haystack",
+          "mammoth pulling hay wagon",
+          "thatched fodder barn with fence",
+          "clay jars beside stacked timber",
+          "wide rutted packed earth lane",
+          "wooden water troughs under awning"
+        ]
+      },
+      "-500": {
+        "image": "tamed-mammoth_-500.webp",
+        "cells": [
+          "palm fronds and clear sky",
+          "clear pale blue sky",
+          "palm tree tops and sky",
+          "mudbrick courtyard houses with awnings",
+          "distant mountains over mudbrick roofs",
+          "mudbrick hall with square tower",
+          "stone water trough and fence",
+          "mammoth pulling hay cart",
+          "wool drying frames and hayfield"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "wild date-palm crown",
+          "dry pale sky",
+          "wild date-palm fronds",
+          "drooping palm fronds",
+          "antlered animal on salt flat",
+          "hanging palm fronds",
+          "tamarisk scrub and dry grasses",
+          "sandy gravel plain with scrub",
+          "dry grasses beside palm trunk"
+        ]
+      },
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
+        "cells": [
+          "palm fronds against sky",
+          "clear blue sky",
+          "date palm fronds sky",
+          "tall date palm trunk",
+          "green hills with acacias",
+          "large flat-topped acacia",
+          "marshy spring with cattails",
+          "wild buffalo grazing marsh",
+          "tamarisk bush by water"
+        ]
+      }
+    }
+  },
+  "notes": {
+    "our-timeline": {
+      "place": "Palm-lined market street in Tozeur, Jerid oasis town in southwestern Tunisia, looking toward the El-Ferdaws Mosque minaret",
+      "eras": {
+        "100": "The same street keeps its brick facades and tall minaret, now with planted green roofs, timber pergolas and solar shades, and smooth pale paving with paired tram rails set in grass strips. New since a century before, a quiet tram line, irrigated garden beds and rows of mature date-palms with street lamps line every frontage.",
+        "1000": "The same alignment remains as a shaded garden boulevard between light earth-brick houses with deep planted terraces, vine-covered arcades and dense date-palms and fruit trees in every courtyard and on every roof. New since the previous century, planting has thickened into continuous terraced gardens with small water channels and maintained meadow strips along the old tram way.",
+        "10000": "The lower weathered brick and stone walls of the same shop rows and houses and the square base of the minaret still stand in the same places along the old street line, roofless and gently overgrown. Date-palms, acacia and tamarisk grow inside the wall outlines and along the sandy street bed, with no roof and no paving left visible.",
+        "1000000": "A flat sandy plain with tamarisk scrub, desert grasses and clumps of wild date-palms near a shallow groundwater hollow stretches to the level horizon. Every trace of wall and street has gone, leaving only natural sand, gravel and vegetation.",
+        "-1000000": "A flat sandy-gravel plain at the edge of a broad salt flat stretches to a level horizon under a dry pale sky. Scattered tamarisk scrub, tough desert grasses and a few wild date-palms grow near shallow groundwater, with no track and no settlement.",
+        "-10000": "The same flat plain is greener steppe with denser grasses, tamarisk and acacia and a thicker natural grove of date-palms around a marshy spring hollow. There is still no track and no building of any kind.",
+        "-2000": "Along the line of the future street runs a narrow dirt track between small irrigated garden plots edged by low palm-frond fences. New since the wild steppe, three low huts of mud and palm-trunks with thatched roofs and young planted palms stand where the later shop rows will stand.",
+        "-500": "The track has become an unpaved oasis lane lined on both sides by single-storey sun-dried mudbrick houses with palm-beam arcades and small shop openings, and a small low mudbrick mosque with a short square tower on the spot of the later tall minaret. New since the huts, the plots are enclosed compounds with continuous adobe frontages along the lane.",
+        "-100": "The same street is wider with packed earth and stone edging, lined by two-storey ochre brick and plaster houses with arched shop fronts, wooden shutters and fabric awnings, and the tall slender brick minaret with domed top stands enlarged on the old mosque spot with young avenue palms and iron lamps. New since 1526, the houses are taller in fired brick and plaster and the minaret and shop arcade are larger."
+      },
+      "cells": [
+        "palm fronds against sky",
+        "tall mosque minaret top",
+        "palm fronds in sky",
+        "brick shops with awnings",
+        "hanging shop signs arcade",
+        "sunlit beige street buildings",
+        "parked cars at curb",
+        "paved street with vehicles",
+        "sidewalk and side mirror"
+      ]
+    },
+    "library-of-alexandria": {
+      "place": "Tozeur oasis market street in southwestern Tunisia, flat palm-grove avenue looking toward the old-town brick minaret",
+      "eras": {
+        "0": "Slender forty-story towers with garden terraces of pale stone and glass stand on the same plots as the steel towers along permeable paving with rain gardens and cycle tracks, with automated electric pods on reserved lanes and aerial cable cabins overhead, rooftop plantings and solar canopies with buried grids, and low-energy text panels and wayfinding lights, while palms line the street and the old brick tower still stands weathered and gently overgrown. New since the electric tram streets are the taller green towers, pod lanes and roof gardens over former parking, and at the rear a fenced deep foundation shaft with stacked pale panels and terrace plantings marks where a hundred-storey tower will rise.",
+        "100": "Slender hundred-storey pale-stone and glass towers with planted terraces rise on the same plots above wide quiet streets with silent trams and no jams, with great library and observatory halls as landmarks and the ancient brick tower still standing weathered and gently overgrown amid tended gardens and date palms. New since the forty-storey streets are the still taller towers and quieter lanes, and beside the meadow margins fenced sunken stairs and glass skylight frames with planted mounds mark where homes and transport will extend underground.",
+        "1000": "Open tended parkland and date-palm woods with meadows and a clear stream cover the surface where streets ran, with only a few slender pale towers and round glass skylights that light inhabited halls below, and the ancient brick tower still stands weathered and gently overgrown among gardens. New since the tower city is the giving of the surface back to meadows and woods while homes, libraries and silent tram ways continue in planted lamp-lit halls beneath the skylights.",
+        "-2000": "Dense rows of two-story brick-and-stone houses with flat roofs line a paved stone street with covered gutters on the exact line of the modern avenue, with open copy stalls stacked with paper sheets under reed awnings where the later shops stand and mule-drawn freight wagons on regular runs, while date palms frame both sides and waterwheels and screw pumps turn at the grove edge. New since scattered mud huts is this paved drained street itself, and beyond the houses toward the low brick watch-tower on the later minaret spot lie cleared plots with stacked bricks, timber and a mule track where larger blocks will later rise.",
+        "-500": "Four- to six-story brick tenements and workshops with iron beams stand on the same plots as the earlier houses along a widened paved avenue with sidewalks and iron drains, with piped gas lamps and lit shop windows, printed paper signs and timetables, and iron rails with steam locomotives and a small station yard at the far end beyond the tall domed brick tower that still stands on the minaret spot. New since the two-story street are the taller rental blocks and the rail line laid over the old mule track, and on one side plot a fenced yard with stacked iron rails, bricks and timber scaffolding marks where a still taller steel tower will rise.",
+        "-100": "Dense twenty-story steel-frame towers with electric lifts stand on the same plots as the brick tenements along asphalt lanes carrying battery trams and electric delivery vans, with buried power cables, bright electric streetlights, illuminated display panels and clock timetables, and paved sidewalks with planted date palms and piped drains, while the old domed brick tower still stands weathered and gently overgrown among shops. New since the gaslit rail town are the steel towers and electric transit over the former steam rails, and beside them a fenced garden plot with steel framing, pale stone panels and young trees marks where a slender garden tower will rise."
+      },
+      "cells": null
+    },
+    "no-electricity": {
+      "place": "Tozeur, southwest Tunisia - the palm avenue leading to the Ferkous Mosque minaret on the flat Saharan oasis edge near Chott el Jerid, hot arid climate",
+      "eras": {
+        "0": "Since 1926 the shops have grown to dense three-storey patterned-brick masonry with facade gas and steam pipes, painted wooden boards and gas-lit display windows, and round gas lanterns on the palm avenue. The paved street carries heavy diesel lorries with air-start tanks and pedal cycles, with an enlarged pneumatic-tube station, and rooftops hold water tanks, coal bunkers and greenhouses above the workshops.",
+        "100": "Since 2026 an iron pipe bridge carrying steam and compressed-air mains spans the street on brick piers and a central cable-tram track from a low steam winding house runs under the palms. The same minaret still stands weathered among four-storey brick and iron blocks lit by warm gaslight, with rooftops crowded with wind pumps, water towers, chimneys and tended garden beds.",
+        "1000": "Since 2126 the roadbed has become a shallow stone-edged canal with sailing barges shaded by tall palms and fig gardens, while the old minaret and brick arcades still stand weathered and gently overgrown with vines and kept under trees and rooftop plantings. Tall wooden windmills and a slow water wheel drive workshop shafts behind the shops, with oil lanterns and skylights serving the low tended quarters.",
+        "-100": "The same slender domed minaret rises over low one- and two-storey sun-brick shops with arched fronts and reed awnings along a dusty palm-lined road. Tall cast-iron gas lamps stand among the palms, a timber rooftop semaphore post and a small iron pneumatic-tube kiosk stand on the corner, and horse carts, bicycles and a hissing coal-fired steam traction engine wait by a low boiler house and coal yard."
+      },
+      "cells": null
+    },
+    "no-printing-press": {
+      "place": "Tozeur, southern Tunisia - oasis market street leading to El-Ferdaws Mosque minaret, flat Saharan palm-grove edge, hot arid climate",
+      "eras": {
+        "0": "Four-storey patterned-brick courtyard blocks with arcades, awnings and hand-painted picture walls line the stone-set lane under date palms, still focused on the tall brick minaret. New since 1926 are iron speaker poles with small listening shelters, chalk picture price boards and market gardens with fruit trees and stable yards between houses, with street trams, bicycles, handcarts and shared motor vans instead of private cars and with no glowing signs, paper posters or parking lots.",
+        "100": "Five-storey ochre courtyard blocks whose whole facades are painted with picture stories and carved reliefs line the palm-shaded lane, with tall bell-and-speaker towers at the corners and the familiar brick minaret still standing among them. New since 2026 are the full story-facades and corner towers, plus planted roof gardens, fruit trees and small tram rails with bicycles and handcarts only, and no written letters, screens or heavy car traffic.",
+        "1000": "Low stone courtyard buildings with carved story panels and coloured-glass picture windows stand weathered and gently overgrown with vines among dense date palms, figs and garden terraces along a footpath where the lane was, the old brick minaret form still standing among trees. Kept since 2126 are the small tram line and footpaths with no cars, screens or written letters, now edged by meadows, orchards and planted terraces in a calm cared-for oasis quarter.",
+        "-500": "Low sun-dried brick houses with palm-beam roofs and large daylight copying rooms line a packed-earth lane shaded by date palms, with a shorter mud-brick mosque and squat minaret on the same plot as the later tall minaret. Large hand-painted picture walls and carved shop marks stand beside a low speaking platform and hide-drying yard with vellum stores, served by pack horses and handcarts with parchment bundles and with no press or printed sheets.",
+        "-100": "Three-storey patterned-brick arcaded blocks with courtyards and canvas awnings now line the stone-set lane, still shaded by date palms and centered on the taller rebuilt brick minaret. New since 1526 are large painted murals and hand-lettered picture boards, mild gas lamps and wired poles on main corners, with horse carts, bicycles and a single shared motor van instead of cars and with gardens and stable yards kept between homes."
+      },
+      "cells": null
+    },
+    "rome-never-fell": {
+      "place": "Tozeur oasis town in the Jerid, southern Tunisia - flat desert plain with date-palm oasis and springs, view south along the main market street toward the old centre",
+      "eras": {
+        "0": "Six- to eight-storey mixed-use perimeter blocks with stone facades, shaded colonnades, enamel Latin plaques and courtyard orchards and rooftop gardens enclose a stone-paved plaza with fountains where the tram and regional rail meet. New since the last street are the paved pedestrian plaza, the planted roofs and a small concrete-domed bath hall with low arched viaduct piers rising at the end of the street.",
+        "100": "Tall concrete domes and vaulted district halls with carved stone inscriptions and bronze lettering close the view, and a high arched stone viaduct carrying trains crosses the street above a straight colonnaded avenue of cypresses, stone pines and retained date palms. New since the last street are the enlarged domes grown from the earlier bath hall and the completed viaduct, with public baths, fountains and forum gardens at the crossroads and tram lines below.",
+        "1000": "Honey-coloured weathered concrete and travertine domes and vaulted halls still stand around the same avenue, gently overgrown with vines and framed by giant stone pines, cypresses and date palms. The old arched viaducts still carry slow trains, and the forums hold fountains, planted terraces, orchards and meadow gardens fed by the aqueduct.",
+        "-500": "The straight stone-paved high street is lined on both sides by three- to four-storey brick-and-concrete tenements with arcaded market halls, tiled roofs, side drains, milestones and painted Latin shop tablets. An arched aqueduct channel on low piers feeds public street fountains among date palms, railed wagon grooves run in the paving, and a tall domed civic tower with arched belfry stands at the end of the view.",
+        "-100": "The same street line now holds five- to six-storey stone-and-concrete perimeter blocks with arcaded fronts and shuttered balconies, with twin tram rails set into the old wagonway paving and copper wire strung on poles along the highway. New since the earlier street are the extra masonry floors, the electric tram line and aqueduct power channel, while irrigated market gardens and rows of young villa palms remain behind the blocks at the town edge."
+      },
+      "cells": null
+    },
+    "tamed-mammoth": {
+      "place": "Palm-lined market street in Tozeur, southern Tunisia, looking to the brick minaret of the old oasis mosque on the flat pre-Saharan plain, hot arid desert-oasis climate",
+      "eras": {
+        "0": "Three- to five-story mixed brick-and-concrete blocks with set-back yards, shop awnings and district wool-washing and felt workshops line turfed mammoth freight lanes with electric-assist wagons and small battery vans, ground cabinets, water troughs and linear hay meadows. Date palms shade both sides and the tall domed brick minaret still dominates the center view, with no overhead wires or asphalt parking.",
+        "100": "Two- to four-storey brick blocks with very tall arched gateways, thick felted wool roofs and awnings line broad grass avenues carrying mammoth freight wagons, with paddocks, hay lofts and water troughs between blocks. Date-palm gardens and irrigated meadows fill the yards, and the old minaret still stands weathered and gently overgrown with climbing greenery at its base.",
+        "1000": "A low spread-out town of felt-roofed mudbrick and palm-timber houses with walled gardens, irrigated meadows and date palms shares open grassy steppe with scattered acacia, kept open by grazing mammoth herds between houses. Grass avenues, hay lofts, stone troughs and the ancient minaret base still stand amid green plantings in cared-for order.",
+        "-2000": "A very wide packed-earth lane runs between low scattered one-story sun-dried mudbrick houses with large walled yards, timber-and-earth fodder barns, haystacks and woven mammoth-wool felt fences and awnings. Mammoth wagon ruts, water troughs and turning space fill the lane, and where the later tall minaret will stand there is a low walled enclosure with a thatched mud hut and stacked palm timber.",
+        "-500": "The lane is now a broad level earth avenue with stone water troughs and hitching posts, lined by sprawling one- to two-story mudbrick courtyard houses with palm-beam roofs, large wool sheds, drying frames and felt workshops. Hayfields and winter paddocks reach to the backs of the houses, and the earlier mud hut is now a flat-roofed hall with a short square tower on the same spot as the future minaret.",
+        "-100": "Very wide earth-and-gravel boulevards with separate mammoth lanes replace the avenue, lined by two- to three-story ochre brick blocks with stable yards, hay lofts, large painted wall signs and wool banners, iron lamp posts on buried cable, and hay meadows between districts. The hall tower is now a tall slender domed brick minaret on the old foundations, with date palms shading both sidewalks."
+      },
+      "cells": null
+    }
+  }
+}
