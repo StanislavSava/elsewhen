@@ -16,6 +16,30 @@ const FORKS: Record<string, { title: string; divergenceYear: number; premise: st
       "by recitation, images and seals, and the slow, spoken culture shapes everything from architecture " +
       "to how cities look today.",
   },
+  "no-electricity": {
+    title: "Electricity was never harnessed",
+    divergenceYear: 1831,
+    premise:
+      "In 1831 Faraday's induction experiments fail and are set aside; no one finds a practical way to make " +
+      "electricity. The world modernizes anyway, on steam, clockwork, compressed air, gaslight, wind and water: " +
+      "cities of brass, glass and pneumatic tubes, mechanical calculators, and slow, luminous gaslit evenings.",
+  },
+  "treasure-fleets": {
+    title: "The treasure fleets never turned back",
+    divergenceYear: 1433,
+    premise:
+      "In 1433 the Ming court keeps funding Zheng He's treasure fleets instead of burning the ships. Great junks " +
+      "keep sailing the Indian Ocean and the Pacific, and a maritime trading world of harbors, silk, porcelain, " +
+      "printed charts and civil examinations spreads its tastes and ideas to every coast.",
+  },
+  "tamed-mammoth": {
+    title: "Humans tamed the mammoth",
+    divergenceYear: -12000,
+    premise:
+      "Around 12,000 BCE herders on the cold steppe tame the woolly mammoth before it vanishes. Mammoths become " +
+      "draft animals, wool flocks and companions; they survive the warming climate under human care, and a " +
+      "herding culture of wide trails, big gates, wool and patient giants shapes how the world farms, travels and builds.",
+  },
   "library-of-alexandria": {
     title: "The Library of Alexandria never burned",
     divergenceYear: -48,

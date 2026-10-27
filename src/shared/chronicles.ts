@@ -1,11 +1,15 @@
 import ourTimeline from "../../forks/our-timeline.json";
 import printingPress from "../../forks/no-printing-press.json";
 import alexandria from "../../forks/library-of-alexandria.json";
+import noElectricity from "../../forks/no-electricity.json";
+import tamedMammoth from "../../forks/tamed-mammoth.json";
+import treasureFleets from "../../forks/treasure-fleets.json";
 import { Chronicle, relativeDivergence, type ChronicleEra } from "./eras";
 
 // Parsed at import, so a malformed chronicle fails the build/tests instead of a live request.
 export const CHRONICLES: Record<string, Chronicle> = Object.fromEntries(
-  [ourTimeline, printingPress, alexandria].map((raw) => {
+  // Ordered by divergence, oldest first, for the history picker.
+  [ourTimeline, tamedMammoth, alexandria, treasureFleets, printingPress, noElectricity].map((raw) => {
     const c = Chronicle.parse(raw);
     return [c.forkId, c];
   }),

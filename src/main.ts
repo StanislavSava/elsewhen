@@ -40,7 +40,16 @@ const statusEl = $("status");
 const hintEl = $("hint");
 const biomeSelect = $<HTMLSelectElement>("biome");
 const forkSelect = $<HTMLSelectElement>("fork");
-for (const c of Object.values(CHRONICLES)) forkSelect.add(new Option(c.title, c.forkId));
+
+/** Live scenes can paint any history; a demo offers only the histories it was pre-generated with. */
+function fillForkPicker(available?: string[]): void {
+  forkSelect.replaceChildren();
+  for (const c of Object.values(CHRONICLES)) {
+    if (!available || available.includes(c.forkId)) forkSelect.add(new Option(c.title, c.forkId));
+  }
+  if (![...forkSelect.options].some((o) => o.value === state.forkId)) state.forkId = DEFAULT_FORK;
+  forkSelect.value = state.forkId;
+}
 
 type EraState = { status: EraStatus; result?: EraResult; mask?: Mask | null };
 
@@ -61,6 +70,8 @@ const state = {
 };
 
 // ---------------------------------------------------------------- bootstrap
+
+fillForkPicker();
 
 const configReady = api.config().then((cfg) => {
   state.turnstileSiteKey = cfg.turnstileSiteKey;
@@ -228,6 +239,7 @@ async function begin(photo: PreparedPhoto, opts: { token?: string; demo?: Demo }
     biomeSelect.value = state.biome;
   }
   $("credit").innerHTML = opts.demo ? opts.demo.manifest.credit : "";
+  fillForkPicker(opts.demo ? Object.keys(opts.demo.manifest.forks) : undefined);
   $("another-place").hidden = !opts.demo || state.demoIndex.length < 2;
 
   // Phones get ≤1280 px textures so ~10 keyframes fit in iOS GPU memory.
