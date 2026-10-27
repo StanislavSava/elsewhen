@@ -1,7 +1,8 @@
 import { api, HttpError } from "./api";
 import { fromFile, prepare, startCamera, stopCamera, type PreparedPhoto } from "./capture";
-import { closeSheet, showChain, showCreature } from "./card";
+import { closeSheet, showCreature } from "./card";
 import { closeExploded, explodeFossil } from "./explode";
+import { playFracture } from "./fracture";
 import { demoElementUrls, demoEras, demoMaskUrls, loadDemo, loadDemoIndex, type Demo, type DemoIndexEntry } from "./demo";
 import { generateAll, nearestFirst, type EraStatus } from "./orchestrator";
 import { bakeDelayMap, Renderer, tintForPosition } from "./renderer";
@@ -473,7 +474,7 @@ function renderTicks(): void {
     b.className = "branch";
     b.textContent = `splits ${chronicle.divergenceYear! < 0 ? `${-chronicle.divergenceYear!} BCE` : chronicle.divergenceYear}`;
     b.style.left = `${((yearToPosition(div) + 1) / 2) * 100}%`;
-    b.addEventListener("click", () => showChain(chronicle));
+    b.addEventListener("click", () => void playFracture(chronicle, b));
     ticks.append(b);
   }
 }
@@ -587,6 +588,8 @@ function openSubject(year: number): void {
       imageUrl: era.result.fossilUrl,
       year,
       from: subjectRect(year),
+      // The scene behind pushes back a little while the poster is off the wall.
+      onStage: (on) => state.renderer?.setZoomBoost(on ? 1.12 : 1),
       loadMasks: async () => {
         if (state.demo) return Promise.all(demoElementUrls(state.demo, state.forkId, year).map(loadMask));
         const { elements } = await api.elements(state.token, year, params);
@@ -670,6 +673,7 @@ biomeSelect.addEventListener("change", () => {
 // ---------------------------------------------------------------- history (forks)
 
 forkSelect.addEventListener("change", async () => {
+  stopAutoplay();
   const forkId = forkSelect.value;
   if (!CHRONICLES[forkId] || forkId === state.forkId) return;
   const previous = state.forkId;
@@ -686,16 +690,40 @@ forkSelect.addEventListener("change", async () => {
   }
   renderTicks();
   update();
-  const missing = yearsFor(forkId).filter((y) => state.eras.get(y)?.status !== "ready");
-  if (forkId !== DEFAULT_FORK && CHRONICLES[forkId].divergenceYear !== null) showChain(CHRONICLES[forkId]);
-  if (state.demo) return loadDemoEras(state.generation, missing);
-  if (!state.token) return;
-  // The chain-of-events sheet stays on top: something to read while this history is painted.
-  loading.show(`Rewriting history: ${CHRONICLES[forkId].title.toLowerCase()}`);
-  loading.step("read", "done");
-  loading.step("research", "active");
   const gen = state.generation;
-  void research_(gen, forkId).then(() => generate(gen, missing));
+  const missing = yearsFor(forkId).filter((y) => state.eras.get(y)?.status !== "ready");
+  // Start painting this world straight away (demo files load instantly); the cinematic covers the wait.
+  let painting: Promise<void> = Promise.resolve();
+  if (state.demo) loadDemoEras(gen, missing);
+  else if (state.token) painting = research_(gen, forkId).then(() => generate(gen, missing));
+
+  const chronicle = CHRONICLES[forkId];
+  const div = relativeDivergence(chronicle);
+  if (div === null) return void animateTo(0, 1200);
+  // Rewind through the real eras to the moment the worlds split…
+  animateTo(yearToPosition(div), 1400);
+  await new Promise((r) => setTimeout(r, 1450));
+  if (gen !== state.generation) return;
+  // …watch history fracture and the chain of events play out…
+  await playFracture(chronicle, document.querySelector<HTMLElement>(".branch"));
+  if (gen !== state.generation) return;
+  // …then fast-forward through the new world to its present.
+  const stillPainting = yearsFor(forkId).some((y) => state.eras.get(y)?.status !== "ready");
+  if (stillPainting && !state.demo) {
+    loading.show(`Painting a world where ${chronicle.title.charAt(0).toLowerCase()}${chronicle.title.slice(1)}`);
+    loading.step("read", "done");
+    loading.step("research", "done");
+    loading.step("paint", "active");
+    loading.step("check", "active");
+    // Fast-forward as soon as the first era of this world is in (the loading screen clears itself then).
+    await Promise.race([
+      painting,
+      new Promise<void>((r) => {
+        const check = setInterval(() => !loading.visible && (clearInterval(check), r()), 400);
+      }),
+    ]);
+  }
+  animateTo(0, 2800);
 });
 
 // ---------------------------------------------------------------- messages

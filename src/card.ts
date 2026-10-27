@@ -1,5 +1,5 @@
-// Field-guide card (creatures) and the chain-of-events card, shown in a bottom sheet.
-import type { Biome, Chronicle, Fauna } from "./shared/eras";
+// Field-guide card for creatures, shown in a bottom sheet.
+import type { Biome, Fauna } from "./shared/eras";
 import { formatYear } from "./shared/eras";
 
 const sheet = document.getElementById("sheet")!;
@@ -30,19 +30,6 @@ export function showCreature(f: Fauna, year: number, biome: Biome): void {
             .join(" · ")}</div>`
         : ""
     }`;
-  sheet.hidden = false;
-}
-
-export function showChain(chronicle: Chronicle): void {
-  const year = (y: number) => (y < 0 ? `${-y} BCE` : String(y));
-  body.innerHTML = `
-    <span class="badge">Alternate history · splits in ${esc(year(chronicle.divergenceYear ?? 0))}</span>
-    <h2 class="card-title">${esc(chronicle.title)}</h2>
-    <p class="card-meta">${esc(chronicle.premise)}</p>
-    <div class="card-section">How we got here</div>
-    <ol class="chain">${chronicle.chain
-      .map((c) => `<li><span class="chain-year">${esc(year(c.year))}</span> ${esc(c.event)} <i>${esc(c.consequence)}</i></li>`)
-      .join("")}</ol>`;
   sheet.hidden = false;
 }
 

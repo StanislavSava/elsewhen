@@ -122,6 +122,7 @@ type Node = {
   delay: number; // 0..1 share of the explode timeline
   index: number; // element index (techniques/elements), -1 for slogan
   baseScale: THREE.Vector3;
+  spin: number; // starting twist (pieces tumble out and settle)
 };
 
 /**
@@ -163,6 +164,8 @@ export async function explodeFossil(opts: {
   year: number;
   from: ScreenRect | null;
   loadMasks: () => Promise<(Mask | null)[]>;
+  /** Called with true when the poster lifts and false when it's back on the wall (e.g. push the scene back). */
+  onStage?: (on: boolean) => void;
 }): Promise<void> {
   await open?.close();
   const { fossil, year } = opts;
@@ -177,6 +180,7 @@ export async function explodeFossil(opts: {
   root.className = "xp";
   root.innerHTML = `
     <div class="xp-backdrop"></div>
+    <div class="xp-flare"></div>
     <canvas class="xp-gl"></canvas>
     <img class="xp-flyer" alt="" />
     <aside class="xp-info">
@@ -199,6 +203,24 @@ export async function explodeFossil(opts: {
   // ---------------------------------------------------------------- 1. lift (DOM, FLIP from the wall)
   const flip = `translate(${from.left - to.left + (from.width - to.width) / 2}px, ${from.top - to.top + (from.height - to.height) / 2}px) scale(${from.width / to.width}, ${from.height / to.height})`;
   backdrop.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, fill: "forwards" });
+  opts.onStage?.(true);
+  // A warm light blooms behind the poster as it comes off the wall.
+  const flare = root.querySelector<HTMLElement>(".xp-flare")!;
+  const flareSize = Math.max(to.width, to.height) * 2.2;
+  Object.assign(flare.style, {
+    left: `${to.left + to.width / 2 - flareSize / 2}px`,
+    top: `${to.top + to.height / 2 - flareSize / 2}px`,
+    width: `${flareSize}px`,
+    height: `${flareSize}px`,
+  });
+  flare.animate(
+    [
+      { opacity: 0, transform: "scale(0.2)" },
+      { opacity: 0.95, transform: "scale(1)", offset: 0.75 },
+      { opacity: 0.55, transform: "scale(0.9)" },
+    ],
+    { duration: LIFT_MS + 200, easing: "ease-out", fill: "forwards" },
+  );
   const lift = flyer.animate(
     [
       { transform: `${flip}`, boxShadow: "0 0 0 rgba(0,0,0,0)" },
@@ -207,6 +229,12 @@ export async function explodeFossil(opts: {
     ],
     { duration: LIFT_MS, easing: EASE_FLY, fill: "forwards" },
   );
+
+  // ---------------------------------------------------------------- burst effects (built at the burst)
+  let burstStart = -1;
+  let ring: THREE.Mesh | null = null;
+  let sparks: THREE.Points | null = null;
+  let sparkVel: Float32Array | null = null;
 
   // ---------------------------------------------------------------- three.js network
   const renderer = new THREE.WebGLRenderer({ canvas: glCanvas, antialias: true, alpha: true });
@@ -314,6 +342,46 @@ export async function explodeFossil(opts: {
     dots.geometry.setAttribute("position", new THREE.Float32BufferAttribute(ends, 3));
   };
 
+  /** Shockwave ring and a spray of flecks in the poster's own colours, from the poster's surface. */
+  function startBurst(): void {
+    ring = new THREE.Mesh(
+      new THREE.RingGeometry(0.92, 1, 96),
+      new THREE.MeshBasicMaterial({ color: 0xfff2c4, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending, depthWrite: false }),
+    );
+    ring.position.z = 0.05;
+    group.add(ring);
+    const sample = document.createElement("canvas");
+    sample.width = 32;
+    sample.height = 48;
+    const sctx = sample.getContext("2d")!;
+    sctx.drawImage(image, 0, 0, 32, 48);
+    const px = sctx.getImageData(0, 0, 32, 48).data;
+    const count = 320;
+    const positions = new Float32Array(count * 3);
+    const colors = new Float32Array(count * 3);
+    sparkVel = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      const u = Math.random();
+      const v = Math.random();
+      const x = (u - 0.5) * W;
+      const y = (0.5 - v) * H;
+      positions.set([x, y, 0.03], i * 3);
+      const p = (Math.floor(v * 47) * 32 + Math.floor(u * 31)) * 4;
+      colors.set([px[p] / 255, px[p + 1] / 255, px[p + 2] / 255], i * 3);
+      const len = Math.hypot(x, y) || 1;
+      const speed = 1.2 + Math.random() * 3.2;
+      sparkVel.set([(x / len) * speed + (Math.random() - 0.5), (y / len) * speed + (Math.random() - 0.3), Math.random() * 2.4], i * 3);
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    geo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+    sparks = new THREE.Points(
+      geo,
+      new THREE.PointsMaterial({ size: 0.045, vertexColors: true, transparent: true, opacity: 1, depthWrite: false }),
+    );
+    group.add(sparks);
+  }
+
   const frame = (now: number) => {
     raf = requestAnimationFrame(frame);
     const t = now - phaseStart;
@@ -321,9 +389,16 @@ export async function explodeFossil(opts: {
       // A breath before the burst: the poster swells a little.
       const k = easeInOut(clamp01(t / EXPAND_MS));
       group.scale.setScalar(1 + 0.1 * Math.sin(k * Math.PI) + 0.04 * k);
+      // Anticipation: a tremble that builds until it bursts.
+      group.rotation.z = Math.sin(t * 0.11) * 0.018 * k;
+      group.position.x = Math.sin(t * 0.17) * 0.012 * k;
       if (t >= EXPAND_MS) {
+        group.rotation.z = 0;
+        group.position.x = 0;
         phase = "explode";
         phaseStart = now;
+        burstStart = now;
+        startBurst();
       }
     }
     if (phase === "explode" || phase === "closing") {
@@ -333,6 +408,7 @@ export async function explodeFossil(opts: {
         const local = clamp01((explodeT - n.delay) / (1 - n.delay));
         const e = dir > 0 ? easeOutBack(local) : easeInOut(local);
         n.obj.position.lerpVectors(n.start, n.end, e);
+        if (n.obj instanceof THREE.Mesh) n.obj.rotation.z = n.spin * (1 - Math.min(1, e));
       }
       posterMat.color.setScalar(1 - 0.55 * easeInOut(explodeT));
       lineMat.opacity = 0.75 * clamp01(explodeT * 1.6 - 0.4);
@@ -344,6 +420,30 @@ export async function explodeFossil(opts: {
         root.classList.add("exploded");
       }
     }
+    if (burstStart >= 0) {
+      const bt = (now - burstStart) / 1000;
+      if (ring) {
+        ring.scale.setScalar(0.3 + bt * 5.5);
+        (ring.material as THREE.MeshBasicMaterial).opacity = Math.max(0, 0.85 - bt * 1.1);
+      }
+      if (sparks && sparkVel) {
+        const pos = sparks.geometry.getAttribute("position") as THREE.BufferAttribute;
+        for (let i = 0; i < pos.count; i++) {
+          pos.setXYZ(
+            i,
+            pos.getX(i) + sparkVel[i * 3] * 0.016,
+            pos.getY(i) + sparkVel[i * 3 + 1] * 0.016 - bt * 0.004,
+            pos.getZ(i) + sparkVel[i * 3 + 2] * 0.016,
+          );
+          sparkVel[i * 3] *= 0.97;
+          sparkVel[i * 3 + 1] *= 0.97;
+          sparkVel[i * 3 + 2] *= 0.97;
+        }
+        pos.needsUpdate = true;
+        (sparks.material as THREE.PointsMaterial).opacity = Math.max(0, 1 - bt / 1.6);
+      }
+      if (bt > 1.8) burstStart = -1;
+    }
     // Focus: the hovered/pinned element and its technique stay bright, the rest recede.
     const active = focused ?? pinned;
     for (const n of nodes) {
@@ -354,7 +454,9 @@ export async function explodeFossil(opts: {
       const target = focusOpacity * appear;
       mat.opacity += (target - mat.opacity) * 0.2;
       const grow = active !== null && n.index === active ? 1.08 : 1;
-      n.obj.scale.lerp(n.baseScale.clone().multiplyScalar(grow), 0.15);
+      // Labels pop in with a little overshoot as they arrive.
+      const pop = n.obj instanceof THREE.Sprite ? 0.2 + 0.8 * easeOutBack(appear) : 1;
+      n.obj.scale.lerp(n.baseScale.clone().multiplyScalar(grow * pop), 0.25);
     }
     updateLinks();
     controls.update();
@@ -388,6 +490,7 @@ export async function explodeFossil(opts: {
       });
     }
     group.scale.setScalar(1);
+    flare.animate([{ opacity: 0.55 }, { opacity: 0 }], { duration: 500, fill: "forwards" });
     glCanvas.style.opacity = "0";
     flyer.style.visibility = "visible";
     root.querySelector(".xp-info")!.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 250, fill: "forwards" });
@@ -397,6 +500,7 @@ export async function explodeFossil(opts: {
       easing: EASE_FLY,
       fill: "forwards",
     }).finished;
+    opts.onStage?.(false);
     cancelAnimationFrame(raf);
     removeEventListener("resize", resize);
     document.removeEventListener("keydown", onKey);
@@ -439,7 +543,7 @@ export async function explodeFossil(opts: {
     const [sx, sy] = innerWidth >= 900 ? [1.5, 0.7] : [1.1, 0.9];
     const end = new THREE.Vector3(dir.x * reach * sx, dir.y * reach * sy, n % 2 ? 0.9 : 0.55);
     group.add(piece);
-    nodes.push({ obj: piece, start, end, delay: n * 0.08, index: i, baseScale: new THREE.Vector3(1, 1, 1) });
+    nodes.push({ obj: piece, start, end, delay: n * 0.08, index: i, baseScale: new THREE.Vector3(1, 1, 1), spin: (n % 2 ? 1 : -1) * (0.5 + Math.random() * 0.6) });
     links.push({ a: () => start, b: () => piece.position, index: i });
 
     // The technique, one hop further out.
@@ -449,7 +553,7 @@ export async function explodeFossil(opts: {
     label.scale.set(lh * la, lh, 1);
     const lend = end.clone().add(new THREE.Vector3(dir.x * 0.55, dir.y * 0.4 + 0.05, 0.25));
     group.add(label);
-    nodes.push({ obj: label, start: start.clone(), end: lend, delay: 0.25 + n * 0.08, index: i, baseScale: label.scale.clone() });
+    nodes.push({ obj: label, start: start.clone(), end: lend, delay: 0.25 + n * 0.08, index: i, baseScale: label.scale.clone(), spin: 0 });
     links.push({ a: () => piece.position, b: () => label.position, index: i });
   });
 
