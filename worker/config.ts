@@ -19,5 +19,6 @@ export type Env = {
   TURNSTILE_SECRET_KEY: string;
   SCENE_HMAC_KEY: string;
   DAILY_BUDGET_CENTS: string;
+  MAX_REPAINTS?: string;
   KILL_SWITCH: string;
 };

@@ -11,7 +11,9 @@ export type OrchestratorEvents = {
   onResting: () => void;
 };
 
-const CONCURRENCY = 4;
+// Every era of a history at once: a scene then takes about as long as its slowest era (timed: 380 s → 232 s
+// for nine eras), and Meta's API took it without rate limiting.
+const CONCURRENCY = 10;
 const POLL_MS = 3000;
 const POLL_LIMIT_MS = 150_000;
 

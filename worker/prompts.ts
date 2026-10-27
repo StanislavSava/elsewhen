@@ -79,6 +79,12 @@ export function eraPrompt(era: ChronicleEra, biome: Biome, setting: Setting, not
   return `${theme}${world}${here}${regional} ${STRUCTURES[era.structures][setting]} ${CAMERA_LOCK} ${PHOTOREAL}${fix}`;
 }
 
+/** The smallest prompt that still keeps the photo: for eras the content filter keeps blocking. */
+export function bareEraPrompt(era: ChronicleEra, biome: Biome, setting: Setting): string {
+  const theme = era.driver === "biology" ? era.biomes[biome].visualPrompt : era.visualPrompt;
+  return `${theme} ${STRUCTURES[era.structures][setting]} ${CAMERA_LOCK} ${PHOTOREAL}`;
+}
+
 /** Bump when how an era is painted or checked changes (not just its prompt), so old results aren't served. */
 const PIPELINE_VERSION = 5; // 2: critic + SAM building overlap; 3: no idea fossils, cell labels; 4: repaints re-checked; 5: alternate worlds as consequences
 

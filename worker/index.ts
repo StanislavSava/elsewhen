@@ -20,7 +20,7 @@ import { eraLabel, getNotes, noteFor, readNoteFor, readNotes, townOf } from "./h
 import { writeStory, type StoryEra } from "./story";
 import { iou, occupancy } from "./geometry";
 import { judge, passes } from "./judge";
-import { CREATURE_PHRASE, eraPrompt, promptVersion } from "./prompts";
+import { bareEraPrompt, CREATURE_PHRASE, eraPrompt, promptVersion } from "./prompts";
 
 type C = Context<{ Bindings: Env }>;
 
@@ -137,7 +137,6 @@ app.post("/api/scenes/:token/notes", async (c) => {
 type EraParams = { forkId: string; biome: Biome; setting: Setting };
 
 const MIN_BUILDING_OVERLAP = 0.6; // spike: a well-kept scene scored ~0.92
-const MAX_REPAINTS = 2;
 
 /** Overlap between the photo's buildings and the new image's buildings, or null when there's nothing to compare. */
 async function buildingOverlap(env: Env, sceneId: string, imageData: string): Promise<number | null> {
@@ -232,7 +231,14 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
           // The content filter is non-deterministic and blocks even calm notes now and then: last try, plain prompt.
           if (!(err instanceof ContentFilteredError)) throw err;
           console.warn(`era ${prefix}: content filter twice, retrying with the plain prompt`);
-          url = await edit(eraPrompt(era, params.biome, params.setting, "", ""));
+          try {
+            url = await edit(eraPrompt(era, params.biome, params.setting, "", ""));
+          } catch (err2) {
+            // Last resort: the era's own description and the camera/photo rules, nothing else.
+            if (!(err2 instanceof ContentFilteredError)) throw err2;
+            console.warn(`era ${prefix}: plain prompt filtered too, trying the bare era`);
+            url = await edit(bareEraPrompt(era, params.biome, params.setting));
+          }
         }
         await spend(env, IMAGE_PRICE_CENTS);
         // Meta can't fetch its own temporary URLs as inputs (media_url_not_fetchable): checks need the bytes inline.
@@ -269,7 +275,8 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
       };
       let best = await paint("");
       let bestIssues = await check(best.data);
-      for (let repaint = 1; bestIssues.length && repaint <= MAX_REPAINTS; repaint++) {
+      const maxRepaints = Number(env.MAX_REPAINTS ?? "2");
+      for (let repaint = 1; bestIssues.length && repaint <= maxRepaints; repaint++) {
         console.log(`era ${prefix}: repaint ${repaint} (${bestIssues.join("; ")})`);
         const next = await paint(bestIssues.join("; "));
         const nextIssues = await check(next.data);

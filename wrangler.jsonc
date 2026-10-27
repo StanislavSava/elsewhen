@@ -13,7 +13,9 @@
   "kv_namespaces": [{ "binding": "KV", "id": "local-dev" }],
   "vars": {
     "DAILY_BUDGET_CENTS": "500",
-    "KILL_SWITCH": "0"
+    "KILL_SWITCH": "0",
+    // Critic-driven repaints per era. Eras paint in parallel, so a repaint only delays its own era.
+    "MAX_REPAINTS": "2"
   }
   // Secrets (wrangler secret put): MODEL_API_KEY, TURNSTILE_SITE_KEY, TURNSTILE_SECRET_KEY, SCENE_HMAC_KEY.
   // Locally they come from .dev.vars, generated from the root .env by scripts/dev-vars.mjs.

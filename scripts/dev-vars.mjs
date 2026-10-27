@@ -28,5 +28,6 @@ const vars = {
   SCENE_HMAC_KEY: previous.SCENE_HMAC_KEY ?? randomBytes(32).toString("hex"),
   // Local dev only (overrides wrangler.jsonc vars); production keeps its own cap. Set DEV_DAILY_BUDGET_CENTS to change.
   DAILY_BUDGET_CENTS: env.DEV_DAILY_BUDGET_CENTS ?? "2000",
+  MAX_REPAINTS: env.DEV_MAX_REPAINTS ?? "2",
 };
 writeFileSync(".dev.vars", Object.entries(vars).map(([k, v]) => `${k}=${v}`).join("\n") + "\n");
