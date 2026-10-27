@@ -82,6 +82,24 @@
           "grey heron on creek bank"
         ]
       },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "tall fan palms trunks",
+          "moss-draped broadleaf tree limb",
+          "overcast grey cloudy sky",
+          "dense rainforest trunks understory",
+          "tusked elephant at treeline",
+          "dense palm rainforest canopy",
+          "tall bankside reeds leaf litter",
+          "winding shallow brackish channel",
+          "tall cattail reeds sandy bank"
+        ]
+      },
       "-500": {
         "image": "base_-500.webp",
         "cells": [
@@ -94,6 +112,20 @@
           "wattle hut with thatched roof",
           "packed-earth path with woven fences",
           "thatched huts with fenced gardens"
+        ]
+      },
+      "-100": {
+        "image": "base_-100.webp",
+        "cells": [
+          "two-storey whitewashed corner house",
+          "overcast grey sky",
+          "white house red tile roof",
+          "ochre doors iron lantern",
+          "white row houses tiled roofs",
+          "white houses colorful doors",
+          "vintage black open car",
+          "cobbled street vintage cars",
+          "cobbled sidewalk white wall"
         ]
       },
       "-2000": {
@@ -126,38 +158,6 @@
           "mossy muddy creek bank",
           "slow muddy tidal creek",
           "mangrove thicket with prop roots"
-        ]
-      },
-      "-1000000": {
-        "image": "base_-1000000.webp",
-        "target": {
-          "phrase": "animal",
-          "sam": "base_-1000000.target.txt"
-        },
-        "cells": [
-          "tall fan palms trunks",
-          "moss-draped broadleaf tree limb",
-          "overcast grey cloudy sky",
-          "dense rainforest trunks understory",
-          "tusked elephant at treeline",
-          "dense palm rainforest canopy",
-          "tall bankside reeds leaf litter",
-          "winding shallow brackish channel",
-          "tall cattail reeds sandy bank"
-        ]
-      },
-      "-100": {
-        "image": "base_-100.webp",
-        "cells": [
-          "two-storey whitewashed corner house",
-          "overcast grey sky",
-          "white house red tile roof",
-          "ochre doors iron lantern",
-          "white row houses tiled roofs",
-          "white houses colorful doors",
-          "vintage black open car",
-          "cobbled street vintage cars",
-          "cobbled sidewalk white wall"
         ]
       }
     },
@@ -240,20 +240,6 @@
           "grey heron on creek bank"
         ]
       },
-      "-500": {
-        "image": "library-of-alexandria_-500.webp",
-        "cells": [
-          "white brick tenement upper floors",
-          "pale overcast evening sky",
-          "brick and white tenement tops",
-          "white tenement arched windows",
-          "cloudy sky above distant hills",
-          "lit brick tenement balconied windows",
-          "lit shopfronts and stone sidewalk",
-          "stone tracks with steam locomotive",
-          "gaslit station wall with timetables"
-        ]
-      },
       "-2000": {
         "image": "library-of-alexandria_-2000.webp",
         "cells": [
@@ -266,6 +252,24 @@
           "fenced garden plot",
           "sandy foot track",
           "stacked poles and thatch"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "tall fan palms trunks",
+          "moss-draped broadleaf tree limb",
+          "overcast grey cloudy sky",
+          "dense rainforest trunks understory",
+          "tusked elephant at treeline",
+          "dense palm rainforest canopy",
+          "tall bankside reeds leaf litter",
+          "winding shallow brackish channel",
+          "tall cattail reeds sandy bank"
         ]
       },
       "-10000": {
@@ -286,22 +290,18 @@
           "mangrove thicket with prop roots"
         ]
       },
-      "-1000000": {
-        "image": "base_-1000000.webp",
-        "target": {
-          "phrase": "animal",
-          "sam": "base_-1000000.target.txt"
-        },
+      "-500": {
+        "image": "library-of-alexandria_-500.webp",
         "cells": [
-          "tall fan palms trunks",
-          "moss-draped broadleaf tree limb",
-          "overcast grey cloudy sky",
-          "dense rainforest trunks understory",
-          "tusked elephant at treeline",
-          "dense palm rainforest canopy",
-          "tall bankside reeds leaf litter",
-          "winding shallow brackish channel",
-          "tall cattail reeds sandy bank"
+          "white brick tenement upper floors",
+          "pale overcast evening sky",
+          "brick and white tenement tops",
+          "white tenement arched windows",
+          "cloudy sky above distant hills",
+          "lit brick tenement balconied windows",
+          "lit shopfronts and stone sidewalk",
+          "stone tracks with steam locomotive",
+          "gaslit station wall with timetables"
         ]
       },
       "-100": {
@@ -935,12 +935,27 @@
           "winding shallow brackish channel",
           "tall cattail reeds sandy bank"
         ]
+      },
+      "-100": {
+        "image": "tamed-mammoth_-100.webp",
+        "cells": [
+          "whitewashed house with arched windows",
+          "cloudy sky above treetops",
+          "white houses with tiled roofs",
+          "wool shop signs and awnings",
+          "red-tiled row houses receding",
+          "hanging wool depot sign",
+          "stone trough and drying wool",
+          "mammoth pulling hay wagon",
+          "wool bales and drying frames"
+        ]
       }
     }
   },
   "notes": {
     "our-timeline": {
       "place": "Largo de Santa Rita in the historic centre of Paraty, Rio de Janeiro coast, Brazil - flat cobbled colonial street on a humid Atlantic Forest coastal plain near the sea",
+      "town": "Paraty",
       "eras": {
         "100": "The same whitewashed colonial houses still line the preserved cobbled street, now with soil-covered green roofs, inset tram rails and clipped street gardens and potted fruit trees along the facades. New since a century ago are the green roofs, the quiet tram track and planted beds softening the cobbles.",
         "1000": "The street alignment remains with the same white houses standing beneath deep garden roofs, terraced planters and large canopy trees rooted between the cobbles, walls veiled in vines and flowering beds. Tended mossy cobbles, water channels and orchard terraces keep the street as a shaded garden courtyard.",
@@ -966,6 +981,7 @@
     },
     "library-of-alexandria": {
       "place": "Largo de Santa Rita colonial street in the historic centre of Paraty, Rio de Janeiro state, Brazil - flat coastal town edge at Atlantic Forest",
+      "town": "Paraty",
       "eras": {
         "0": "Since the electric-tower era the plots carry slender forty-story towers with garden terraces, rooftop plantings and solar canopies over buried grids, fronting permeable paving with rain gardens and cycle tracks. Automated electric pods use reserved lanes and a cable cabin line above, guided by low-energy text panels and wayfinding lights, with no private gasoline cars, asphalt lots, overhead wires or paper billboards.",
         "100": "Since the garden-tower era the same street line is flanked by slender hundred-storey pale stone and glass towers with planted terraces, and a domed library and observatory stands among mature trees behind where the large trees stood. Below lie wide quiet stone lanes with silent trams and no jams or smog, with no cars in traffic, overhead lines, billboards or petrol stations.",
@@ -978,6 +994,7 @@
     },
     "no-electricity": {
       "place": "Historic centre of Paraty, Rio de Janeiro State, Brazil - the cobbled Rua da Lapa at Largo de Santa Rita, low Portuguese colonial street on the Atlantic coastal plain",
+      "town": "Paraty",
       "eras": {
         "0": "The same low colonial rows still stand tightly packed with whitewash and tile roofs, now with round gas lanterns and black district steam and coal-gas pipes running along the facades and painted wooden boards in gas-lit display windows. New since 1926 are rooftop water tanks, coal bunkers and glass greenhouses above the workshops, iron pneumatic cabinets at the corner, and a heavy diesel lorry with air-start bottles parked with pedal bicycles on the cobbles, with no power lines, traffic lights or glowing signs, and the same large trees rising behind.",
         "100": "The same white colonial street walls still stand, weathered and gently overgrown with potted gardens and vines, with low set-back brick upper floors and roof terraces behind the tile ridges. New since 2026 are narrow cable-tram rails set in the cobbles from the steam winding house, an iron footbridge and pipe bridge spanning the street carrying steam and compressed-air mains, and rooftops crowded with small wind pumps, water towers and chimneys under warm gas lanterns.",
@@ -988,6 +1005,7 @@
     },
     "no-printing-press": {
       "place": "Largo de Santa Rita street in the historic colonial centre of Paraty, Rio de Janeiro state, Brazil, on the flat humid Atlantic coast",
+      "town": "Paraty",
       "eras": {
         "0": "Two-storey white courtyard blocks with red tile roofs and coloured trim edge an uneven stone-set lane with wall lanterns, speaker poles and small roofed shelters, hand-painted picture walls and chalk boards, bicycles and small motor vans, potted plants, fruit trees and garden plots between houses. New since 1926 are evened stone paving, completed upper floors, lanterns and speaker poles, with no private cars, glowing billboards, parking lots or traffic lights.",
         "100": "Three-storey white courtyard blocks with red tile roofs line stone lanes with slow tram rails and bicycles, whole facades covered in painted picture stories and carved reliefs without letters, with bell and speaker towers at the corners and fruit trees and garden terraces between houses. New since 2026 are the added floor, full picture facades, corner towers and tram rails, with no screens, glass towers or heavy car traffic.",
@@ -999,6 +1017,7 @@
     },
     "rome-never-fell": {
       "place": "Largo de Santa Rita, historic centre of Paraty, Rio de Janeiro state, Brazil",
+      "town": "Paraty",
       "eras": {
         "0": "A stone-paved street-plaza lined with six- to eight-storey plastered mixed-use blocks with tiled roofs, shaded colonnades, fountains, stone Latin tablets and tram wires, with no cars. Since the last era the blocks have grown taller around planted courtyards and rooftop gardens with potted palms and orchard trees.",
         "100": "The street has become a straight colonnaded avenue of concrete and travertine with vaulted halls and a dome on the district centre, shaded by cypresses and stone pines, with a tall arched rail viaduct behind the roofs and fountains and a small bathhouse at the crossroads. Since the last era the older blocks have been rebuilt in larger vaulted forms around garden courts, with tram lines still set in the paving.",
@@ -1010,6 +1029,7 @@
     },
     "tamed-mammoth": {
       "place": "Largo de Santa Rita in the historic centre of Paraty, Rio de Janeiro State, Brazil — flat colonial street on the coastal bay plain, humid tropical Atlantic Forest zone with palms and mango trees",
+      "town": "Paraty",
       "eras": {
         "0": "The same low white blocks stand two to three storeys with set-back side yards, tile roofs and felt awnings, fronting a turfed avenue with a central linear hay meadow and gravel mammoth lanes. Iron lamps, ground power cabinets with buried lines, painted felt-workshop signs, and electric-assist wagons and small battery vans on grass replace cobbles and wires, with potted plants and banana leaves along the walls.",
         "100": "New tall arched gateways lead through two- to four-storey white blocks with thick grey felt roofs and awnings, fronting a broad grass avenue with paired wagon ruts and stone troughs. Paddocks, hay lofts, planted trees and walled gardens with terraces fill the space between blocks, with meadow strips and shrubs among the houses.",
@@ -1019,6 +1039,603 @@
         "-100": "Full rows of whitewashed one- to two-storey houses with red tile roofs and blue, green and ochre doors now line the view, fronting a very wide packed-earth and gravel boulevard with grass verges, stone water troughs, hitching posts and iron lamp posts with no overhead wires. Large wool drying frames, felt awnings and painted wall signs stand along the walls, with high-wheeled wagons at rest and open hay meadow and trees behind the roofs."
       },
       "cells": null
+    }
+  },
+  "story": {
+    "our-timeline": {
+      "100": [
+        "Corner masonry house kept its facade, restored under heritage preservation rules.",
+        "Grey sky stays pale daytime, unchanged above protected streetscape.",
+        "Tile roof greened with vines and soil for cooling after climate adaptation.",
+        "Ochre doors veiled in vines as residents shaded facades from heat.",
+        "Tiled roofs sprouted young trees under city green-roof incentive.",
+        "Colorful doors kept beneath green roofs, preserved by conservation law.",
+        "Parked car space became planted garden beds after cars were restricted.",
+        "Cobbled street inlaid with tram rails for quiet car-free transit.",
+        "White wall sidewalk lined with potted fruit trees for shade and food."
+      ],
+      "1000": [
+        "Colonial facade keeps arched windows, maintained as heritage anchor.",
+        "Pale sky stays sunny, unchanged over garden courtyard microclimate.",
+        "Vine roof thickened into rooftop garden trees with deeper soil.",
+        "Arched doorways further veiled in vines as watering and tending continued.",
+        "Young roof trees grew tall canopy as roots took in cobbles.",
+        "White houses further veiled in ivy from decades of garden care.",
+        "Street beds became mossy walkway planters with slow water management.",
+        "Tram rails replaced by lily water channel to cool and drain tides.",
+        "Potted trees rooted into mossy garden path as planters merged."
+      ],
+      "10000": [
+        "White facade crumbled to mossy trees as upkeep ended and forest returned.",
+        "Pale sky hidden by hanging vines as canopy closed overhead.",
+        "Rooftop trees merged into bright closed Atlantic canopy above ruins.",
+        "Vine doorways became mossy ruined wall with bromeliads after roofs fell.",
+        "Tall canopy replaced roofs entirely as trees rooted inside walls.",
+        "Ivy houses opened to sky where parrot flies, roofs lost to rot.",
+        "Mossy walkway planters reverted to ancient wall base under leaf humus.",
+        "Water channel silted to mossy leaf-covered path as drainage clogged.",
+        "Garden path became mossy stone ruin crowned with bromeliad from neglect."
+      ],
+      "1000000": [
+        "Mossy trees thickened to vine trunk as last masonry sank into soil.",
+        "Hanging vines opened to misty sky as tall walls dissolved.",
+        "Closed canopy stays bright, kept by stable Atlantic rainfall.",
+        "Ruined bromeliad wall gave way to tree ferns in deep soil.",
+        "Roofless walls vanished into misty interior as roots broke stone.",
+        "Parrot ruins overgrown by arching ferns as canopy matured.",
+        "Ancient wall base sank to muddy mangrove bank as sea level shifted.",
+        "Mossy path washed back to slow brown tidal creek by tides.",
+        "Stone ruin dissolved, leaving heron bank where street walls stood."
+      ],
+      "-10000": [
+        "Palms gave way to bromeliad trees as humid climate favored diverse broadleaf growth.",
+        "Tall palms remain under cloudy sky, kept by steady Atlantic coastal rains.",
+        "Grey sky persists over treetops, shaped by same coastal moisture system.",
+        "Understory thickened with tree ferns as shaded damp soil accumulated.",
+        "Elephant left, forest interior closed in as megafauna shifted with vegetation.",
+        "Palm canopy now hosts ground sloth, drawn by abundant new leaves.",
+        "Reeds and litter became mossy mud bank as creek settled.",
+        "Shallow brackish channel slowed to muddy creek from sea-level adjustment.",
+        "Sandy cattail bank grew mangrove prop roots with rising tidal influence."
+      ],
+      "-2000": [
+        "Tall canopy remains, held as clearing kept small within vast forest.",
+        "Sky stays pale overcast, unchanged by small clearing below.",
+        "Treetop still towers, preserved beyond the new garden edge.",
+        "Ferns cleared for smoking wattle hut as Indigenous Tupinamba farmed.",
+        "Dense interior opened into sandy footpath for trips to creek.",
+        "Sloth habitat became open stick hut with garden labor nearby.",
+        "Muddy bank fenced for manioc beds to use moist creek soil.",
+        "Tidal creek forded by sandy path linking huts to forest.",
+        "Mangrove thicket cleared to fenced manioc beds for staple food."
+      ],
+      "-500": [
+        "Canopy opened to grey sky as Portuguese settlement widened the clearing.",
+        "Overcast sky now framed by palm crown from planted dooryard trees.",
+        "Rainforest crown remains behind houses, kept for timber and thatch.",
+        "Smoking hut gained banana plants above roofs from Portuguese crop exchange.",
+        "Footpath shaded by large leafy tree kept as village meeting shade.",
+        "Open hut joined into row, with palms marking expanded treeline.",
+        "Manioc beds left became wattle hut with thatch from joined plots.",
+        "Sandy path hardened to packed earth as foot and livestock traffic grew.",
+        "Right manioc beds became thatched huts with fenced gardens behind."
+      ],
+      "-100": [
+        "Wattle hut replaced by two-storey corner house after gold-port wealth funded masonry.",
+        "Cloudy palm sky became plain grey sky as roofs rose higher.",
+        "Cloudy sky frames white house tile roof built with kiln-fired clay.",
+        "Banana thatch gave way to ochre doors and iron lanterns with street lighting.",
+        "Leafy tree cleared for white row houses as street frontage solidified.",
+        "Distant treeline now fronts colorful doors, kept by colonial building codes.",
+        "Wattle hut plot holds vintage open car after road and motor traffic arrived.",
+        "Packed earth paved with pe-de-moleque cobbles to drain tidal floods.",
+        "Thatched gardens walled in white with cobbled sidewalk for drier passage."
+      ]
+    },
+    "library-of-alexandria": {
+      "0": [
+        "Tall tower facade restored as white facade with arched windows.",
+        "Cloudy sky now shared with garden terraces and solar canopies.",
+        "Tower windows opened into pale sky over planted old rooftops.",
+        "Colonial arched building kept its wall, now with vintage lamp.",
+        "Street palm view became tiled roofs with rooftop plantings.",
+        "Tower midsection view now crossed by cable cabin line above for quiet transit.",
+        "Corner shopfront softened by rain gardens beside permeable paving.",
+        "Tram tracks became reserved lane for automated electric pods.",
+        "Parked van space became rain gardens with low wayfinding lights."
+      ],
+      "100": [
+        "White facade rose into pale garden tower with planted terraces.",
+        "Terrace towers still meet same overcast grey sky above.",
+        "Old rooftops grew into tall planted garden towers above.",
+        "Lamp wall preserved as white colonial building with windows.",
+        "Rooftop plantings matured into large tree canopy by library dome.",
+        "Cabin line view filled by garden tower with planted balconies.",
+        "Rain gardens edged by white houses with blue doors.",
+        "Pod lane relaid with stone tracks for silent modern tram.",
+        "Rain gardens kept, now fronting low white colonial row houses."
+      ],
+      "1000": [
+        "Garden tower weathered into vine-covered stone top above park.",
+        "Grey sky remains cloudy over returning tall coastal trees.",
+        "Planted towers thinned and overgrew into pale stone tops.",
+        "Colonial building frame overgrown into vine-covered stone tower shaft.",
+        "Mature canopy opened into leafy tree standing in meadow for tended parkland.",
+        "Planted balconies went wild into overgrown stone tower with vines.",
+        "White houses removed for grass skylight lighting homes below.",
+        "Stone tram tracks lifted to reveal shallow rocky stream rapids.",
+        "Row houses replaced by garden ferns around glass skylights."
+      ],
+      "10000": [
+        "Stone tower top collapsed, leaving tall mossy rainforest trees.",
+        "Open sky closed into dense hanging vines and canopy.",
+        "Stone top vanished under bright closed Atlantic forest canopy.",
+        "Tower shaft fell to mossy ruined wall with bromeliads.",
+        "Meadow tree now shades roofless overgrown stone house walls.",
+        "Vine tower opened for green parrot flying over ruins.",
+        "Glass skylight clouded into moss-covered ancient street wall base.",
+        "Rocky stream shifted, leaving mossy leaf-covered cobble path.",
+        "Glass skylights buried into mossy stone ruin topped with bromeliad."
+      ],
+      "1000000": [
+        "Tall mossy trees thickened into trunk with vines in deep soil.",
+        "Dense canopy thinned to show pale misty sky above.",
+        "Closed canopy opened into mossy branches over tree fern.",
+        "Ruined wall dissolved into tall tree ferns with fronds in leaf soil.",
+        "Stone walls sank, leaving dense misty rainforest interior.",
+        "Parrot ruins overgrown by arching green tree fern fronds.",
+        "Street wall base sank into muddy mangrove bank with log.",
+        "Cobble path washed into slow brown tidal creek again.",
+        "Stone ruin melted away, leaving grey heron on creek bank."
+      ],
+      "-10000": [
+        "Fan palms thickened into bromeliad-covered trees as rainfall increased after ice age.",
+        "Broadleaf limbs filled with tall palms under steadier humid coastal climate.",
+        "Sky stayed overcast grey as Atlantic moisture kept clouds low.",
+        "Understory opened into giant tree ferns from warmer wetter soils.",
+        "Elephant herds moved on as forest closed, leaving dense humid interior.",
+        "Canopy now hosts climbing ground sloths drawn by new leaves.",
+        "Leaf litter deepened into mossy mud as creek flooded more often.",
+        "Shallow channel slowed into muddy tidal creek from rising seas.",
+        "Sandy banks grew mangrove thickets as saltwater pushed upstream."
+      ],
+      "-2000": [
+        "Forest stayed tall and dense beyond Tupinamba clearing edge.",
+        "Grey sky stayed overcast above palms with ocean moisture unchanged.",
+        "Treetops thinned into slender trunks where clearing let light in.",
+        "Ferns were cleared for wattle hut, Mediterranean brick not yet arrived.",
+        "Dense interior opened to show distant forested hills beyond clearing.",
+        "Sloth habitat gave way to clustered thatched huts and hearths.",
+        "Creek bank was fenced into garden plots for manioc planting.",
+        "Creek edge gained sandy foot track linking huts and water.",
+        "Mangrove edge now holds stacked poles and thatch for repairs."
+      ],
+      "-500": [
+        "Tall forest gave way to white brick tenements from early Library steamships.",
+        "Grey sky now glows pale at evening from gas lamps below.",
+        "Slender trees were replaced by brick tenement tops for port workshops.",
+        "Wattle hut gave way to white tenements with arched windows for early steam port.",
+        "Hills stayed distant under clouds above new roofs and smoke.",
+        "Thatched cluster became lit brick balconies from copied gas lighting.",
+        "Garden plots paved into lit shopfronts along stone sidewalks for steamer trade.",
+        "Sandy track laid with stone rails for early steam locomotives.",
+        "Pole stacks became gaslit station wall posting printed timetables from Library presses."
+      ],
+      "-100": [
+        "Brick upper floors rose into tall white tower facade on steel frame for electric city.",
+        "Pale evening glow stayed overcast but cleared of coal smoke.",
+        "Tenement tops grew into tall white tower windows with shops below.",
+        "White arched tenement kept as colonial building amid new towers.",
+        "Distant hills view now framed by street palm under same clouds.",
+        "Lit brick balconies were enclosed into tall white tower midsection for offices.",
+        "Lit shopfronts kept as colonial corner shop with painted signage.",
+        "Steam locomotive tracks now carry quiet battery green tram from Library electric plans.",
+        "Gaslit timetable wall gave way to parked blue electric delivery van."
+      ]
+    },
+    "no-electricity": {
+      "0": [
+        "Corner masonry kept whitewashed, upper windows repainted maintained.",
+        "Cloudy sky unchanged, tall trees preserved behind houses.",
+        "Water tank and glasshouse added for steam workshops.",
+        "Shopfronts fitted with black coal-gas and steam pipes.",
+        "Coal bunkers and greenhouses crowded rooftops for fuel food.",
+        "Wall lanterns renewed round glowing on gas mains.",
+        "Cobbles kept, pedal bicycles remain for short trips.",
+        "Steam traction replaced by diesel air-start lorry on stones.",
+        "Small kiosk grew into iron pneumatic cabinets for parcels."
+      ],
+      "100": [
+        "Set-back brick upper floor added behind tile ridge.",
+        "Sky turned misty, same treetops preserved above roofs.",
+        "Glasshouse gave way to water tower venting steam.",
+        "Gas lantern and pipes kept bright on facades.",
+        "Coal bunkers kept, chimneys multiplied steaming for workshops.",
+        "Iron pipe bridge spanned street for steam compressed-air mains.",
+        "Street base kept stone, sidewalk edged for gardens.",
+        "Cable-tram rails set in cobbles from winding house.",
+        "Pneumatic cabinet front softened with potted gardens vines."
+      ],
+      "1000": [
+        "Brick upper gone, wooden windmill pumps rose for shafts.",
+        "Misty sky cleared, mango palm crowns spread wider.",
+        "Water tower replaced by vegetable terraces and skylights.",
+        "Gas pipes kept but oil lanterns supplement daylight.",
+        "Pipe bridge kept as footbridge over new canal.",
+        "Facades kept white, vines overgrown for cooling shade.",
+        "Sidewalk gave way to moored wooden sail barge.",
+        "Tram rails lifted for shallow tidal canal along cobbles.",
+        "Cobbles edged stone walkway with planters beside water."
+      ],
+      "10000": [
+        "Windmill fallen, tall mossy trees reclaim roofless plots.",
+        "Open crowns closed into dense hanging canopy.",
+        "Terraces crumbled under bright closed forest canopy.",
+        "Whitewash mossed over, bromeliads root on ruined wall.",
+        "Footbridge rusted away, walls stand roofless overgrown.",
+        "Lanterns gone, parrots fly over silent ruins.",
+        "Barge rotted, wall base mossed where mooring stood.",
+        "Canal silted to mossy leaf-covered cobble path.",
+        "Walkway planters wilded into mossy bromeliad ruin."
+      ],
+      "1000000": [
+        "Ruined trees grew into mossy trunks with vines.",
+        "Closed canopy thinned to pale misty sky gaps.",
+        "Canopy limbs mossed over towering tree ferns.",
+        "Bromeliad walls crumbled, tall tree ferns spread.",
+        "Stone lines buried, dense misty interior returned.",
+        "Parrot perch gone, arching fern fronds fill light.",
+        "Wall base dissolved to muddy mangrove bank.",
+        "Leaf path washed out to slow brown creek.",
+        "Stone ruin sunk, heron fishes where street lay."
+      ],
+      "-10000": [
+        "Palms gave way to bromeliad-covered trees as forest matured undisturbed.",
+        "Tall palms remain under grey sky, tidal soil still sandy.",
+        "Canopy stayed closed, Atlantic humidity kept overcast light.",
+        "Tree ferns grew larger in damp shade without clearing.",
+        "Elephant left treeline as forest thickened into humid interior.",
+        "Giant sloth now climbs where earlier elephants browsed.",
+        "Reeds gave way to mossy mud as creek shifted slightly.",
+        "Brackish channel slowed siltier with mangrove leaf litter.",
+        "Mangroves rooted thick where sandy bank once stood open."
+      ],
+      "-2000": [
+        "Forest canopy pushed back except tall edge trees remain.",
+        "Sky opened pale above clearing after trees felled.",
+        "Single towering crown left standing for shade and markers.",
+        "Wattle hut raised smoking where ferns once grew thick.",
+        "Footpath worn sandy through forest for garden access.",
+        "Second open stick hut built for storing manioc harvest.",
+        "Manioc beds planted fenced where muddy bank lay.",
+        "Foreground path packed sandy along future street line.",
+        "Right garden fenced likewise for manioc behind huts."
+      ],
+      "-500": [
+        "Grey sky unchanged above, canopy still cut back.",
+        "Palm crown returned over gardens from planted trees.",
+        "Sky stays pale, treeline lower from continued clearing.",
+        "Banana plants added above roofs for food shade.",
+        "Large leafy tree kept standing behind joined houses.",
+        "Distant palms persist beyond gardens on forest edge.",
+        "Single huts joined into continuous wattle row.",
+        "Footpath widened packed-earth with woven fences guiding.",
+        "Garden plots fenced behind street frontage for crops."
+      ],
+      "-100": [
+        "Wattle replaced by white two-storey masonry corner house.",
+        "Sky same pale, palm and mango crowns kept behind.",
+        "Thatch gave way to tile roofs with coal smoke.",
+        "Town gas lantern and shop board fixed to wall.",
+        "Tile rooftops crowded behind hissing steam traction engine.",
+        "Semaphore post and boiler chimney rose for messages steam.",
+        "Bicycle leans by arched doors after cycle trade arrived.",
+        "Packed earth cobbled for horse carts and steam engine.",
+        "Pneumatic-tube kiosk and coal yard added for messages fuel."
+      ]
+    },
+    "no-printing-press": {
+      "0": [
+        "Ochre windows trimmed brown after upper floor added by hand guidance.",
+        "Grey sky stayed same, Atlantic clouds linger with no tall towers.",
+        "Blue balconies repainted blue trim as facades repaired with picture stories.",
+        "Gas lamp replaced by arched white facade as lanterns moved to walls.",
+        "Orchard trees thinned to cloudy treeline as gardens concentrated between blocks.",
+        "Blue houses kept, green trim added where voice-speaker poles guide visitors.",
+        "Handcart gave way to chalkboard shop doors listing goods by hand.",
+        "Horse carriage left cobbles for tram tracks laid for slow vans.",
+        "Painted wall kept, garden beds added as hand-watered plots feed street."
+      ],
+      "100": [
+        "Brown trim overpainted with full picture stories teaching law without print.",
+        "Grey sky now holds bell-speaker tower for voice news and calls.",
+        "Blue-trim building crowned by painted bell tower relaying spoken messages.",
+        "Arched facade repainted with picture panels since hand copying stays costly.",
+        "Treeline sky became rooftop garden terrace shading added third floor.",
+        "Balconied buildings softened by potted fruit trees moved to terraces.",
+        "Shop chalkboards gave way to arched doorways sheltering bicycles and criers.",
+        "Tram tracks kept and evened for slow trams, no cars allowed.",
+        "Garden beds framed by painted lower facade telling craft stories."
+      ],
+      "1000": [
+        "Painted mural carved into stone with glass pictures for lasting memory.",
+        "Tower top opened to cloudy sky after speakers moved to lower posts.",
+        "Bell tower weathered into mosaic building as paint yielded to stone.",
+        "Painted arches recut as carved walls holding colored-glass picture windows.",
+        "Terrace garden thickened until red rooftops hide behind fruit trees.",
+        "Terrace pots spilled into hanging plants as watering turned seasonal.",
+        "Arched doorways mossed into cobbled corner kept by foot traffic only.",
+        "Tram rails kept in cobbles though small trams run less often.",
+        "Painted facade softened to stone wall lined with potted plants."
+      ],
+      "10000": [
+        "Carved facade crumbled as tall mossy trees rooted inside walls.",
+        "Cloudy sky closed with vines as forest canopy reclaimed the lane.",
+        "Mosaic building dissolved into bright canopy as roofs fell to humus.",
+        "Carved windows mellowed to mossy ruined wall holding bromeliads.",
+        "Tile rooftops lost leaving roofless walls shaded by returning forest.",
+        "Hanging plants gave way to parrot flight over quiet ruins.",
+        "Cobbled corner sank to mossy wall base under leaf litter.",
+        "Tram tracks buried under mossy leaves as forest floor covered cobbles.",
+        "Potted plants spread into bromeliads crowning mossy stone ruins."
+      ],
+      "1000000": [
+        "Tall trees thickened to vine-wrapped trunks in deepening rainforest soil.",
+        "Vine canopy thinned to misty sky as old trees settled and fell.",
+        "Closed canopy opened to mossy branches sheltering tree ferns below.",
+        "Mossy wall dissolved into tall tree ferns as stones sank.",
+        "Roofless walls melted into misty interior as roots broke stone.",
+        "Parrot flight yielded to arching fern fronds in humid shade.",
+        "Wall base softened to muddy mangrove bank with fallen log.",
+        "Leaf-covered path hollowed into slow tidal creek by rising water.",
+        "Stone ruin dissolved to creek bank where heron hunts quietly."
+      ],
+      "-10000": [
+        "Fan palms grew into bromeliad-covered trees as wetter climate favored broadleaf forest.",
+        "Broadleaf limb opened to tall palms under clouds as shoreline forests shifted seaward.",
+        "Grey sky remains, treetops thickened because humid forest canopy closed overhead.",
+        "Understory trunks gave way to giant tree ferns in damper shaded soil.",
+        "Elephant left dense interior as cooling climate changed forage and herds moved.",
+        "Palm canopy now hosts climbing ground sloth thriving in lush ice-age forest.",
+        "Reed litter became mossy muddy bank as creek floods enriched tidal soil.",
+        "Shallow channel slowed to muddy creek because sea-level rise flattened drainage.",
+        "Cattails yielded to mangrove prop roots with saltier tidal water inland."
+      ],
+      "-2000": [
+        "Forest edge thickened tall as undisturbed canopy persisted beyond clearing.",
+        "Palms cleared revealing pale sky where garden smoke opens canopy.",
+        "Treetops remain towering because forest still dominates around small plot.",
+        "Ferns cleared for smoking wattle hut built by gardeners by hand.",
+        "Dense interior opened as sandy footpath worn by daily garden visits.",
+        "Sloth habitat cleared for open stick hut storing manioc without written plans.",
+        "Muddy bank drained into fenced manioc beds tended by memory and voice.",
+        "Muddy creek filled to sandy path as households drained ground by hand.",
+        "Mangroves cleared for fenced manioc beds on drier sandy soil."
+      ],
+      "-500": [
+        "Canopy opened to overcast hills as timber cutting widened the clearing.",
+        "Pale sky now frames lone palm top left by selective clearing.",
+        "Tree crown cleared to grey sky as forest edge retreated inland.",
+        "Smoking hut site returned to hillside trees during plot rotation fallow.",
+        "Footpath shaded again by tall palm kept for fruit and thatch.",
+        "Stick hut rebuilt with banana plants from coastal exchange by canoe.",
+        "Manioc beds edged with stacked timber cut for trade without sawn lists.",
+        "Sandy path packed into narrow track by foot and handcart traffic.",
+        "Right beds piled with logs and cloth bundles awaiting coastal boats."
+      ],
+      "-100": [
+        "Sky replaced by white house as masonry rows filled sandy lots.",
+        "Palm top yielded to grey sky still cloudy above tile roofs.",
+        "Grey sky replaced by white balconied building lining new lane.",
+        "Hillside trees cleared for lamp post, news shared by voice.",
+        "Lone palm joined by orchard trees planted between courtyard houses.",
+        "Thatched hut replaced by blue-balconied houses built by memorized craft.",
+        "Timber stack gave way to fruit handcart feeding market without printed prices.",
+        "Earth track cobbled for horse carriage, directions taught by painted signs.",
+        "Log piles became painted wall with pots, laws told in pictures."
+      ]
+    },
+    "rome-never-fell": {
+      "0": [
+        "Upper floors gained two storeys and planters under courtyard housing law.",
+        "Sky gained thin tram wires as lines were kept and cars banned.",
+        "Rooftop garden with orchard trees replaced tiles for cooling and food.",
+        "Balconies filled with palms as tenants kept courtyard stock behind screens.",
+        "Sky stayed cloudy but crisscrossed by wires from expanded tram power.",
+        "Facades stayed white with blue balconies, replastered under heritage edict.",
+        "Shaded colonnade with Latin tablets replaced shops as ground floors opened.",
+        "Old fountain stayed centered but plaza paving widened for walkers.",
+        "Colonnade filled with potted plants from municipal nursery along aqueduct."
+      ],
+      "100": [
+        "Weathered dome with lantern rose as district hall crowned the blocks.",
+        "Sky stayed pale overcast above higher vaults and dome.",
+        "Stone pine canopy was planted tall to shade travertine paving.",
+        "Inscribed travertine colonnade replaced plaster shops by imperial renewal grant.",
+        "Arched rail viaduct rose behind roofs to link port and inland.",
+        "Colonnade with frieze replaced blue balconies as concrete vaults widened.",
+        "Lion-head fountain replaced old basin using same aqueduct branch.",
+        "Avenue stayed cobbled with tram tracks reset in new stone.",
+        "Tiled fountain shrine opened as small bathhouse at the crossroads."
+      ],
+      "1000": [
+        "Upper facade weathered honey-coloured as concrete aged under garden care.",
+        "Stone pine grew giant umbrella over roofs from century-old planting.",
+        "Classical facade stayed standing, repointed by continuous masonry guilds.",
+        "Vaulted wall grew ivy as courtyard orchards shaded travertine.",
+        "Viaduct stayed carrying slow trains maintained by imperial rail office.",
+        "Twin domes stayed behind gardens, cleaned but kept in old form.",
+        "Lion fountain stayed flowing on same aqueduct branch, basin worn.",
+        "Tram avenue became garden channel as beds spread over paving.",
+        "Right fountain stayed with clipped hedges from expanded nursery stock."
+      ],
+      "10000": [
+        "Tall mossy trees grew inside walls after roofing upkeep lapsed.",
+        "Dense vines hung over canopy as Atlantic forest closed above.",
+        "Closed bright canopy returned where dome stood as seeds took hold.",
+        "Vaulted wall turned mossy ruin holding bromeliads after plaster washed off.",
+        "Houses stood roofless and overgrown as timbers rotted untended.",
+        "Green parrots returned over ruins as forest food trees matured.",
+        "Street wall base stayed moss-covered where colonnade feet endured.",
+        "Cobbled line lay leaf-covered as roots lifted stones without sweeping.",
+        "Stone ruin kept bromeliads on top as rainfed moss thickened."
+      ],
+      "1000000": [
+        "Mossy trunk with vines replaced ruined walls as roots buried stones.",
+        "Misty sky showed pale again once high masonry had fallen.",
+        "Mossy branches over tree ferns grew where facades shaded courts.",
+        "Tall tree ferns spread fronds as humus deepened over rubble.",
+        "Dense misty interior returned with no streets under closed canopy.",
+        "Arching fern fronds replaced domes as spores recolonized damp soil.",
+        "Muddy mangrove bank with logs reformed as creek shifted seaward.",
+        "Slow brown creek reappeared winding where garden channels had run.",
+        "Grey heron stood on bank where fountains flowed, tides returned."
+      ],
+      "-10000": [
+        "Canopy trees stayed tall because Atlantic rains kept sandy coastal plain wet.",
+        "Palms stayed dominant under grey sky as coastal humidity never lifted.",
+        "Treetops stayed closed under overcast sky from unchanged ocean winds.",
+        "Tree ferns spread in understory as shade deepened on damp soil.",
+        "Forest interior stayed dense and shaded with no clearing yet made.",
+        "Ground sloths browsed here instead of elephants after cool ages shifted herds.",
+        "Creek bank stayed mossy and muddy from slow tidal flooding.",
+        "Brackish channel stayed slow and muddy as sea level steadied.",
+        "Mangroves rooted thickly where reeds stood as tides softened the bank."
+      ],
+      "-2000": [
+        "Canopy opened slightly as gardeners felled palms for hut poles and light.",
+        "Sky showed paler through clearing where smoke and garden haze rose.",
+        "Single tall crown stayed standing as shade marker at clearing edge.",
+        "Wattle hut rose with cooking smoke from local clay hearths.",
+        "Narrow footpath was trodden sandy where forest trips fetched water.",
+        "Second open hut appeared for storing manioc and fishing gear.",
+        "Left manioc beds were fenced with sticks to mark family plots.",
+        "Foreground path widened sandy from daily trips to creek and beds.",
+        "Right manioc beds were planted fenced as creek silt fed soil."
+      ],
+      "-500": [
+        "Forest edge thickened with palms after old garden plots lay fallow.",
+        "Sky stayed cloudy grey as ocean winds kept rains steady.",
+        "Tall palms regrew where manioc beds stood from abandoned clearing.",
+        "Palm trunks stood dense again as forest reclaimed sandy footpath.",
+        "Canvas tents rose beside old hut for imperial coastal survey crew.",
+        "Sandy track was cut straight through forest by legion road markers.",
+        "Cut logs and inscribed stone were stacked by tax surveyors claiming plots.",
+        "Track gained side ditches as engineers drained sand for future paving.",
+        "Timber and stone blocks were piled for planned quay and storehouses."
+      ],
+      "-100": [
+        "Tall plastered block rose where forest stood, funded by imperial port taxes.",
+        "Sky narrowed above rooftops as five storeys lined the new street.",
+        "White block with blue shutters rose under Latin building code.",
+        "Balconies and copper wiring spread as aqueduct power lit homes.",
+        "Distant blocks and poles filled the track where survey tents stood.",
+        "White facade with blue balconies rose on concrete vaults, unbroken craft.",
+        "Green tram arrived on twin rails by municipal charter from Rome.",
+        "Cobbled street with drains was paved by legion engineers for carts.",
+        "Stone fountain flowed on sidewalk fed by renewed coastal aqueduct."
+      ]
+    },
+    "tamed-mammoth": {
+      "0": [
+        "Arched house gained upper storey windows for workshop families.",
+        "Cloudy sky pales over same treetops, unchanged Atlantic weather.",
+        "Tiled roofs weathered but kept for wide mammoth street.",
+        "Old wool signs repainted brown as felt workshop sign.",
+        "Red-tiled rows remain terracotta rooftops behind planted trees.",
+        "Depot sign removed, leaving white arched doorways for carts.",
+        "Stone trough kept while wool became stacked felt rolls.",
+        "Hay wagon mammoth team unchanged, still fed on central meadow.",
+        "Drying frames cleared for small blue van on buried power."
+      ],
+      "100": [
+        "Upper windows kept under new thick felt thatch for insulation.",
+        "Pale sky unchanged above, still humid Atlantic overcast.",
+        "Weathered tiles overlaid with thick thatch from mammoth-wool felt.",
+        "Workshop sign arch widened into tall gateway for mammoth teams.",
+        "Terracotta rooftops thatched over as trees filled between blocks.",
+        "Arched doorways extended into row of thatched white buildings.",
+        "Felt rolls moved inside as second mammoth joined hay wagon.",
+        "Gravel mammoth lane grassed over with paired ruts and troughs.",
+        "Electric van replaced by wooden trough by fenced paddock."
+      ],
+      "1000": [
+        "Thatched building thinned to low felt-roof corner for grazing room.",
+        "Pale sky still unchanged, sheltering open steppe town.",
+        "Thatch whitened to felt overhang from continuous mammoth-wool harvest.",
+        "Tall gateway kept in lower houses with arched doorways.",
+        "Rooftops opened to palm steppe to pasture herds.",
+        "Thatched row repainted with blue balconies around garden terraces.",
+        "Wagon team now grazes free as large brown mammoth.",
+        "Grass avenue kept for adult mammoth with calf.",
+        "Single trough joined by haystacks for winter fodder stores."
+      ],
+      "10000": [
+        "Felt roof collapsed, letting tall mossy trees root inside.",
+        "Pale sky hidden by dense hanging vines reclaiming street.",
+        "Felt overhang rotted away beneath bright closed canopy.",
+        "Arched doorways crumbled to mossy wall holding bromeliads.",
+        "Steppe forested in as roofless walls filled with trees.",
+        "Balconied houses emptied, now crossed by green parrot.",
+        "Grazing mammoth gone, leaving mossy ancient street wall base.",
+        "Calf path overgrown to mossy leaf-covered cobble trail.",
+        "Troughs mouldered into mossy stone ruin topped with bromeliad."
+      ],
+      "1000000": [
+        "Mossy trees thickened to vine-wrapped trunks in deep soil.",
+        "Vines parted slightly, showing pale misty sky over forest.",
+        "Closed canopy now mossy branches over tall tree fern.",
+        "Ruined wall dissolved as tall tree ferns spread fronds.",
+        "Roofless walls buried, leaving dense misty rainforest interior.",
+        "Parrot flight gone where arching tree fern fronds wave.",
+        "Street wall base sank to muddy mangrove bank with log.",
+        "Cobble trail washed out to slow brown tidal creek.",
+        "Stone ruin dissolved, leaving heron bank where trough stood."
+      ],
+      "-10000": [
+        "Palms persist, now bromeliad-covered from millennia of steady Atlantic humidity.",
+        "Broadleaf limbs still shade palms beneath unchanged overcast coastal sky.",
+        "Grey sky remains, filtered through denser treetops in humid interval.",
+        "Understory trunks now crowded with tree ferns after damp soil built up.",
+        "Elephant gone from view as forest thickened into closed interior.",
+        "Canopy still dense, now sheltering a climbing ground sloth foraging leaves.",
+        "Reeds gave way to mossy mud as creek settled into shade.",
+        "Brackish channel still winds slowly, muddier from leaf litter buildup.",
+        "Cattails replaced by mangroves with prop roots in tidal soft soil."
+      ],
+      "-2000": [
+        "Bromeliad trees grew into unbroken canopy without clearing yet.",
+        "Palms remain beneath clouds as broadleaf treetops closed overhead.",
+        "Grey sky now mostly hidden by thicker humid foliage.",
+        "Tree ferns shaded out as tall vine-hung trunks dominate.",
+        "Forest interior stays dense with palms, still untraveled by herders.",
+        "Sloth no longer seen; vines tangle where animals browsed.",
+        "Mossy bank buried under damp leaf litter in deep shade.",
+        "Muddy creek narrowed to animal trail as forest floor rose.",
+        "Mangroves retreated, leaving damp tidal floor under closed forest."
+      ],
+      "-500": [
+        "Canopy felled for fields, opening cloudy sky over green hills.",
+        "Broadleaf tops cut, leaving tall palms under grey clouds.",
+        "Overhead foliage cleared, revealing overcast sky and distant hills.",
+        "Vine-hung trunks thinned to remaining palms shading fenced plots.",
+        "Dense trees opened for mango tree kept beside new track.",
+        "Tangled undergrowth replaced by staked vegetable plots with cloths.",
+        "Leaf litter swept for wattle hut shaded by traded felt awning.",
+        "Animal trail widened to packed-earth track for mammoth carts.",
+        "Tidal floor drained for second wattle hut holding clay pots."
+      ],
+      "-100": [
+        "Green hills hidden as wool-wealth whitewashed house rose.",
+        "Palms now peek above rooftops beneath same cloudy sky.",
+        "Distant hills edged by tiled houses for mammoth handlers.",
+        "Fenced plots became wool shops with signs and felt awnings.",
+        "Mango shaded track where red-tiled rows rose for herders.",
+        "Vegetable plots turned to depot with hanging wool sign.",
+        "Wattle hut replaced by stone trough and wool for mammoth trade.",
+        "Packed track widened to boulevard where mammoth pulls hay wagon.",
+        "Clay-pot hut became yard stacking wool bales and drying frames."
+      ]
     }
   }
 }

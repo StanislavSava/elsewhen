@@ -96,6 +96,20 @@
           "adobe compound wall along lane"
         ]
       },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "tall date palm crown",
+          "clear blue morning sky",
+          "date palm fronds right",
+          "distant arid rocky hills",
+          "three mud thatched huts",
+          "dense palm foliage right",
+          "irrigated garden plots foreground",
+          "narrow dirt track center",
+          "young palms in fenced plots"
+        ]
+      },
       "-1000000": {
         "image": "base_-1000000.webp",
         "target": {
@@ -130,20 +144,6 @@
           "marshy spring with cattails",
           "wild buffalo grazing marsh",
           "tamarisk bush by water"
-        ]
-      },
-      "-2000": {
-        "image": "base_-2000.webp",
-        "cells": [
-          "tall date palm crown",
-          "clear blue morning sky",
-          "date palm fronds right",
-          "distant arid rocky hills",
-          "three mud thatched huts",
-          "dense palm foliage right",
-          "irrigated garden plots foreground",
-          "narrow dirt track center",
-          "young palms in fenced plots"
         ]
       },
       "-100": {
@@ -728,6 +728,20 @@
           "stone milestone beside arcades"
         ]
       },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "tall date palm crown",
+          "clear blue morning sky",
+          "date palm fronds right",
+          "distant arid rocky hills",
+          "three mud thatched huts",
+          "dense palm foliage right",
+          "irrigated garden plots foreground",
+          "narrow dirt track center",
+          "young palms in fenced plots"
+        ]
+      },
       "-1000000": {
         "image": "base_-1000000.webp",
         "target": {
@@ -744,20 +758,6 @@
           "tamarisk scrub and dry grasses",
           "sandy gravel plain with scrub",
           "dry grasses beside palm trunk"
-        ]
-      },
-      "-2000": {
-        "image": "base_-2000.webp",
-        "cells": [
-          "tall date palm crown",
-          "clear blue morning sky",
-          "date palm fronds right",
-          "distant arid rocky hills",
-          "three mud thatched huts",
-          "dense palm foliage right",
-          "irrigated garden plots foreground",
-          "narrow dirt track center",
-          "young palms in fenced plots"
         ]
       },
       "-10000": {
@@ -935,12 +935,27 @@
           "wild buffalo grazing marsh",
           "tamarisk bush by water"
         ]
+      },
+      "-100": {
+        "image": "tamed-mammoth_-100.webp",
+        "cells": [
+          "tall date palm crown",
+          "domed brick minaret top",
+          "palm fronds in clear sky",
+          "tall date palm trunk",
+          "long arched brick warehouse",
+          "brick wool stores on right",
+          "hay bales and wool sacks",
+          "wide earth gravel boulevard",
+          "two mammoths pulling hay cart"
+        ]
       }
     }
   },
   "notes": {
     "our-timeline": {
       "place": "Palm-lined market street in Tozeur, Jerid oasis town in southwestern Tunisia, looking toward the El-Ferdaws Mosque minaret",
+      "town": "Tozeur",
       "eras": {
         "100": "The same street keeps its brick facades and tall minaret, now with planted green roofs, timber pergolas and solar shades, and smooth pale paving with paired tram rails set in grass strips. New since a century before, a quiet tram line, irrigated garden beds and rows of mature date-palms with street lamps line every frontage.",
         "1000": "The same alignment remains as a shaded garden boulevard between light earth-brick houses with deep planted terraces, vine-covered arcades and dense date-palms and fruit trees in every courtyard and on every roof. New since the previous century, planting has thickened into continuous terraced gardens with small water channels and maintained meadow strips along the old tram way.",
@@ -966,6 +981,7 @@
     },
     "library-of-alexandria": {
       "place": "Tozeur oasis market street in southwestern Tunisia, flat palm-grove avenue looking toward the old-town brick minaret",
+      "town": "Tozeur",
       "eras": {
         "0": "Slender forty-story towers with garden terraces of pale stone and glass stand on the same plots as the steel towers along permeable paving with rain gardens and cycle tracks, with automated electric pods on reserved lanes and aerial cable cabins overhead, rooftop plantings and solar canopies with buried grids, and low-energy text panels and wayfinding lights, while palms line the street and the old brick tower still stands weathered and gently overgrown. New since the electric tram streets are the taller green towers, pod lanes and roof gardens over former parking, and at the rear a fenced deep foundation shaft with stacked pale panels and terrace plantings marks where a hundred-storey tower will rise.",
         "100": "Slender hundred-storey pale-stone and glass towers with planted terraces rise on the same plots above wide quiet streets with silent trams and no jams, with great library and observatory halls as landmarks and the ancient brick tower still standing weathered and gently overgrown amid tended gardens and date palms. New since the forty-storey streets are the still taller towers and quieter lanes, and beside the meadow margins fenced sunken stairs and glass skylight frames with planted mounds mark where homes and transport will extend underground.",
@@ -978,6 +994,7 @@
     },
     "no-electricity": {
       "place": "Tozeur, southwest Tunisia - the palm avenue leading to the Ferkous Mosque minaret on the flat Saharan oasis edge near Chott el Jerid, hot arid climate",
+      "town": "Tozeur",
       "eras": {
         "0": "Since 1926 the shops have grown to dense three-storey patterned-brick masonry with facade gas and steam pipes, painted wooden boards and gas-lit display windows, and round gas lanterns on the palm avenue. The paved street carries heavy diesel lorries with air-start tanks and pedal cycles, with an enlarged pneumatic-tube station, and rooftops hold water tanks, coal bunkers and greenhouses above the workshops.",
         "100": "Since 2026 an iron pipe bridge carrying steam and compressed-air mains spans the street on brick piers and a central cable-tram track from a low steam winding house runs under the palms. The same minaret still stands weathered among four-storey brick and iron blocks lit by warm gaslight, with rooftops crowded with wind pumps, water towers, chimneys and tended garden beds.",
@@ -988,6 +1005,7 @@
     },
     "no-printing-press": {
       "place": "Tozeur, southern Tunisia - oasis market street leading to El-Ferdaws Mosque minaret, flat Saharan palm-grove edge, hot arid climate",
+      "town": "Tozeur",
       "eras": {
         "0": "Four-storey patterned-brick courtyard blocks with arcades, awnings and hand-painted picture walls line the stone-set lane under date palms, still focused on the tall brick minaret. New since 1926 are iron speaker poles with small listening shelters, chalk picture price boards and market gardens with fruit trees and stable yards between houses, with street trams, bicycles, handcarts and shared motor vans instead of private cars and with no glowing signs, paper posters or parking lots.",
         "100": "Five-storey ochre courtyard blocks whose whole facades are painted with picture stories and carved reliefs line the palm-shaded lane, with tall bell-and-speaker towers at the corners and the familiar brick minaret still standing among them. New since 2026 are the full story-facades and corner towers, plus planted roof gardens, fruit trees and small tram rails with bicycles and handcarts only, and no written letters, screens or heavy car traffic.",
@@ -999,6 +1017,7 @@
     },
     "rome-never-fell": {
       "place": "Tozeur oasis town in the Jerid, southern Tunisia - flat desert plain with date-palm oasis and springs, view south along the main market street toward the old centre",
+      "town": "Tozeur",
       "eras": {
         "0": "Six- to eight-storey mixed-use perimeter blocks with stone facades, shaded colonnades, enamel Latin plaques and courtyard orchards and rooftop gardens enclose a stone-paved plaza with fountains where the tram and regional rail meet. New since the last street are the paved pedestrian plaza, the planted roofs and a small concrete-domed bath hall with low arched viaduct piers rising at the end of the street.",
         "100": "Tall concrete domes and vaulted district halls with carved stone inscriptions and bronze lettering close the view, and a high arched stone viaduct carrying trains crosses the street above a straight colonnaded avenue of cypresses, stone pines and retained date palms. New since the last street are the enlarged domes grown from the earlier bath hall and the completed viaduct, with public baths, fountains and forum gardens at the crossroads and tram lines below.",
@@ -1010,6 +1029,7 @@
     },
     "tamed-mammoth": {
       "place": "Palm-lined market street in Tozeur, southern Tunisia, looking to the brick minaret of the old oasis mosque on the flat pre-Saharan plain, hot arid desert-oasis climate",
+      "town": "Tozeur",
       "eras": {
         "0": "Three- to five-story mixed brick-and-concrete blocks with set-back yards, shop awnings and district wool-washing and felt workshops line turfed mammoth freight lanes with electric-assist wagons and small battery vans, ground cabinets, water troughs and linear hay meadows. Date palms shade both sides and the tall domed brick minaret still dominates the center view, with no overhead wires or asphalt parking.",
         "100": "Two- to four-storey brick blocks with very tall arched gateways, thick felted wool roofs and awnings line broad grass avenues carrying mammoth freight wagons, with paddocks, hay lofts and water troughs between blocks. Date-palm gardens and irrigated meadows fill the yards, and the old minaret still stands weathered and gently overgrown with climbing greenery at its base.",
@@ -1019,6 +1039,603 @@
         "-100": "Very wide earth-and-gravel boulevards with separate mammoth lanes replace the avenue, lined by two- to three-story ochre brick blocks with stable yards, hay lofts, large painted wall signs and wool banners, iron lamp posts on buried cable, and hay meadows between districts. The hall tower is now a tall slender domed brick minaret on the old foundations, with date palms shading both sidewalks."
       },
       "cells": null
+    }
+  },
+  "story": {
+    "our-timeline": {
+      "100": [
+        "Mature palm kept with new lamp as street lighting was modernized.",
+        "Minaret top greened with planters during heritage restoration and cooling.",
+        "Few fronds remain in sky because crowns were lifted for panels.",
+        "Old brick kept, fitted with solar panels for clean desert power.",
+        "Arcade softened with ivy as green cooling covered historic masonry.",
+        "Palm row with lamps planted to shade the new tram walkway.",
+        "Garden beds and pergola replaced awnings to cool shoppers naturally.",
+        "Grass tram tracks laid when city chose quiet electric transit.",
+        "Pale paving and planters replaced earth as street became pedestrian-friendly."
+      ],
+      "1000": [
+        "Palms grew wilder as pruning eased under garden-city care.",
+        "Tower softened with vines as climate cooling favored thick planting.",
+        "Fronds multiplied in sky because palms were left untrimmed for shade.",
+        "Earth-brick terraces replaced panels as low-energy gardens spread upward.",
+        "Arcade vines swallowed ivy when irrigation fed deeper roof gardens.",
+        "Houses vanished among palms because orchards filled every courtyard gap.",
+        "Meadow path replaced garden beds as formal plots turned semi-wild.",
+        "Water channel opened where tram rails lay to cool the boulevard.",
+        "Stone path crossed meadow because paving was lifted for wildflowers."
+      ],
+      "10000": [
+        "Tall palm survived untended after garden watering slowly ceased.",
+        "Sky looks paler and dustier without irrigated greenery to settle air.",
+        "Scattered fronds remain against sky as dense canopy thinned naturally.",
+        "Palm trunk stands by ruins where terrace house walls collapsed.",
+        "Walls lost roofs and vines as maintenance ended and timbers decayed.",
+        "Palms crowded over ruins because seeds sprouted freely in rubble.",
+        "Sand reclaimed garden beds after channels dried and soil blew in.",
+        "Old tram way buried in sand when paving broke and drifted over.",
+        "Low stubs remain where planters stood, weathered by wind and sun."
+      ],
+      "1000000": [
+        "Lone palm crown persists wild where tended boulevard palms seeded naturally.",
+        "Sky stays pale and clear above the vanished town footprint.",
+        "Dense fronds returned as wild grove replaced ruined garden walls.",
+        "Drooping fronds hang untended because no gardeners prune the grove.",
+        "Distant wild palms dot horizon where ruins finally melted to sand.",
+        "Thick foliage spreads freely as irrigation channels faded to groundwater hollow.",
+        "Sandy scrub covered low walls as wind buried last bricks deeply.",
+        "Shallow hollow holds groundwater where old water channel once ran.",
+        "Small mammal hops through grasses returned after streets fell silent."
+      ],
+      "-10000": [
+        "Palms grew denser as rains returned and groundwater rose higher.",
+        "Sky turned clear blue as wetter climate cleared dusty pale haze.",
+        "More palm fronds filled sky because warmer rains fed the grove.",
+        "Tall palm trunks rose where shallow water nourished old scrub.",
+        "Steppe greened and acacias spread as Holocene rains softened salt flat.",
+        "Flat-topped acacia rooted here because grassland replaced bare gravel.",
+        "Marshy spring appeared as higher water table filled the hollow.",
+        "Buffalo came to graze because lush marsh grasses now thrived.",
+        "Tamarisk thickened by water as springs kept soil moist year-round."
+      ],
+      "-2000": [
+        "Tended palm crowns remain, now pruned by oasis gardeners for dates.",
+        "Morning sky stayed clear, unchanged above the new farm plots.",
+        "Palms on right now planted in rows for shade and harvest.",
+        "Hills look arid again as climate dried toward modern desert.",
+        "Three mud huts rose because farming families settled the spring.",
+        "Dense palm foliage thickened where farmers irrigated the grove.",
+        "Garden plots were leveled and watered from the spring channel.",
+        "Dirt track wore in from daily trips between huts and wells.",
+        "Young fenced palms were planted to extend the oasis grove."
+      ],
+      "-500": [
+        "Old palm crowns persist, shaded now by taller mudbrick lanes.",
+        "Pale sky unchanged above, hazy with dust from mudbrick work.",
+        "Palm fronds still wave, now over house roofs instead of huts.",
+        "Mudbrick arcades replaced huts as trade wealth built permanent shops.",
+        "Distant hills reappeared beyond roofs as lane buildings framed the view.",
+        "House-side palm kept for shade because courtyard life needed cooling.",
+        "Grain sacks appeared outside shops as market trade grew along lane.",
+        "Lane widened with clay pots because caravan traffic brought water jars.",
+        "Adobe walls enclosed plots as families secured gardens and livestock."
+      ],
+      "-100": [
+        "Palms now trimmed as avenue trees along the widened street.",
+        "Minaret top now pierces sky after mosque was enlarged in brick.",
+        "Canopy thinned for light because shop awnings needed sun clearance.",
+        "Two-storey ochre houses rose as fired brick replaced sun-dried mud.",
+        "Tall slender minaret built because prosperity funded a larger mosque.",
+        "Distant palms now shade rooftops where town planting expanded outward.",
+        "Arched shops gained awnings as colonial trade brought cloth and glass.",
+        "Street widened and edged with stone for carts and early motors.",
+        "Striped awnings shaded brick arcade where iron lamps lit evenings."
+      ]
+    },
+    "library-of-alexandria": {
+      "0": [
+        "Steel facade rebuilt as terraced pale stone garden tower.",
+        "Sky narrowed as slender garden tower rose overhead.",
+        "Stone tower heightened with planted terraces and glass.",
+        "Shop signs kept under new solar canopy and plantings.",
+        "Ancient tower kept, palms replanted around its base.",
+        "Street lamps kept below new aerial cable cabins.",
+        "Van parking turned into rain garden with agave beds.",
+        "Tram lanes kept, joined by automated electric pods.",
+        "Garden plot fenced again for deep hundred-storey foundations."
+      ],
+      "100": [
+        "Forty stories raised to hundred with same pale stone.",
+        "Tower gap widened, opening clear daytime sky again.",
+        "Terraces kept higher, linked as sky gardens.",
+        "Solar canopy kept under taller balconies with palms.",
+        "Ancient tower carefully kept amid tended gardens.",
+        "Cable line replaced by domed observatory for Library learning.",
+        "Rain garden kept, edged with palms and sunken skylights.",
+        "Pod lanes calmed into wide street for silent trams.",
+        "Foundation works finished as fountain and planted beds."
+      ],
+      "1000": [
+        "Tower facade removed; tall palms replanted for parkland.",
+        "Sky opened wide as towers lowered into underground halls.",
+        "Terraces removed; fronds return against open sky.",
+        "Balconied tower cleared into meadow with kept palms.",
+        "Ancient tower still kept, now gently overgrown.",
+        "Observatory kept in smaller form; twin towers remain.",
+        "Palms kept around round skylight lighting halls below.",
+        "Tram street grassed over; stream cleared through meadow.",
+        "Fountain beds naturalized into wildflowers around skylight."
+      ],
+      "10000": [
+        "Park palms run wild, same crowns untended.",
+        "Sky stays clear; tower top crumbled lower.",
+        "Fronds stay, now dusty under drier pale sky.",
+        "Meadow dried; trunk stands beside low ruined walls.",
+        "Tall tower weathered down to square minaret base.",
+        "Slender towers fallen; dense palms cover ruins.",
+        "Glass dome gone; sandy ground shows low walls.",
+        "Stream dried; sandy bed follows old street line.",
+        "Skylight buried; only low wall stubs with weeds."
+      ],
+      "1000000": [
+        "Garden palm reverted to wild, same windswept crown.",
+        "Sky unchanged, pale and dry over plain.",
+        "Tended fronds thinned to wild clumps.",
+        "Trunk spot kept only by younger self-seeded palms.",
+        "Last walls buried; distant wild palms reclaim horizon.",
+        "Ruins gone; only dense wild foliage remains.",
+        "Low walls sanded away into scrub plain.",
+        "Street bed softened into shallow groundwater hollow.",
+        "Wall stubs vanished; small mammals cross open sand."
+      ],
+      "-10000": [
+        "Palms grew thicker as rains returned, greening the old dry plain.",
+        "Sky looks bluer with moister air after Ice Age rains returned.",
+        "Palm grove thickened naturally around wetter ground, still untended.",
+        "Taller trunks rose where shallow groundwater fed the grove.",
+        "Salt flat greened into grassy steppe dotted with acacias.",
+        "Acacias spread across wetter steppe, shading former open scrub.",
+        "Spring hollow turned marshy with cattails as water table rose.",
+        "Grasses thickened, drawing wild buffalo to graze the marsh.",
+        "Tamarisk thickened beside open water, still with no settlement."
+      ],
+      "-2000": [
+        "Palms kept and trimmed to shade the new copy-stall street.",
+        "Sky unchanged above; only smoke from workshops now drifts.",
+        "Palm canopy tended beside houses for the Library garden supply.",
+        "Grove cleared for brick copy houses serving Library workshops.",
+        "Open steppe built over; watch tower marks Library quarter edge.",
+        "Acacia replaced by palms and waterwheel lifting grove water.",
+        "Marsh drained into gutters; reed stalls sell Library copies.",
+        "Grazing gave way to paved street with mule freight wagons.",
+        "Spring channeled into covered gutters serving houses and palms."
+      ],
+      "-500": [
+        "Old palms kept beside taller brick tenements and workshops.",
+        "Evening sky hazed by coal smoke from early steam works.",
+        "Palm plots rebuilt as arched brick tenements for press workers.",
+        "Two stories raised to six with iron beams and balconies.",
+        "Watch tower kept but domed and raised as district landmark.",
+        "Waterwheel yard rebuilt as tenement lit by piped gas.",
+        "Copy stalls cleared for rail yard storing iron and bricks.",
+        "Mule track paved over with iron rails for steam locomotives.",
+        "Stone gutters widened into iron drains beside lit shops."
+      ],
+      "-100": [
+        "Palm-side tenement replaced by steel-frame electric tower.",
+        "Coal haze cleared as electric power replaced steam smoke.",
+        "Brick arches replaced by pale stone-clad steel upper floors.",
+        "Balconied facade rewired with glowing signs and station clock.",
+        "Domed tower kept, weathered, as protected Library landmark.",
+        "Gas lamps swapped for glowing electric street lamps.",
+        "Rail yard built over; electric vans park by shops.",
+        "Steam rails kept but fitted for quiet battery trams.",
+        "Some shops cleared as fenced garden plot for next tower."
+      ]
+    },
+    "no-electricity": {
+      "0": [
+        "Palm fronds stayed, now trimmed around gas lanterns.",
+        "Minaret top unchanged, kept by careful masonry repair.",
+        "Sky stayed clear over same palm avenue.",
+        "Low shops raised to patterned brick for steam workshops.",
+        "Minaret kept, now backed by coal-heated rooftop greenhouses.",
+        "Palms and lamps kept, facades piped for town gas.",
+        "Shop front gained gas-lit windows as pedal cycles multiplied.",
+        "Dusty road paved for heavy diesel lorries with air-start.",
+        "Produce wagon replaced by diesel tanker on compressed air."
+      ],
+      "100": [
+        "Palm fronds now overhang brick balconies built for workshops.",
+        "Skyline filled with wind pumps and water tower for hydraulics.",
+        "Palm canopy kept, now mixed with chimneys as steam power expanded.",
+        "Patterned shops kept, extended upward with warm gas lamps.",
+        "Rooftop greenhouses kept, now crossed by pipe bridge carrying steam mains.",
+        "Gas-piped facade kept, now backed by pipe bridge piers.",
+        "Bicycle shop corner rebuilt as steam winding house to pull cable tram.",
+        "Paved lorry road gained cable-tram track from winding house.",
+        "Diesel tanker route kept, now edged with brick gas lamps."
+      ],
+      "1000": [
+        "Brick balconies lowered, palms hung with oil lanterns as gas mains faded.",
+        "Wind pumps cleared, weathered minaret kept in clear sky.",
+        "Chimney smoke cleared, palms kept for shade as coal ran scarce.",
+        "Gas-lit facade softened with vines tended for shade.",
+        "Pipe bridge removed, arcades kept along canal dug for barges.",
+        "Pipe piers gone, wooden windmill drives shafts on wind power.",
+        "Winding house fell, barges moor along new canal.",
+        "Tram tracks lifted for shallow stone-edged sailing canal.",
+        "Brick sidewalk gave way to water wheel driving workshops."
+      ],
+      "10000": [
+        "Oil lantern gone, palm crown grows wild untended.",
+        "Sky stayed clear pale over abandoned roofs.",
+        "Tall palms stayed, now self-seeded without gardeners.",
+        "Brick shops crumbled after timbers salvaged for fuel.",
+        "Arcades fell roofless, minaret base kept by dry climate.",
+        "Windmill fell, dense palms overtook arcade untended.",
+        "Moored barge gone, sand drifted after canal dried.",
+        "Canal silted to sandy street bed from neglect.",
+        "Water wheel rotted away leaving low wall stubs."
+      ],
+      "1000000": [
+        "Tended palm reverted to wild crown on dry sand.",
+        "Sky stayed pale blue in unchanged desert climate.",
+        "Palm fronds thickened wild as seeds spread naturally.",
+        "Low ruin trunk rotted, drooping fronds grew wild.",
+        "Minaret base buried under sand, palms spread by groundwater.",
+        "Ruined arcade palms merged into dense wild foliage.",
+        "Low walls eroded to sand by wind erosion.",
+        "Sandy street bed hollowed by wind to groundwater.",
+        "Wall stubs vanished, small mammals returned to scrub."
+      ],
+      "-10000": [
+        "Palms grew thicker crowns as rains returned after ice age.",
+        "Sky turned clearer blue with wetter air from northern rains.",
+        "Palm fronds thickened overhead, fed by higher groundwater.",
+        "Tall palm trunks rose where shallow groundwater persisted.",
+        "Distant plain greened into hillside steppe with grazing herds.",
+        "Flat-topped acacia seeded here as savanna spread north.",
+        "Marshy spring widened as groundwater rose with rains.",
+        "Buffalo wandered in where marsh grasses thickened.",
+        "Tamarisk thickened by water, still untended wild scrub."
+      ],
+      "-2000": [
+        "Planted palms kept old crowns, now tended by gardeners.",
+        "Sky stayed clear blue under steady dry desert air.",
+        "Palm fronds remain, now part of planted grove edge.",
+        "Hills turned arid rocky as climate dried again.",
+        "Three mud huts rose where herders settled to farm.",
+        "Dense foliage thickened as farmers planted ordered palms.",
+        "Garden plots were leveled and ditched for irrigation.",
+        "Narrow dirt track wore in from foot and donkeys.",
+        "Young palms fenced with fronds to guard irrigation."
+      ],
+      "-500": [
+        "Old palm crown stayed, shaded new mudbrick lane.",
+        "Sky stayed pale blue, unchanged desert weather.",
+        "Palm fronds stayed, now overtopping mudbrick roofs.",
+        "Mudbrick arcaded houses replaced huts for caravan trade.",
+        "Hills stayed distant pale under dry haze.",
+        "Kept palm now shades a mudbrick house wall.",
+        "Garden plots became shop front with grain sacks.",
+        "Dirt track widened to lane from cart traffic.",
+        "Fenced plots walled in adobe for family compounds."
+      ],
+      "-100": [
+        "Palm fronds thinned slightly for gas lamp posts.",
+        "Short tower rebuilt taller domed as town prospered.",
+        "Sky stayed clear above thinned palm line.",
+        "Brick shops with chimneys replaced mudbrick for coal workshops.",
+        "Minaret shaft still stands as shops rebuilt in brick.",
+        "Tall palms kept, fitted with gas lamps as gas mains arrived.",
+        "Mud shop rebuilt in sun-brick with reed awning for trade.",
+        "Lane stayed dusty, now crowded with carts and steam traction serving coal yard.",
+        "Compound wall opened to coal yard with produce wagons."
+      ]
+    },
+    "no-printing-press": {
+      "0": [
+        "Palm fronds framed by painted facade with lattice for listeners.",
+        "Morning sky now crossed by pale tram wire for shared streetcars.",
+        "Rooftops stay clear sky, brick tops kept and repaired.",
+        "Mural arcade kept, cloth awning added for shaded storytelling.",
+        "Tall minaret kept standing, maintained for calls and landmark.",
+        "Wired poles replaced by iron speaker pole broadcasting news aloud.",
+        "Bicycles remain beside new chalk picture price boards, no print.",
+        "Horse-cart lane gained tram tracks for communal cars, no autos.",
+        "Motor van joined by produce handcart by wooden listening shelter."
+      ],
+      "100": [
+        "Lattice facade crowned by carved bell tower for town announcements.",
+        "Tram-wired sky stays clear pale morning over higher blocks.",
+        "Clear rooftops gained right bell tower for voice relay.",
+        "Cloth arcade repainted ochre with full picture stories, no text.",
+        "Brick minaret kept centered among taller ochre housing.",
+        "Speaker pole joined by painted ochre block relaying stories visually.",
+        "Bicycles parked by arches, chalk boards grown into wall art.",
+        "Stone lane now carries yellow tram on rails, vans withdrawn.",
+        "Wooden shelter replaced by fruit handcart fed from roof gardens."
+      ],
+      "1000": [
+        "Bell tower top softened by spreading date fronds reclaiming roof.",
+        "Pale sky above minaret veiled by vines from untended gardens.",
+        "Right bell tower lost to right palm fronds as blocks lowered.",
+        "Ochre facade weathered to carved stone panels with picture windows.",
+        "Brick minaret weathered but standing, wrapped in vines.",
+        "Ochre block gone, distant stone tower stands above hillside trees.",
+        "Bicycle arches became stone footpath with tram tracks among vines.",
+        "Tram rails kept in cobbled lane, now only footpath and carts.",
+        "Fruit cart ground terraced into stepped water channel with orchards."
+      ],
+      "10000": [
+        "Spreading fronds thinned to tall crown over roofless walls.",
+        "Vine-veiled sky cleared to pale desert sky as vines dried.",
+        "Right fronds remain pale sky marker as towers crumbled.",
+        "Carved panels crumbled to palm trunk beside low ruins.",
+        "Vine minaret collapsed to roofless walls and square base.",
+        "Hillside tower vanished under dense palms reclaiming ruins.",
+        "Footpath stones buried, sandy ground with low walls remains.",
+        "Cobbled lane eroded to sandy old street bed without paving.",
+        "Terraces silted to low ruined stubs among scrub."
+      ],
+      "1000000": [
+        "Tall crown scattered to wild date-palm crown by wind seed.",
+        "Desert sky stays clear pale blue, unchanged and empty.",
+        "Pale-sky fronds thickened to dense wild fronds without tending.",
+        "Ruin palm became drooping fronds over open sand.",
+        "Ruined walls vanished to distant wild palms on flat horizon.",
+        "Dense ruins palms spread into dense foliage without walls.",
+        "Sandy walls smoothed to scrub ground as bricks dissolved.",
+        "Street bed hollowed to shallow groundwater hollow by wind.",
+        "Wall stubs yielded to small hopping mammal crossing grasses."
+      ],
+      "-10000": [
+        "Palm crowns thickened as rains returned and groundwater rose higher.",
+        "Pale sky turned clear blue as dust eased with greener cover.",
+        "Palm fronds multiplied around spring as grove spread naturally.",
+        "Tall trunks rose where scrub stood, fed by steady spring water.",
+        "Salt flat became green hills with acacias as climate moistened.",
+        "Flat-topped acacia rooted as seeds arrived on wetter winds.",
+        "Marshy spring with cattails formed as water table lifted.",
+        "Sandy plain turned marsh grazed by buffalo following fresh grass.",
+        "Dry grasses thickened into tamarisk by water as springs spread."
+      ],
+      "-2000": [
+        "Wild crowns pruned into tall garden palms for shade and dates.",
+        "Sky stays clear blue morning, unchanged above new fields.",
+        "Right fronds now belong to planted rows along fenced plots.",
+        "Green hills gave way to distant rocky hills as climate dried.",
+        "Marsh buffalo ground became three mud huts for farming families.",
+        "Large acacia replaced by dense palm foliage planted for food.",
+        "Marsh spring channelled into irrigated plots edged with frond fences.",
+        "Open marsh became narrow dirt track linking gardens and huts.",
+        "Tamarisk thinned for young fenced palms watered by hand."
+      ],
+      "-500": [
+        "Garden palm gave way to palm-beam copying house for scribes.",
+        "Sky remains clear daytime, steady over brick lane.",
+        "Palm thatch now edges tiled roofs sheltering copyists from sun.",
+        "Rocky view blocked by hand-painted picture wall teaching law by images.",
+        "Huts replaced by squat mud-brick minaret calling by voice.",
+        "Palm foliage backed by painted map wall guiding traders without books.",
+        "Garden plots became hide-drying yard supplying vellum for hand copies.",
+        "Dirt track hardened to packed-earth lane for handcarts with parchment.",
+        "Young palms cleared for crates of parchment bundles awaiting scribes."
+      ],
+      "-100": [
+        "Copy house roof shaded by overhanging date fronds from kept palms.",
+        "Sky still clear morning, unchanged above taller roofs.",
+        "Thatch edge replaced by wooden utility pole carrying gas-lamp wires.",
+        "Picture wall housed in brick arcade with larger painted murals.",
+        "Squat minaret rebuilt taller in brick for voice calls farther.",
+        "Map wall shaded by palms beside new wired poles on corner.",
+        "Vellum yard edged by parked bicycles beside murals for messengers.",
+        "Packed lane stone-set for horse cart carrying hand-copied bundles.",
+        "Crates shifted for old shared motor van, cars still unaffordable."
+      ]
+    },
+    "rome-never-fell": {
+      "0": [
+        "Stone facades stayed but balconies were planted under courtyard orchard rules.",
+        "Tram wires were buried, leaving pale sky clear above the plaza.",
+        "Flat roofs became gardens required by municipal cooling and water law.",
+        "Market arcade kept its shops, refreshed with enamel Latin plaques.",
+        "Old tower was slimmed and conserved as a historic survey marker.",
+        "Tram pole lamps moved onto colonnades lined with planted balconies.",
+        "Cobbled tram street was repaved as pedestrian plaza keeping old rails.",
+        "Steam tram stop gave way to tiered fountains fed by repaired aqueduct.",
+        "Arcade walk gained potted trees under the city greening program."
+      ],
+      "100": [
+        "Stone balconies gained hanging lanterns powered by the aqueduct channel.",
+        "Sky looks cloudier here as forum planting raised local humidity.",
+        "Rooftop gardens matured into stone-pine crowns shading the top floors.",
+        "Shop arcade was rebuilt as colonnaded bath hall using concrete vaults.",
+        "Slender tower view closed behind the new high rail viaduct arches.",
+        "Colonnade planting grew tall cypresses under the forum avenue plan.",
+        "Plaza paving opened for a dolphin fountain on the old tram bed.",
+        "Plaza fountains were kept while cobbles reset around retained tram tracks.",
+        "Potted trees were planted out as a tiered forum fountain garden."
+      ],
+      "1000": [
+        "Lantern rusted away beneath giant pine canopy grown from forum planting.",
+        "Clouds cleared again as climate control plantings stabilized the air.",
+        "Young pine crown grew giant through centuries of protected municipal forestry.",
+        "Bath facade weathered honey-coloured as vines spread under low maintenance.",
+        "Empty viaduct gained slow trains again after regional rail was renewed.",
+        "Cypress avenue matured into honey travertine colonnade softened by trees.",
+        "Dolphin basin broadened into circular garden pool fed by old aqueduct.",
+        "Old tram cobbles grassed into central channel watering the forum meadow.",
+        "Forum fountain terraced into pools as gardeners reused Roman waterworks."
+      ],
+      "10000": [
+        "Giant pine canopy gave way to date-palm crown as irrigation failed.",
+        "Sky stayed pale desert blue after forum trees thinned for lack water.",
+        "Giant pine crowns were lost, replaced by hardy palm fronds again.",
+        "Vine colonnade crumbled to low stumps beside a self-seeded palm trunk.",
+        "Domed halls lost roofs, leaving brick walls and minaret-like tower base.",
+        "Honey colonnade was buried by dense palms returning to wild grove.",
+        "Circular basin silted to sandy ground as the aqueduct stopped flowing.",
+        "Water channel sanded over into the old street bed with scrub.",
+        "Terraced pools filled with sand, leaving only low wall stubs."
+      ],
+      "1000000": [
+        "Tall palm crown remains wild after ruined walls finally melted to sand.",
+        "Desert sky stayed pale blue, unchanged by vanished masonry below.",
+        "Pale fronds thickened into dense clumps once roofs stopped shading them.",
+        "Palm trunk beside ruins fell, leaving only drooping wild fronds.",
+        "Brick outlines vanished, leaving distant wild palms around the salt flat.",
+        "Dense palms over ruins thinned to natural foliage with no walls.",
+        "Low walls dissolved to sandy scrub as wind reworked the gravel.",
+        "Sandy street bed softened into shallow hollow reaching groundwater again.",
+        "Wall stubs vanished, leaving sand visited by small hopping mammals."
+      ],
+      "-10000": [
+        "Palm crowns multiplied here as post-glacial rains lifted the spring water.",
+        "Sky stayed pale blue, cleared by steadier rains settling desert dust.",
+        "Fronds thickened overhead because warmer wet climate favored date-palm groves.",
+        "Tall trunks rose here where higher groundwater let seedlings survive longer.",
+        "Distant plain greened into hillside steppe as rainfall fed acacia savanna.",
+        "Flat-topped acacia rooted here because wetter soils suited savanna trees.",
+        "Marshy spring hollow opened here as groundwater rose after ice retreat.",
+        "Buffalo found grazing here drawn by new marsh grasses and open water.",
+        "Tamarisk thickened by water because spring overflow kept soils damp."
+      ],
+      "-2000": [
+        "Older grove thinned to tended crowns as gardeners pruned palms for dates.",
+        "Sky stayed clear blue while regional climate turned drier again.",
+        "Right-side fronds remain from the wild grove, now edging garden plots.",
+        "Hills look barer and rockier as steppe grasses retreated with less rain.",
+        "Mud-and-palm huts rose here as Roman surveyors marked frontier farm plots.",
+        "Dense foliage stays as household palms kept for shade and thatch.",
+        "Marsh hollow was drained into square plots fed by small irrigation channels.",
+        "Footpath hardened into dirt track linking farms to the Roman highway.",
+        "Young fenced palms were planted in rows for imperial tax orchards."
+      ],
+      "-500": [
+        "Low aqueduct arch crossed roofs here as engineers extended the town supply.",
+        "Old palm crown was kept beside the channel for shade and landmarks.",
+        "Domed tower top rose here funded by unbroken municipal taxes and law.",
+        "Mud huts gave way to brick tenements built with Roman concrete codes.",
+        "Distant bridge appeared carrying the same aqueduct across the valley floor.",
+        "Tower shaft rose in brick because civic pride favored tall belfries.",
+        "Garden plots were paved for a stone fountain fed by the aqueduct.",
+        "Dirt track was paved with grooves guiding mule carts to market halls.",
+        "Fenced seedlings left for a milestone marking miles to the provincial capital."
+      ],
+      "-100": [
+        "Tenements gained stone floors above as concrete frames allowed taller blocks.",
+        "Copper tram wires crossed the sky after the city electrified transport.",
+        "Right tenements likewise rose higher using the same stone concrete method.",
+        "Latin tablets stayed but balconies with shutters shaded the new upper shops.",
+        "Old civic tower was refaced in stone to anchor the modern skyline.",
+        "Tower shaft gained a tram pole as street lamps followed electric lines.",
+        "Street fountain gave way to arcaded stalls supplied by rail produce.",
+        "Mule grooves were set with twin rails for the new steam tram.",
+        "Milestone stayed beside cobbles relaid around the tramway paving."
+      ]
+    },
+    "tamed-mammoth": {
+      "0": [
+        "Boulevard palms matured into dense overhead canopy.",
+        "Minaret preserved unchanged as historic center marker.",
+        "Palm canopy kept under pale sky, no overhead wires.",
+        "Stable yards converted to wool-wash workshop storefronts.",
+        "Warehouse reused as arcaded brick market buildings.",
+        "Wool stores rebuilt as pale mixed brick-concrete blocks.",
+        "Hay bales shifted to wool baskets and drying racks.",
+        "Gravel boulevard turfed into mammoth freight lane.",
+        "Hay cart route electrified with cabinets, vans beside mammoths."
+      ],
+      "100": [
+        "Overhead canopy thinned, kept for palm gardens.",
+        "Minaret weathered but kept as freight town landmark.",
+        "Pale sky canopy opened for meadow light.",
+        "Shopfronts rebuilt low with tall mammoth arch gateways.",
+        "Market arcades greened, vines covering minaret base.",
+        "Concrete blocks refaced in brick with thatched wool roofs.",
+        "Wash racks returned to stone trough by palm.",
+        "Turf lane kept grassy for mammoth freight wagons.",
+        "Van cabinets removed for fenced hay paddock and trough."
+      ],
+      "1000": [
+        "Garden palms spread wider as blocks thinned.",
+        "Sky opened clear blue as tall blocks lowered.",
+        "Palm fronds multiplied around low meadow town.",
+        "Arched gate blocks softened into thatched mudbrick houses.",
+        "Vine base cleared, ancient minaret stands tall alone.",
+        "Right-side thatch kept, fronted by row of palms.",
+        "Stone trough kept within walled garden plantings.",
+        "Freight wagon lane opened to grazing mammoth herds.",
+        "Hay paddock fences extended into walled mammoth gardens."
+      ],
+      "10000": [
+        "Garden palms grew tall wild after roofs were left.",
+        "Midday sky paled as irrigation meadows dried.",
+        "Palm crowns thickened untended over empty houses.",
+        "Thatched houses crumbled to low ruins around palms.",
+        "Tall minaret weathered down to square base alone.",
+        "Garden rows spread dense over roofless walls.",
+        "Walled garden walls lowered, sand drifting inside.",
+        "Grassy avenue faded to sandy old street bed.",
+        "Mammoth gardens abandoned, leaving low wall stubs."
+      ],
+      "1000000": [
+        "Tall crown persists wild from old garden palms.",
+        "Pale desert sky unchanged above sandy plain.",
+        "Tended fronds reverted to dense wild thicket.",
+        "House-side trunk gone, drooping wild fronds remain.",
+        "Ruined base buried, distant wild palms reclaim horizon.",
+        "Dense ruins palms spread into wild foliage.",
+        "Low walls buried by sand and scrub.",
+        "Street bed softened to shallow groundwater hollow.",
+        "Mammoths moved on, small desert mammal returns."
+      ],
+      "-10000": [
+        "Scrub palms thickened into grove as rains returned after ice age.",
+        "Sky stayed clear blue over greener steppe, rains more regular.",
+        "More palm crowns grew around spring from wetter groundwater.",
+        "Single trunks grew taller in dense grove near marsh.",
+        "Salt flat softened to green hills with acacia as climate moistened.",
+        "Acacias spread on steppe with better rains and soils.",
+        "Groundwater rose forming marshy spring hollow with cattails.",
+        "Grasses lured wild buffalo herds, not yet mammoth herds.",
+        "Tamarisk thickened by water, still wild before herders arrived."
+      ],
+      "-2000": [
+        "Garden palms kept for shade as herders settled around spring.",
+        "Sky unchanged, still clear above new mammoth village.",
+        "Palm crowns thinned by pruning for thatch and fodder.",
+        "Marsh hollow drained for mud hut and straw haystack for mammoths.",
+        "Wild hills replaced by mammoth hay wagon needing wide turning space.",
+        "Acacia cleared for thatched fodder barn and felt fences.",
+        "Marsh cattails replaced by jars and palm timber for building.",
+        "Open grazing became wide rutted lane for mammoth teams.",
+        "Waterside scrub became troughs and awning for thirsty mammoths."
+      ],
+      "-500": [
+        "Palms maintained overhead as wool sheds needed shade.",
+        "Sky same pale blue above busier mammoth market street.",
+        "Palm tops kept for felt workshops and fodder supply.",
+        "Mud hut yards grew into courtyard houses with wool awnings.",
+        "Hay wagon lane opened distant mountain view over low roofs.",
+        "Palm-timber enclosure rebuilt as hall with square tower.",
+        "Clay jars gave way to stone trough for larger herds.",
+        "Packed lane leveled for daily mammoth hay carts.",
+        "Wood trough shade became wool drying frames beside hayfield."
+      ],
+      "-100": [
+        "Palms replanted in rows to shade mammoth boulevards.",
+        "Square tower raised into tall domed brick minaret.",
+        "Palm skyline kept as town invested in wool trade.",
+        "Courtyard houses rebuilt taller around stable yards.",
+        "Low roofs gave way to long arched brick warehouse.",
+        "Old hall expanded into brick wool stores for trade.",
+        "Stone trough kept, now stacked with hay bales and wool.",
+        "Earth avenue widened to gravel boulevard with mammoth lanes.",
+        "Single hay cart joined by paired mammoths pulling together."
+      ]
     }
   }
 }

@@ -129,6 +129,31 @@ export async function getNotes(env: Env, sceneId: string, forkId: string, photo:
   throw new Error("timed out waiting for place notes");
 }
 
+/**
+ * A short name for the place ("Kraków", "Tozeur") for postcards and titles: the historian's place is a free-text
+ * description. Asked once per scene and stored on its own, so the notes (and the eras keyed by them) don't change.
+ */
+export async function townOf(env: Env, sceneId: string, place: string): Promise<string> {
+  const key = `scenes/${sceneId}/town.txt`;
+  const stored = await env.BUCKET.get(key);
+  if (stored) return stored.text();
+  const r = await sparkJson<{ town: string }>(env.MODEL_API_KEY, {
+    system: "Give the short, commonly used name of the town, city or area this place is in (1-3 words, its usual spelling).",
+    name: "Town",
+    schema: { type: "object", properties: { town: { type: "string" } }, required: ["town"] },
+    content: [{ type: "text", text: place }],
+  });
+  const town = r.town.trim();
+  if (town) await env.BUCKET.put(key, town, { httpMetadata: { contentType: "text/plain" } });
+  return town;
+}
+
+/** Read-only: the stored notes of one history, or null before research has run. */
+export async function readNotes(env: Env, sceneId: string, forkId: string): Promise<Notes | null> {
+  const obj = await env.BUCKET.get(notesKey(sceneId, forkId));
+  return obj ? ((await obj.json()) as Notes) : null;
+}
+
 /** Which history's notes describe an era: shared eras use our timeline's, a fork's own eras use the fork's. */
 const notesSource = (forkId: string, year: number) => (isShared(forkId, year) ? DEFAULT_FORK : forkId);
 

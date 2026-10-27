@@ -20,6 +20,8 @@ export type DemoManifest = {
   forks: Record<string, Record<string, DemoEra>>;
   /** The historian's notes per history, exactly as the live API returns them. */
   notes?: Record<string, NotesResponse>;
+  /** Per history: year → "what changed here and why" for each cell (see /api/scenes/:token/story). */
+  story?: Record<string, Record<string, string[]> | null>;
 };
 
 export type Demo = { base: string; manifest: DemoManifest };

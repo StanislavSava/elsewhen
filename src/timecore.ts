@@ -2,7 +2,9 @@
 // the same patch in every era, laid out along a golden time thread (left to right, or bottom to top on phones).
 // The camera never moved between eras, so the patches line up exactly: one spot, seen through all of time.
 // Turn the stack by dragging, step through time with the wheel, arrow keys or a click; "Go there" jumps the
-// scene to that era. Closing folds every era back into the patch and the patch back into the scene.
+// scene to that era. In an alternate history every slice is two-sided: flipping shows the same spot in our
+// history on its back. The strip can be saved as a postcard. Closing folds every era back into the patch and
+// the patch back into the scene.
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { CURRENT_YEAR } from "./shared/eras";
@@ -11,14 +13,19 @@ export type ScreenRect = { left: number; top: number; width: number; height: num
 /** Image-space rectangle, 0..1 with v down. */
 export type Patch = { u0: number; v0: number; u1: number; v1: number };
 
-export type Slice = {
-  year: number;
+/** One history's view of the spot in one era. */
+export type Side = {
   imageUrl: string;
   /** What is at this spot in this era, e.g. "timber granary with thatched roof". */
   label: string | null;
+  /** What changed at this spot since the era before, and why. */
+  why: string | null;
   caption: string;
   note: string;
 };
+
+/** other: the same spot and era in our history (null where both histories agree). */
+export type Slice = Side & { year: number; other?: Side | null };
 
 const FOV = 35;
 const LIFT_MS = 420;
@@ -74,8 +81,14 @@ function crop(img: HTMLImageElement, p: Patch): HTMLCanvasElement {
 
 type Card = {
   slice: Slice;
-  mesh: THREE.Mesh;
-  mat: THREE.MeshBasicMaterial;
+  /** Positioned on the thread; holds the flipper, which turns to show the front (this history) or back (ours). */
+  mesh: THREE.Group;
+  flipper: THREE.Group;
+  front: THREE.Mesh;
+  back: THREE.Mesh;
+  mats: THREE.MeshBasicMaterial[];
+  canvases: [HTMLCanvasElement | null, HTMLCanvasElement | null];
+  flipAt: number;
   chip: HTMLElement;
   /** Burst flight: from the patch to its place on the thread. */
   from: { pos: THREE.Vector3; rot: THREE.Euler; scale: number };
@@ -91,6 +104,12 @@ export async function openTimeCore(opts: {
   /** The patch's width / height in pixels. */
   aspect: number;
   from: ScreenRect; // where the patch sits on screen
+  /** This history's name, the place's name and, in an alternate history, what to call ours ("our history"). */
+  history: string;
+  place: string;
+  otherHistory?: string;
+  /** The slices again with their "why" lines and our history's side, once fetched. */
+  enrich?: Promise<Slice[]>;
   onStage?: (on: boolean) => void;
   onTravel?: (year: number) => void;
 }): Promise<void> {
@@ -114,11 +133,16 @@ export async function openTimeCore(opts: {
     <section class="tc-info" aria-live="polite">
       <div class="tc-kicker"></div>
       <h2 class="tc-label"></h2>
+      <p class="tc-why"></p>
       <p class="tc-note"></p>
       <div class="tc-actions">
         <button class="tc-prev" aria-label="Earlier">‹</button>
         <button class="tc-go">Go there</button>
         <button class="tc-next" aria-label="Later">›</button>
+      </div>
+      <div class="tc-extras">
+        <button class="tc-flip" hidden></button>
+        <button class="tc-save">Save postcard</button>
       </div>
     </section>
     <p class="tc-hint">This spot through time · drag to turn · scroll or ← → to travel</p>
@@ -151,7 +175,7 @@ export async function openTimeCore(opts: {
   // World units → px at z = 0, chosen so the longest possible strip fits beside the info panel.
   const n = items.length;
   const span = (n - 1) * pitch + 2 * gap + along * 0.6;
-  const infoRoom = vertical ? 210 : 190;
+  const infoRoom = vertical ? 260 : 240;
   const unit = Math.min(
     vertical ? (innerHeight - 70 - infoRoom) / span : (innerWidth - 48) / span,
     vertical ? (innerWidth * 0.7) / (W * FOCUS_SCALE) : (innerHeight - 90 - infoRoom) / (H * FOCUS_SCALE),
@@ -195,22 +219,39 @@ export async function openTimeCore(opts: {
   const origin = fromScreen(opts.from);
   const failed: boolean[] = [];
   let rest = layout(focus);
+  const textureOf = (canvas: HTMLCanvasElement) => {
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    return tex;
+  };
   const cards: Card[] = items.map(({ s }, i) => {
-    const mat = new THREE.MeshBasicMaterial({ transparent: true, side: THREE.DoubleSide, color: 0x000000 });
+    const mats = [0, 1].map(() => new THREE.MeshBasicMaterial({ transparent: true, side: THREE.FrontSide, color: 0x000000 }));
+    const geo = new THREE.PlaneGeometry(W, H);
+    const front = new THREE.Mesh(geo, mats[0]);
+    const back = new THREE.Mesh(geo, mats[1]);
+    back.rotation.y = Math.PI;
+    const flipper = new THREE.Group();
+    flipper.add(front, back);
+    const mesh = new THREE.Group();
+    mesh.add(flipper);
+    const canvases: Card["canvases"] = [null, null];
+    // Until our history's side arrives (or where both histories agree), the back shows the same view.
     const setImage = (canvas: HTMLCanvasElement) => {
-      const tex = new THREE.CanvasTexture(canvas);
-      tex.colorSpace = THREE.SRGBColorSpace;
-      mat.map = tex;
-      mat.needsUpdate = true;
+      canvases[0] = canvas;
+      mats[0].map = textureOf(canvas);
+      mats[0].needsUpdate = true;
+      if (!canvases[1]) {
+        mats[1].map = mats[0].map;
+        mats[1].needsUpdate = true;
+      }
     };
     if (i === startIndex) setImage(first);
     else crops[i].then(setImage, () => (mesh.visible = false, (failed[i] = true)));
-    const mesh = new THREE.Mesh(new THREE.PlaneGeometry(W, H), mat);
     // Slices start stacked behind the tapped one, hidden until the burst.
     mesh.position.copy(origin.pos).setZ(-0.01 * Math.abs(i - startIndex));
     mesh.scale.setScalar(origin.scale);
     mesh.visible = i === startIndex;
-    mat.color.setScalar(i === startIndex ? 1 : 0.5);
+    mats.forEach((m) => m.color.setScalar(i === startIndex ? 1 : 0.5));
     group.add(mesh);
     const chip = document.createElement("div");
     chip.className = "tc-chip";
@@ -220,7 +261,12 @@ export async function openTimeCore(opts: {
     return {
       slice: s,
       mesh,
-      mat,
+      flipper,
+      front,
+      back,
+      mats,
+      canvases,
+      flipAt: 0,
       chip,
       from: { pos: mesh.position.clone(), rot: new THREE.Euler(), scale: origin.scale },
       to: rest[i],
@@ -272,13 +318,17 @@ export async function openTimeCore(opts: {
 
   // ---------------------------------------------------------------- info, focus, hover
   let hovered: number | null = null;
+  let flipped = false;
   const showInfo = () => {
-    const s = cards[focus].slice;
-    root.querySelector(".tc-kicker")!.textContent = s.label ? `${sliceYear(s.year)} · ${s.caption}` : sliceYear(s.year);
+    const slice = cards[focus].slice;
+    const s: Side = flipped && slice.other ? slice.other : slice;
+    const which = flipped ? (slice.other ? `${opts.otherHistory} · ` : "Same in both histories · ") : "";
+    root.querySelector(".tc-kicker")!.textContent = `${which}${sliceYear(slice.year)}${s.label ? ` · ${s.caption}` : ""}`;
     const label = s.label ?? s.caption;
     root.querySelector(".tc-label")!.textContent = label.charAt(0).toUpperCase() + label.slice(1);
+    root.querySelector(".tc-why")!.textContent = s.why ?? "";
     root.querySelector(".tc-note")!.textContent = s.note;
-    root.querySelector<HTMLButtonElement>(".tc-go")!.textContent = focus === startIndex ? "Back to the scene" : `Go to ${sliceYear(s.year)}`;
+    root.querySelector<HTMLButtonElement>(".tc-go")!.textContent = focus === startIndex ? "Back to the scene" : `Go to ${sliceYear(slice.year)}`;
     root.querySelector<HTMLButtonElement>(".tc-prev")!.disabled = focus === 0;
     root.querySelector<HTMLButtonElement>(".tc-next")!.disabled = focus === n - 1;
     info.classList.remove("tc-info-in");
@@ -294,6 +344,21 @@ export async function openTimeCore(opts: {
   };
   root.querySelector(".tc-prev")!.addEventListener("click", () => setFocus(focus - 1));
   root.querySelector(".tc-next")!.addEventListener("click", () => setFocus(focus + 1));
+  // Flip every slice in a wave from the focus outward: this history on the front, ours on the back.
+  const flipBtn = root.querySelector<HTMLButtonElement>(".tc-flip")!;
+  const flipLabel = () => (flipBtn.textContent = flipped ? "Back to this history" : `Flip to ${opts.otherHistory}`);
+  if (opts.otherHistory) {
+    flipBtn.hidden = false;
+    flipLabel();
+  }
+  flipBtn.addEventListener("click", () => {
+    flipped = !flipped;
+    const now = performance.now();
+    cards.forEach((c, i) => (c.flipAt = now + Math.abs(i - focus) * 70));
+    flipLabel();
+    showInfo();
+  });
+  root.querySelector(".tc-save")!.addEventListener("click", () => void savePostcard());
   root.querySelector(".tc-go")!.addEventListener("click", () => {
     const year = cards[focus].slice.year;
     void close().then(() => opts.onTravel?.(year));
@@ -304,8 +369,8 @@ export async function openTimeCore(opts: {
   const pick = (e: PointerEvent) => {
     pointer.set((e.clientX / innerWidth) * 2 - 1, -(e.clientY / innerHeight) * 2 + 1);
     raycaster.setFromCamera(pointer, camera);
-    const hit = raycaster.intersectObjects(cards.map((c) => c.mesh))[0];
-    return hit ? cards.findIndex((c) => c.mesh === hit.object) : null;
+    const hit = raycaster.intersectObjects(cards.flatMap((c) => [c.front, c.back]))[0];
+    return hit ? cards.findIndex((c) => c.front === hit.object || c.back === hit.object) : null;
   };
   let down: { x: number; y: number } | null = null;
   glCanvas.addEventListener("pointermove", (e) => {
@@ -423,7 +488,7 @@ export async function openTimeCore(opts: {
         c.mesh.position.lerpVectors(c.from.pos, rest[i].pos, e);
         c.mesh.scale.setScalar(c.from.scale + (rest[i].scale - c.from.scale) * e);
         c.mesh.rotation.set(rest[i].rot.x * e, rest[i].rot.y * e, c.spin * (1 - clamp01(e)));
-        c.mat.opacity = i === startIndex ? 1 : clamp01(local * 3);
+        c.mats.forEach((m) => (m.opacity = i === startIndex ? 1 : clamp01(local * 3)));
       });
       (glow.material as THREE.ShaderMaterial).uniforms.uOpacity.value = Math.max(0, 1 - t / 500);
       if (doneAll && t > BURST_MS) {
@@ -447,11 +512,13 @@ export async function openTimeCore(opts: {
       }
     }
 
-    // Brightness: the focused era in full, the rest dimmed, the hovered one in between.
+    // Brightness: the focused era in full, the rest dimmed, the hovered one in between. And the flip wave.
     if (phase !== "lift") {
+      const turned = flipped ? Math.PI : 0;
       cards.forEach((c, i) => {
         const b = i === focus ? 1 : hovered === i ? 0.85 : 0.5;
-        c.mat.color.setScalar(c.mat.color.r + (b - c.mat.color.r) * 0.15);
+        c.mats.forEach((m) => m.color.setScalar(m.color.r + (b - m.color.r) * 0.15));
+        if (now >= c.flipAt) c.flipper.rotation.y += (turned - c.flipper.rotation.y) * 0.12;
       });
     }
 
@@ -502,6 +569,85 @@ export async function openTimeCore(opts: {
   };
   raf = requestAnimationFrame(frame);
 
+  // ---------------------------------------------------------------- "why" lines and our history's side
+  void opts.enrich?.then(async (slices) => {
+    if (closing) return;
+    cards.forEach((c, i) => (c.slice = slices[i] ?? c.slice));
+    showInfo();
+    await Promise.all(
+      cards.map(async (c) => {
+        if (!c.slice.other) return;
+        const canvas = await loadImage(c.slice.other.imageUrl).then((img) => crop(img, opts.patch), () => null);
+        if (!canvas || closing) return;
+        c.canvases[1] = canvas;
+        c.mats[1].map = textureOf(canvas);
+        c.mats[1].needsUpdate = true;
+      }),
+    );
+  });
+
+  // ---------------------------------------------------------------- postcard: the strip as one image
+  async function savePostcard(): Promise<void> {
+    const side = flipped ? 1 : 0;
+    const tiles = cards
+      .map((c) => ({ c, canvas: c.canvases[side] ?? c.canvases[0] }))
+      .filter((t): t is { c: Card; canvas: HTMLCanvasElement } => t.canvas !== null);
+    if (!tiles.length) return;
+    const th = 300;
+    const tw = Math.round(th * aspect);
+    const gap = 14;
+    const pad = 48;
+    const head = 120;
+    const foot = 96;
+    const out = document.createElement("canvas");
+    out.width = pad * 2 + tiles.length * tw + (tiles.length - 1) * gap;
+    out.height = head + th + foot + pad;
+    const ctx = out.getContext("2d")!;
+    ctx.fillStyle = "#0e0e0d";
+    ctx.fillRect(0, 0, out.width, out.height);
+    const serif = '"Iowan Old Style", Palatino, Georgia, serif';
+    const sans = "system-ui, -apple-system, sans-serif";
+    ctx.fillStyle = "#f3f0e8";
+    ctx.font = `400 40px ${serif}`;
+    ctx.fillText("Elsewhen", pad, 64);
+    ctx.fillStyle = "#e7c76a";
+    ctx.font = `600 16px ${sans}`;
+    const history = flipped && opts.otherHistory ? opts.otherHistory : opts.history;
+    ctx.fillText(`${opts.place} · one spot through time · ${history}`.toUpperCase(), pad, 96);
+    // The time thread under the tiles.
+    ctx.strokeStyle = "rgba(231, 199, 106, 0.7)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(pad + tw / 2, head + th + 18);
+    ctx.lineTo(pad + (tiles.length - 1) * (tw + gap) + tw / 2, head + th + 18);
+    ctx.stroke();
+    tiles.forEach(({ c, canvas }, i) => {
+      const x = pad + i * (tw + gap);
+      ctx.drawImage(canvas, x, head, tw, th);
+      ctx.fillStyle = "#e7c76a";
+      ctx.beginPath();
+      ctx.arc(x + tw / 2, head + th + 18, 5, 0, Math.PI * 2);
+      ctx.fill();
+      const s: Side = side && c.slice.other ? c.slice.other : c.slice;
+      ctx.textAlign = "center";
+      ctx.font = `600 18px ${sans}`;
+      ctx.fillText(sliceYear(c.slice.year), x + tw / 2, head + th + 52);
+      ctx.fillStyle = "rgba(243, 240, 232, 0.72)";
+      ctx.font = `400 15px ${sans}`;
+      let label = s.label ?? s.caption;
+      while (label.length > 4 && ctx.measureText(label).width > tw - 8) label = `${label.slice(0, -2).trimEnd()}…`;
+      ctx.fillText(label, x + tw / 2, head + th + 76);
+      ctx.textAlign = "start";
+    });
+    const blob = await new Promise<Blob | null>((r) => out.toBlob(r, "image/png"));
+    if (!blob) return;
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = `elsewhen-${opts.place.split(/[,-]/)[0].trim().toLowerCase().replace(/\W+/g, "-") || "place"}.png`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+
   // ---------------------------------------------------------------- close: fold back into the patch
   let closing = false;
   const close = async () => {
@@ -525,7 +671,7 @@ export async function openTimeCore(opts: {
           c.mesh.scale.setScalar(s.scale + (origin.scale - s.scale) * k);
           c.mesh.rotation.set(s.rot.x * (1 - k), s.rot.y * (1 - k), s.rot.z * (1 - k));
           // Every other era folds into the one that was on screen, which settles back into the scene.
-          c.mat.opacity = i === startIndex ? 1 - clamp01((k - 0.75) * 4) : 1 - k;
+          c.mats.forEach((m) => (m.opacity = i === startIndex ? 1 - clamp01((k - 0.75) * 4) : 1 - k));
         });
         if (k < 1) requestAnimationFrame(step);
         else resolve();
@@ -537,7 +683,7 @@ export async function openTimeCore(opts: {
     removeEventListener("resize", onResize);
     document.removeEventListener("keydown", onKey);
     controls.dispose();
-    cards.forEach((c) => (c.mat.map?.dispose(), c.mat.dispose(), c.mesh.geometry.dispose()));
+    cards.forEach((c) => (c.mats.forEach((m) => (m.map?.dispose(), m.dispose())), c.front.geometry.dispose()));
     renderer.dispose();
     root.remove();
     open = null;

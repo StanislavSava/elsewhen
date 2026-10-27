@@ -2,7 +2,7 @@ import { api, HttpError } from "./api";
 import { fromFile, prepare, startCamera, stopCamera, type PreparedPhoto } from "./capture";
 import { closeSheet, showCreature } from "./card";
 import { playFracture } from "./fracture";
-import { closeTimeCore, isTimeCoreOpen, openTimeCore, type Slice } from "./timecore";
+import { closeTimeCore, isTimeCoreOpen, openTimeCore, type Side, type Slice } from "./timecore";
 import { demoEras, demoMaskUrls, loadDemo, loadDemoIndex, type Demo, type DemoIndexEntry } from "./demo";
 import { generateAll, nearestFirst, type EraStatus } from "./orchestrator";
 import { bakeDelayMap, Renderer, tintForPosition } from "./renderer";
@@ -76,6 +76,8 @@ const state = {
   demoIndex: [] as DemoIndexEntry[],
   /** The historian's notes for each history researched so far in this scene. */
   notes: new Map<string, NotesResponse>(),
+  /** "Why it changed" lines per history (see storyFor). */
+  stories: new Map<string, Promise<Record<string, string[]> | null>>(),
 };
 
 // ---------------------------------------------------------------- bootstrap
@@ -239,6 +241,7 @@ async function begin(photo: PreparedPhoto, opts: { token?: string; demo?: Demo }
   state.photo = photo;
   state.eras = new Map();
   state.notes = new Map(Object.entries(opts.demo?.manifest.notes ?? {}));
+  state.stories = new Map();
   state.token = "";
   state.setting = "outdoor";
   state.demo = opts.demo ?? null;
@@ -617,9 +620,8 @@ function openSpot(x: number, y: number): void {
   const patch = { u0: cu - hw, v0: cv - hh, u1: cu + hw, v1: cv + hh };
   const cell = Math.min(CELLS - 1, Math.floor(v * CELLS)) * CELLS + Math.min(CELLS - 1, Math.floor(u * CELLS));
 
-  const slices = availableYears()
-    .map((year) => sliceFor(year, cell))
-    .filter((s): s is Slice => s !== null);
+  const years = availableYears();
+  const slices = years.map((year) => sliceFor(year, cell)).filter((s): s is Slice => s !== null);
   if (!slices.length) return;
   const p = Number(slider.value);
   const current = slices.reduce(
@@ -629,6 +631,8 @@ function openSpot(x: number, y: number): void {
   const rect = canvas.getBoundingClientRect();
   const p1 = r.imageToScreen(patch.u0, patch.v0);
   const p2 = r.imageToScreen(patch.u1, patch.v1);
+  const forkId = state.forkId;
+  const notes = state.notes.get(forkId) ?? state.notes.get(DEFAULT_FORK);
   stopAutoplay();
   void openTimeCore({
     slices,
@@ -636,10 +640,53 @@ function openSpot(x: number, y: number): void {
     patch,
     aspect: (hw * photo.width) / (hh * photo.height),
     from: { left: rect.left + p1.x, top: rect.top + p1.y, width: p2.x - p1.x, height: p2.y - p1.y },
+    history: forkId === DEFAULT_FORK ? "Our history" : CHRONICLES[forkId].title,
+    place: notes?.town || "This place",
+    otherHistory: forkId === DEFAULT_FORK ? undefined : "our history",
+    enrich: enrich(slices, cell, forkId),
     // The scene behind pushes back a little while the spot is lifted out of it.
     onStage: (on) => state.renderer?.setZoomBoost(on ? 1.12 : 1),
     onTravel: (year) => animateTo(yearToPosition(year), 1600),
   });
+}
+
+/** "Why it changed here" lines for a history: from the demo's files, or written once by Muse Spark and cached. */
+function storyFor(forkId: string): Promise<Record<string, string[]> | null> {
+  let story = state.stories.get(forkId);
+  if (!story) {
+    story = state.demo
+      ? Promise.resolve(state.demo.manifest.story?.[forkId] ?? null)
+      : api.story(state.token, { forkId, biome: state.biome, setting: state.setting }).then((r) => r.story, () => null);
+    state.stories.set(forkId, story);
+  }
+  return story;
+}
+
+/** Adds each slice's "why" line and, in an alternate history, the same spot and era in ours. */
+async function enrich(slices: Slice[], cell: number, forkId: string): Promise<Slice[]> {
+  const gen = state.generation;
+  const [story, ourStory] = await Promise.all([storyFor(forkId), forkId === DEFAULT_FORK ? null : storyFor(DEFAULT_FORK)]);
+  const ours = forkId === DEFAULT_FORK ? [] : await Promise.all(slices.map((s) => ourSide(s.year, cell, ourStory)));
+  if (gen !== state.generation) return slices;
+  return slices.map((s, i) => ({ ...s, why: story?.[String(s.year)]?.[cell] ?? null, other: ours[i] ?? null }));
+}
+
+/** Our history's view of a spot in an era a fork changed; null where the two histories agree. */
+async function ourSide(year: number, cell: number, story: Record<string, string[]> | null): Promise<Side | null> {
+  if (isShared(state.forkId, year)) return null;
+  const notes = state.notes.get(DEFAULT_FORK);
+  const why = story?.[String(year)]?.[cell] ?? null;
+  const note = notes?.eras[String(year)] ?? "";
+  const era = findEra(DEFAULT_FORK, year);
+  const caption = era ? eraCaption(era, state.biome).replace(/^[\d,]+( BCE| CE)? · /, "") : "";
+  if (year === 0) {
+    const url = state.photo?.url;
+    return url ? { imageUrl: url, label: notes?.cells?.[cell] ?? null, why, caption: "where you are standing", note } : null;
+  }
+  const result = state.demo
+    ? demoEras(state.demo, DEFAULT_FORK).get(year)
+    : await api.getEra(state.token, year, { forkId: DEFAULT_FORK, biome: state.biome, setting: state.setting }).catch(() => undefined);
+  return result ? { imageUrl: result.imageUrl, label: result.cells?.[cell] ?? null, why, caption, note } : null;
 }
 
 function sliceFor(year: number, cell: number): Slice | null {
@@ -652,7 +699,7 @@ function sliceFor(year: number, cell: number): Slice | null {
   const chronicleEra = findEra(state.forkId, year);
   // Captions lead with their year ("1526 · …"); the time core shows the year on its own.
   const caption = ownNow ? "where you are standing" : chronicleEra ? eraCaption(chronicleEra, state.biome).replace(/^[\d,]+( BCE| CE)? · /, "") : "";
-  return { year, imageUrl, label: cells?.[cell] ?? null, caption, note: notes?.eras[String(year)] ?? "" };
+  return { year, imageUrl, label: cells?.[cell] ?? null, why: null, caption, note: notes?.eras[String(year)] ?? "" };
 }
 
 hintEl.addEventListener("click", () => {

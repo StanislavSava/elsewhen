@@ -13,7 +13,7 @@ const CONCURRENCY = 4;
 type Era = { year: number; driver: "culture" | "biology" };
 type Chronicle = { forkId: string; divergenceYear: number | null; eras: Era[] };
 type EraResult = { year: number; imageUrl: string; target: { phrase: string; samUrl: string } | null; cells?: string[] | null };
-type Notes = { place: string; eras: Record<string, string>; cells: string[] | null };
+type Notes = { place: string; town?: string | null; eras: Record<string, string>; cells: string[] | null };
 
 // Same sharing rules as src/shared/chronicles.ts (Node can't import its JSON without import attributes).
 const chronicles: Chronicle[] = readdirSync("forks")
@@ -105,6 +105,7 @@ async function main(): Promise<void> {
 
   const forks: Record<string, Record<number, object>> = {};
   const notes: Record<string, Notes> = {};
+  const story: Record<string, Record<string, string[]> | null> = {};
   // FORKS=our-timeline,... limits a run to some histories (for trying a change on one scene).
   const only = process.env.FORKS?.split(",");
   for (const c of [base, ...chronicles.filter((x) => x !== base)].filter((x) => !only || only.includes(x.forkId))) {
@@ -139,9 +140,20 @@ async function main(): Promise<void> {
       console.log(`  ${c.forkId} ${year} ✓`);
     });
     forks[c.forkId] = eras;
+    // "Why it changed here" lines, written from the finished eras (text only).
+    story[c.forkId] = (
+      await json<{ story: Record<string, string[]> | null }>(
+        await fetch(`${BASE}/api/scenes/${scene.token}/story`, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(params),
+        }),
+      )
+    ).story;
+    console.log(`  ${c.forkId}: story ${story[c.forkId] ? "✓" : "missing"}`);
   }
 
-  const manifest = { name, credit, biome, setting: "outdoor", width: scene.width, height: scene.height, photo: "photo.jpg", masks: maskFiles, forks, notes };
+  const manifest = { name, credit, biome, setting: "outdoor", width: scene.width, height: scene.height, photo: "photo.jpg", masks: maskFiles, forks, notes, story };
   writeFileSync(join(out, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
 
   const indexPath = join("public", "demo", "index.json");

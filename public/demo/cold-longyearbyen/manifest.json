@@ -82,6 +82,24 @@
           "stocky gray tundra mammal"
         ]
       },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "overcast grey cloudy sky",
+          "thick grey overcast clouds",
+          "pale grey cloudy sky",
+          "distant snowy mountain peak",
+          "woolly mammoth on frozen plain",
+          "snow covered mountain slope",
+          "frosted grassy tundra with larch",
+          "braided glacial meltwater streams",
+          "frosted bank with sparse larches"
+        ]
+      },
       "-500": {
         "image": "base_-500.webp",
         "cells": [
@@ -108,24 +126,6 @@
           "shallow stony tundra pools",
           "brown gold moss wetland",
           "mossy stones by pool"
-        ]
-      },
-      "-1000000": {
-        "image": "base_-1000000.webp",
-        "target": {
-          "phrase": "animal",
-          "sam": "base_-1000000.target.txt"
-        },
-        "cells": [
-          "overcast grey cloudy sky",
-          "thick grey overcast clouds",
-          "pale grey cloudy sky",
-          "distant snowy mountain peak",
-          "woolly mammoth on frozen plain",
-          "snow covered mountain slope",
-          "frosted grassy tundra with larch",
-          "braided glacial meltwater streams",
-          "frosted bank with sparse larches"
         ]
       },
       "-10000": {
@@ -570,18 +570,22 @@
           "drying rack with painted hide"
         ]
       },
-      "-2000": {
-        "image": "base_-2000.webp",
+      "-10000": {
+        "image": "base_-10000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-10000.target.txt"
+        },
         "cells": [
           "clear blue sky",
-          "pale blue sky",
-          "white clouds in blue sky",
-          "distant snowy mountain ridge",
-          "mountain slope with snow patches",
-          "snowy rounded mountain summit",
-          "shallow stony tundra pools",
-          "brown gold moss wetland",
-          "mossy stones by pool"
+          "clear blue sky",
+          "cloudy sky over snowy summit",
+          "distant snow-capped mountain",
+          "patchy snow on dark mountainside",
+          "mossy slope with solitary mammoth",
+          "braided melt ponds on gravel",
+          "gravel bars with dwarf willow",
+          "snow patch among dwarf willow"
         ]
       },
       "-1000000": {
@@ -602,22 +606,18 @@
           "frosted bank with sparse larches"
         ]
       },
-      "-10000": {
-        "image": "base_-10000.webp",
-        "target": {
-          "phrase": "animal",
-          "sam": "base_-10000.target.txt"
-        },
+      "-2000": {
+        "image": "base_-2000.webp",
         "cells": [
           "clear blue sky",
-          "clear blue sky",
-          "cloudy sky over snowy summit",
-          "distant snow-capped mountain",
-          "patchy snow on dark mountainside",
-          "mossy slope with solitary mammoth",
-          "braided melt ponds on gravel",
-          "gravel bars with dwarf willow",
-          "snow patch among dwarf willow"
+          "pale blue sky",
+          "white clouds in blue sky",
+          "distant snowy mountain ridge",
+          "mountain slope with snow patches",
+          "snowy rounded mountain summit",
+          "shallow stony tundra pools",
+          "brown gold moss wetland",
+          "mossy stones by pool"
         ]
       },
       "-100": {
@@ -955,6 +955,7 @@
   "notes": {
     "our-timeline": {
       "place": "Longyearbyen, Svalbard, Norway",
+      "town": "Longyearbyen",
       "eras": {
         "100": "New since a century ago, the same blocks of colourful houses still stand on the same plots with added insulated cladding, red roofs and deep green sedum roofs, joined by a low tram embankment and sheltered vegetable gardens and birch plantings on every street. The same mountain behind carries patchy snow, with wind turbines and planted terraces on its lower slope and meadow tundra in the foreground.",
         "1000": "New since the last time, the same streets remain with lower timber houses and glasshouse pavilions set among broad meadows, berry gardens and rows of hardy birch and willow, all carefully tended with stone paths and water channels. The same rounded mountain behind keeps its snow patches above the greened lower slopes.",
@@ -980,6 +981,7 @@
     },
     "library-of-alexandria": {
       "place": "Longyearbyen, Adventdalen, Svalbard, Norway - colorful mining town on Arctic tundra below Sukkertoppen mountain",
+      "town": "Longyearbyen",
       "eras": {
         "0": "The same low two- to four-story colour-panel houses stand densely terraced under Sukkertoppen, now with glass sunrooms, rooftop plantings and solar canopies, permeable paths with rain gardens and cycle tracks, low-energy text panels and wayfinding lights, and automated electric pods on a reserved lane with buried grid and no overhead lines. New since 1926 are the insulated facades, roof gardens, pod lane and cable cabins reusing the old ore-tower line, while height, mountain snow and open tundra foreground with its pipeline remain.",
         "100": "Terraced three- to four-story insulated houses with living sedum roofs and glass greenhouses at block centers stand linked by enclosed warm walkways and inhabited bridges, with a silent magnetic shuttle lane and aerial cable cabins above, shaded arcades with mist cooling and path lighting, and orchard seedlings in indoor roof houses. New since 2026 are the connecting bridges, shuttle lane and centre greenhouses with water tanks, while the low skyline, tundra meadow and snowy dome stay, with no private cars, asphalt lots or fuel stations.",
@@ -992,6 +994,7 @@
     },
     "no-electricity": {
       "place": "Longyearbyen, Adventdalen, Svalbard, Norway, looking across tundra valley floor toward Sukkertoppen mountain, Arctic permafrost climate",
+      "town": "Longyearbyen",
       "eras": {
         "0": "The valley view keeps the same snow-streaked Sukkertoppen and brown tundra foreground, now edged by gravel roads, but the hillside is packed with two- to three-storey painted timber houses with red roofs in dense low quarters instead of glass towers, lit by round gas lanterns and served by facade gas and steam pipes. New since 1926 are the larger Lia rows on the same plots, rooftop coal bunkers, water tanks and greenhouses, district boiler chimneys, heavy diesel lorries with air starters, steam tractors and pedal cycles, and painted shop boards and bulletin kiosks, with no overhead power lines, LED lights, neon signs, radio masts or satellite dishes because coal-gas, steam and compressed air power everything.",
         "100": "The same low town under Sukkertoppen remains tightly packed in broad low courtyard blocks around a narrow steam-rail siding, still two to four storeys in painted masonry and timber, with rows of gas lanterns and insulated heat mains on brackets and rooftop bunkers and glasshouses instead of electric columns and cable ducts. New since 2026 are the steam tramway track and compressed-air delivery vans on the valley road, enamel timetables and printed bulletin kiosks, and heated market glasshouses and coal-oil yards at the edge worked by steam tractors, with no power lines, skyscrapers, screens or radio towers because pipes, rail and optical relay carry power and news.",
@@ -1002,6 +1005,7 @@
     },
     "no-printing-press": {
       "place": "Longyearbyen in Adventdalen, Spitsbergen, Svalbard, Norway, looking east over tundra foreground to the town below the snow-patched dome of Sukkertoppen",
+      "town": "Longyearbyen",
       "eras": {
         "0": "New since the small rows, the same plots now hold larger three- to four-storey panel-and-timber courtyard blocks in red, yellow, blue and grey, with insulated roofs and glasshouse beds and stable yards between, below the unchanged snowy dome. Stone-set lanes and packed-earth sidetracks with timber speaker poles and small listening shelters carry sled tracks, bicycles and few shared motor vans, with hand-painted picture walls and chalk boards and no glass towers, cars, glowing billboards or parking lots, since reading stays rare and coordination stays by voice.",
         "100": "New since the present blocks, the same courtyard blocks stand a storey taller with soil roofs, glasshouse terraces and moss-willow planting, walls carrying large mural pictures and carved panels beside low timber voice posts with lamps. Narrow planted lanes with permeable gravel link footpaths and a small battery-track line for pedal sleds and shared service vans, with orchard glasshouses and cistern beds between houses, and no private cars, text screens or motorways, as voice networks keep movement slow and local.",
@@ -1013,6 +1017,7 @@
     },
     "rome-never-fell": {
       "place": "Longyearbyen, Svalbard, Norway, valley floor looking toward Sukkertoppen mountain, Arctic tundra and permafrost, polar climate",
+      "town": "Longyearbyen",
       "eras": {
         "0": "Since 1926 the same rows have grown denser into four- to five-storey mixed-use stone-concrete perimeter blocks in the same red, ochre and blue, with stone-paved plazas, a covered fountain colonnade and rooftop glasshouses and courtyard gardens, served by twin-track tram rails and buried cable ducts with uniform Latin enamel plaques. No private cars, petrol stations, glass towers or asphalt lots exist, and the meadow tundra foreground and snow-streaked mountain stand unchanged behind.",
         "100": "Since 2026 the blocks on the same footprints have risen to six storeys with setback planted terraces, willow rows and glasshouse roofs, their ground floors holding a communal bath, laundry and library under Latin tablets. Movement is by silent rail coaches and foot lanes with mist fountains along the stone-paved street, power in covered channels and buried ducts, with the meadow foreground and mountain unchanged and no cars, motorways or pylons.",
@@ -1024,6 +1029,7 @@
     },
     "tamed-mammoth": {
       "place": "Longyearbyen, Svalbard, Norway",
+      "town": "Longyearbyen",
       "eras": {
         "0": "New since 1926: the same hillside now holds three- to four-story colorful mixed blocks with set-back yards and felt workshops, still low and spread out. In front lie turfed mammoth freight lanes with electric-assist wagons and small battery vans, linear hay meadows, water troughs and ground power cabinets, with buried lines and no private cars, poles or asphalt parking.",
         "100": "New since 2026: the same blocks now stand four- to five-story with roof planting and garden terraces, linked by green avenues with sensor posts, water troughs and guided mammoth-tram rails. Between them lie neighborhood fodder gardens and wool workshops served by buried grids with sidewalk hatches, with no private cars or overhead lines.",
@@ -1033,6 +1039,614 @@
         "-100": "New since the hamlet: the same plots now hold larger two- to three-story wooden blocks with stable yards and red, yellow and grey cladding. Between them run very wide earth-and-gravel boulevards with separate mammoth lanes, iron lamp posts on buried cables, troughs, urban hay meadows and large painted wool signs, with no cars or overhead wires."
       },
       "cells": null
+    }
+  },
+  "story": {
+    "our-timeline": {
+      "100": [
+        "Clear morning sky stayed clear over greened town.",
+        "Pale sky kept wisps as warming brought more moisture.",
+        "White clouds lingered, still driven by valley winds.",
+        "Turbines rose by snowy peak as coal gave way.",
+        "Wind turbines spread on slope to harvest Arctic wind.",
+        "Terraces were planted on summit slopes to hold thawing soil.",
+        "Sheltered vegetable beds replaced tundra as summers warmed.",
+        "Barracks gained cladding and solar roofs after coal ended.",
+        "Pipeline tundra became tram embankment lined with warming-climate birches."
+      ],
+      "1000": [
+        "Clear sky stayed clear over tended meadow town.",
+        "Pale wispy sky cleared again as air stayed cool.",
+        "White clouds still drift over unchanged blue sky.",
+        "Peak turbines vanished as power moved off the mountain.",
+        "Turbine slope returned to snow patches after restoration project.",
+        "Terraced summit softened into natural snow as soil stabilized.",
+        "Vegetable beds bloomed into flower waterways managing meltwater.",
+        "Solar houses became low timber homes as birches returned.",
+        "Tram embankment became stone paths with ivy glass pavilions for walkers."
+      ],
+      "10000": [
+        "Clear sky stayed clear over quieted valley.",
+        "Midday sky stayed empty blue without town smoke.",
+        "Thin clouds still drift over same blue sky.",
+        "Snowy peak endured, unchanged by valley quiet.",
+        "Rocky snowy slope stayed snowy through cold centuries.",
+        "Rounded summit kept snow, still chilled by altitude.",
+        "Tended gardens rewilded to meadow where reindeer graze again.",
+        "Timber homes lost roofs as moss claimed untended walls.",
+        "Stone paths crumbled into meadow as birches overgrew pavilions."
+      ],
+      "1000000": [
+        "Pale sky stayed pale over open tundra.",
+        "Pale sky lingered, still shaped by polar light.",
+        "Thin clouds gathered over peak as climate cooled again.",
+        "Distant snowy mountain endured through deep time.",
+        "Rocky slope stayed snow-streaked under cold winds.",
+        "Rounded slope stayed snowy, still chilled by altitude.",
+        "Reindeer wetland settled into mossy pools as waters shifted.",
+        "Ruin walls crumbled to gravel as frost shattered concrete.",
+        "Last ruins vanished into moss where hardy grazers roam."
+      ],
+      "-10000": [
+        "Grey ice-age clouds cleared to blue as climate warmed.",
+        "Thick overcast thinned to clear blue as ice melted.",
+        "Pale grey sky brightened but kept clouds over summit.",
+        "White-capped peak emerged as thick ice sheet thinned.",
+        "Frozen plain melted away, exposing dark bare mountainside.",
+        "Icy slope greened with moss as meltwater nourished soil.",
+        "Glacial debris settled into braided ponds on gravel outwash.",
+        "Melt streams braided into gravel where dwarf willow rooted.",
+        "Sparse larch gave way to dwarf willow around lingering snow."
+      ],
+      "-2000": [
+        "Clear blue sky stayed clear under stable Arctic climate.",
+        "Pale blue sky lingered, only slightly hazier with time.",
+        "Summit clouds drifted into scattered white summer clouds.",
+        "Snow-capped ridge endured, still cooled by high altitude.",
+        "Dark slope kept patchy snow through cool short summers.",
+        "Mammoths wandered from view as tundra forage shifted.",
+        "Braided ponds settled into shallow stony pools on permafrost.",
+        "Gravel bars greened into gold moss as soil thickened.",
+        "Willow snowpatch thawed into mossy stones beside reindeer trails."
+      ],
+      "-500": [
+        "Clear sky stayed clear over unchanged Arctic air.",
+        "Blue sky persisted, kept dry by cold polar air.",
+        "White clouds lingered over ridge in same wind pattern.",
+        "Snowy ridge stayed snowy, preserved by high cold altitude.",
+        "Brown slope stayed bare, still swept by summer melt.",
+        "Snow-patched summit endured through cool Little Ice Age.",
+        "Tundra pools filled with brown moss as permafrost stabilized.",
+        "Two tents appeared as Pomor hunters made seasonal camp.",
+        "Turf hut rose from driftwood as trappers stored timber."
+      ],
+      "-100": [
+        "Clear sky stayed clear above the new mining town.",
+        "Pale sky stayed pale, still shaped by Arctic light.",
+        "Ridge clouds lingered, unchanged by bustle below.",
+        "Snowy peak endured above the coal valley.",
+        "Trestles climbed dark slope to carry coal buckets.",
+        "Summit stayed snowy while mining stayed on lower slopes.",
+        "Open tundra filled with grey houses raised against permafrost.",
+        "Tents gave way to colorful barracks for coal miners.",
+        "Hut plot became tundra crossed by wooden water pipeline."
+      ]
+    },
+    "library-of-alexandria": {
+      "0": [
+        "Sky stayed clear blue, now cleaner above solar canopies.",
+        "Blue sky unchanged, still open over low terraces.",
+        "Clouds still drift over summit despite warmer valley lanes.",
+        "Rooftop garden towers sprouted as insulation retrofits added soil beds.",
+        "Mountain slope kept snow, protected backdrop above town.",
+        "Steel towers became cable cabins reusing old ore line for transit.",
+        "Tundra foreground stayed open brown moss by conservation rule.",
+        "Houses gained sunrooms, pod lane and buried grid from Library legacy.",
+        "Pipeline crosses foreground carrying heat, replacing battery cart shed."
+      ],
+      "100": [
+        "Sky stayed clear blue over low skyline.",
+        "Pale sky persisted, calm above insulated terraces.",
+        "Clouds thinned as enclosed walkways sheltered lanes from weather.",
+        "Towers grew above houses joining blocks with inhabited bridges.",
+        "Mountain slope kept patchy snow, unchanged by town warmth.",
+        "Dome kept cable cabins, now silent above magnetic shuttle.",
+        "Arcaded greenhouses with fountains replaced open tundra for year-round growing.",
+        "Pod lane became magnetic shuttle plaza using Library-descended electromagnetics.",
+        "Meadow kept with shuttle track as heat pipeline went underground."
+      ],
+      "1000": [
+        "Sky stayed clear blue, unchanged over low halls.",
+        "Wispy clouds returned as before over quiet terraces.",
+        "Scattered clouds drifted over summit as climate steadied.",
+        "Towers yielded to birches, revealing distant peak again.",
+        "Terrace blocks weathered into timber halls with climbing greens.",
+        "Dome stayed snowy, old shuttle masts reused as lookout towers.",
+        "Greenhouses opened into vegetable terraces with trellises for slow food.",
+        "Shuttle plaza became footpath and rain channel as transit slowed.",
+        "Shuttle track overgrew into vine trellises over stone cisterns."
+      ],
+      "10000": [
+        "Sky stayed clear blue over emptying terraces.",
+        "Midday sky emptied of wisps as town heat faded.",
+        "Thin clouds lingered over summit as before.",
+        "Distant peak stayed visible as garden birches spread wild.",
+        "Halls fell to mossy slopes as upkeep ended.",
+        "Summit towers vanished, leaving only snow and rock.",
+        "Terraces waterlogged into wetland where reindeer now graze.",
+        "Footpaths crumbled into roofless ruin walls with moss.",
+        "Stone channels silted as ruined walls settled by meadow."
+      ],
+      "1000000": [
+        "Sky paled to clear blue as ruins no longer warmed air.",
+        "Pale sky persisted, open over rolling tundra.",
+        "Clouds gathered over peak as glacial cycle cooled again.",
+        "Distant mountain stayed, snow-streaked over dark rock.",
+        "Mountainside kept snow streaks through renewed frost.",
+        "Summit stayed snow-covered, same dome above tundra.",
+        "Wetland stayed mossy with pools as walls dissolved.",
+        "Ruin walls vanished into shallow pools and moss.",
+        "Last stones yielded to tundra where hardy mammals roam."
+      ],
+      "-1000000": [
+        "overcast grey cloudy sky",
+        "thick grey overcast clouds",
+        "pale grey cloudy sky",
+        "distant snowy mountain peak",
+        "woolly mammoth on frozen plain",
+        "snow covered mountain slope",
+        "frosted grassy tundra with larch",
+        "braided glacial meltwater streams",
+        "frosted bank with sparse larches"
+      ],
+      "-10000": [
+        "Sky cleared to blue as thick ice sheet thinned and retreated northward.",
+        "Grey clouds thinned to clear blue as glacial chill eased.",
+        "Pale sky stayed cloudy over summit while regional climate slowly warmed.",
+        "Distant peak stayed, but snow lessened as ice age ended.",
+        "Frozen plain became dark mountainside as buried ice melted away.",
+        "Mountain slope lost full snow, showing moss as melt exposed ground.",
+        "Frosted tundra became gravel outwash as meltwater sorted moraine debris.",
+        "Streams settled into braided ponds as glacial flow weakened seasonally.",
+        "Sparse larches gave way to dwarf willow on fresh gravel."
+      ],
+      "-2000": [
+        "Sky stayed clear blue, Arctic air unchanged despite distant Alexandrian learning.",
+        "Sky remained clear blue while Library copyists worked far south.",
+        "Wispy clouds lingered over summit as before, polar climate steady.",
+        "Distant peak unchanged, still snow-covered above empty valley.",
+        "Mountainside kept patchy snow, too cold for Library-linked settlement yet.",
+        "Slope stayed mossy without mammoth, herds shifted as tundra matured.",
+        "Gravel ponds matured into brown moss tundra pools, vegetation thickening.",
+        "Shallow pools persisted, undisturbed by early steam experiments elsewhere.",
+        "Dwarf willow spread into low lichen gravel, still no hearths."
+      ],
+      "-500": [
+        "Sky stayed clear blue above unchanged valley air.",
+        "Empty blue sky persisted, far from Mediterranean workshops.",
+        "Clouds still drifted over summit as Arctic weather held.",
+        "Distant peaks stayed snow-capped, beyond early steam routes.",
+        "Slope kept patchy snow, undisturbed by seasonal camp below.",
+        "Summit stayed snowy, landmark for Library-guided coal prospectors.",
+        "Tents appeared on tundra as coal crews summered using preserved mining manuals.",
+        "Hut and survey poles rose marking track for future steam haulage.",
+        "Timber and coal piles stacked as fuel trials fed Alexandrian engine designs."
+      ],
+      "-100": [
+        "Sky looks duskier as electric streetlights glow from new rows.",
+        "Pale sky unchanged above, now wired for buried power cables.",
+        "Clouds still gather over summit, now above lit timetables.",
+        "Distant mountain unchanged, backdrop to year-round settlement.",
+        "Slope still patchy snow, now crossed by ore-cable tower footings.",
+        "Steel towers rose on slope hauling coal for early steam-electric works.",
+        "Red timber rows replaced tents as Library rail plans enabled wintering.",
+        "Gravel lanes gained lit windows and cables from preserved electrical treatises.",
+        "Station shed with battery carts replaced hut, testing Alexandrian rail batteries."
+      ]
+    },
+    "no-electricity": {
+      "0": [
+        "Clear sky stayed empty of wires since generators never worked.",
+        "Pale midday sky cleared to empty blue without radio masts.",
+        "Cloudy blue sky stayed same, free of aerials and dishes.",
+        "Distant peak stayed snowy behind growing coal-gas town.",
+        "Trestles replaced by snow-streaked slope below painted house rows for miners.",
+        "Semaphore post replaced by snowy summit above boiler chimney for piped heat.",
+        "Tents and tractor gave way to tundra edged with steam rails.",
+        "Timber and coal sacks replaced by painted shops with air-started diesel lorries.",
+        "Barracks and lamps became shopfronts with steam pipes keeping gas lanterns."
+      ],
+      "100": [
+        "Clear sky stayed blue, still without wires or towers.",
+        "Empty blue sky persisted without masts as optical relays continued.",
+        "Cloudy sky paled slightly over low pipe-bound rooftops.",
+        "Distant peak stayed snowy behind same low town.",
+        "Snow-streaked slope stayed similar beneath house rows.",
+        "Summit above chimney gained avalanche barriers for sheltered blocks.",
+        "Tundra with rails filled by low courtyard blocks around steam siding.",
+        "Shops with lorries gained steam tramway and gas lantern rows.",
+        "Shopfronts added insulated heat mains beside market glasshouses."
+      ],
+      "1000": [
+        "Morning blue sky stayed clear over tended low roofs.",
+        "Clear sky stayed same without wires above workshops.",
+        "Pale cloudy sky softened to white clouds over glasshouses.",
+        "Distant peak gained mechanical windmill for pumping water.",
+        "Mountainside stayed snow-patched above mossy terraced quarters.",
+        "Avalanche slope gained tower windmill driving compressed-air mains.",
+        "Courtyard blocks opened to canal pond with rowboat for rainwater storage.",
+        "Tramway faded to moored wooden cargo boat on water as canals replaced rails.",
+        "Heat mains weathered to vine-covered stone canal with gas lanterns."
+      ],
+      "10000": [
+        "Clear sky stayed blue over emptying quarters.",
+        "Clear sky stayed empty as clockwork shops fell silent.",
+        "Soft clouds thinned to thin streaks as heating ended.",
+        "Windmill vanished from snowy peak as maintenance ceased.",
+        "Terraced slope stayed snow-patched as gardens went wild.",
+        "Tower windmill gone, leaving bare snow-covered summit.",
+        "Canal pond silted to wetland where reindeer graze.",
+        "Moored boat rotted away leaving mossy roofless walls.",
+        "Stone canal crumbled to overgrown walls by meadow ponds."
+      ],
+      "1000000": [
+        "Clear sky paled slightly over fully natural valley.",
+        "Empty midday sky paled as last walls sank.",
+        "Thin clouds thickened over peak with returning cold.",
+        "Snow-capped peak stayed distant as ruins disappeared.",
+        "Rocky slope stayed snow-streaked after masonry crumbled.",
+        "Bare summit stayed snow-covered above scoured slopes.",
+        "Reindeer wetland matured to mossy tundra with pools.",
+        "Mossy walls sank fully into shallow pools and moss.",
+        "Ruined walls vanished into meadow roamed by muskoxen."
+      ],
+      "-10000": [
+        "Grey ice-age overcast cleared to blue as climate warmed.",
+        "Thick clouds thinned to clear blue after glaciers withdrew.",
+        "Pale grey sky stayed cloudy over summit while ice melted.",
+        "Distant peak lost full white cover as ice sheet retreated.",
+        "Frozen plain became dark patchy mountainside as melt exposed rock.",
+        "Snowy slope greened with moss where mammoth now grazes.",
+        "Frosted tundra scoured to bare gravel by retreating meltwater.",
+        "Braided streams settled into ponds fringed with dwarf willow.",
+        "Sparse larch bank kept snowy hollows while willow took hold."
+      ],
+      "-2000": [
+        "Clear blue sky persisted unchanged in still cold valley.",
+        "Clear sky paled slightly with warmer Holocene air.",
+        "Summit clouds brightened to scattered white in blue.",
+        "Snow-capped peak stayed distant as upper snows thinned.",
+        "Dark mountainside kept snow patches as shrubs crept upward.",
+        "Mossy slope with mammoth emptied as herds moved on.",
+        "Gravel ponds matured into shallow stony tundra pools.",
+        "Bare gravel bars grew over with brown-gold moss wetland.",
+        "Willow snow patch softened into mossy stones by pool."
+      ],
+      "-500": [
+        "Clear blue sky stayed same over empty tundra.",
+        "Pale sky deepened to clear blue with steady weather.",
+        "White clouds lingered similarly above unchanged summit.",
+        "Distant ridge stayed snowy beneath unchanged blue sky.",
+        "Snow-patched slope stayed brown as reindeer trails crossed it.",
+        "Rounded summit kept summer snow through cool centuries.",
+        "Stony pools dried to open brown plain used by trappers.",
+        "Empty wetland gained two tents for seasonal walrus crews.",
+        "Mossy stones cleared for turf hut and stacked driftwood."
+      ],
+      "-100": [
+        "Clear sky stayed blue above new coal depot smoke.",
+        "Clear sky paled at midday over boiler-house haze.",
+        "White clouds stayed similar over unchanged snowy summit.",
+        "Snowy ridge stayed distant behind mining trestles.",
+        "Brown slope gained timber trestles for coal cableway.",
+        "Summit foreground gained semaphore post since electric telegraph failed.",
+        "Open tundra filled with tents, timber and hissing steam tractor.",
+        "Gravel tents replaced by timber stacks and coal sacks for boilers.",
+        "Turf hut replaced by log barracks lit with gas mantles without electricity."
+      ]
+    },
+    "no-printing-press": {
+      "0": [
+        "sky stayed clear blue above blocks",
+        "faint clouds drifted in over valley",
+        "clouds stayed white over summit",
+        "distant peak stayed snowy unchanged by town",
+        "slope stayed partly snowy above houses",
+        "dome stayed snow-covered over larger blocks",
+        "low rows grew into colorful courtyard blocks by voice coordination",
+        "dirt track set in stone with rails as hand records slowed motors",
+        "boards grew into murals with speaker poles for voice news"
+      ],
+      "100": [
+        "sky stayed clear blue over soil roofs",
+        "clouds cleared to bright blue in calm air",
+        "sky kept soft clouds over summit",
+        "bell towers rose below peaks for voice calls",
+        "slope stayed patchy snowy above town",
+        "summit stayed snowy over planted blocks",
+        "blocks grew taller with soil roofs as voice networks stayed local",
+        "lanes gained battery track since voice networks kept movement slow",
+        "poles multiplied beside track as spoken news replaced screens"
+      ],
+      "1000": [
+        "sky stayed clear blue over living roofs",
+        "sky stayed empty blue without screens or wires",
+        "clouds thinned wispy over summit in warming air",
+        "towers weathered away as small voice posts replaced them",
+        "slope stayed snow-streaked over meadows",
+        "summit stayed snowy above overgrown houses",
+        "foreground softened to meadow as slow voice coordination let edges rewild",
+        "track grassed over as carved panels kept stories by house",
+        "battery line grassed to light rail as shared vans needed little road"
+      ],
+      "10000": [
+        "sky stayed clear blue over ruins",
+        "sky stayed empty blue without wires",
+        "thin clouds stayed over summit",
+        "distant peak stayed snow-capped unchanged",
+        "slope bared more rock as climate slowly shifted",
+        "summit stayed snow-covered above ruins",
+        "voice poles rotted away leaving wetland with reindeer",
+        "roofs collapsed to mossy walls as hand knowledge faded slowly",
+        "embankment faded to meadow as voice groups stopped repairs"
+      ],
+      "1000000": [
+        "sky paled slightly over empty tundra",
+        "sky stayed pale blue without structures",
+        "clouds gathered over peak in colder air",
+        "distant mountain stayed snowy through ice cycles",
+        "mountainside stayed snow-streaked over dark rock",
+        "slope stayed snow-covered above plain",
+        "reindeer moved on leaving mossy tundra with pools",
+        "last walls sank into pools as frost erased hand-built stone",
+        "ruins vanished as ice cycles reset valley for herds"
+      ],
+      "-10000": [
+        "sky cleared blue as thick ice sheet withdrew northward",
+        "clouds thinned to clear blue after glacial cold eased",
+        "grey gloom lifted to clouds over summit as climate warmed",
+        "mountain peak emerged from ice showing dark rock ribs",
+        "lower slope lost deep ice leaving patchy snow on rock",
+        "steep slope greened with moss as meltwater exposed ground",
+        "frozen plain melted into braided ponds on gravel outwash",
+        "ice streams became shallow gravel bars with dwarf willow sprouting",
+        "frosted bank thawed to snow patches among low willow"
+      ],
+      "-2000": [
+        "sky stayed clear blue under steady cold climate",
+        "sky stayed clear paled slightly with autumn dry air",
+        "clouds scattered white as seasonal winds dried air",
+        "distant ridge unchanged snow held by high cold",
+        "slope kept patchy snow through cool summers",
+        "mammoth moved off leaving snowy summit view over mossy tundra",
+        "ponds settled shallow among stones as meltwater slowed",
+        "gravel softened to brown-gold moss as plants colonized",
+        "snow melted to mossy stones by quiet pool"
+      ],
+      "-500": [
+        "sky stayed clear blue over quiet valley",
+        "pale sky deepened to clear blue in settled weather",
+        "clouds thinned to faint streaks on calm air",
+        "distant peak stayed snow-capped above valley",
+        "slope stayed snow-streaked in summer cold",
+        "dome stayed snow-covered under cold sky",
+        "streams threaded moss as permafrost melted seasonally",
+        "tents rose as hand-copied charts left valley unsettled",
+        "rack appeared with painted hide marks for voice memory"
+      ],
+      "-100": [
+        "sky stayed clear blue above low roofs",
+        "midday sky stayed clear over growing hamlet",
+        "clouds thickened white over mountain",
+        "distant ridge stayed snowy behind settlement",
+        "slope kept snow patches in cool air",
+        "summit stayed snow-covered unchanged by building below",
+        "tundra gave way to low timber rows from hand-ledger trade",
+        "tents replaced by dirt track as voice orders limited machines",
+        "rack grew into painted picture walls replacing printed signs"
+      ]
+    },
+    "rome-never-fell": {
+      "0": [
+        "Clear sky stayed clear above steady Roman town.",
+        "Empty sky gained soft clouds from coastal moisture shift.",
+        "White clouds stayed, shading same blue Arctic light.",
+        "Barracks opened to peak view after blocks rebuilt around plaza.",
+        "Snow slope stayed streaked, protected as imperial commons land.",
+        "Market gave way to summit view as blocks stepped back.",
+        "Walled gardens rebuilt in concrete as colorful colonnaded blocks with glasshouses.",
+        "Tram track paved into plaza with fountain and buried ducts.",
+        "Tram line kept on twin rails marked by Latin plaques."
+      ],
+      "100": [
+        "Clear sky stayed clear through strict smoke controls.",
+        "Cloudy sky stayed soft above steady rooftops.",
+        "Partly cloudy sky paled as high air stayed calm.",
+        "Peak view gained stone aqueduct feeding glasshouses by gravity.",
+        "Streaked slope stayed open above new planted terraces.",
+        "Summit view crossed by silent rail coach on stone viaduct.",
+        "Colonnaded blocks converted to public laundry and library colonnades.",
+        "Fountain plaza enclosed as public bath with mist fountain.",
+        "Tundra rails kept in dry meadow with power in buried duct."
+      ],
+      "1000": [
+        "Clear sky stayed clear over low-impact peat town.",
+        "Cloudy sky paled to calm blue in settled climate.",
+        "Cloudy sky thinned to thin white streaks.",
+        "Aqueduct removed as water shifted to open stone channels.",
+        "Snow slope kept behind mossy stone rail viaduct.",
+        "Rail coach gone, leaving snowy summit view open after service slowed.",
+        "Laundry colonnades shaded by mature birch-willow grove planting.",
+        "Bath house weathered into mossy terraced blocks with beehives.",
+        "Meadow duct overgrown into reed ponds marked by Latin milestone."
+      ],
+      "10000": [
+        "Clear sky stayed clear above quiet ruins.",
+        "Pale sky cleared to empty midday blue.",
+        "Thin clouds thickened slightly in cooler damp air.",
+        "Mountain stayed distant while town stones slowly settled.",
+        "Viaduct stones fell, revealing snowy slope with bare rock.",
+        "Summit stayed snowy as rail use faded away.",
+        "Grove shaded out as wetland returned with grazing reindeer.",
+        "Terraced blocks crumbled to mossy roofless ruin walls.",
+        "Reed ponds spread, overgrowing ruined walls beside meadow."
+      ],
+      "1000000": [
+        "Clear sky paled as long climate cycles turned cooler.",
+        "Midday blue paled with returning glacial dust.",
+        "Thin clouds gathered over snowy peak with new ice.",
+        "Snow peak stayed distant while last foundations dissolved.",
+        "Rocky slope streaked darker as frost shattered concrete traces.",
+        "Summit stayed snowy as ice slowly advanced again.",
+        "Reindeer wetland settled back to mossy tundra with pools.",
+        "Ruin walls vanished into shallow pools and moss.",
+        "Meadow walls melted away, leaving grey mammal grazing wild."
+      ],
+      "-10000": [
+        "Grey ice-age clouds cleared to blue as global ice melted away.",
+        "Overcast thinned to clear blue when glacial chill withdrew north.",
+        "Pale gloom lifted, leaving clouds only over the snowy summit.",
+        "Mountain stayed in place as ice veil melted off its peak.",
+        "Frozen plain mammoth range opened as patchy dark rock appeared.",
+        "Full ice slope thawed to moss where one mammoth still grazes.",
+        "Thick moraine washed away, leaving gravel ponds from meltwater.",
+        "Icy streams braided into shallow gravel bars sprouting dwarf willow.",
+        "Frosted larch bank warmed into snow patches among dwarf willow."
+      ],
+      "-2000": [
+        "Blue sky stayed clear, kept by steady polar high pressure.",
+        "Clear blue paled slightly with warmer summer moisture in air.",
+        "Summit clouds gathered as milder air lifted over cold peak.",
+        "Snow-capped peak remained, shaped by same circling winds.",
+        "Dark mountainside kept snow patches through cool short summers.",
+        "Mossy mammoth slope whitened again as snow lingered longer.",
+        "Pools stayed natural because Roman roads had not reached far north.",
+        "Gravel willow bars matured to brown-gold moss wetland soil.",
+        "Willow snow patch thawed to mossy stones beside still pool."
+      ],
+      "-500": [
+        "Clear sky remained unchanged above untouched polar valley.",
+        "Pale sky stayed same, cooled by sea winds.",
+        "White clouds stayed over blue, driven by same winds.",
+        "Snowy ridge stood unchanged beneath steady cold air.",
+        "Snow patches gave way to hide tents from Roman coal survey.",
+        "Summit snow stayed white, preserved by high altitude cold.",
+        "Stony pools edged into driftwood stack gathered for winter fuel.",
+        "Moss wetland gained Latin-cut stone marking imperial coal claim.",
+        "Mossy stones cleared for hide tent beside sledge track."
+      ],
+      "-100": [
+        "Clear sky stayed same over growing valley settlement.",
+        "Pale sky cleared to empty midday blue in summer calm.",
+        "Clouds stayed white and blue, unchanged by valley work.",
+        "Peak view filled by long painted barracks for paid legion miners.",
+        "Tents gave way to snow slope left open by imperial decree.",
+        "Summit view replaced by arched market hall with Latin tablets.",
+        "Driftwood stack replaced by walled gardens fed by aqueduct water.",
+        "Marker yard gained stone track carrying green trams and coal tubs.",
+        "Tent ground gained parked tram powered by copper pole wires."
+      ]
+    },
+    "tamed-mammoth": {
+      "0": [
+        "Clear sky stayed, now over low spread mammoth-friendly blocks.",
+        "Blue sky gained few clouds while buried lines replaced cables.",
+        "White clouds stayed, above avenues with no private cars.",
+        "Distant peak unchanged behind felt workshops and set-back yards.",
+        "Patchy slope persisted, framing turfed mammoth freight lanes.",
+        "Summit stayed snow-covered, untouched by underground electrification.",
+        "Meadow outbuildings opened into grassy haystacks serving freight mammoths.",
+        "Boulevard wagons continued, now joined by electric-assist wagons.",
+        "Wool store gave way to battery van and power cabinets."
+      ],
+      "100": [
+        "Morning sky stayed clear over taller planted-roof blocks.",
+        "Empty sky kept calm above sensor posts guiding mammoth trams.",
+        "Clouds lingered same over green avenues with tram rails.",
+        "Distant peak unchanged beyond garden terraces and avenues.",
+        "Snowy slope stayed, now backed by fodder gardens below.",
+        "Summit remained snowy, steady above buried grids and hatches.",
+        "Meadow haystacks became fodder wagon route for guided mammoths.",
+        "Wagon lane rose into terraced blocks with roof planting.",
+        "Vans and cabinets became troughs beside guided tram rails."
+      ],
+      "1000": [
+        "Clear sky stayed over lower overgrown soil-roof houses.",
+        "Vast sky stayed open as blocks opened into gardens.",
+        "Wispy clouds drifted same above orchards and wool awnings.",
+        "Distant peak stayed, now watching orchards replace avenues.",
+        "Snowy slope stayed, rising above new orchard rows.",
+        "Summit stayed snow-covered while rails gave way to cisterns.",
+        "Wagon route softened into grass lane with grazing mammoths.",
+        "Terraced blocks lowered into sod houses before vegetable beds.",
+        "Tram troughs became stone cisterns and hand pumps."
+      ],
+      "10000": [
+        "Clear sky stayed blue over roofless weathered block walls.",
+        "Midday sky stayed empty as upkeep ended and moss spread.",
+        "Thin clouds stayed, now over wet tundra ponds.",
+        "Distant peak stayed unchanged beyond quiet ruins.",
+        "Snowy slope stayed rocky while houses lost roofs to weather.",
+        "Rounded summit stayed snowy as town slowly rewilded.",
+        "Grazing mammoths gave way to reindeer in wet meadow.",
+        "Garden houses crumbled into mossy roofless ruin walls.",
+        "Cisterns overgrew into ruined walls edging meadow ponds."
+      ],
+      "1000000": [
+        "Pale sky stayed clear over fully erased settlement.",
+        "Pale sky kept open as last walls sank into moss.",
+        "Cloudy peak weather stayed, icing the same summit.",
+        "Distant mountain stayed, outlasting streets built for mammoths.",
+        "Dark mountainside stayed streaked with snow, unchanged.",
+        "Snowy slope stayed white under slow geologic time.",
+        "Wet meadow widened into mossy tundra with pools.",
+        "Ruin walls vanished into shallow pools and moss.",
+        "Overgrown walls yielded to wild tundra mammals after herds left."
+      ],
+      "-10000": [
+        "Sky cleared blue as thick glacial clouds thinned with warming climate.",
+        "Overcast lifted with retreating ice, leaving open blue northern sky.",
+        "Pale gloom brightened into patchy clouds above emerging summit.",
+        "Mountain reappeared distant and snow-capped as ice sheet melted away.",
+        "Frozen plain gave way to dark mountainside as glaciers withdrew uphill.",
+        "White slope thinned to mossy ground where lone mammoth still grazed.",
+        "Ice floor melted into braided ponds across fresh gravel outwash.",
+        "Melt streams sorted into gravel bars sprouting dwarf willow shoots.",
+        "Frosted bank opened into snow patches dotted with dwarf willow."
+      ],
+      "-2000": [
+        "Sky stayed clear blue, unchanged by herders taming mammoth calves.",
+        "Vast blue sky remained open over widening mammoth grazing grounds.",
+        "Summit clouds lingered, watched now by mammoth herders below.",
+        "Distant peak stayed snow-capped above the herders' summer valley.",
+        "Slope stayed streaked with snow, now trampled by herded mammoths.",
+        "Summit stayed snowy while herders learned to milk and shear below.",
+        "Ponds dried to tundra where herders stacked driftwood for corrals.",
+        "Gravel bars became camp hollow with hide tents and dung.",
+        "Willow patch became harnessed pair, bred for wool and pulling."
+      ],
+      "-500": [
+        "Clear sky stayed, now holding hearth smoke from turf houses.",
+        "Blue sky unchanged above growing fodder yards and barns.",
+        "Clouds drifted same, over wider packed-earth mammoth lane.",
+        "Distant peak unchanged, backdrop to year-round mammoth settlement.",
+        "Snowy slope same, now overlooked by barns storing winter fodder.",
+        "Summit stayed snowy, untouched while valley filled with haystacks.",
+        "Driftwood pile became haystack by felt fences for mammoth wool.",
+        "Tent hollow became wide lane with troughs and hay wagon.",
+        "Harnessed pair joined by wagon team hauling hay to barns."
+      ],
+      "-100": [
+        "Sky stayed clear blue over taller timber stable blocks.",
+        "Pale sky unchanged, now lit by iron lamps on buried cables.",
+        "Cloudy blue persisted above boulevards built for mammoth lanes.",
+        "Distant peak unchanged behind expanding wool-trade town.",
+        "Snowy slope same, edged by urban hay meadows for mammoths.",
+        "Summit stayed white while town avoided poles and overhead wires.",
+        "Haystack yard grew into red outbuildings with meadow reserve.",
+        "Single wagon became broad boulevard crowded with mammoth hay wagons.",
+        "Wagon team passed red wool store advertising mammoth felt."
+      ]
     }
   }
 }

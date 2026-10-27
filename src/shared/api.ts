@@ -25,4 +25,13 @@ export type ApiError = {
  * What Muse Spark found about the place: what it is (for the loading screen), what stood here in each era of
  * this history, and labels for the photo's own cells (our timeline only).
  */
-export type NotesResponse = { place: string; eras: Record<string, string>; cells: string[] | null };
+/** year → one "what changed here and why" line per 3×3 cell, or null when it couldn't be written. */
+export type StoryResponse = { story: Record<string, string[]> | null };
+
+export type NotesResponse = {
+  place: string;
+  /** Short name for titles ("Kraków"); missing in older demo files. */
+  town?: string | null;
+  eras: Record<string, string>;
+  cells: string[] | null;
+};

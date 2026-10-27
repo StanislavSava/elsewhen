@@ -1,6 +1,6 @@
 import { Hono, type Context } from "hono";
-import type { ApiError, ConfigResponse, CreateSceneResponse, EraResult, MasksResponse, NotesResponse } from "../src/shared/api";
-import { CHRONICLES, DEFAULT_FORK, findEra, isShared } from "../src/shared/chronicles";
+import type { ApiError, ConfigResponse, CreateSceneResponse, EraResult, MasksResponse, NotesResponse, StoryResponse } from "../src/shared/api";
+import { CHRONICLES, DEFAULT_FORK, findEra, isShared, yearsFor } from "../src/shared/chronicles";
 import { BIOMES, SETTINGS, isEraYear, type Biome, type ChronicleEra, type Setting } from "../src/shared/eras";
 import { biomeFor } from "./biome";
 import { BASE_PHRASES, IMAGE_MODEL, IMAGE_PRICE_CENTS, MAX_PHOTO_BYTES, SAM_MODEL, type Env } from "./config";
@@ -16,7 +16,8 @@ import {
 } from "./guard";
 import { describeCells } from "./cells";
 import { ContentFilteredError, editImage, segment } from "./meta/client";
-import { eraLabel, getNotes, noteFor, readNoteFor } from "./historian";
+import { eraLabel, getNotes, noteFor, readNoteFor, readNotes, townOf } from "./historian";
+import { writeStory, type StoryEra } from "./story";
 import { iou, occupancy } from "./geometry";
 import { judge, passes } from "./judge";
 import { CREATURE_PHRASE, eraPrompt, promptVersion } from "./prompts";
@@ -123,7 +124,8 @@ app.post("/api/scenes/:token/notes", async (c) => {
   try {
     const photo = toDataUrl(await scene.photo.arrayBuffer(), "image/jpeg");
     const notes = await getNotes(c.env, scene.id, forkId, async () => photo);
-    return c.json<NotesResponse>({ place: notes.place, eras: notes.eras, cells: notes.cells ?? null });
+    const town = await townOf(c.env, scene.id, notes.place).catch(() => null);
+    return c.json<NotesResponse>({ place: notes.place, town, eras: notes.eras, cells: notes.cells ?? null });
   } catch (err) {
     console.error(`notes ${scene.id} ${forkId}:`, String(err).slice(0, 300));
     return fail(c, 502, "upstream");
@@ -308,6 +310,51 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
     if (err instanceof ContentFilteredError) return fail(c, 422, "content_filtered");
     return fail(c, 502, "upstream", String(err).slice(0, 200));
   }
+});
+
+// ---------------------------------------------------------------- story
+
+const STORY_VERSION = 1;
+
+/**
+ * What changed at each spot between eras, and why (the time core's "why" line). Built from the eras already
+ * painted and their notes, never triggering painting or research; cached by a hash of its inputs, so it is
+ * rewritten once more eras exist.
+ */
+app.post("/api/scenes/:token/story", async (c) => {
+  const params = parseEraParams(await c.req.json().catch(() => ({})));
+  const id = await verifySceneToken(c.env, c.req.param("token"));
+  if (!params || !id) return fail(c, 404, "not_found");
+  const base = await readNotes(c.env, id, DEFAULT_FORK);
+  const eras: StoryEra[] = [];
+  for (const year of yearsFor(params.forkId)) {
+    const era = findEra(params.forkId, year);
+    if (!era) continue;
+    if (year === 0 && params.forkId === DEFAULT_FORK) {
+      eras.push({ year, label: eraLabel(0), note: "the photo itself, today", cells: base?.cells ?? null });
+      continue;
+    }
+    const note = await readNoteFor(c.env, id, params.forkId, year);
+    if (note === null) continue;
+    const meta = await readEra(c.env, await eraPrefix(id, year, params, era, note));
+    if (meta) eras.push({ year, label: eraLabel(year), note, cells: meta.cells ?? null });
+  }
+  if (eras.length < 2) return c.json<StoryResponse>({ story: null });
+
+  const chronicle = CHRONICLES[params.forkId];
+  const history =
+    params.forkId === DEFAULT_FORK ? "This is our real history." : `Alternate history: ${chronicle.title}. ${chronicle.premise}`;
+  const input = JSON.stringify({ v: STORY_VERSION, history, eras });
+  const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(input)));
+  const hash = [...digest.slice(0, 6)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  const key = `scenes/${id}/story/${params.forkId}/${params.biome}/${params.setting}/${hash}.json`;
+  const cached = await c.env.BUCKET.get(key);
+  if (cached) return c.json<StoryResponse>({ story: await cached.json() });
+  if (!(await isLive(c.env))) return fail(c, 503, "resting");
+
+  const story = await writeStory(c.env, history, eras);
+  if (story) await c.env.BUCKET.put(key, JSON.stringify(story), { httpMetadata: { contentType: "application/json" } });
+  return c.json<StoryResponse>({ story });
 });
 
 // ---------------------------------------------------------------- files

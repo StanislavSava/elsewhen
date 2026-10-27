@@ -100,20 +100,6 @@
           "mammoth on dry grassland"
         ]
       },
-      "-2000": {
-        "image": "base_-2000.webp",
-        "cells": [
-          "clear blue sky",
-          "clear blue sky",
-          "clear blue sky",
-          "fenced green barley plots",
-          "fenced clearing with stacked timber",
-          "dry pasture with fenced huts",
-          "wattle huts with garden plots",
-          "dirt crossroads with thatched huts",
-          "fenced homestead with thatched huts"
-        ]
-      },
       "-500": {
         "image": "base_-500.webp",
         "cells": [
@@ -126,6 +112,20 @@
           "large thatched timber farmhouses",
           "fenced gardens and thatched sheds",
           "shingled houses with fenced yards"
+        ]
+      },
+      "-2000": {
+        "image": "base_-2000.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "fenced green barley plots",
+          "fenced clearing with stacked timber",
+          "dry pasture with fenced huts",
+          "wattle huts with garden plots",
+          "dirt crossroads with thatched huts",
+          "fenced homestead with thatched huts"
         ]
       },
       "-10000": {
@@ -240,6 +240,24 @@
           "grassy marsh meadow with pools"
         ]
       },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "vast cloudless blue sky",
+          "bright clear blue sky",
+          "distant hills and forest",
+          "braided meltwater channels",
+          "wide marshy braided plain",
+          "willow scrub marsh meadow",
+          "winding streams and willows",
+          "mammoth on dry grassland"
+        ]
+      },
       "-500": {
         "image": "library-of-alexandria_-500.webp",
         "cells": [
@@ -266,24 +284,6 @@
           "grassy clearing with oak trees",
           "log hut with stacked timber",
           "wooden waterwheel and paper stall"
-        ]
-      },
-      "-1000000": {
-        "image": "base_-1000000.webp",
-        "target": {
-          "phrase": "animal",
-          "sam": "base_-1000000.target.txt"
-        },
-        "cells": [
-          "clear blue sky",
-          "vast cloudless blue sky",
-          "bright clear blue sky",
-          "distant hills and forest",
-          "braided meltwater channels",
-          "wide marshy braided plain",
-          "willow scrub marsh meadow",
-          "winding streams and willows",
-          "mammoth on dry grassland"
         ]
       },
       "-10000": {
@@ -584,24 +584,6 @@
           "stable yard with carts"
         ]
       },
-      "-1000000": {
-        "image": "base_-1000000.webp",
-        "target": {
-          "phrase": "animal",
-          "sam": "base_-1000000.target.txt"
-        },
-        "cells": [
-          "clear blue sky",
-          "vast cloudless blue sky",
-          "bright clear blue sky",
-          "distant hills and forest",
-          "braided meltwater channels",
-          "wide marshy braided plain",
-          "willow scrub marsh meadow",
-          "winding streams and willows",
-          "mammoth on dry grassland"
-        ]
-      },
       "-10000": {
         "image": "base_-10000.webp",
         "target": {
@@ -618,6 +600,24 @@
           "snowy pine forest floor",
           "winding stream through reeds",
           "reedy marsh with channels"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "vast cloudless blue sky",
+          "bright clear blue sky",
+          "distant hills and forest",
+          "braided meltwater channels",
+          "wide marshy braided plain",
+          "willow scrub marsh meadow",
+          "winding streams and willows",
+          "mammoth on dry grassland"
         ]
       },
       "-100": {
@@ -714,20 +714,6 @@
           "grassy marsh meadow with pools"
         ]
       },
-      "-500": {
-        "image": "rome-never-fell_-500.webp",
-        "cells": [
-          "clear blue daytime sky",
-          "clear blue daytime sky",
-          "clear blue daytime sky",
-          "tiled roof brick tenements",
-          "long arched aqueduct arcade",
-          "tiled roof brick tenements",
-          "mule wagon on pavement",
-          "stone fountain with milestones",
-          "mule wagon beside arcade"
-        ]
-      },
       "-2000": {
         "image": "base_-2000.webp",
         "cells": [
@@ -740,6 +726,20 @@
           "wattle huts with garden plots",
           "dirt crossroads with thatched huts",
           "fenced homestead with thatched huts"
+        ]
+      },
+      "-500": {
+        "image": "rome-never-fell_-500.webp",
+        "cells": [
+          "clear blue daytime sky",
+          "clear blue daytime sky",
+          "clear blue daytime sky",
+          "tiled roof brick tenements",
+          "long arched aqueduct arcade",
+          "tiled roof brick tenements",
+          "mule wagon on pavement",
+          "stone fountain with milestones",
+          "mule wagon beside arcade"
         ]
       },
       "-1000000": {
@@ -900,24 +900,6 @@
           "mammoths hauling hay wagons"
         ]
       },
-      "-1000000": {
-        "image": "base_-1000000.webp",
-        "target": {
-          "phrase": "animal",
-          "sam": "base_-1000000.target.txt"
-        },
-        "cells": [
-          "clear blue sky",
-          "vast cloudless blue sky",
-          "bright clear blue sky",
-          "distant hills and forest",
-          "braided meltwater channels",
-          "wide marshy braided plain",
-          "willow scrub marsh meadow",
-          "winding streams and willows",
-          "mammoth on dry grassland"
-        ]
-      },
       "-10000": {
         "image": "base_-10000.webp",
         "target": {
@@ -934,6 +916,24 @@
           "snowy pine forest floor",
           "winding stream through reeds",
           "reedy marsh with channels"
+        ]
+      },
+      "-1000000": {
+        "image": "base_-1000000.webp",
+        "target": {
+          "phrase": "animal",
+          "sam": "base_-1000000.target.txt"
+        },
+        "cells": [
+          "clear blue sky",
+          "vast cloudless blue sky",
+          "bright clear blue sky",
+          "distant hills and forest",
+          "braided meltwater channels",
+          "wide marshy braided plain",
+          "willow scrub marsh meadow",
+          "winding streams and willows",
+          "mammoth on dry grassland"
         ]
       },
       "-100": {
@@ -955,6 +955,7 @@
   "notes": {
     "our-timeline": {
       "place": "Kraków Główny railway station forecourt and Galeria Krakowska, Kraków, Lesser Poland, Poland",
+      "town": "Krakow",
       "eras": {
         "100": "The same brick station buildings and glass market hall still stand in the same places, now with sedum green roofs, ivy terraces and trees growing on balconies and platform canopies. New since a century ago are grassed tram lines, orchard gardens and planted beds covering the forecourt and trackside, all neatly kept with meadow strips between the rails.",
         "1000": "The same station and market buildings still stand in the same places, weathered and gently overgrown, their roofs and courtyards turned into terraced orchards, flower meadows and tended vegetable beds. New since the last era are tree-lined earthen banks over the tracks and shallow ponds in the forecourt, all cared for with stone paths and grafted fruit trees.",
@@ -980,6 +981,7 @@
     },
     "library-of-alexandria": {
       "place": "Kraków Główny station forecourt and Galeria Krakowska, Kraków, Poland, on the flat Vistula plain",
+      "town": "Krakow",
       "eras": {
         "0": "Slender forty-story towers with garden terraces, rooftop plantings and solar canopies stand on the steel-tower lines around permeable paved squares with rain gardens and cycle tracks. Automated electric pods move on reserved lanes with aerial cable cabins overhead and low-energy text panels and wayfinding lights, new since the tram-tower era being the garden terraces, pod lanes and buried grids.",
         "100": "Slender hundred-storey pale stone and glass towers with planted terraces rise on the garden-tower foundations around wide quiet streets with silent trams. A great library with observatory dome forms the landmark on the old square, new since the forty-storey era being the added height, pale cladding and learning halls.",
@@ -992,6 +994,7 @@
     },
     "no-electricity": {
       "place": "View northeast over Kraków Główny station square and Galeria Krakowska site, Kraków, Lesser Poland Plain, temperate continental climate",
+      "town": "Krakow",
       "eras": {
         "0": "New since 1926, the left and centre tenements stand rebuilt as a dense five-storey masonry market quarter with red tile roofs, round gas lanterns, facade district steam pipes, painted shop boards and gas-lit display windows, while the old station still stands with its red roofs beside broad steam tracks. Rooftop greenhouses, coal bunkers and water tanks crown the quarter, and heavy diesel lorries and pedal cycles stand on the paved square around market stalls and an ice sheet, with no glass towers or overhead lines.",
         "100": "New since 2026, the same market quarter and station still stand raised to eight storeys in brick and iron with skylights, planted terraces and street trees, and rooftops carry wind pumps, water towers and chimneys with iron footbridges and steam and air pipe bridges spanning the streets. A cable-tram track with a low steam winding house crosses the square lit by warm gas lanterns, and a narrow water leat with tow path runs beside the many steam tracks.",
@@ -1002,6 +1005,7 @@
     },
     "no-printing-press": {
       "place": "Kraków, Poland - forecourt of Kraków Główny station and site of Galeria Krakowska, on the flat Vistula plain north of the Old Town, temperate climate",
+      "town": "Krakow",
       "eras": {
         "0": "The station halls and red roofs still stand in the same place, now fronted by a stone-set plaza with speaker poles and listening shelters and edged by four- to six-storey courtyard blocks with hand-painted picture walls, carved marks and chalk price boards. New since the earlier town are paved tram lines with slow trams, bicycles, handcarts and shared motor vans, with market gardens, fruit trees and stable yards between the houses and no glass towers, cars, glowing signs or parking lots.",
         "100": "On the same flat ground the five-storey courtyard blocks still stand, now with whole facades covered in painted picture stories and carved image reliefs without any written letters, and tall bell and speaker towers at the street corners. New since the earlier plaza are more trees, terrace gardens and listening shelters among the blocks, with slow trams and bicycles on stone paths and no screens, glass towers or heavy car traffic.",
@@ -1013,6 +1017,7 @@
     },
     "rome-never-fell": {
       "place": "Forecourt of Krakow Glowny station and Galeria Krakowska site, Krakow, Lesser Poland on the flat Vistula plain, temperate continental",
+      "town": "Krakow",
       "eras": {
         "0": "Here six- to eight-storey mixed-use stone-and-concrete perimeter blocks with shop arcades, stone tablets and enamel plaques and rooftop gardens and courtyard orchards enclose a stone-paved plaza with fountains and shaded colonnades crossed by dense electric tram and regional rail lines. New since 1926 are two added storeys, the fountain plaza with colonnades and planted roofs in place of glass facades, steel canopies and asphalt lots; no private cars, glass towers, pylons, petrol stations or billboards stand here.",
         "100": "On the same flat plain the blocks carry concrete domes and vaulted halls with carved stone inscriptions and bronze lettering around a straight colonnaded avenue lined with cypresses and stone pines, while a tall arched stone viaduct carrying trains crosses the district and public baths, fountains and forum gardens fill the crossroads plaza. New since 2026 are the domes, vaulted halls, viaduct and bath-forum with avenue trees and courtyard meadows; no glass skyscrapers, private cars, motorways or illuminated billboards stand here.",
@@ -1024,6 +1029,7 @@
     },
     "tamed-mammoth": {
       "place": "Forecourt of Krakow Glowny station and Galeria Krakowska, Krakow, Poland, on the flat Vistula valley floor",
+      "town": "Krakow",
       "eras": {
         "0": "New three- to five-story mixed blocks with set-back yards and felted-wool awnings stand on the same plots, with turfed mammoth freight lanes and linear hay meadows across the flat forecourt. Electric-assist mammoth wagons and small battery vans stand by district wool-washing and felt workshops, with buried power and water in ground cabinets, paddocks, troughs and street trees throughout.",
         "100": "Lower two- to four-storey blocks with very tall gateways and thick felted wool roofs and awnings stand on the same plots, renewed with planted terraces and garden yards. Broad grass avenues with mammoth freight wagons run between them, with paddocks, hay lofts and water troughs between blocks and street trees and meadow strips throughout.",
@@ -1033,6 +1039,614 @@
         "-100": "New two- to three-story brick blocks with stable yards and hay lofts stand on the same plots, taller than the earlier courtyard houses, along very wide earth-and-gravel boulevards with separate mammoth lanes. Buried electric cables feed low iron lamp posts, urban hay meadows and paddocks open between districts, and large painted wall signs and wool banners face the slow lanes."
       },
       "cells": null
+    }
+  },
+  "story": {
+    "our-timeline": {
+      "100": [
+        "Morning sky stayed clear blue over greened rooftops.",
+        "Daytime sky stayed clear above ivy terraces.",
+        "Sky stayed clear and calm over the station.",
+        "Warehouses gained street trees along a shaded avenue.",
+        "Iron sheds gained sedum roofs and trees from greening program.",
+        "Town roofs softened with planting around old stone tower.",
+        "Brick tenements kept walls, adding solar panels and green roofs.",
+        "Cobbled forecourt was planted with orchards and beds for cooling.",
+        "Station houses grew ivy balconies beside grassed tram lines."
+      ],
+      "1000": [
+        "Morning sky stayed clear blue over orchard roofs.",
+        "Daytime sky held clear over the tended station.",
+        "Sky stayed clear and open above trees.",
+        "Shaded avenue matured into rooftop orchards on halls.",
+        "Green canopies were buried under tree-lined banks for shelter.",
+        "Old tower stood on amid thickening trees and weathering.",
+        "Solar roofs gave way to ivy and vegetable beds for food.",
+        "Orchard beds were hollowed into ponds with stone paths.",
+        "Grassed tram lines softened into orchards as rails rested."
+      ],
+      "10000": [
+        "Sky stayed clear blue above roofless walls.",
+        "Sky held clear as roofs fell away.",
+        "Sky stayed open over returning forest.",
+        "Rooftop orchards grew tall into dense forest canopy untended.",
+        "Earthen banks settled as birches rose over mossy ruins.",
+        "Old tower crumbled away beneath tall birch edge.",
+        "Tended beds went wild around roofless ivy walls.",
+        "Stone ponds silted into wet meadow with a stream.",
+        "Orchard buildings lost roofs, keeping mossy walls only."
+      ],
+      "1000000": [
+        "Sky stayed clear blue over deep forest.",
+        "Sky remained clear above the vanished station.",
+        "Sky stayed wide and calm throughout ages.",
+        "Dense canopy matured into oak-lime forest over centuries.",
+        "Birches over ruins gave way to meadow edge as walls dissolved.",
+        "Birch edge opened into a glade with scattered oaks.",
+        "Last ivy wall sank beneath sunlit oak treetops.",
+        "Wet meadow stream lingered on through marsh grass.",
+        "Last mossy wall melted into marsh meadow with pools."
+      ],
+      "-10000": [
+        "Sky stayed clear blue above the warming plain.",
+        "Sky remained wide and clear as ice melted away.",
+        "Bright sky lingered on, still open and calm.",
+        "Distant woods thickened into pine-birch forest as climate warmed.",
+        "Braided channels softened into ponds as meltwater eased.",
+        "Open marshy plain grew into birch-pine woodland after ice.",
+        "Willow scrub shaded into pine forest floor with warming.",
+        "Streams steadied into a slow reedy brook between trees.",
+        "Mammoths moved on as warming turned grassland to marsh."
+      ],
+      "-2000": [
+        "Sky stayed clear blue above newly cleared farms.",
+        "Sky stayed wide and clear over the first clearings.",
+        "Bright sky watched over small thatched huts below.",
+        "Dense forest was felled for fenced barley plots.",
+        "Wet meadow was drained for a timber-stacked clearing.",
+        "Woodland was cleared into dry fenced pasture with huts.",
+        "Pine floor was grubbed out for wattle huts and gardens.",
+        "Reedy brook was crossed by trodden dirt paths and huts.",
+        "Reed marsh was fenced into a thatched homestead plot."
+      ],
+      "-500": [
+        "Sky stayed clear blue over the growing hamlet.",
+        "Sky remained clear as houses multiplied below.",
+        "Bright sky stayed calm over orchards and yards.",
+        "Barley plots grew into larger grain fields and orchards.",
+        "Timber clearing gained a small wooden chapel and yard.",
+        "Pasture huts were rebuilt as thatched houses by fields.",
+        "Wattle huts grew into large timber farmhouses with gardens.",
+        "Dirt crossroads was lined with fenced gardens and sheds.",
+        "Old homestead added shingled houses inside fenced yards."
+      ],
+      "-100": [
+        "Sky stayed clear blue above new rooftops and smoke.",
+        "Sky held clear as brick tenements rose below.",
+        "Bright sky stayed open over rails and roofs.",
+        "Orchards gave way to warehouses after railway arrived.",
+        "Chapel yard gave way to rails when railway arrived.",
+        "Thatched houses became town rooftops as city grew.",
+        "Timber farmhouses were rebuilt in brick for workers and storage.",
+        "Fenced gardens were cobbled for trams and forecourt crowds.",
+        "Shingled houses became brick station houses facing tracks."
+      ]
+    },
+    "library-of-alexandria": {
+      "0": [
+        "Daytime sky stayed clear blue over garden towers.",
+        "Tower tops gained aerial cable cabins on overhead wires.",
+        "Skyline gained distant cable cabins above glass towers.",
+        "Clock display area became tall terraced towers with gardens.",
+        "Steel towers gained rooftop solar canopies for clean power.",
+        "Tram avenue gained glass towers over the old town.",
+        "Tram lane gained rooftop plantings from green building rules.",
+        "Sidewalk became permeable square with rain gardens and lights.",
+        "Electric station gained solar roofs and automated pod lanes."
+      ],
+      "100": [
+        "Clear sky now frames much taller garden towers.",
+        "Cable sky now crowns slender hundred-storey tower tops.",
+        "Cabin sky stayed clear blue over higher skyline.",
+        "Terraced towers gained glass-domed library below them.",
+        "Solar canopies became green roofs under taller garden towers.",
+        "Glass towers kept old-town roofs beneath one tall tower.",
+        "Planted building became pale library colonnade with fountains.",
+        "Rain-garden square became formal plaza with fountain pools.",
+        "Pod lanes kept silent tram beside red-roof learning halls."
+      ],
+      "1000": [
+        "Sky stayed clear blue as homes moved underground.",
+        "Cabin sky stayed clear over low parkland and skylights.",
+        "Clear sky stayed clear above returned meadows and trees.",
+        "Library dome area became weathered tower with planted terraces.",
+        "Green roofs opened to meadow skylights for underground transit.",
+        "Old-town tower now stands pale among green trees.",
+        "Colonnade area became tower base with garden beds.",
+        "Formal plaza softened to meadow grass with skylights.",
+        "Tram halls removed for clear winding stream and reeds."
+      ],
+      "10000": [
+        "Sky stayed clear blue over the quiet ruins.",
+        "Sky stayed clear blue as towers weathered away.",
+        "Sky stayed clear blue above young forest and meadow.",
+        "Planted tower vanished into dense green forest canopy.",
+        "Meadow skylights decayed without upkeep beneath tall birches.",
+        "Pale tower among trees became tall birch forest edge.",
+        "Garden beds gave way to ivy-covered roofless station wall.",
+        "Skylight meadow turned wet with meandering stream.",
+        "Stream reeds now lap mossy roofless market hall wall."
+      ],
+      "1000000": [
+        "Sky stayed clear blue over deep woodland soils.",
+        "Sky stayed clear blue as last walls dissolved.",
+        "Sky stayed clear blue above open glades and marsh.",
+        "Forest canopy thickened to oak-lime as ruins faded.",
+        "Mossy ruins sank into marshy meadow and woodland edge.",
+        "Birch edge matured to open glade with scattered oaks.",
+        "Station wall dissolved into sunlit oak treetops and litter.",
+        "Wet meadow kept its meandering stream through marsh grass.",
+        "Market wall dissolved into grassy marsh meadow with pools."
+      ],
+      "-10000": [
+        "Sky stayed clear and blue over the warming plain.",
+        "Sky stayed cloudless blue as the ice retreated north.",
+        "Sky stayed bright and clear above the new forest.",
+        "Distant forest grew closer after the ice melted.",
+        "Braided channels calmed into ponds as meltwater lessened.",
+        "Wide plain dried into birch pine woodland in warmer climate.",
+        "Willow marsh thickened into pine forest floor without mammoths.",
+        "Winding streams steadied among reeds as flow slowed.",
+        "Dry grassland turned marshy as mammoths left warming land."
+      ],
+      "-2000": [
+        "Sky stayed clear blue above the northern clearing.",
+        "Midday sky stayed pale blue over the quiet woods.",
+        "Horizon turned hazy from small clearing fires and smoke.",
+        "Dense forest was cut back for timber and hut plot.",
+        "Wet meadow gained wagon ruts from mule paper trade.",
+        "Birch woods opened to marshy oaks for building timber.",
+        "Pine floor cleared to grassy oaks for the hut.",
+        "Reedy bank gained a log hut with stacked timber.",
+        "Marsh edge gained waterwheel and paper stall through Alexandrian trade."
+      ],
+      "-500": [
+        "Sky shows evening light above early gaslit rooftops.",
+        "Midday sky became evening sky over tall brick blocks.",
+        "Hazy sky cleared to evening sky above paved avenues.",
+        "Forest edge vanished under brick rooftops from early steam wealth.",
+        "Meadow ruts became railed tracks with coal from early locomotives.",
+        "Oak plain filled with railway station on old yard.",
+        "Grassy oaks replaced by gaslit cobbled side street and drains.",
+        "Log hut replaced by brick shop with printed price signs.",
+        "Waterwheel stall replaced by steam locomotive from Alexandrian engines."
+      ],
+      "-100": [
+        "Evening sky became daytime sky above taller steel towers.",
+        "Evening sky became daytime sky over central brick tower tops.",
+        "Evening sky became daytime sky over distant electric skyline.",
+        "Smoky rooftops gained library clock display from electric light.",
+        "Coal tracks stayed rail lines but framed by steel towers.",
+        "Brick station area became tree-lined avenue with battery trams.",
+        "Gaslit street became asphalt lane with battery trams and vans.",
+        "Brick shop front gained tree sidewalk and electric streetlights.",
+        "Steam freight yard became electric station from buried power cables."
+      ]
+    },
+    "no-electricity": {
+      "0": [
+        "Sky cleared bluer as better boilers eased coal haze without electric power.",
+        "Sky stayed clear blue and wire-free as steam and gas mains fed blocks.",
+        "Sky stayed clear blue over low roofs as lifts stayed steam-driven and low.",
+        "Smoking rooftops rebuilt as red-tiled market roofs with greenhouses and bunkers.",
+        "Steam tracks view filled with distant low apartment blocks without glass towers.",
+        "Church tower view hid behind brick water tower and tenements for hydraulic mains.",
+        "Tenement block rose to five-storey brick market building with steam pipes and lanterns.",
+        "Cobbled square paved for market stalls around ice sheet with diesel lorries waiting.",
+        "White station kept its red roofs beside broadened steam tracks without electrification."
+      ],
+      "100": [
+        "Sky stayed clear blue over taller brick as wind pumps turned above.",
+        "Sky stayed clear blue and wire-free as compressed-air mains fed machines without wires.",
+        "Sky stayed clear blue above chimneys as coal steam still heated quarter.",
+        "Market roofs gained wind pumps and planted terraces as air needs grew.",
+        "Distant blocks hid behind iron steam and air pipe bridges spanning streets.",
+        "Water tower rooftops multiplied steaming towers and chimneys for district steam.",
+        "Market building front opened to cobbled square with gas lanterns and trees.",
+        "Ice market gave way to brick steam winding house driving cable tram.",
+        "Station tracks gained cable tram and narrow water leat with tow path."
+      ],
+      "1000": [
+        "Sky stayed clear blue over windmills as steam smoke thinned with sailing trade.",
+        "Sky stayed clear blue and wire-free as wind and water drove mills.",
+        "Sky stayed clear blue above leafy skyline as planting cooled low city.",
+        "Wind pumps grew to tall rooftop windmills and greenhouses as coal waned.",
+        "Pipe bridges gave way to tall windmills over gardens as steam mains shrank.",
+        "Steaming towers softened to distant leafy skyline as roofs turned to orchards.",
+        "Gas-lit square greened around ivy weathered block kept trimmed and planted.",
+        "Winding house gave way to wooden barges and terraced gardens beside canal.",
+        "Tram leat widened to canal while weathered station gained water wheels for mills."
+      ],
+      "10000": [
+        "Sky stayed clear blue as chimney haze cleared after boilers went cold.",
+        "Sky stayed clear blue over ruins as gas lamps went out for good.",
+        "Sky stayed clear blue above young forest as rooftops failed and fell.",
+        "Windmills fell as dense green forest canopy closed after upkeep ended.",
+        "Tall windmills gave way to tall birches above mossy roofless ruins.",
+        "Leafy skyline gave way to tall birch forest edge reclaiming streets.",
+        "Planted block lost roofs to ivy as oaks grew inside roofless station walls.",
+        "Barges and gardens gave way to wet meadow with meandering stream returning.",
+        "Weathered station lost wheels and roofs to mossy roofless market hall walls."
+      ],
+      "1000000": [
+        "Sky stayed clear blue over deep forest with no chimney haze left.",
+        "Sky stayed clear blue as last brick dust settled into woodland soils.",
+        "Sky stayed clear blue above glades as no roofline broke canopy.",
+        "Dense canopy matured to oak-lime forest as birch ruins vanished into soil.",
+        "Birch ruins sank into woodland edge over marshy meadow with deep leaf litter.",
+        "Birch edge opened to scattered-oak glade as foundations dissolved underground.",
+        "Roofless walls vanished under sunlit oak treetops as soils deepened above.",
+        "Wet meadow kept its meandering stream through marsh grass without tow paths.",
+        "Mossy walls dissolved to grassy marsh meadow with pools as forest closed."
+      ],
+      "-10000": [
+        "Sky stayed clear blue as glacial dust settled after ice retreated.",
+        "Vast sky stayed cloudless blue while meltwater plains greened after thaw.",
+        "Bright sky stayed clear blue over mild plain as ice withdrew north.",
+        "Distant hills hid behind dense pine birch forest as mild climate spread trees.",
+        "Braided channels softened into wet meadow ponds as ice melt eased.",
+        "Wide marshy plain grew mixed birch pine woodland as soils softened and dried.",
+        "Willow scrub thickened to shaded pine forest floor as trees closed overhead.",
+        "Winding streams settled through reeds as floods calmed into one slow stream.",
+        "Mammoth grazing ground turned reedy marsh as forest closed and waters lingered."
+      ],
+      "-2000": [
+        "Sky stayed clear blue with only thin woodsmoke from new thatched huts.",
+        "Sky stayed clear blue above hazel clearings as forest was opened by hand.",
+        "Sky stayed clear blue over small fields as no chimney smoke yet rose.",
+        "Pine birch forest cleared into fenced green barley plots by early farmers.",
+        "Wet meadow drained to fenced clearing with stacked timber for building huts.",
+        "Birch pine woodland opened to dry pasture with fenced huts for grazing.",
+        "Forest floor cleared for wattle huts and garden plots beside pasture.",
+        "Reedy stream bank gained trodden dirt crossroads beside thatched huts for paths.",
+        "Reedy marsh drained to fenced homestead with thatched huts and livestock pens."
+      ],
+      "-500": [
+        "Sky stayed clear blue over thatch and shingles with only hearth smoke.",
+        "Sky stayed clear blue as hamlet grew without mills or chimneys yet.",
+        "Sky stayed clear blue above orchards as fields stayed low and open.",
+        "Barley plots grew into golden grain fields and orchards as farming intensified.",
+        "Timber clearing gained small wooden chapel yard as hamlet households multiplied.",
+        "Dry pasture edged with thatched houses beside ploughed fields for more crops.",
+        "Small huts grew into large thatched timber farmhouses with barns for harvest.",
+        "Dirt crossroads lined with fenced gardens and thatched sheds for market goods.",
+        "Homestead yards filled with shingled houses and fenced yards near suburb edge."
+      ],
+      "-100": [
+        "Sky paled with coal haze as boiler chimneys and steam engines multiplied.",
+        "Sky turned pale blue as town gas works and coal yards smoked nearby.",
+        "Sky stayed pale and wire-free as piped town gas lit streets below.",
+        "Grain orchards gave way to smoking brick tenement rooftops for railway workers.",
+        "Chapel yard gave way to soot-dark steam tracks as railway reached flat ground.",
+        "Ploughed fields filled with distant town and church tower around new station.",
+        "Farmhouses gave way to four-storey brick tenement block with coal cellars below.",
+        "Gardens paved to cobbled square with steam engine, gas lamps and tube kiosk.",
+        "Fenced yards gave way to white station with red roofs beside many tracks."
+      ]
+    },
+    "no-printing-press": {
+      "0": [
+        "Sky stays clear blue over plaza and low blocks.",
+        "Same blue sky, kept open by limits on tall building.",
+        "Sky unchanged above slow trams and garden trees.",
+        "Brick blocks stayed low, since hand copying slowed large coordination.",
+        "Iron sheds kept, now fronted by paved city tramway.",
+        "Town rooftops preserved as historic tower and red roofs.",
+        "Mural brick block kept, now served by green slow tram.",
+        "Horse-tram gardens grew into market gardens with orchard trees.",
+        "Red-roofed station kept, now with plaza and shared motor vans."
+      ],
+      "100": [
+        "Sky stays clear blue over tree-filled courtyards.",
+        "Same sky, kept clear by ban on tall towers.",
+        "Bright sky unchanged above stone paths and trams.",
+        "Low outskirts greened into tree-rich skyline without tall towers.",
+        "Tramway cityscape softened into hazy low skyline among trees.",
+        "Tower and red roofs kept, softened by new planting.",
+        "Mural building overpainted with picture stories, since reading stayed rare.",
+        "Market gardens edged by carved bell-speaker towers for voice news.",
+        "Station halls kept, fronted by trams and bicycles beside murals."
+      ],
+      "1000": [
+        "Sky stays clear blue over greening stone courtyards.",
+        "Same blue sky above mature trees and terraces.",
+        "Sky unchanged while paths narrow among orchards.",
+        "Tree skyline thinned into low distant blocks among woods.",
+        "Hazy skyline faded further into trees and meadows.",
+        "Old rooftops weathered beneath spreading tree canopy.",
+        "Mural facade rebuilt in carved stone to keep stories without paper.",
+        "Bell-speaker towers weathered into carved stone with glass pictures.",
+        "Mural trams thinned to small quiet lines between stone houses."
+      ],
+      "10000": [
+        "Sky stays clear blue over roofless ruins.",
+        "Same sky, now open as tram wires vanished.",
+        "Sky unchanged while streets fade to meadow.",
+        "Distant blocks crumbled into dense forest as upkeep faded.",
+        "City skyline replaced by tall birches over mossy ruins.",
+        "Old rooftops vanished into tall birch forest edge.",
+        "Stone building shed roof, leaving ivy-covered station wall.",
+        "Carved stone dissolved into wet meadow with meandering stream.",
+        "Tram lines vanished, leaving mossy roofless market wall."
+      ],
+      "1000000": [
+        "Sky stays clear blue over deep woodland.",
+        "Same open sky as last walls sink away.",
+        "Sky unchanged while meadow reclaims old streets.",
+        "Dense forest matured into oak-lime canopy.",
+        "Birches over ruins gave way to woodland over meadow.",
+        "Birch edge opened into glade with scattered oaks.",
+        "Ivy wall crumbled into soils beneath sunlit oaks.",
+        "Meadow stream kept meandering through marsh grass.",
+        "Market wall dissolved into grassy marsh meadow with pools."
+      ],
+      "-1000000": [
+        "Wide clear blue sky opens over flat glacial plain.",
+        "Vast cloudless blue sky stretches across meltwater lowland.",
+        "Bright clear sky lights shallow channels and wet meadows.",
+        "Low distant hills and thin forest rim the horizon.",
+        "Shallow braided meltwater channels braid across cold plain.",
+        "Wide marshy plain holds grasses, pools, and damp meadows.",
+        "Willow scrub dots marshy meadow on damp ground.",
+        "Winding streams curl past willow scrub and low pines.",
+        "Mammoth grazes dry grassland beside marshy channels."
+      ],
+      "-10000": [
+        "Sky still clear blue as ice retreats far north.",
+        "Sky stays cloudless while climate warms the plain below.",
+        "Sky remains bright while meltwater settles into ponds.",
+        "Thin distant woods thickened into dense pine-birch forest.",
+        "Braided channels softened into wet meadow dotted with ponds.",
+        "Open marshy plain closed into mixed birch-pine woodland.",
+        "Willow scrub shaded out as pines spread over floor.",
+        "Winding streams slowed into one reed-fringed meandering stream.",
+        "Dry grassland turned damp as mammoths left and reeds spread."
+      ],
+      "-2000": [
+        "Sky stays clear blue above newly cleared farm plots.",
+        "Sky unchanged while forest gives way to fields.",
+        "Bright sky same, now watching thatch roofs below.",
+        "Forest edge cleared into fenced green barley plots.",
+        "Wet meadow drained into fenced clearing for stacked timber.",
+        "Woodland opened into dry pasture with fenced huts.",
+        "Pine floor replaced by wattle huts and garden plots.",
+        "Reedy stream bank trodden into dirt crossroads with huts.",
+        "Marsh channels drained for fenced homestead with thatched huts."
+      ],
+      "-500": [
+        "Sky stays clear blue over growing Krakow lanes.",
+        "Sky unchanged above scribes rooftops and yards.",
+        "Same bright sky over thatch giving way to tile.",
+        "Barley plots roofed over as red tiled rooftops spread.",
+        "Timber clearing grew into stacked piles for building workshops.",
+        "Pasture filled with brick houses bearing hand-painted picture walls.",
+        "Wattle huts rebuilt as painted workshops, since books stayed hand-copied.",
+        "Dirt crossroads paved with speaking platform, since news travels by voice.",
+        "Homestead yard enlarged into stable yard for packhorses and handcarts."
+      ],
+      "-100": [
+        "Sky stays clear blue over railway and brick blocks.",
+        "Same blue sky above iron sheds and rooftops.",
+        "Sky unchanged as lanes fill with rails and wires.",
+        "Tiled rooftops thickened into taller red-roofed brick street blocks.",
+        "Timber piles cleared as railway arrived with iron sheds.",
+        "Houses and sheds grew into distant town with church tower.",
+        "Painted workshop rebuilt in brick with murals, since notices stayed hand-painted.",
+        "Speaking platform edged by horse tram as tram rails arrived.",
+        "Stable yard rebuilt as red-roofed station, as railway arrived."
+      ]
+    },
+    "rome-never-fell": {
+      "0": [
+        "Sky stayed clear over continuous masonry city.",
+        "Sky unchanged above added stone storeys.",
+        "Sky remained blue without glass towers or billboards.",
+        "Tree villa district densified into modern stone blocks.",
+        "Stone aqueduct arcade roofed for covered regional rail station.",
+        "Farmland view tiled over as red-roofed old town.",
+        "Market block planted with rooftop garden above arcade.",
+        "Tram tracks set in fountain plaza with colonnades.",
+        "Market gardens paved as arcades for green trams."
+      ],
+      "100": [
+        "Sky stayed blue over new imperial domes.",
+        "Sky unchanged above vaulted concrete halls.",
+        "Sky remained clear without skyscrapers by building law.",
+        "City blocks crowned with triple-domed stone baths.",
+        "Station roofs kept as flat masonry skyline.",
+        "Old town roofs crossed by tall train viaduct.",
+        "Rooftop arcade garden formalized into fountain forum.",
+        "Fountain plaza planted as cypress colonnaded avenue.",
+        "Green tram arcade rebuilt as columned baths basilica."
+      ],
+      "1000": [
+        "Sky stayed blue over enduring concrete masonry.",
+        "Sky unchanged above vine-softened vaults.",
+        "Sky remained clear by lasting height limits.",
+        "Baths facade weathered honey-coloured with rooftop orchards.",
+        "Flat skyline kept with slow trains on viaduct.",
+        "Stone viaduct vine-covered yet still carrying trains.",
+        "Forum gardens deepened into terraced rooftop orchards.",
+        "Cypress avenue matured around still-flowing fountain plaza.",
+        "Baths basilica mossed among tall stone pines."
+      ],
+      "10000": [
+        "Sky stayed blue above roofless walls after upkeep lapsed.",
+        "Sky unchanged while vines overtook vaults without repair.",
+        "Sky stayed clear over woodland returning without masons.",
+        "Orchard domes opened to forest as roofs were salvaged.",
+        "Viaduct dismantled for stone, leaving birches above ruins.",
+        "Vine tracks shaded out by birches as drainage failed.",
+        "Garden facade lost roof to ivy after administration moved.",
+        "Fountain plaza became meadow stream as channels silted.",
+        "Pine domes crumbled to mossy walls through frost cycles."
+      ],
+      "1000000": [
+        "Sky stayed blue above forest burying last foundations.",
+        "Sky unchanged while soils buried masonry in leaf litter.",
+        "Sky remained clear over fully rewilded plain.",
+        "Forest canopy closed over last birch ruins.",
+        "Mossy ruins dissolved as roots split brick concrete.",
+        "Birch edge succeeded by oak-lime glades in deep soils.",
+        "Ivy walls collapsed under oaks, leaving treetops.",
+        "Meadow stream widened through marsh as channels vanished.",
+        "Mossy hall melted into marsh pools through groundwater rise."
+      ],
+      "-10000": [
+        "Sky remained clear blue, unchanged above warming plain.",
+        "Sky stayed wide and blue as glaciers melted northward.",
+        "Bright sky persisted while meltwater settled into soils.",
+        "Distant scrub thickened into pine-birch forest as climate warmed.",
+        "Braided channels softened into ponds as meltwater flow eased.",
+        "Open marsh plain grew birch-pine woods in warmer damp soils.",
+        "Willow meadow became shaded pine floor as trees spread.",
+        "Winding streams narrowed through reeds as forests steadied banks.",
+        "Dry grassland became reedy channels as forest shaded grazing."
+      ],
+      "-2000": [
+        "Sky stayed clear while farmers cleared forest below.",
+        "Blue sky unchanged over new barley clearings.",
+        "Sky remained bright above thatched hamlet smoke.",
+        "Dense forest cleared into fenced barley plots for harvest.",
+        "Wet meadow drained into timber yard by early settlers.",
+        "Birch-pine woodland pastured and fenced for livestock grazing.",
+        "Snowy forest floor replaced by wattle huts and gardens.",
+        "Reedy stream crossed by dirt paths to thatched crossroads.",
+        "Marsh channels enclosed as homestead with thatched huts."
+      ],
+      "-500": [
+        "Sky stayed blue above unbroken Roman rooftops.",
+        "Sky unchanged as imperial surveyors paved straight highway.",
+        "Sky remained clear over tiled imperial market town.",
+        "Barley plots rose into brick tenements along imperial road.",
+        "Timber yard replaced by arched aqueduct bringing distant water.",
+        "Pasture huts rebuilt as tiled tenements on concrete foundations.",
+        "Wattle huts paved for mule-drawn railed wagons.",
+        "Dirt crossroads paved with fountain fed by aqueduct channel.",
+        "Homestead became market depot served by mule wagons."
+      ],
+      "-100": [
+        "Sky stayed blue above taller concrete blocks.",
+        "Faint cloud drifted over copper telegraph wires.",
+        "Sky stayed clear over tram-served imperial district.",
+        "Brick tenements rebuilt as stone villa among planted trees.",
+        "Brick aqueduct refaced in stone to carry power channels.",
+        "Tenement roofs opened toward aqueduct-fed distant farmland.",
+        "Paved wagon yard arcaded for stone market hall.",
+        "Milestone fountain square railed for twin electric trams.",
+        "Mule depot became irrigated gardens fed by channel."
+      ]
+    },
+    "tamed-mammoth": {
+      "0": [
+        "Sky stayed blue over renewed mixed blocks with wool awnings.",
+        "Sky stayed clear above turfed freight lanes and hay meadows.",
+        "Sky stayed bright over workshops washing mammoth wool below.",
+        "Brick blocks renewed taller as electric workshops replaced stables.",
+        "Treeline opened into linear hay meadow crossed by turfed freight lanes.",
+        "Sheds rebuilt as wool-washing workshops serving electric vans.",
+        "Warehouse kept with paddocks, troughs and street trees for mammoths.",
+        "Boulevard turfed for electric-assist wagons, vans and ground cabinets.",
+        "Brick station forecourt greened with paddock, troughs and wool racks."
+      ],
+      "100": [
+        "Sky stayed bright blue over gated blocks with wool roofs.",
+        "Sky stayed bright as terraces and garden yards greened rooftops.",
+        "Sky stayed clear above grass avenues kept for mammoth wagons.",
+        "Apartment blocks lowered and gated for mammoth freight and gardens.",
+        "Meadow view framed by tall stone gateway for passing mammoth wagons.",
+        "Workshops kept as tree-lined skyline with meadow strips between blocks.",
+        "Mixed block reroofed in thick felted wool with planted terraces.",
+        "Paddock fenced anew with hay lofts and troughs among street trees.",
+        "Wool racks replaced by freight wagon pulled by harnessed mammoth."
+      ],
+      "1000": [
+        "Sky stayed blue over spread-out town among grazing steppe.",
+        "Sky stayed clear as pasture expanded between low rooftops.",
+        "Sky stayed clear above wide grass lanes for daily herds.",
+        "City blocks thinned into steppe with village houses for grazing herds.",
+        "Gateway district opened into flat steppe with town rooftops beyond.",
+        "Tree skyline opened into open steppe as mammoth pasture expanded.",
+        "Felt block kept with arched gateway among tended gardens.",
+        "Paddocks widened into grazing grounds with mammoths and haystacks.",
+        "Freight wagon lane returned to gardens grazed by mammoth herds."
+      ],
+      "10000": [
+        "Sky stayed blue over mossy roofless walls and young forest.",
+        "Sky stayed clear as forest reclaimed streets and paddocks.",
+        "Sky stayed clear above wet meadow with no roofs remaining.",
+        "Steppe houses crumbled to mossy walls as upkeep ended and oaks seeded.",
+        "Town rooftops lost roofs as birches grew inside walled enclosures.",
+        "Open steppe grew tall birch forest edge in wetter climate.",
+        "Gateway house fell to ivy-covered roofless station wall.",
+        "Grazing ground rewetted into meadow with meandering stream.",
+        "Gardens overgrown into mossy roofless market hall among birches."
+      ],
+      "1000000": [
+        "Sky stayed blue over dense oak-lime forest and glades.",
+        "Sky stayed clear above marshy meadows with no foundations left.",
+        "Sky stayed clear over slow stream winding through marsh grass.",
+        "Ruined canopy closed into dense oak-lime forest over deep soils.",
+        "Mossy ruins buried as woodland edge spread over marshy meadow.",
+        "Birch edge matured into open glades with scattered oaks.",
+        "Station wall vanished beneath sunlit oak treetops and leaf litter.",
+        "Meadow stream kept meandering through marsh grass and pools.",
+        "Market wall dissolved into grassy marsh meadow with pools."
+      ],
+      "-10000": [
+        "Sky stayed clear blue as glacial meltwater faded northward.",
+        "Wide sky stayed cloudless while ice sheets retreated farther north.",
+        "Bright sky stayed clear as warming climate greened the plain.",
+        "Hills grew dense pine-birch forest as climate warmed and moistened.",
+        "Braided channels calmed into ponds as meltwater flow weakened.",
+        "Open plain grew birch-pine woodland after ice-age grazing ended.",
+        "Willow marsh shaded into pine floor as forest closed overhead.",
+        "Busy streams settled to one reed-fringed channel with less meltwater.",
+        "Dry mammoth grazing turned reedy marsh as water tables rose."
+      ],
+      "-2000": [
+        "Sky stayed blue above newly cleared mammoth-herder settlement.",
+        "Sky stayed clear over wide lanes for mammoth sledges.",
+        "Sky stayed bright while villagers stored wool and hay below.",
+        "Forest cleared for scattered timber houses with fenced mammoth yards.",
+        "Wet meadow packed into wide sledge-track junction for mammoths.",
+        "Woodland cleared for thatched fodder barns and stacked hay.",
+        "Pine floor replaced by fenced house storing winter mammoth hay.",
+        "Reed stream channeled beside lane where mammoths pull timber sledges.",
+        "Marsh drained for thatched barn with fences woven from mammoth wool."
+      ],
+      "-500": [
+        "Sky stayed clear over growing mammoth-wool trading town.",
+        "Sky stayed blue as wool sheds and felt awnings multiplied.",
+        "Sky stayed bright above broad avenues built for mammoth wagons.",
+        "Scattered houses joined into courtyard blocks around wool yards.",
+        "Sledge junction leveled into earth avenue with troughs and hitching posts.",
+        "Barn plots opened toward outer hayfields feeding larger mammoth herds.",
+        "House yard joined to avenue where mammoths haul hay wagons.",
+        "Sledge lane became trough-lined crossroads for high-wheeled wagons.",
+        "Barn yard enlarged for teams hauling hay wagons daily."
+      ],
+      "-100": [
+        "Sky stayed blue over brick stable blocks and gravel boulevards.",
+        "Midday sky stayed clear as electric cables went underground.",
+        "Pale sky stayed clear above hay paddocks and wool banners.",
+        "Courtyard houses rebuilt in brick with stable yards and hay lofts.",
+        "Earth avenue paved with gravel and separate turfed mammoth lanes.",
+        "Hayfields fenced into urban paddocks with sheds and painted wool signs.",
+        "Wagon yard replaced by brick wool warehouse with loft storage.",
+        "Wagon crossroads widened into boulevard with iron lamps and banners.",
+        "Hay yard rebuilt as brick station serving mammoth freight wagons."
+      ]
     }
   }
 }

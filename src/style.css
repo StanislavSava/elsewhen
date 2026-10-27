@@ -199,11 +199,17 @@ body.overlay .topbar, body.overlay .timebar .slider-wrap, body.overlay #hint { v
 .tc-open .tc-info { opacity: 1; pointer-events: auto; transition: opacity 0.4s 0.3s; }
 .tc-info-in .tc-kicker, .tc-info-in .tc-label, .tc-info-in .tc-note { animation: tc-rise 0.45s both; }
 .tc-info-in .tc-label { animation-delay: 0.05s; }
-.tc-info-in .tc-note { animation-delay: 0.1s; }
+.tc-info-in .tc-why { animation: tc-rise 0.45s 0.08s both; }
+.tc-info-in .tc-note { animation-delay: 0.12s; }
 @keyframes tc-rise { from { opacity: 0; transform: translateY(8px); } }
 .tc-kicker { font: 600 0.72rem/1.4 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
 .tc-label { font: 400 clamp(1.35rem, 3.2vw, 2rem)/1.15 var(--serif); margin: 6px 0 6px; }
-.tc-note { font-size: 0.9rem; color: var(--muted); margin: 0 auto 12px; max-width: 54ch; max-height: 4.4em; overflow: auto; }
+.tc-why { font: italic 400 1.02rem/1.35 var(--serif); color: var(--accent); margin: 0 auto 6px; max-width: 52ch; }
+.tc-why:empty { display: none; }
+.tc-note { font-size: 0.86rem; color: var(--muted); margin: 0 auto 12px; max-width: 54ch; max-height: 3em; overflow: auto; }
+.tc-extras { display: flex; justify-content: center; gap: 14px; margin-top: 8px; }
+.tc-extras button { background: none; border: none; padding: 2px 0; color: var(--muted); font-size: 0.8rem; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.tc-extras button:hover { color: var(--fg); }
 .tc-actions { display: flex; justify-content: center; gap: 8px; }
 .tc-actions button {
   border: 1px solid var(--faint); background: rgba(14, 14, 13, 0.6); border-radius: 999px; padding: 7px 16px; cursor: pointer;
