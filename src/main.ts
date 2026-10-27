@@ -1,6 +1,7 @@
 import { api, HttpError } from "./api";
 import { fromFile, prepare, startCamera, stopCamera, type PreparedPhoto } from "./capture";
-import { closeSheet, showChain, showCreature, showFossil } from "./card";
+import { closeSheet, showChain, showCreature } from "./card";
+import { closeExploded, explodeFossil } from "./explode";
 import { demoElementUrls, demoEras, demoMaskUrls, loadDemo, loadDemoIndex, type Demo, type DemoIndexEntry } from "./demo";
 import { generateAll, nearestFirst, type EraStatus } from "./orchestrator";
 import { bakeDelayMap, Renderer, tintForPosition } from "./renderer";
@@ -129,6 +130,7 @@ function syncUrl(): void {
 
 $("new-place").addEventListener("click", () => {
   closeSheet();
+  closeExploded();
   history.replaceState(null, "", location.pathname);
   show("landing");
 });
@@ -225,6 +227,7 @@ void resumeFromUrl();
 async function begin(photo: PreparedPhoto, opts: { token?: string; demo?: Demo } = {}): Promise<void> {
   const gen = ++state.generation;
   closeSheet();
+  closeExploded();
   state.photo = photo;
   state.eras = new Map();
   state.token = "";
@@ -575,16 +578,35 @@ function openSubject(year: number): void {
   const chronicleEra = findEra(state.forkId, year);
   if (!chronicleEra) return;
   if (chronicleEra.driver === "biology") showCreature(chronicleEra.biomes[state.biome].fauna[0], year, state.biome);
-  else if (chronicleEra.fossil) {
+  else if (chronicleEra.fossil && era?.result?.fossilUrl) {
     const params = { forkId: state.forkId, biome: state.biome, setting: state.setting };
     // The historian may have replaced the chronicle's fossil with one that fits this place.
-    const fossil = era?.result?.fossil ?? chronicleEra.fossil;
-    showFossil(fossil, era?.result?.fossilUrl ?? null, year, async () => {
-      if (state.demo) return Promise.all(demoElementUrls(state.demo, state.forkId, year).map(loadMask));
-      const { elements } = await api.elements(state.token, year, params);
-      return Promise.all(elements.map((e) => loadMask(e.samUrl)));
+    const fossil = era.result.fossil ?? chronicleEra.fossil;
+    void explodeFossil({
+      fossil,
+      imageUrl: era.result.fossilUrl,
+      year,
+      from: subjectRect(year),
+      loadMasks: async () => {
+        if (state.demo) return Promise.all(demoElementUrls(state.demo, state.forkId, year).map(loadMask));
+        const { elements } = await api.elements(state.token, year, params);
+        return Promise.all(elements.map((e) => loadMask(e.samUrl)));
+      },
     });
   }
+}
+
+/** Where an era's tappable subject sits on screen right now (the explosion starts from there). */
+function subjectRect(year: number): { left: number; top: number; width: number; height: number } | null {
+  const mask = state.eras.get(year)?.mask;
+  const r = state.renderer;
+  if (!mask || !r) return null;
+  const b = [...mask.boxes].sort((a, c) => (c.x2 - c.x1) * (c.y2 - c.y1) - (a.x2 - a.x1) * (a.y2 - a.y1))[0];
+  if (!b) return null;
+  const rect = canvas.getBoundingClientRect();
+  const p1 = r.imageToScreen(b.x1 / mask.width, b.y1 / mask.height);
+  const p2 = r.imageToScreen((b.x2 + 1) / mask.width, (b.y2 + 1) / mask.height);
+  return { left: rect.left + p1.x, top: rect.top + p1.y, width: p2.x - p1.x, height: p2.y - p1.y };
 }
 
 hintEl.addEventListener("click", () => {

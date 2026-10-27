@@ -172,25 +172,34 @@ body.overlay .topbar, body.overlay .timebar .slider-wrap, body.overlay #hint { v
   pointer-events: auto;
 }
 
-/* ---------- exploded idea fossil ---------- */
-.explode-stage { perspective: 1100px; margin: 10px auto 0; max-width: 360px; touch-action: none; cursor: grab; }
-.explode-rig { position: relative; width: 100%; transform-style: preserve-3d; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
-.explode-layer { position: absolute; inset: 0; transform-style: preserve-3d; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
-.explode-layer canvas, .explode-base { width: 100%; height: 100%; display: block; border-radius: 4px; }
-.explode-base { position: relative; filter: saturate(0.4) brightness(0.55); box-shadow: 0 10px 30px rgba(0,0,0,.35); }
-.explode-layer canvas { filter: drop-shadow(0 8px 10px rgba(0,0,0,.35)); }
-.explode-tag {
-  position: absolute; transform: translate(-50%, -50%);
-  font-family: var(--sans); font-size: 0.72rem; font-weight: 600; letter-spacing: .02em;
-  background: var(--card-fg); color: var(--card); padding: 3px 8px; border-radius: 999px; white-space: nowrap;
-  opacity: 0; transition: opacity .6s .8s;
+/* ---------- in-scene idea fossil explosion ---------- */
+.xp { position: fixed; inset: 0; z-index: 12; }
+.xp-backdrop {
+  position: absolute; inset: 0; opacity: 0;
+  background: radial-gradient(70% 70% at 40% 50%, rgba(10, 10, 9, 0.45), rgba(10, 10, 9, 0.82));
+  backdrop-filter: blur(10px) saturate(0.6); -webkit-backdrop-filter: blur(10px) saturate(0.6);
 }
-.exploded .explode-tag { opacity: 1; }
-.explode-slogan {
-  display: flex; align-items: flex-start; justify-content: center; padding-top: 6%;
-  font-family: var(--serif); font-size: 1.35rem; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,.6); text-align: center;
+.xp-gl { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.25s; cursor: grab; touch-action: none; }
+.xp-gl:active { cursor: grabbing; }
+.xp-flyer { position: absolute; border-radius: 3px; transform-origin: center; pointer-events: none; }
+.xp-info {
+  position: absolute; color: var(--fg); opacity: 0; animation: xp-in 0.6s 0.9s forwards;
+  left: 16px; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); max-height: 38vh; overflow: auto;
 }
-.explode-help { font-family: var(--sans); font-size: .8rem; color: var(--card-muted); text-align: center; min-height: 1.2em; margin: 8px 0 0; }
+@media (min-width: 900px) { .xp-info { left: auto; right: 6vw; bottom: auto; top: 50%; transform: translateY(-50%); width: min(380px, 32vw); max-height: 80vh; } }
+@keyframes xp-in { to { opacity: 1; } }
+.xp-kicker { font: 600 0.72rem/1.4 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
+.xp-slogan-text { font: 400 clamp(1.4rem, 3vw, 2rem)/1.2 var(--serif); margin: 8px 0 14px; }
+.xp-list { list-style: none; padding: 0; margin: 0; }
+.xp-list li { padding: 9px 10px; border-radius: 10px; cursor: default; transition: background 0.25s; display: grid; gap: 2px; }
+.xp-list li b { font: 600 0.95rem var(--sans); color: var(--accent); }
+.xp-list li span { font-size: 0.86rem; color: var(--muted); }
+.xp-list li.on { background: rgba(231, 199, 106, 0.12); }
+.xp-hint { font-size: 0.75rem; color: var(--muted); margin: 10px 0 0; }
+.xp-close {
+  position: absolute; top: calc(12px + env(safe-area-inset-top)); right: 14px; width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(14, 14, 13, 0.6); border: 1px solid var(--faint); color: var(--fg); font-size: 1.5rem; cursor: pointer;
+}
 
 /* ---------- loading screen (live scenes) ---------- */
 .loading {
