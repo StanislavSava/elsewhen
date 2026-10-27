@@ -244,9 +244,12 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
       // Two checks: Muse Spark judges viewpoint, scale, photographic look and plausibility; and where buildings
       // should keep their place, SAM measures that they still overlap the photo's buildings. Every repaint is
       // checked again (an unchecked repaint let zoomed-in deep-time eras through); the best attempt is kept.
-      const keepsBuildings = ["intact", "weathered", "overgrown"].includes(era.structures);
+      // Only our own timeline keeps the photo's buildings; an alternate world's futures replace them by design.
+      const keepsBuildings = isShared(params.forkId, year) && ["intact", "weathered", "overgrown"].includes(era.structures);
       // The critic also checks an alternate world for things it can't have (cars where nothing runs on electricity).
-      const expected = era.driver === "culture" && era.world ? `${note} It must not show: ${era.world.absent.join(", ")}.` : note;
+      const chronicle = CHRONICLES[params.forkId];
+      const history = isShared(params.forkId, year) ? "" : `Alternate history: ${chronicle.title}. ${chronicle.premise} `;
+      const expected = `${history}${note}${era.driver === "culture" && era.world ? ` It must not show: ${era.world.absent.join(", ")}.` : ""}`;
       const check = async (img: string): Promise<string[]> => {
         const [verdict, overlap] = await Promise.all([
           judge(env, photo, img, eraLabel(year), expected).catch((err) => {

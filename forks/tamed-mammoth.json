@@ -99,14 +99,14 @@
       "driver": "culture",
       "structures": "predecessor",
       "caption": "1926 · wide earth boulevards for mammoth teams",
-      "visualPrompt": "Transform this scene to 1926 in a world where humans tamed the mammoth. Low 2-3 story buildings in the region's own building tradition line a very wide earth-and-gravel boulevard with mammoth lanes and feeding troughs. Heavy mammoth wagons and early electric delivery vans share the road beside haystacks and wool sheds.",
+      "visualPrompt": "Transform this scene to 1926 in a world where humans tamed the mammoth. Low two- to three-storey buildings in the region’s own building tradition line a very wide earth-and-gravel boulevard with its own lane for mammoth teams pulling wagons, beside hay meadows, wool sheds and a few early electric vans.",
       "visualPromptIndoor": "Show a 1920s-style workroom with electric ceiling bulbs, wooden desks, filing cabinets, and heavy mammoth-wool upholstery and curtains, with large low windows.",
       "world": {
         "differences": [
-          "two- to three-story brick blocks with stable yards instead of six- to ten-story steel offices and apartments (because plots reserve ground space for mammoths and feed)",
-          "very wide earth-and-gravel boulevards with separate animal lanes instead of asphalt car streets with curbside parking (because heavy freight still moves by animal teams)",
-          "buried electric cables with iron lamp posts instead of overhead wires and tall poles (because high animals and tall loads would catch overhead lines)",
-          "urban hay meadows and paddocks between districts instead of continuous housing tracts (because city mammoths are fed and rested nearby)",
+          "two- to three-storey brick blocks with stable yards instead of six- to ten-storey offices and apartments (because plots keep ground space for mammoths and hay)",
+          "very wide earth-and-gravel boulevards with a separate mammoth lane instead of asphalt streets lined with parked cars (because freight still moves by mammoth teams)",
+          "cables laid underground and iron lamp posts instead of overhead wires on tall poles (because tall animals and loads need clear headroom)",
+          "hay meadows and paddocks between districts instead of continuous housing (because city mammoths rest nearby)",
           "large painted wall signs and wool banners instead of neon signs and billboards (because streets are read from slow wagons and on foot)"
         ],
         "absent": [

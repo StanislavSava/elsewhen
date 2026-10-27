@@ -32,7 +32,9 @@ clearing so an animal can be seen, sameScale is false), photographic
 (looks like a real, unretouched photograph, not a painting, illustration or CGI render; a painted sign or poster
 inside the scene is fine), plausibleForEra (matches the era description: buildings only where it says they stood,
 no modern objects in the past, nothing the description says must not be shown; plants belong to this region and
-climate, e.g. no cacti outside the Americas, no palms in a cold climate). issues: one short sentence of concrete problems, empty if none.`;
+climate, e.g. no cacti outside the Americas, no palms in a cold climate). Judge the foreground and middle ground: ignore small details on the far horizon. When the era belongs to an
+alternate history, judge against that history, not ours (its own animals, buildings and technology are correct
+there). issues: one short sentence of concrete problems, empty if none.`;
 
 export async function judge(env: Env, photo: string, edited: string, era: string, note: string): Promise<Verdict> {
   return sparkJson<Verdict>(env.MODEL_API_KEY, {

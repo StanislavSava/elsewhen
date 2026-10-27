@@ -45,29 +45,25 @@
       "year": -2000,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "26 · Copy stalls and paved streets",
-      "visualPrompt": "Transform this scene to 26 in a world where the library of alexandria never burned. Show two-story houses in the region's own building tradition along a paved street with stone gutters, paper copy stalls, mule wagons and waterwheels at the edge.",
+      "caption": "26 CE · The Library stands; far away, little has changed yet",
+      "visualPrompt": "Transform this scene to 26 CE in a world where the Library of Alexandria never burned. Only seventy years after the change, places far from the Mediterranean look as they did in our history; around the Mediterranean, towns are a little denser, better paved and better watered.",
       "visualPromptIndoor": "Interior of a copy room with long wooden tables, stacked paper sheets, ink jars and shelves of scroll rolls lit by daylight from small windows.",
       "world": {
         "differences": [
-          "Two-story brick and stone houses in dense rows instead of single-story mud huts set apart (because masonry manuals and survey tools let builders add upper floors on small plots)",
-          "Paved stone streets with covered gutters instead of dirt lanes with open ditches (because fees from map and copy sales pay for street crews and stone drains)",
-          "Mule-drawn freight wagons on regular runs instead of hand carriers with baskets (because printed route guides and maintained roads make scheduled hauling reliable)",
-          "Open copy stalls stacked with paper sheets instead of occasional scribes with wooden boards (because the intact catalog keeps texts in circulation for sale)",
-          "Waterwheels and screw pumps at the town edge instead of hand querns and rope wells (because mechanics notes spread among millwrights and metalworkers)"
+          "around the Mediterranean only: slightly denser two-storey town houses instead of single-storey ones (because copying and trade income starts to grow towns)",
+          "around the Mediterranean only: paved main streets with covered drains instead of dirt lanes (because Alexandrian engineering manuals spread along sea routes)",
+          "around the Mediterranean only: waterwheels and screw pumps at the town edge instead of rope wells (because mechanics notes reach millwrights)",
+          "everywhere else: exactly as in our history at this date (because the change has had only seventy years to travel)"
         ],
         "absent": [
-          "thatched roofs",
-          "open cesspits",
-          "wattle fences",
-          "unlined dirt wells",
-          "wooden palisades",
-          "hand querns"
+          "steam engines",
+          "railways",
+          "printed paper",
+          "gas lamps"
         ],
         "kept": [
-          "rolling terrain and soils",
-          "seasonal sun and rainfall",
-          "courtyard houses in the region's own pattern"
+          "terrain and climate",
+          "the region’s own building tradition and way of life outside the Mediterranean"
         ]
       }
     },
