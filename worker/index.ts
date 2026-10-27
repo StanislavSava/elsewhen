@@ -245,9 +245,11 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
       // should keep their place, SAM measures that they still overlap the photo's buildings. Every repaint is
       // checked again (an unchecked repaint let zoomed-in deep-time eras through); the best attempt is kept.
       const keepsBuildings = ["intact", "weathered", "overgrown"].includes(era.structures);
+      // The critic also checks an alternate world for things it can't have (cars where nothing runs on electricity).
+      const expected = era.driver === "culture" && era.world ? `${note} It must not show: ${era.world.absent.join(", ")}.` : note;
       const check = async (img: string): Promise<string[]> => {
         const [verdict, overlap] = await Promise.all([
-          judge(env, photo, img, eraLabel(year), note).catch((err) => {
+          judge(env, photo, img, eraLabel(year), expected).catch((err) => {
             console.error(`judge ${prefix}:`, String(err).slice(0, 300));
             return null;
           }),

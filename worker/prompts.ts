@@ -1,6 +1,6 @@
 // Every prompt is built here, server-side, from the committed chronicles and the historian's notes for this
 // place. The client never sends prompt text.
-import type { Biome, ChronicleEra, Setting, StructureState } from "../src/shared/eras";
+import type { Biome, ChronicleEra, Setting, StructureState, World } from "../src/shared/eras";
 
 /** What happens to the human-made parts of the scene. Never "same footprints" for the past: most places had none. */
 const STRUCTURES: Record<StructureState, Record<Setting, string>> = {
@@ -60,6 +60,11 @@ const REGIONAL =
 const WILDLIFE_SCALE =
   "Any animal appears at its true size for its distance from this camera, even if small; never move the camera closer to show it.";
 
+/** An alternate era is painted as a set of consequences, relative to what the photo shows of our world. */
+export function worldClause(w: World): string {
+  return `What is different from our world: ${w.differences.join("; ")}. Keep what this history would not change: ${w.kept.join("; ")}. None of these exist here: ${w.absent.join(", ")}.`;
+}
+
 export function eraPrompt(era: ChronicleEra, biome: Biome, setting: Setting, note: string, fixes = ""): string {
   const theme =
     era.driver === "biology"
@@ -68,13 +73,14 @@ export function eraPrompt(era: ChronicleEra, biome: Biome, setting: Setting, not
         ? era.visualPromptIndoor
         : era.visualPrompt;
   const here = note ? ` At this exact place in this era: ${note}` : "";
+  const world = era.driver === "culture" && era.world ? ` ${worldClause(era.world)}` : "";
   const regional = era.driver === "culture" ? ` ${REGIONAL}` : ` ${WILDLIFE_SCALE}`;
   const fix = fixes ? ` A previous attempt had these problems, avoid them: ${fixes}` : "";
-  return `${theme}${here}${regional} ${STRUCTURES[era.structures][setting]} ${CAMERA_LOCK} ${PHOTOREAL}${fix}`;
+  return `${theme}${world}${here}${regional} ${STRUCTURES[era.structures][setting]} ${CAMERA_LOCK} ${PHOTOREAL}${fix}`;
 }
 
 /** Bump when how an era is painted or checked changes (not just its prompt), so old results aren't served. */
-const PIPELINE_VERSION = 4; // 2: critic + SAM building overlap; 3: no idea fossils, cell labels; 4: repaints re-checked
+const PIPELINE_VERSION = 5; // 2: critic + SAM building overlap; 3: no idea fossils, cell labels; 4: repaints re-checked; 5: alternate worlds as consequences
 
 /** Short hash of everything that shapes an era's image, so editing a chronicle regenerates only what changed. */
 export async function promptVersion(era: ChronicleEra, biome: Biome, setting: Setting, note: string): Promise<string> {

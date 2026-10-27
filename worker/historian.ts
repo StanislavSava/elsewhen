@@ -8,7 +8,7 @@ import { LOCK_TTL_SECONDS, type Env } from "./config";
 import { sparkJson } from "./meta/client";
 
 /** Bump when the historian's instructions change, so scenes get fresh notes instead of stale ones. */
-const NOTES_VERSION = 4; // 3–4: one continuous story (beginnings before buildings, remains after), photo cells
+const NOTES_VERSION = 5; // 3–4: one continuous story, photo cells; 5: forks reasoned item by item
 const notesKey = (sceneId: string, forkId: string) =>
   `scenes/${sceneId}/${forkId === DEFAULT_FORK ? "base" : forkId}/notes.v${NOTES_VERSION}.json`;
 
@@ -77,12 +77,17 @@ async function write(env: Env, forkId: string, photo: string): Promise<Notes> {
   const lines = years.map((y) => {
     const era = findEra(forkId, y)!;
     const theme = era.driver === "biology" ? `deep time, no people; ${DEEP_TIME[era.structures] ?? "keep the terrain"}` : era.caption;
-    return `- year ${y}: ${eraLabel(y)}; theme: ${theme}`;
+    const world =
+      era.driver === "culture" && era.world
+        ? `; differs from our world: ${era.world.differences.join("; ")}; does not exist: ${era.world.absent.join(", ")}`
+        : "";
+    return `- year ${y}: ${eraLabel(y)}; theme: ${theme}${world}`;
   });
   const fork =
     forkId === DEFAULT_FORK
       ? "This is our real history."
-      : `This is an ALTERNATE history: "${chronicle.title}". ${chronicle.premise} Everything before ${chronicle.divergenceYear} happened as in our history. Show how this world's ideas would plausibly show up at THIS place (which may be remote from where the change began); if no settlement would plausibly stand here, say so.`;
+      : `This is an ALTERNATE history: "${chronicle.title}". ${chronicle.premise} Everything before ${chronicle.divergenceYear} happened as in our history. How it got here: ${chronicle.chain.map((e) => `${e.year}: ${e.event} ${e.consequence}`).join(" ")}
+Reason like a historian about THIS place, which may be far from where the change began. For each era, go through what the photo shows (the buildings and their height and density, the street, vehicles, wires, lights, shopfronts, greenery) and say concretely what this history changes here and why, and what it leaves alone. Would this place be bigger, smaller, poorer, richer, or not there at all? The differences listed per era are the world's; apply the ones that would reach this place.`;
   const [r, cells] = await Promise.all([
     sparkJson<{ place: string; eras: { year: number; here: string }[] }>(env.MODEL_API_KEY, {
       system: SYSTEM,

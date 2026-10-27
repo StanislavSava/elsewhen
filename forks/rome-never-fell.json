@@ -1,0 +1,192 @@
+{
+  "forkId": "rome-never-fell",
+  "title": "The Roman Empire never fell",
+  "divergenceYear": 476,
+  "premise": "In 476 the Western Roman Empire keeps its tax base, paid legions and single administration from Britain to Mesopotamia. Latin law, coinage, paved roads, aqueducts and concrete building continue without break, so Europe never splits into small feudal kingdoms.",
+  "chain": [
+    {
+      "year": 476,
+      "event": "The imperial court keeps the Gallic and Illyrian tax registers and pays standing field armies in gold coin through the winter.",
+      "consequence": "Frontier garrisons stay at full strength on the Rhine and Danube, rival claimants find no unpaid troops to back them, and one law, coinage and administration remain in force."
+    },
+    {
+      "year": 565,
+      "event": "Imperial surveyors renew the cadastre from Hispania to Syria and link land tax to permanent funds for roads, bridges and aqueducts.",
+      "consequence": "Town councils keep paid masons and engineers, grain moves by paved highway and sea in large volume, and urban population stays dense near ports and administrative centers."
+    },
+    {
+      "year": 860,
+      "event": "Large estates on heavy soils adopt the mouldboard plough and three-field rotation under written leases recorded by municipal clerks.",
+      "consequence": "Crop yields rise in Gaul, Germania and Britain, surplus feeds bigger market towns, and demand grows for masonry housing, tiled market halls and paved farm roads."
+    },
+    {
+      "year": 1280,
+      "event": "Water-powered paper mills and clear cylinder glass spread from the eastern provinces to municipal schools across the empire.",
+      "consequence": "Cheap paper and uniform Latin primers lift literacy, printing presses copy law codes, calendars and engineering manuals, and technical knowledge accumulates in every large town."
+    },
+    {
+      "year": 1690,
+      "event": "Coal pits in Britain and Germania feed brick kilns and glassworks served by stone-railed wagonways built along old military highways.",
+      "consequence": "Steam pumps drain mines and then drive mills and river boats, iron becomes cheap, and taller framed warehouses, covered markets and tenement blocks rise near junctions and ports."
+    },
+    {
+      "year": 1910,
+      "event": "Alpine and Anatolian dams supply hydroelectric power carried on copper wire strung along the highway corridors, and cities create municipal power companies.",
+      "consequence": "Electric trams, street lighting and factory motors spread to provincial capitals, engineering schools standardize concrete and steel practice, and dense transit-served districts grow around stations and ports by 2026."
+    }
+  ],
+  "eras": [
+    {
+      "year": -500,
+      "driver": "culture",
+      "structures": "predecessor",
+      "caption": "1526 · Dense tenements on paved streets",
+      "visualPrompt": "Transform this scene to 1526 in a world where the roman empire never fell. Show dense three-storey blocks in the region's own building tradition along a straight paved street with drains and public fountains, filled with mule wagons and Latin shop tablets.",
+      "visualPromptIndoor": "A ground-floor eating room with plastered walls, small glazed windows and hanging oil lamps, set with long wooden tables and large storage jars in the region's own building tradition.",
+      "world": {
+        "differences": [
+          "Three- to four-storey masonry apartment blocks instead of scattered one-storey timber houses (because continuous municipal building codes and concrete construction keep towns dense)",
+          "Straight stone-paved streets with side drains and milestones instead of muddy lanes (because land-tax funds pay permanent road crews)",
+          "Mule-drawn railed wagons and paved-highway relay coaches instead of pack trails and foot travel (because the maintained highway grid supports wheeled freight)",
+          "Arched aqueduct channels and public street fountains instead of shallow wells and wooden pipes (because imperial water engineers remain on municipal payrolls)",
+          "Painted Latin shop tablets and uniform market halls instead of irregular stalls and oral bargains (because standard law and coinage sustain long-distance retail)"
+        ],
+        "absent": [
+          "feudal castles",
+          "thatched cottages",
+          "open cesspools",
+          "wooden town palisades",
+          "unpaved market squares",
+          "straw stable yards"
+        ],
+        "kept": [
+          "hills, rivers and coastline",
+          "native trees and field crops",
+          "the region's traditional roof pitches and courtyard layouts"
+        ]
+      }
+    },
+    {
+      "year": -100,
+      "driver": "culture",
+      "structures": "predecessor",
+      "caption": "1926 · Tram streets and masonry blocks",
+      "visualPrompt": "Transform this scene to 1926 in a world where the roman empire never fell. Show five-storey blocks in the region's own building tradition along a straight tram street with poles and wires, crowded with shared coaches and Latin signs.",
+      "visualPromptIndoor": "A municipal schoolroom with high plastered walls, tall glazed windows and ceiling electric lamps, rows of wooden desks with paper books and wall maps.",
+      "world": {
+        "differences": [
+          "Five- to six-storey perimeter apartment blocks instead of detached suburbs and isolated towers (because municipal land law and tram access keep central districts dense)",
+          "Twin-track electric trams and paved-highway steam coaches instead of private motor cars (because public highway funds favor shared vehicles on fixed routes)",
+          "Stone and concrete market halls with arcaded fronts instead of steel-and-glass department stores (because guild codes favor masonry commercial streets)",
+          "Copper wire on highway poles and aqueduct power channels instead of scattered coal chimneys (because municipal power follows the old road corridors)",
+          "Irrigated market gardens and tree-lined villa plots at the city edge instead of sprawling allotments and rail yards (because survey grids reserve farmland near aqueduct lines)"
+        ],
+        "absent": [
+          "private motor cars",
+          "glass office towers",
+          "overhead billboards",
+          "petrol stations",
+          "detached suburbs",
+          "neon signs"
+        ],
+        "kept": [
+          "hills, rivers and sea coasts",
+          "native street trees and parks",
+          "the region's traditional window shapes and courtyard plans"
+        ]
+      }
+    },
+    {
+      "year": 0,
+      "driver": "culture",
+      "structures": "alternate",
+      "caption": "2026 · Compact blocks with tram plazas",
+      "visualPrompt": "Transform this scene to 2026 in a world where the roman empire never fell. Show compact mid-rise blocks in the region's own building tradition around a paved plaza with fountains and tram lines, with planted balconies and small Latin signs.",
+      "visualPromptIndoor": "A bright apartment living room in the region's own building tradition with tall shuttered windows, wooden furniture, potted plants and shelf rows of paper books.",
+      "world": {
+        "differences": [
+          "Six- to eight-storey mixed-use perimeter blocks instead of isolated glass towers and single-family suburbs (because continuous city codes and transit funding keep centers compact)",
+          "Dense electric tram and regional rail lines instead of multi-lane car roads (because highway investment stays tied to shared public vehicles)",
+          "Stone-paved plazas with fountains and shaded colonnades instead of asphalt parking lots (because water and street law prioritize pedestrians and market space)",
+          "Rooftop gardens and courtyard orchards instead of flat tar roofs (because municipal codes grant tax relief for planted surfaces)",
+          "Uniform Latin lettering on stone tablets and enamel plaques instead of illuminated corporate billboards (because signage law limits size and light)"
+        ],
+        "absent": [
+          "private cars",
+          "glass office towers",
+          "high-voltage pylons",
+          "petrol stations",
+          "motorway interchanges",
+          "plastic billboards",
+          "surface parking lots"
+        ],
+        "kept": [
+          "terrain and climate",
+          "native trees and garden plants",
+          "the region's traditional facade rhythms and roof forms"
+        ]
+      }
+    },
+    {
+      "year": 100,
+      "driver": "culture",
+      "structures": "alternate",
+      "caption": "2126 · Terraced garden blocks on rail streets",
+      "visualPrompt": "Transform this scene to 2126 in a world where the roman empire never fell. Show terraced garden blocks in the region's own building tradition along a tree-lined rail street with fountains and Latin signs at street level.",
+      "visualPromptIndoor": "A high communal library hall in the region's own building tradition with tall windows, wooden shelves full of paper and digital readers, and readers at long tables under soft electric light.",
+      "world": {
+        "differences": [
+          "Eight- to ten-storey garden blocks with setback terraces instead of supertall isolated towers (because height limits and sunlight law keep streets bright and dense)",
+          "Silent rail coaches and trams instead of car highways (because movement stays on guided public rail)",
+          "Covered aqueduct power channels and buried cable ducts instead of overhead pylons (because power law keeps wires below ground along highways)",
+          "Paved streets with mist fountains and continuous tree rows instead of asphalt arterials (because municipal water grids cool dense districts)",
+          "Large communal laundries, baths and libraries on ground floors instead of private basements and garages (because block codes require shared services)"
+        ],
+        "absent": [
+          "supertall skyscrapers",
+          "private cars",
+          "motorways",
+          "high-voltage pylons",
+          "petrol stations",
+          "surface parking lots"
+        ],
+        "kept": [
+          "terrain, rivers and climate",
+          "mature native trees",
+          "the region's traditional courtyard layouts and facade rhythms"
+        ]
+      }
+    },
+    {
+      "year": 1000,
+      "driver": "culture",
+      "structures": "overgrown",
+      "caption": "3026 · Garden blocks under mature trees",
+      "visualPrompt": "Transform this scene to 3026 in a world where the roman empire never fell. Show loved garden blocks in the region's own building tradition softened by mature trees, roof orchards and ponds, with narrow rail paths and fountains kept clear and bright.",
+      "visualPromptIndoor": "A sunlit plant-filled atrium living room in the region's own building tradition with vine-framed windows, wooden seats, clay pots of herbs and a small trickling fountain.",
+      "world": {
+        "differences": [
+          "Six- to nine-storey cared-for garden blocks with deep planted terraces instead of isolated glass towers and open car parks (because long-term block trusts fund planting and repair)",
+          "Narrow rail paths and walking lanes shaded by mature trees instead of wide car roads (because movement uses light rail and footpaths under tree cover)",
+          "Open aqueduct channels with fish ponds and reed beds instead of piped drains and culverts (because water law keeps channels open and planted)",
+          "Roof orchards, vine frames and beehives instead of bare mechanical roofs (because food and shade codes pay residents to tend roof soil)",
+          "Hand-cut stone benches and small Latin milestones instead of metal guardrails and traffic lights (because street furniture follows durable low-energy patterns)"
+        ],
+        "absent": [
+          "private cars",
+          "motorways",
+          "glass skyscrapers",
+          "high-voltage pylons",
+          "petrol stations",
+          "plastic signage",
+          "surface car parks"
+        ],
+        "kept": [
+          "hills, rivers and climate",
+          "native forests and garden trees",
+          "the region's traditional building forms and courtyard patterns"
+        ]
+      }
+    }
+  ]
+}

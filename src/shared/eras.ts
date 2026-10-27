@@ -84,6 +84,20 @@ const BiologyVariant = z.object({
 });
 export type BiologyVariant = z.infer<typeof BiologyVariant>;
 
+/**
+ * How an alternate history's era differs from ours at the same date, as things a camera would see. This is what
+ * makes a history change the place credibly, instead of dressing it up in themed buildings.
+ */
+const World = z.object({
+  /** "X instead of Y (because …)": 4–6 concrete physical differences. */
+  differences: z.array(z.string()).min(3),
+  /** Things our world has at this date that this one doesn't, and that must not appear. */
+  absent: z.array(z.string()),
+  /** What this history leaves as it is in ours (keeps the edit anchored to the photo). */
+  kept: z.array(z.string()),
+});
+export type World = z.infer<typeof World>;
+
 const CultureEra = z.object({
   year: z.number(),
   driver: z.literal("culture"),
@@ -91,6 +105,7 @@ const CultureEra = z.object({
   caption: z.string().max(70),
   visualPrompt: z.string(),
   visualPromptIndoor: z.string().optional(),
+  world: World.optional(),
 });
 
 const BiologyEra = z.object({

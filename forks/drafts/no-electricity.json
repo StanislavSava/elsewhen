@@ -2,37 +2,37 @@
   "forkId": "no-electricity",
   "title": "Electricity was never harnessed",
   "divergenceYear": 1831,
-  "premise": "In 1831 Faraday's induction coils stay stubbornly silent, and the learned world files electricity away as a parlor trick. Civilization strides forward instead on gleaming steam, hissing compressed air, and mellow gaslight. It is a slower, polished world of brass valves, glass-roofed tube stations, ticking calculators, and long luminous evenings.",
+  "premise": "In 1831 induction experiments fail to give a steady current and no practical generator is ever found. The world keeps industrializing on coal, steam, town gas, hydraulic and compressed-air mains, and clockwork. Cities stay low, mechanical and pipe-bound, with diesel and steam doing what motors and wires do in ours.",
   "chain": [
     {
       "year": 1831,
-      "event": "Faraday's induction trials produce no usable current and are set aside as a curiosity.",
-      "consequence": "Investors and workshops redirect effort toward better steam engines, gas chemistry, and precision clockwork."
+      "event": "Michael Faraday's induction trials yield only faint, unsteady twitches and are set aside as a curiosity.",
+      "consequence": "Workshop investment and scientific interest shift to boilers, gas chemistry and thermodynamics, and no generator or electric motor enters industry."
     },
     {
       "year": 1854,
-      "event": "Engineers perfect city-wide high-pressure air mains with standard brass valves.",
-      "consequence": "Factories run quiet air motors, and streets are laid with humming power pipes beside gas lines."
+      "event": "Trials of wire telegraphs without workable current are dropped, and administrations extend hilltop optical semaphore lines while cities lay iron pneumatic message tubes.",
+      "consequence": "Long-distance news travels by relayed visual signals and city messages travel as paper capsules in air pipes, keeping offices clustered near tube stations and signal towers."
     },
     {
-      "year": 1879,
-      "event": "The bright gas mantle and long-distance pneumatic tube post prove reliable at scale.",
-      "consequence": "Evening streets glow softly, and messages and small parcels glide beneath avenues, linking neighborhoods."
+      "year": 1885,
+      "event": "The incandescent gas mantle is perfected for street and interior lamps.",
+      "consequence": "Municipal gasworks expand coal-gas mains to whole districts, and bright gas lighting keeps shops, workshops and streets active after dark without any wiring."
     },
     {
-      "year": 1907,
-      "event": "Compact gear calculators and punch-card tabulators become affordable for shops and schools.",
-      "consequence": "Clerks, navigators, and teachers compute timetables and harvests mechanically, spreading skill with numbers."
+      "year": 1908,
+      "event": "Spark-ignition petrol engines prove unreliable without an electric spark, while compression-ignition diesel engines and improved steam traction engines succeed.",
+      "consequence": "Road haulage and farm work standardize on heavy diesel lorries with air starters and on coal-fired steam tractors, with fuel yards, water towers and repair forges along every main road."
     },
     {
-      "year": 1952,
-      "event": "Hilltop wind arrays and river waterworks drive great air compressors and heat stores.",
-      "consequence": "Steam and compressed-air networks run on wind and water flow, steadying prices and honoring careful upkeep crafts."
+      "year": 1935,
+      "event": "Compressed-air mains and hydraulic power mains are copied in large ports and manufacturing towns.",
+      "consequence": "Central pumping stations send high-pressure air and water through street pipes to run lifts, machine tools and shop hoists, keeping factories small, low and close to the mains."
     },
     {
-      "year": 2011,
-      "event": "The League of the Steady Lamp promotes shared lamplight hours and slow evening gatherings.",
-      "consequence": "By 2026 cities prize calm lamplit plazas, public workshops, and lifelong training in air and clockwork crafts."
+      "year": 1983,
+      "event": "Mechanical information systems reach maturity with high-speed punched-card tabulators, clockwork calculators and long-distance copy by pneumatic post and optical relay.",
+      "consequence": "Banks, railways and administrations occupy broad low buildings filled with clerks and steel calculating machines, circulating printed bulletins and timetables instead of instant electronic signals."
     }
   ],
   "eras": [
@@ -40,29 +40,29 @@
       "year": -100,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "1926 · Brass Pipes and Lamplight",
-      "visualPrompt": "Transform this scene to 1926. The buildings on the same footprints house early steam workshops, pipe depots and gas-fitting halls in the region's own building tradition, with polished brass gauges, glass awnings and rows of warm street lamps. Pneumatic message posts and ticking shop clocks line the calm pavement under a soft evening glow.",
-      "visualPromptIndoor": "A snug workshop interior with gear calculators on long counters, glowing gas wall lamps and neatly racked brass tools for quiet evening study.",
-      "fossil": {
-        "medium": "poster",
-        "brief": "Front-facing painted poster showing a tall glowing street lamp in the center, a coiled brass air pipe along the bottom, school children watching a gear calculator on the right, and a ring of small stars around the top edge. No letters, no words, no text of any kind.",
-        "slogan": "Keep Every Lamp Lit Together",
-        "elements": [
-          {
-            "name": "street lamp",
-            "technique": "warmth appeal",
-            "explanation": "A warm glowing light makes the new street feel cozy and safe to join."
-          },
-          {
-            "name": "air pipe",
-            "technique": "practical wonder",
-            "explanation": "Visible pipes and gears show the system as practical and easy to trust."
-          },
-          {
-            "name": "children",
-            "technique": "social proof",
-            "explanation": "Watching children suggests everyone already learns and belongs in this future."
-          }
+      "caption": "1926 · Gas lamps and steam carts",
+      "visualPrompt": "Transform this scene to 1926 in a world where electricity was never harnessed. Show low blocks in the region's own building tradition with chimneys and gas lamps, horse carts and a steam traction engine filling the street.",
+      "visualPromptIndoor": "Interior of an office lit by wall gas mantles, with wooden desks, brass clockwork calculators and a pneumatic capsule station.",
+      "world": {
+        "differences": [
+          "Four- to six-storey masonry blocks instead of taller steel towers (because hydraulic and steam lifts and daylight limit practical height)",
+          "Horse teams, bicycles and hissing steam traction engines on the street instead of petrol cars and electric trams (because spark ignition and electric motors never arrived)",
+          "Tall cast-iron gas lamps and wall-mounted gas pipes instead of electric streetlights (because coal-gas mains with incandescent mantles light streets and shopfronts)",
+          "Rooftop semaphore posts and street pneumatic tube stations instead of telephone wires and radio masts (because messages travel as paper capsules and visual signals)",
+          "Chimneys, coal yards and low boiler houses on every block instead of hidden substations (because heat and workshop power come from local coal and steam mains)"
+        ],
+        "absent": [
+          "electric streetlights",
+          "overhead power lines",
+          "electric trams",
+          "petrol automobiles",
+          "neon signs",
+          "radio antennas"
+        ],
+        "kept": [
+          "hills, rivers and soils",
+          "trees and field patterns around towns",
+          "the region's own building tradition in masonry and timber"
         ]
       }
     },
@@ -70,29 +70,30 @@
       "year": 0,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2026 · Luminous Pneumatic City",
-      "visualPrompt": "Transform this scene to 2026. The buildings on the same footprints serve as air-power halls, calculator ateliers and glass-roofed exchange rooms in the region's own building tradition, with brass tubing, glowing gas lanterns and rooftop wind wheels. Pneumatic kiosks and gentle lamplit plazas keep the street calm and welcoming.",
-      "visualPromptIndoor": "A bright public reading room with long tables of hand-crank calculators, soft gas ceiling globes and wall charts for shared learning.",
-      "fossil": {
-        "medium": "billboard",
-        "brief": "Front-facing large billboard illustration showing a grand lamplit plaza at dusk, a network of brass tubes arching overhead, families sharing tables beneath gas globes, and a border of small wind wheels. No letters, no words, no text of any kind.",
-        "slogan": "Wind, Steam, Light for All",
-        "elements": [
-          {
-            "name": "plaza",
-            "technique": "belonging appeal",
-            "explanation": "A lively shared square invites viewers to imagine themselves meeting there."
-          },
-          {
-            "name": "families",
-            "technique": "social proof",
-            "explanation": "Relaxed groups signal that this calm evening life is already loved by many."
-          },
-          {
-            "name": "wind wheels",
-            "technique": "association",
-            "explanation": "Small wheels overhead link clean wind to light in one clear visual promise."
-          }
+      "caption": "2026 · Low steam city under gaslight",
+      "visualPrompt": "Transform this scene to 2026 in a world where electricity was never harnessed. Show a dense low city in the region's own building tradition with facade steam pipes and gas lanterns, diesel lorries and steam rail in the street and no wires overhead.",
+      "visualPromptIndoor": "Interior of a bank hall lit by gas mantles and skylights, with rows of steel punched-card machines, paper ledgers and capsule tubes tended by clerks.",
+      "world": {
+        "differences": [
+          "Dense five-storey masonry quarters instead of glass high-rises (because hydraulic lifts, gas light and daylight keep buildings low and tightly packed)",
+          "Steam rail lines, diesel lorries and pedal cycles with airship masts overhead instead of motorways full of electronic cars (because heavy steam and compression-ignition engines power all movement)",
+          "Round gas lanterns and district steam pipes on facades instead of LED streetlights and buried electric cables (because coal-gas and piped heat serve every street)",
+          "Painted shop boards and gas-lit display windows instead of glowing screens and billboards (because steam printing presses and gaslight carry news and advertising)",
+          "Rooftop greenhouses, coal bunkers and water tanks instead of air-conditioning units and solar panels (because fuel storage and food growing sit on roofs above workshops)"
+        ],
+        "absent": [
+          "overhead power lines and pylons",
+          "glass office towers",
+          "electric traffic lights",
+          "neon and LED signs",
+          "radio masts and satellite dishes",
+          "solar panels and wind turbines",
+          "screens and smartphones"
+        ],
+        "kept": [
+          "terrain and climate",
+          "street trees and parks",
+          "the region's own building tradition in masonry and timber"
         ]
       }
     },
@@ -100,29 +101,29 @@
       "year": 100,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2126 · Gardens of Air and Light",
-      "visualPrompt": "Transform this scene to 2126. The buildings on the same footprints have become serene air libraries, harmony workshops and winter-garden waiting halls in the region's own building tradition, with glass domes, quiet rooftop sails and warm lantern rows. Gentle compressed-air trams glide past tended planters under clear golden light.",
-      "visualPromptIndoor": "A tranquil hall with softly glowing wall panels, polished hand-crank archives and leafy window bays for quiet conversation.",
-      "fossil": {
-        "medium": "panel",
-        "brief": "Front-facing softly glowing illuminated panel showing a serene domed library interior, a mother showing a small wind sail to a child, and drifting seed heads floating above a calm reflecting pool. No letters, no words, no text of any kind.",
-        "slogan": "Tend the Flow, Share Light",
-        "elements": [
-          {
-            "name": "library",
-            "technique": "sanctuary appeal",
-            "explanation": "A peaceful hall of books frames learning as quiet and welcoming for all."
-          },
-          {
-            "name": "mother",
-            "technique": "nurture appeal",
-            "explanation": "A caring gesture passes skill gently from one generation to the next."
-          },
-          {
-            "name": "child",
-            "technique": "promise of continuity",
-            "explanation": "A young learner invites hope that the craft will continue with care."
-          }
+      "caption": "2126 · Pipe-bound city with air trams",
+      "visualPrompt": "Transform this scene to 2126 in a world where electricity was never harnessed. Show broad low quarters in the region's own building tradition with rooftop gardens and water tanks, served by steam tramways and compressed-air road engines.",
+      "visualPromptIndoor": "Interior of a municipal tabulating hall under skylights and gas light, with towering clockwork calculators, card sorters and pneumatic post walls.",
+      "world": {
+        "differences": [
+          "Broad six-storey courtyard blocks around rail yards instead of high-rise tower districts (because hydraulic lifts and daylight limit height while rail lines pull steady growth outward)",
+          "Steam tramways and compressed-air delivery vans instead of electric metros and electronic cars (because street pipes and coal depots power all public movement)",
+          "Rows of gas lanterns and insulated heat mains on brackets instead of electric lighting columns and cable ducts (because town gas and central boilers heat and light whole streets)",
+          "Painted enamel timetables and printed bulletin kiosks instead of digital displays (because punched-card presses and optical relays circulate information on paper)",
+          "Market gardens, orchards and coal-oil yards at the city edge instead of logistics parks for container trucks (because steam tractors and horse teams work nearby fields for food and fuel)"
+        ],
+        "absent": [
+          "overhead power lines",
+          "glass and steel skyscrapers",
+          "electric cars and traffic lights",
+          "glowing billboards and screens",
+          "radio towers and satellite dishes",
+          "airliners and solar farms"
+        ],
+        "kept": [
+          "terrain, rivers and climate",
+          "mature street trees and hedgerows",
+          "the region's own building tradition in masonry and timber"
         ]
       }
     },
@@ -130,9 +131,31 @@
       "year": 1000,
       "driver": "culture",
       "structures": "overgrown",
-      "caption": "3026 · Green Halls in Bloom",
-      "visualPrompt": "Transform this scene to 3026. The buildings on the same footprints continue as loved air halls and glass reading rooms in the region's own building tradition, now embraced by tall trees, flowering vines and soft mossy planters. Sunlight filters through leaves onto brass rails and quiet pools while songbirds rest above the calm paths.",
-      "visualPromptIndoor": "A peaceful sunlit interior where leafy branches shade polished tables, rainwater channels murmur beside brass instruments, and open skylights welcome soft daylight."
+      "caption": "3026 · Garden city of steam and trees",
+      "visualPrompt": "Transform this scene to 3026 in a world where electricity was never harnessed. Show loved low buildings in the region's own building tradition wrapped in rooftop gardens and street trees, with quiet steam rails and gas lamps beneath green canopies.",
+      "visualPromptIndoor": "Interior of a sunlit reading room with vines at the windows, heated by tiled stoves and lit by gas mantles, with brass instruments, paper archives and wooden furniture.",
+      "world": {
+        "differences": [
+          "Low tended masonry quarters draped in gardens instead of tall glass districts (because hydraulic care and daylight keep buildings low while planting cools rooms)",
+          "Tree-lined steam rail paths and cycle ways instead of multi-lane motor roads (because slow steam and muscle power move people between garden districts)",
+          "Mossed gas lanterns and vine-covered heat mains instead of electric lighting grids (because town gas and piped hot water still heat and light tended streets)",
+          "Canal basins, orchards and timber fuel yards between blocks instead of parking structures (because barges, horses and steam haulers bring coal, timber and food)",
+          "Rooftop orchards, ponds and glasshouses instead of rooftop machinery (because each block grows food and stores rainwater above clockwork workshops)"
+        ],
+        "absent": [
+          "overhead power lines and pylons",
+          "glass towers",
+          "electric traffic lights",
+          "glowing signs and screens",
+          "radio masts and satellite dishes",
+          "solar panels and wind turbines"
+        ],
+        "kept": [
+          "terrain, soils and climate",
+          "mature trees and garden plants",
+          "the region's own building tradition in masonry and timber"
+        ]
+      }
     }
   ]
 }

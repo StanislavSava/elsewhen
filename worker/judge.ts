@@ -31,7 +31,7 @@ taken from closer, lower or with a longer lens, e.g. a high view over a city tha
 clearing so an animal can be seen, sameScale is false), photographic
 (looks like a real, unretouched photograph, not a painting, illustration or CGI render; a painted sign or poster
 inside the scene is fine), plausibleForEra (matches the era description: buildings only where it says they stood,
-no modern objects in the past). issues: one short sentence of concrete problems, empty if none.`;
+no modern objects in the past, nothing the description says must not be shown). issues: one short sentence of concrete problems, empty if none.`;
 
 export async function judge(env: Env, photo: string, edited: string, era: string, note: string): Promise<Verdict> {
   return sparkJson<Verdict>(env.MODEL_API_KEY, {

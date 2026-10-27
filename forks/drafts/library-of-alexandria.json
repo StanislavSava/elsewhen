@@ -2,37 +2,42 @@
   "forkId": "library-of-alexandria",
   "title": "The Library of Alexandria never burned",
   "divergenceYear": -48,
-  "premise": "In 48 BCE the harbor fire is quenched before it reaches the scroll stacks, and the Library of Alexandria endures. Its copyists and mechanists keep measuring, testing and trading knowledge across continents for two thousand years. The result is a luminous Hellenistic modernity of marble, brass and steam, where geometry lights every street.",
+  "premise": "In 48 BCE the harbor fire in Alexandria is stopped before it reaches the book stores. The Library keeps its catalogs, workshops and copy trade. Learning stays linked to crafts and trade, so steam, rail and electric systems appear centuries early.",
   "chain": [
     {
       "year": -48,
-      "event": "Harbor workers and scholars douse the dockside fire and cut a soaked linen firebreak before it reaches the scroll stores.",
-      "consequence": "The Great Library keeps its collections and strengthens its custom of copying every arriving manuscript."
+      "event": "A fire starting among harbor store sheds in Alexandria is stopped by harbor workers with water buckets and cleared sheds before it reaches the book stores.",
+      "consequence": "The rolls, catalogs and copying rooms stay in use, and duplicate copies continue to be sold and shipped to other ports."
     },
     {
-      "year": 130,
-      "event": "Librarians endow the Hall of Mechanisms for daily trials of steam pressure, lenses and healing herbs recorded on standard diagrams.",
-      "consequence": "Craft knowledge becomes cumulative because any workshop can copy tested drawings."
+      "year": 210,
+      "event": "Copy workshops in Alexandria and other eastern Mediterranean ports sell standardized star tables, maps and mechanical calendars made with water-powered lathes and screw presses.",
+      "consequence": "Shipowners and surveyors buy them in volume, creating steady income for instrument makers and schools that train measurers and copyists."
     },
     {
-      "year": 532,
-      "event": "The Scriptorium Compact funds traveling copy schools that reproduce technical scrolls in clear pictures across three harbors.",
-      "consequence": "Mechanical and medical learning stays shared and mutually intelligible for centuries."
+      "year": 730,
+      "event": "Improved bellows furnaces and expanded charcoal and coal shipments allow workshops in Egypt and the Levant to cast thicker iron cylinders and boilers.",
+      "consequence": "Piston pumps and small coal-fed steam pumps come into regular use to drain mines and lift water for mills and gardens."
     },
     {
-      "year": 1084,
-      "event": "Alexandrian mapmakers complete the Harmonious Atlas of currents, stars and winds for open use by all navigators.",
-      "consequence": "Calm exchange of seeds, glassware and instruments spreads observation and measurement widely."
+      "year": 960,
+      "event": "Millwrights combine iron boilers with piston, crank and flywheel to build low-pressure stationary steam engines for flour mills, oil presses and textile shops.",
+      "consequence": "Mill districts expand and bulk flour, oil, cloth and paper become cheaper, supporting larger towns and wider trade in grain and coal."
     },
     {
-      "year": 1725,
-      "event": "City councils adopt the Daylight Ordinance favoring white porticoes, mirrored lenses, quiet steam trams and public gardens.",
-      "consequence": "Daily life centers on libraries, workshops and shaded promenades built in classical style."
+      "year": 1185,
+      "event": "Mine rail lines with iron rails are extended between coal pits, ports and cities with steam locomotives, while distilled coal gas is piped to street lamps and workshops.",
+      "consequence": "Freight costs fall sharply, suburbs grow around stations, and evening work and travel become common in large cities."
     },
     {
-      "year": 1952,
-      "event": "The Lyceum Concord opens free neighborhood lyceums teaching geometry, healing and engine care to all children.",
-      "consequence": "A curious and literate citizenry carries luminous Hellenistic cities confidently into 2026."
+      "year": 1365,
+      "event": "Fine wire drawing, acid and glass trades allow production of dynamos, batteries and incandescent lamps funded by railway and shipping profits.",
+      "consequence": "Electric streetcars, wired telegraph and telephone exchanges, and factory lighting spread, raising urban density and office work."
+    },
+    {
+      "year": 1890,
+      "event": "Experimenters using vacuum tubes and calculation engines build long-distance radio and early programmable calculating machines for rail, bank and weather offices.",
+      "consequence": "Automated control spreads to power grids and factories, allowing taller buildings with lifts, air handling and electric transit by the early 1900s."
     }
   ],
   "eras": [
@@ -40,29 +45,29 @@
       "year": -2000,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "26 CE · Scrolls in Sunlight",
-      "visualPrompt": "Transform this scene to 26 CE. Low limestone halls with timber colonnades stand on the same footprints, their papyrus awnings shading tables of scrolls and bronze instruments. Linen-robed copyists and children chat softly in warm golden morning light.",
-      "visualPromptIndoor": "A quiet scriptorium interior with cedar tables, clay oil lamps and tall niches holding rolled scrolls in soft lamplight.",
-      "fossil": {
-        "medium": "relief",
-        "brief": "Front view of a pale sandstone relief showing a central unrolled scroll, a toothed bronze wheel on the left, a perched owl on the right, framed by a carved laurel border. No letters, no words, no text of any kind.",
-        "slogan": "Copy, Measure, Share Light",
-        "elements": [
-          {
-            "name": "central unrolled scroll",
-            "technique": "Clarity",
-            "explanation": "The open scroll makes knowledge feel readable and shareable to every passerby."
-          },
-          {
-            "name": "toothed bronze wheel",
-            "technique": "Wonder",
-            "explanation": "The precise wheel suggests clever mechanisms can ease daily work."
-          },
-          {
-            "name": "perched owl",
-            "technique": "Authority",
-            "explanation": "The calm owl lends patient wisdom to the practice of copying."
-          }
+      "caption": "26 · Copy stalls and paved streets",
+      "visualPrompt": "Transform this scene to 26 in a world where the library of alexandria never burned. Show two-story houses in the region's own building tradition along a paved street with stone gutters, paper copy stalls, mule wagons and waterwheels at the edge.",
+      "visualPromptIndoor": "Interior of a copy room with long wooden tables, stacked paper sheets, ink jars and shelves of scroll rolls lit by daylight from small windows.",
+      "world": {
+        "differences": [
+          "Two-story brick and stone houses in dense rows instead of single-story mud huts set apart (because masonry manuals and survey tools let builders add upper floors on small plots)",
+          "Paved stone streets with covered gutters instead of dirt lanes with open ditches (because fees from map and copy sales pay for street crews and stone drains)",
+          "Mule-drawn freight wagons on regular runs instead of hand carriers with baskets (because printed route guides and maintained roads make scheduled hauling reliable)",
+          "Open copy stalls stacked with paper sheets instead of occasional scribes with wooden boards (because the intact catalog keeps texts in circulation for sale)",
+          "Waterwheels and screw pumps at the town edge instead of hand querns and rope wells (because mechanics notes spread among millwrights and metalworkers)"
+        ],
+        "absent": [
+          "thatched roofs",
+          "open cesspits",
+          "wattle fences",
+          "unlined dirt wells",
+          "wooden palisades",
+          "hand querns"
+        ],
+        "kept": [
+          "rolling terrain and soils",
+          "seasonal sun and rainfall",
+          "courtyard houses in the region's own pattern"
         ]
       }
     },
@@ -70,29 +75,29 @@
       "year": -500,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "1526 · Astrolabes in Marble Light",
-      "visualPrompt": "Transform this scene to 1526. Grand marble porticoes with brass-trimmed domes stand on the same footprints, fronted by paved colonnaded walkways and bubbling fountain channels. Students with astrolabes, potters and flower sellers mingle in clear late-afternoon sunlight.",
-      "visualPromptIndoor": "Inside a high frescoed lecture hall with marble benches, brass armillary spheres and tall shuttered windows glowing with daylight.",
-      "fossil": {
-        "medium": "mural",
-        "brief": "Front view of a warm plaster mural showing a serene bearded teacher, a large brass astrolabe overhead, potted olive saplings below, bordered by a blue geometric frieze. No letters, no words, no text of any kind.",
-        "slogan": "Observe the World Together",
-        "elements": [
-          {
-            "name": "serene bearded teacher",
-            "technique": "Warmth",
-            "explanation": "The gentle teacher invites viewers to trust learning as kind guidance."
-          },
-          {
-            "name": "large brass astrolabe",
-            "technique": "Wonder",
-            "explanation": "The shining instrument makes the sky feel measurable and near."
-          },
-          {
-            "name": "potted olive saplings",
-            "technique": "Hope",
-            "explanation": "Young trees promise that careful study will nourish future plenty."
-          }
+      "caption": "1526 · Rail lines and gaslit streets",
+      "visualPrompt": "Transform this scene to 1526 in a world where the library of alexandria never burned. Show four- to six-story blocks in the region's own building tradition, a steam rail line with station, gas street lamps and printed timetables.",
+      "visualPromptIndoor": "Interior of a gaslit print and reading room with iron stoves, paper presses, glass lamp shades and rows of tables with books and timetables.",
+      "world": {
+        "differences": [
+          "Four- to six-story brick tenements and workshops instead of one- to two-story timber and stone houses (because steam-powered brickworks, iron beams and rail freight support taller rental blocks)",
+          "Rail lines with steam locomotives and station yards instead of horse tracks and coaching inns (because coal-fed traction carries bulk grain and cloth between cities)",
+          "Piped gas street lamps and lit shop windows instead of torches and shuttered stalls (because coal-gas mains light evening streets and extend shop hours)",
+          "Wide paved avenues with sidewalks and iron drains instead of muddy lanes with central gutters (because taxes on mill and rail trade pay for road crews)",
+          "Printed paper signs, timetables and price lists instead of painted wooden boards (because steam presses produce cheap paper in volume)"
+        ],
+        "absent": [
+          "thatched roofs",
+          "open fire cooking pits",
+          "horse tethering rails",
+          "wooden city gates",
+          "handloom cottages",
+          "unpaved market squares"
+        ],
+        "kept": [
+          "local terrain and river courses",
+          "seasonal trees and field crops",
+          "courtyard patterns in the region's own tradition"
         ]
       }
     },
@@ -100,29 +105,29 @@
       "year": -100,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "1926 · Trams and Lenses Glow",
-      "visualPrompt": "Transform this scene to 1926. Elegant white marble facades with cast-iron and glass verandas stand on the same footprints, linked by polished steam-tram rails and lens-topped lamp posts. Families promenade with books and parcels beneath bright midday sun filtered through plane trees.",
-      "visualPromptIndoor": "Inside a bright reading room with white columns, oak card catalogs and brass reading lamps under a frosted skylight.",
-      "fossil": {
-        "medium": "poster",
-        "brief": "Front view of a cream printed poster showing a white steam tram on the left, a smiling female engineer in the center, a radiant sunburst lens above, and a marble colonnade below. No letters, no words, no text of any kind.",
-        "slogan": "Reason Lights Every Street",
-        "elements": [
-          {
-            "name": "white steam tram",
-            "technique": "Comfort",
-            "explanation": "The clean tram makes new transit feel safe, punctual and pleasant."
-          },
-          {
-            "name": "smiling female engineer",
-            "technique": "Belonging",
-            "explanation": "Her friendly gaze lets every viewer picture themselves as a maker."
-          },
-          {
-            "name": "radiant sunburst lens",
-            "technique": "Optimism",
-            "explanation": "The bright lens bathes the city in optimism and clear sight."
-          }
+      "caption": "1926 · Tall towers and electric trams",
+      "visualPrompt": "Transform this scene to 1926 in a world where the library of alexandria never burned. Show tall steel-frame towers in the region's own building tradition, electric trams and delivery vans, buried-cable streetlights and illuminated signs.",
+      "visualPromptIndoor": "Interior of an electric office with ceiling lights, desk telephones, calculating machines, metal filing cabinets and large windows.",
+      "world": {
+        "differences": [
+          "Twenty-story steel-frame towers in dense centers instead of four-story brick blocks (because electric lifts and air handling make tall offices and flats practical)",
+          "Battery trams and electric delivery vans on asphalt lanes instead of steam trains and early hand-cranked cars (because city power grids and storage cells support quiet street transit)",
+          "Buried power cables and bright electric streetlights instead of overhead tram wires and gas lamps (because underground mains feed lights and transit reliably)",
+          "Illuminated display panels and clock timetables instead of painted wooden billboards (because electric signs and standard time sustain evening shopping and commuting)",
+          "Paved sidewalks with planted trees and piped drains instead of cobble streets with open gutters (because power and water income pays for street planting and sewers)"
+        ],
+        "absent": [
+          "hand-cranked gasoline cars",
+          "overhead tram wires",
+          "coal smoke stacks",
+          "wooden telephone poles",
+          "steam locomotives",
+          "painted billboards"
+        ],
+        "kept": [
+          "terrain and harbor or river shape",
+          "seasonal daylight and weather",
+          "street trees and local garden plants"
         ]
       }
     },
@@ -130,29 +135,29 @@
       "year": 0,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2026 · Luminous Halls of Reason",
-      "visualPrompt": "Transform this scene to 2026. Luminous fluted marble buildings with brass louvers and solar-lens glass stand on the same footprints, their arcades sheltering bookstalls and steam-quiet transit stops. Neighbors linger over diagrams and tea in soft clear daylight with gentle lens glow.",
-      "visualPromptIndoor": "Inside a serene atrium library with marble mosaic floor, brass shelves of glass scroll-cases and a domed oculus pouring daylight in.",
-      "fossil": {
-        "medium": "billboard",
-        "brief": "Front view of a large civic billboard showing a gleaming marble library, a diverse circle of readers on its steps, and a giant glowing geometric lens radiating beams over a green garden strip. No letters, no words, no text of any kind.",
-        "slogan": "Geometry Serves Everyone Daily",
-        "elements": [
-          {
-            "name": "gleaming marble library",
-            "technique": "Pride",
-            "explanation": "The shining library presents shared learning as the proud center of civic life."
-          },
-          {
-            "name": "diverse circle of readers",
-            "technique": "Belonging",
-            "explanation": "The gathered readers show that wisdom belongs to neighbors together."
-          },
-          {
-            "name": "giant glowing geometric lens",
-            "technique": "Optimism",
-            "explanation": "The beaming lens suggests reason gently brightens every home."
-          }
+      "caption": "2026 · Garden towers and pod transit",
+      "visualPrompt": "Transform this scene to 2026 in a world where the library of alexandria never burned. Show slender garden towers in the region's own building tradition, automated pods on reserved lanes, solar canopies and planted rain gardens.",
+      "visualPromptIndoor": "Interior of a bright living and work room with garden balcony, adjustable daylight panels, wall display for transit and weather, and quiet electric heating and cooling.",
+      "world": {
+        "differences": [
+          "Slender forty-story towers with garden terraces instead of ten-story concrete slabs (because lightweight frames, fast lifts and balanced grids make tall green housing routine)",
+          "Automated electric pods on reserved lanes and aerial cable cabins instead of privately owned gasoline cars (because fleet transit and grid power lower street noise and parking needs)",
+          "Rooftop plantings and solar canopies with buried grids instead of tar roofs and overhead power lines (because building codes link power production to roof gardens)",
+          "Low-energy text panels and wayfinding lights instead of large paper billboards and neon signs (because networked displays update transit and shop information instantly)",
+          "Permeable paving with rain gardens and cycle tracks instead of wide asphalt lots (because stormwater rules and fleet transit reduce paved parking)"
+        ],
+        "absent": [
+          "private gasoline cars",
+          "asphalt parking lots",
+          "overhead power lines",
+          "diesel delivery trucks",
+          "large paper billboards",
+          "pole-mounted traffic lights"
+        ],
+        "kept": [
+          "terrain, soils and watercourses",
+          "seasonal climate and daylight",
+          "the region's own courtyard and roof patterns"
         ]
       }
     },
@@ -160,29 +165,29 @@
       "year": 100,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2126 · Gentle Light Ahead",
-      "visualPrompt": "Transform this scene to 2126. Slender ivory marble pavilions with pearlescent solar glass and brass vine trellises stand on the same footprints, linked by silent gliding walkways and mist fountains. Children and elders tend star charts and float lanterns in calm opalescent evening light.",
-      "visualPromptIndoor": "Inside a circular learning lounge with living jasmine walls, mother-of-pearl desks and a ceiling lens diffusing warm star-like light.",
-      "fossil": {
-        "medium": "panel",
-        "brief": "Front view of a softly glowing wall panel showing a tranquil child with a star chart, a hovering brass airship above olive trees, and a luminous spiral of light connecting them over pale marble. No letters, no words, no text of any kind.",
-        "slogan": "Keep Curiosity Kind and Bright",
-        "elements": [
-          {
-            "name": "tranquil child with a star chart",
-            "technique": "Tenderness",
-            "explanation": "The curious child makes the future feel tender and personally inviting."
-          },
-          {
-            "name": "hovering brass airship",
-            "technique": "Wonder",
-            "explanation": "The floating craft promises peaceful travel guided by careful measurement."
-          },
-          {
-            "name": "luminous spiral of light",
-            "technique": "Harmony",
-            "explanation": "The glowing spiral links learning, sky and earth in one calm motion."
-          }
+      "caption": "2126 · Sky bridges and quiet transit",
+      "visualPrompt": "Transform this scene to 2126 in a world where the library of alexandria never burned. Show stacked garden towers in the region's own building tradition linked by inhabited bridges, magnetic shuttle lanes and shaded arcades with orchard roofs.",
+      "visualPromptIndoor": "Interior of a shared growing and living hall with orchard views, water tanks, daylight controls and quiet ventilation.",
+      "world": {
+        "differences": [
+          "Sixty-story courtyard towers linked by inhabited bridges instead of isolated office slabs (because ultra-light frames and quiet lifts let neighborhoods stack vertically with gardens)",
+          "Silent magnetic shuttle lanes and aerial cable cabins instead of private cars on asphalt streets (because regional transit grids carry most daily trips without street parking)",
+          "Living roofs with orchards and water tanks instead of bare tar and gravel roofs (because water and food rules reward roof planting and rain storage)",
+          "Shaded arcades with mist cooling and path lighting instead of open concrete sidewalks (because district power and water loops cool public ways)",
+          "Market greenhouses and seed rooms at block centers instead of distant truck depots (because neighborhood growing houses shorten fresh food hauling)"
+        ],
+        "absent": [
+          "private gasoline cars",
+          "asphalt parking lots",
+          "overhead power lines",
+          "diesel truck depots",
+          "concrete highway overpasses",
+          "roadside fuel stations"
+        ],
+        "kept": [
+          "terrain and coastline shape",
+          "seasonal sun, wind and rain",
+          "native trees and garden plants"
         ]
       }
     },
@@ -190,9 +195,31 @@
       "year": 1000,
       "driver": "culture",
       "structures": "overgrown",
-      "caption": "3026 · Gardens Keep the Books",
-      "visualPrompt": "Transform this scene to 3026. Graceful marble colonnades softened by fig vines and flowering jasmine stand on the same footprints, their brass lenses dappled by tall plane trees and songbirds. Small groups picnic, read and garden in dappled golden daylight beside clear reflecting pools.",
-      "visualPromptIndoor": "Inside a vine-framed marble hall with open skylights, ferns along the sills and readers at stone tables in gentle green-filtered daylight."
+      "caption": "3026 · Tended gardens over stone streets",
+      "visualPrompt": "Transform this scene to 3026 in a world where the library of alexandria never burned. Show cared low halls in the region's own building tradition grown over with tended gardens and trees, footpaths with vine trellises and rain pools.",
+      "visualPromptIndoor": "Interior of a sunlit hall with tended wall plants, soil beds, wooden tables, paper books and soft daylight from garden windows.",
+      "world": {
+        "differences": [
+          "Low broad stone and timber halls under garden trees instead of tall glass office towers (because long care favors durable mid-rise rooms shaded by planting)",
+          "Footpaths and slow cycle tracks with vine trellises instead of multi-lane car roads (because daily travel uses walking, cycling and small electric carriers)",
+          "Tended orchards and vegetable terraces between houses instead of parking courts (because food growing is folded into housing plots)",
+          "Rain pools, channels and stone cisterns in streets instead of buried storm drains only (because visible water storage waters gardens and cools lanes)",
+          "Climbing plants and balcony soil beds on every facade instead of bare concrete walls (because planting rules keep walls planted and tended)"
+        ],
+        "absent": [
+          "private gasoline cars",
+          "asphalt parking lots",
+          "overhead power lines",
+          "highway overpasses",
+          "roadside fuel stations",
+          "large neon billboards"
+        ],
+        "kept": [
+          "terrain and watercourses",
+          "seasonal climate and native trees",
+          "the region's own courtyard and roof patterns"
+        ]
+      }
     }
   ]
 }

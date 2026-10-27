@@ -2,37 +2,37 @@
   "forkId": "tamed-mammoth",
   "title": "Humans tamed the mammoth",
   "divergenceYear": -12000,
-  "premise": "Around 12,000 BCE steppe herders coax young woolly mammoths to winter camps with hay and warmth, and the giants stay. Guarded and well fed, mammoths thrive as living plows, wool-bearers and slow companions, teaching humans to build wide gates, broad trails and patient towns. The world that follows farms with giants, travels at a walking pace, and measures wealth in wool and kindness.",
+  "premise": "Around 12000 BCE herders on the cold northern steppe learn to raise woolly mammoth calves for wool, milk and pulling power. Protected and fed by people, mammoths persist through later climate change and spread with farmers and traders. Their need for fodder, space and wide streets shapes how people farm, travel and build ever after.",
   "chain": [
     {
       "year": -12000,
-      "event": "Steppe herders shelter young mammoths at winter camps and feed them with stored hay.",
-      "consequence": "Mammoths learn to follow humans and pull sleds, starting year-round herding camps."
+      "event": "Steppe foragers capture young mammoths and raise them with reindeer herds for milk and wool",
+      "consequence": "tame herds live beside people and persist through later climate shifts, giving villages a large source of fiber and pulling power"
     },
     {
       "year": -9000,
-      "event": "Herders select the calmest mammoths and weave shed wool into warm cloth.",
-      "consequence": "Wool flocks give steady fiber and draft power, letting villages grow larger and stay settled."
+      "event": "Keepers begin sowing grasses and storing hay in river valleys to feed mammoths through the cold season",
+      "consequence": "year-round fodder allows larger settled villages with barns and hayfields and steady population growth"
     },
     {
-      "year": -4000,
-      "event": "Wide-trail villages link to trade wool, grain and timber by mammoth cart.",
-      "consequence": "Broad gates and shared grazing commons become standard for towns on trade routes."
+      "year": -3500,
+      "event": "Carpenters develop heavy wagons and a soil-cutting ard pulled by mammoth teams for plowing and hauling timber and grain",
+      "consequence": "bulk loads move far overland on wide cleared tracks, linking farms to larger market towns"
     },
     {
       "year": -800,
-      "event": "Herd councils grant mammoths grazing rights and rest days.",
-      "consequence": "Herd care spreads as a civic duty, keeping mammoth families healthy in warming lands."
+      "event": "Spinners and weavers turn clipped mammoth underwool into felt and heavy cloth on upright looms",
+      "consequence": "wool trade supports full-time herders, weavers and long-distance caravan traffic in textiles and salt"
     },
     {
-      "year": 800,
-      "event": "Mammoth post relays carry goods and letters across long distances.",
-      "consequence": "Travel and farming use gentle teams, shaping cities with large courtyards and slow streets."
+      "year": 1700,
+      "event": "Breeders select calmer, smaller city mammoths while farmers expand clover and root crops for feed and harness makers improve yokes",
+      "consequence": "mammoth teams stay cheap and reliable for farms and city haulage, slowing the shift to fuel engines for heavy work"
     },
     {
-      "year": 1850,
-      "event": "Steam mills comb and spin mammoth wool at large scale.",
-      "consequence": "Mammoth wool becomes everyday cloth, and herd commons grow into modern civic centers by 2026."
+      "year": 1950,
+      "event": "Town councils keep wide mammoth avenues, paddocks and water troughs while adding buried electric lines and piped water",
+      "consequence": "modern growth stays low and spread out around animal streets, entering 2026 with mixed mammoth and electric transport"
     }
   ],
   "eras": [
@@ -40,49 +40,179 @@
       "year": -2000,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "26 CE · Gate of Patient Giants",
-      "visualPrompt": "Transform this scene to 26 CE. Low gathering halls and wool workshops in the region's own building tradition, with extra-wide trails and tall gates for passing mammoths, hitched posts and hanging lanterns. Handlers brush wool flocks in open yards under soft morning light.",
-      "visualPromptIndoor": "Inside a low hall, wide doorways and low benches hold baskets of combed wool, with a hearth glow and carved posts showing mammoths."
+      "caption": "26 · wide lanes between low barns and houses",
+      "visualPrompt": "Transform this scene to 26 in a world where humans tamed the mammoth. Low houses in the region's own building tradition stand apart with large fodder barns and haystacks, and a very wide packed-earth lane carries mammoth teams and heavy sledges.",
+      "visualPromptIndoor": "Show a low interior room with thick walls, small windows, woven mammoth-wool blankets and felt hangings, lit by oil lamps.",
+      "world": {
+        "differences": [
+          "low scattered one-story houses with large yards instead of compact dense rows (because each household keeps standing room and feed for mammoths)",
+          "very wide packed-earth lanes instead of narrow foot paths (because paired mammoth teams need room to pass and turn)",
+          "large timber-and-earth fodder barns and haystacks beside homes instead of small grain bins (because bulky cold-season feed is stored at the house)",
+          "mammoth-drawn sledges and heavy wagons instead of donkey carts and human porters (because bulk hauling is done by domestic mammoths)",
+          "woven mammoth-wool felt fences and awnings instead of plain reed mats (because clipped underwool is plentiful and worked locally)"
+        ],
+        "absent": [
+          "horse-drawn chariots",
+          "dense three-story lodging houses",
+          "narrow stone-paved alleys",
+          "small ox byres",
+          "portable foot-market stalls"
+        ],
+        "kept": [
+          "local terrain, soils and rivers",
+          "hand tools, pottery and firewood",
+          "house forms in the region's own building tradition"
+        ]
+      }
     },
     {
       "year": -500,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "1526 · Wool Halls and Wide Trails",
-      "visualPrompt": "Transform this scene to 1526. Busy wool halls and draft yards in the region's own building tradition, with broad gates, covered stalls for mammoth teams, and painted signs and warm lamps along the trail. Harnesses dry on rails while carts wait in calm order.",
-      "visualPromptIndoor": "Inside a wool sorting hall, long tables hold soft fleece piles under high windows, with painted wall bands and wide doors open to the mammoth yard."
+      "caption": "1526 · broad animal avenues and wool sheds",
+      "visualPrompt": "Transform this scene to 1526 in a world where humans tamed the mammoth. Low courtyard houses in the region's own building tradition line a very broad earth avenue with hay barns and wool drying racks, with mammoth teams pulling high-wheeled wagons.",
+      "visualPromptIndoor": "Show a ground-floor hall with low timber beams, plastered walls, a large hearth, and heavy mammoth-wool rugs and curtains, lit by daylight from small windows.",
+      "world": {
+        "differences": [
+          "sprawling one- to two-story courtyard houses instead of tall narrow townhouses (because plots keep ground space for mammoth teams and fodder)",
+          "broad level earth avenues with troughs and hitching posts instead of narrow cobbled lanes (because daily movement is by large draft animals)",
+          "large wool sheds, drying frames and felt workshops along streets instead of small cloth stalls only (because mammoth fiber is cleaned and sold in town)",
+          "high-wheeled mammoth wagons and pack frames instead of horse carts and mule trains (because long-distance freight moves by mammoth)",
+          "outer hayfields and winter paddocks reaching to the houses instead of tight suburbs (because town mammoths are fed and rested close by)"
+        ],
+        "absent": [
+          "four-story brick townhouses",
+          "glass window panes",
+          "horse-drawn coaches",
+          "narrow cobbled market squares",
+          "tall town walls with small gates"
+        ],
+        "kept": [
+          "surrounding hills and rivers",
+          "timber framing in the region's own building tradition",
+          "hand looms, pottery and market gardens"
+        ]
+      }
     },
     {
       "year": -100,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "1926 · Mammoth Post and Timetable",
-      "visualPrompt": "Transform this scene to 1926. Tall post halls and travel lodges in the region's own building tradition, with wide arched gates for mammoth teams, ticket boards, benches and glowing street lamps. Timetables and wool awnings line the calm boarding yard.",
-      "visualPromptIndoor": "Inside a post hall waiting room, long benches face a warm stove, with harness hooks on the walls and large windows watching the mammoth yard."
+      "caption": "1926 · wide earth boulevards for mammoth teams",
+      "visualPrompt": "Transform this scene to 1926 in a world where humans tamed the mammoth. Low 2-3 story buildings in the region's own building tradition line a very wide earth-and-gravel boulevard with mammoth lanes and feeding troughs. Heavy mammoth wagons and early electric delivery vans share the road beside haystacks and wool sheds.",
+      "visualPromptIndoor": "Show a 1920s-style workroom with electric ceiling bulbs, wooden desks, filing cabinets, and heavy mammoth-wool upholstery and curtains, with large low windows.",
+      "world": {
+        "differences": [
+          "two- to three-story brick blocks with stable yards instead of six- to ten-story steel offices and apartments (because plots reserve ground space for mammoths and feed)",
+          "very wide earth-and-gravel boulevards with separate animal lanes instead of asphalt car streets with curbside parking (because heavy freight still moves by animal teams)",
+          "buried electric cables with iron lamp posts instead of overhead wires and tall poles (because high animals and tall loads would catch overhead lines)",
+          "urban hay meadows and paddocks between districts instead of continuous housing tracts (because city mammoths are fed and rested nearby)",
+          "large painted wall signs and wool banners instead of neon signs and billboards (because streets are read from slow wagons and on foot)"
+        ],
+        "absent": [
+          "cars",
+          "overhead power lines",
+          "glass office towers",
+          "gas stations",
+          "asphalt parking lots",
+          "traffic lights"
+        ],
+        "kept": [
+          "local terrain and rivers",
+          "rail lines for bulk goods",
+          "street trees and parks"
+        ]
+      }
     },
     {
       "year": 0,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2026 · City of Gentle Haulers",
-      "visualPrompt": "Transform this scene to 2026. Modern herd commons and market halls in the region's own building tradition, with extra-wide gates, mammoth wash stations, shaded waiting seats and soft evening lighting. Wool banners and route signs guide gentle teams through the plaza.",
-      "visualPromptIndoor": "Inside a bright commons hall with a high welcome desk, wool rugs, wooden counters and a glass wall looking out to the mammoth court."
+      "caption": "2026 · low green city with mammoth lanes",
+      "visualPrompt": "Transform this scene to 2026 in a world where humans tamed the mammoth. Mid-low buildings in the region's own building tradition stand among street trees and hay meadows, with wide lanes for calm mammoth freight teams beside cycle paths and small electric vans.",
+      "visualPromptIndoor": "Show a bright modern lounge with low wooden furniture, large windows onto street trees, and thick mammoth-wool carpet, wall felt and throws, lit by ceiling panels.",
+      "world": {
+        "differences": [
+          "three- to five-story mixed blocks with set-back yards instead of twenty-story glass towers (because height rules protect light, trees and animal access)",
+          "mammoth freight lanes with electric-assist wagons and small battery vans instead of diesel trucks and private cars (because heavy city freight still moves by animal teams)",
+          "turfed avenues and linear hay meadows instead of asphalt arterials with parking lanes (because feeding and resting space is kept inside the city)",
+          "district wool-washing and felt workshops instead of car showrooms and fuel stations (because fiber processing stays a daily urban trade)",
+          "buried power and water networks with ground cabinets instead of overhead poles and wires (because tall animals and loads need clear headroom)"
+        ],
+        "absent": [
+          "private cars",
+          "overhead power lines",
+          "glass office towers",
+          "gas stations",
+          "asphalt parking lots",
+          "freeway interchanges"
+        ],
+        "kept": [
+          "terrain, rivers and mature street trees",
+          "electric lighting, plumbing and phones",
+          "house forms in the region's own building tradition"
+        ]
+      }
     },
     {
       "year": 100,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2126 · Glowing Herd Commons",
-      "visualPrompt": "Transform this scene to 2126. Airy learning halls and quiet herd pavilions in the region's own building tradition, with sensor gates, moss gardens, smooth benches and soft glowing path lights.",
-      "visualPromptIndoor": "Inside a quiet study pavilion, curved seats face a glowing wall display, with wool blankets and a wide window open to the resting mammoths."
+      "caption": "2126 · garden avenues with mammoth trams",
+      "visualPrompt": "Transform this scene to 2126 in a world where humans tamed the mammoth. Tree-lined low buildings in the region's own building tradition face a green avenue where guided mammoth teams pull quiet freight trams beside pedestrian and cycle lanes.",
+      "visualPromptIndoor": "Show a calm future living room with tall windows onto gardens, light timber furniture, washable wall panels, and thick mammoth-wool carpets and throws, lit by daylight and slim ceiling lights.",
+      "world": {
+        "differences": [
+          "four- to six-story garden blocks with roof planting instead of high-rise slabs (because planning keeps sunlight for gardens and room for animals at street level)",
+          "guided mammoth freight trams and shared electric pods instead of private self-driving cars (because city freight and transit use animal lanes with machine assist)",
+          "green avenues with sensor posts and water troughs instead of multilane asphalt roads (because traffic is slow, wide and shared with large animals)",
+          "neighborhood fodder gardens and wool workshops instead of fuel stations and car decks (because feed and fiber remain part of daily supply)",
+          "buried grids with sidewalk service hatches instead of overhead lines and pylons (because clear airspace is kept for trees and tall teams)"
+        ],
+        "absent": [
+          "private self-driving cars",
+          "overhead power lines",
+          "glass skyscrapers",
+          "gas stations",
+          "concrete freeways",
+          "asphalt parking structures"
+        ],
+        "kept": [
+          "terrain, rivers and climate",
+          "electric transit controls and lighting",
+          "planting in the region's own garden tradition"
+        ]
+      }
     },
     {
       "year": 1000,
       "driver": "culture",
       "structures": "overgrown",
-      "caption": "3026 · Green Trails Remember",
-      "visualPrompt": "Transform this scene to 3026. Serene grove halls and herd trails in the region's own building tradition, with wide gates softened by moss, living trees, flowering vines and gentle pools of light. Mammoths rest along calm garden paths beside quiet reading porches.",
-      "visualPromptIndoor": "Inside a green hall, sunlight falls through vine-framed openings onto mossy seats and wool mats, with a calm mammoth yard beyond."
+      "caption": "3026 · garden streets with grazing lawns",
+      "visualPrompt": "Transform this scene to 3026 in a world where humans tamed the mammoth. Well-kept low buildings in the region's own building tradition stand among mature trees and terraced gardens, with wide grass lanes where small mammoth herds graze beside footpaths.",
+      "visualPromptIndoor": "Show a sunlit garden room with living plants, timber seats, thick mammoth-wool weavings, and open doors to trees and lawns, clean and well kept.",
+      "world": {
+        "differences": [
+          "one- to three-story planted houses with soil roofs instead of tall sealed towers (because low mass is easy to tend and supports gardens and animal yards)",
+          "grass lanes and footpaths with herded mammoths instead of paved roads for motor traffic (because movement is on foot and by animal teams among trees)",
+          "terraced vegetable beds and orchard rows between houses instead of fenced lots and driveways (because food and fodder grow where streets once parked cars)",
+          "stone cisterns, troughs and hand pumps beside lanes instead of fuel pumps and vents (because water for people, gardens and animals is handled at the surface)",
+          "thick mammoth-wool awnings and felt screens instead of plastic signs and metal shutters (because local fiber remains the main outdoor cloth)"
+        ],
+        "absent": [
+          "cars",
+          "traffic lights",
+          "overhead power lines",
+          "glass office towers",
+          "asphalt parking lots",
+          "neon billboards"
+        ],
+        "kept": [
+          "local terrain and streams",
+          "mature trees and garden soils",
+          "building forms in the region's own building tradition"
+        ]
+      }
     }
   ]
 }

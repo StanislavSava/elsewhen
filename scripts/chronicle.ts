@@ -7,47 +7,44 @@ import { CURRENT_YEAR, ChronicleEra } from "../src/shared/eras.ts";
 const SPARK_MODEL = "muse-spark-1.3";
 
 const FORKS: Record<string, { title: string; divergenceYear: number; premise: string }> = {
+  "rome-never-fell": {
+    title: "The Roman Empire never fell",
+    divergenceYear: 476,
+    premise:
+      "In 476 the Western Roman Empire weathers its crisis: the legions are reformed, the borders hold, and " +
+      "Rome remains one state from Britain to Mesopotamia. Latin law, roads, aqueducts, concrete and a single " +
+      "currency carry on unbroken, and Europe never fragments into feudal kingdoms.",
+  },
   "no-printing-press": {
     title: "The printing press was never invented",
     divergenceYear: 1440,
     premise:
-      "In 1440 Gutenberg's workshop fails and movable type never spreads. Knowledge stays handwritten, " +
-      "costly and guarded: guilds of scribes and memorizers become the great institutions, ideas travel " +
-      "by recitation, images and seals, and the slow, spoken culture shapes everything from architecture " +
-      "to how cities look today.",
+      "In 1440 Gutenberg's workshop fails and movable type never spreads. Books stay handwritten and costly, " +
+      "literacy stays rare, and knowledge moves slowly through scribes, images and the spoken word.",
   },
   "no-electricity": {
     title: "Electricity was never harnessed",
     divergenceYear: 1831,
     premise:
-      "In 1831 Faraday's induction experiments fail and are set aside; no one finds a practical way to make " +
-      "electricity. The world modernizes anyway, on steam, clockwork, compressed air, gaslight, wind and water: " +
-      "cities of brass, glass and pneumatic tubes, mechanical calculators, and slow, luminous gaslit evenings.",
-  },
-  "treasure-fleets": {
-    title: "The treasure fleets never turned back",
-    divergenceYear: 1433,
-    premise:
-      "In 1433 the Ming court keeps funding Zheng He's treasure fleets instead of burning the ships. Great junks " +
-      "keep sailing the Indian Ocean and the Pacific, and a maritime trading world of harbors, silk, porcelain, " +
-      "printed charts and civil examinations spreads its tastes and ideas to every coast.",
+      "In 1831 Faraday's induction experiments fail and no practical way to generate electricity is ever found. " +
+      "The world keeps industrializing on coal, steam, gas, compressed air and clockwork.",
   },
   "tamed-mammoth": {
     title: "Humans tamed the mammoth",
     divergenceYear: -12000,
     premise:
-      "Around 12,000 BCE herders on the cold steppe tame the woolly mammoth before it vanishes. Mammoths become " +
-      "draft animals, wool flocks and companions; they survive the warming climate under human care, and a " +
-      "herding culture of wide trails, big gates, wool and patient giants shapes how the world farms, travels and builds.",
+      "Around 12,000 BCE herders on the cold steppe domesticate the woolly mammoth before it dies out. Mammoths " +
+      "become draft animals and wool herds, survive the warming climate under human care, and shape how people " +
+      "farm, travel and build.",
   },
   "library-of-alexandria": {
     title: "The Library of Alexandria never burned",
     divergenceYear: -48,
     premise:
-      "In 48 BCE the fire in Alexandria is put out and the Library survives. Its scholars keep copying, " +
-      "testing and connecting ideas; mechanical and medical knowledge compounds for centuries. A " +
-      "Hellenistic culture of observation, steam and geometry reaches the modern era a thousand years " +
-      "early, and the world looks classical, mechanical and luminous.",
+      "In 48 BCE the fire in Alexandria is put out and the Library survives. Its scholars keep copying, testing " +
+      "and connecting ideas, and technology runs about 800 years ahead of ours: practical steam engines by 900 CE, " +
+      "railways and gaslight by about 1150, electricity by about 1350. Its 1526 looks like our 1900, its 1926 " +
+      "like our 2026, and its 2026 is a century beyond ours.",
   },
 };
 
@@ -67,23 +64,31 @@ const Draft = z.object({
   eras: z.array(CultureEra),
 });
 
-const STYLE = `You write chronicles for Elsewhen, an app that repaints a user's photo of a real place as it looks in
-an alternate history. Each era's visualPrompt is an image-edit instruction applied to the user's photo.
+const STYLE = `You write alternate histories for Elsewhen, an app that repaints a user's photo of a real place
+(anywhere on Earth) as it would look at the same spot in another history. Reason like a serious historian of
+counterfactuals: causes, technology, trade, money, population and geography, not themes or moods.
 
 Rules:
-- visualPrompt starts with "Transform this scene to <calendar year or period>." then describes what the
-  buildings are and do in this world (halls, workshops, signs, street furniture, light), always "in the
-  region's own building tradition" (never "on the same footprints": a place may have had no buildings yet). Never name region-specific materials or styles
-  (no "timber-framed", "thatched", "half-timbered"): the photo can be anywhere on Earth. 2-3 sentences.
-- visualPromptIndoor: same era as an interior, 1-2 sentences.
-- caption: max 60 characters, format "<year or period> · <short evocative phrase>".
-- Everything is calm and peaceful. Never describe war, violence, ruins, destruction, collapse, decay,
-  abandonment, disaster, death or people leaving (an image content filter blocks those). Futures are serene.
-- Ideologies and institutions are fictional and benign (no real political movements, parties, leaders,
-  flags or religious symbols). Persuasion can be grand, but never hateful.
-- The 1000-years-ahead era shows nature gently reclaiming this world's buildings.
-- chain: 5-7 events from the divergence to ${CURRENT_YEAR}, each with a calendar year (negative = BCE),
-  what happened, and its consequence. Plausible and causally linked.`;
+- chain: 5-7 events from the divergence to ${CURRENT_YEAR}, each with a calendar year (negative = BCE): what
+  happened and its consequence, concrete and causally linked, grounded in real historical mechanisms. No invented
+  societies, leagues or movements with cute names.
+- For every era, world = how the built world at that date differs from ours at the same date, as a camera in a
+  street would see it:
+  - differences: 4-6 items, each "X instead of Y (because ...)", physical and visible: building height and
+    density, materials, how big towns are, transport and vehicles, street surface, lighting and power, signage,
+    farming and land use. Include at least one about building height or density and one about transport.
+  - absent: 4-8 concrete things our world has at that date that this one does not, and that must not appear
+    (e.g. "cars", "overhead power lines", "glass office towers").
+  - kept: 2-4 things this history leaves as in ours (terrain, climate, trees, the region's traditional style...).
+- visualPrompt: "Transform this scene to <calendar year> in a world where <the fork, lowercased>." then 1-2
+  sentences naming the most visible consequences. Never name region-specific materials or styles (the photo can
+  be anywhere); say "in the region's own building tradition" when it matters. No invented institutions.
+- visualPromptIndoor: the same era as an interior, 1-2 sentences.
+- caption: max 60 characters, "<calendar year> · <the most visible consequence, plainly>".
+- Keep wording calm and physical. Never write war, violence, ruins, destruction, collapse, decay, abandonment,
+  disaster or death (an image content filter blocks those). No real political movements, leaders, flags or
+  religious symbols.
+- The 1000-years-ahead era: this world's buildings, cared for and grown over with gardens and trees.`;
 
 async function draft(forkId: string): Promise<void> {
   const fork = FORKS[forkId];
@@ -119,7 +124,7 @@ async function draft(forkId: string): Promise<void> {
           content: `Fork: "${fork.title}" (diverges in ${fork.divergenceYear < 0 ? `${-fork.divergenceYear} BCE` : fork.divergenceYear}).
 Premise: ${fork.premise}
 
-Write the premise (2-3 vivid sentences), the chain, and exactly these eras (driver "culture", year = the
+Write the premise (2-3 plain sentences), the chain, and exactly these eras (driver "culture", year = the
 relative year given, structures as given):
 ${spec}`,
         },

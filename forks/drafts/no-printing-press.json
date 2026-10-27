@@ -2,37 +2,37 @@
   "forkId": "no-printing-press",
   "title": "The printing press was never invented",
   "divergenceYear": 1440,
-  "premise": "In 1440 Gutenberg's workshop fails and movable type never spreads. Books remain rare handwritten treasures, and powerful guilds of scribes and memorizers become the keepers of knowledge. Cities learn to speak, paint and remember together, building halls for recitation where libraries would have stood.",
+  "premise": "In 1440 Gutenberg's metal movable type fails in the workshop and is not taken up elsewhere. Books and notices remain copied by hand, costly and few, so reading stays the skill of scribes, clerks and merchants' households. News, law and craft knowledge travel by voice, memory and painted images, slowing standardization and large-scale coordination.",
   "chain": [
     {
       "year": 1440,
-      "event": "In Mainz Gutenberg's press trials produce uneven type and lose funding, and movable type is set aside.",
-      "consequence": "Hand copying remains the only way to make books, keeping them costly and guarded by workshops."
+      "event": "Gutenberg's Mainz workshop runs out of money after failed trials with movable metal type and his backers withdraw support.",
+      "consequence": "No workable press is demonstrated, other craftsmen do not copy the method, and book production remains entirely by hand."
     },
     {
-      "year": 1548,
-      "event": "Cities charter powerful guilds of scribes and memorizers to license copying and public recitation.",
-      "consequence": "Scriptoria and recitation halls become civic centers and memory training becomes a honored craft."
+      "year": 1525,
+      "event": "Rulers, town councils and universities expand rooms of hand copyists to meet demand for law codes, textbooks and merchants' letters.",
+      "consequence": "Books stay costly and rare, schooling stays limited to clerks, scribes and merchants' households, and fewer than one person in ten can read."
     },
     {
-      "year": 1682,
-      "event": "Teachers develop standard memory halls and picture-sign codes for law, craft and news.",
-      "consequence": "Ideas travel by trained reciters and painted image boards, allowing shared culture without printed text."
+      "year": 1660,
+      "event": "Students of nature share results only through handwritten letters and live demonstrations, recopied with slips and delays.",
+      "consequence": "Diagrams, tables and machine plans take decades to become standard, so tools, mills and instruments remain local in design and slow to improve."
     },
     {
-      "year": 1815,
-      "event": "Artisans perfect large stencil and relief presses that print pictures, seals and color patterns but not small text.",
-      "consequence": "Streets fill with vivid image posters and signboards while words stay handwritten, strengthening visual storytelling."
+      "year": 1802,
+      "event": "Mill owners and early rail lines train workers by long apprenticeship and spoken orders because no cheap printed manuals, tickets or timetables exist.",
+      "consequence": "Firms stay small, parts stay fitted by hand, and towns add low housing near yards rather than large suburbs linked by paper-managed transport."
     },
     {
-      "year": 1903,
-      "event": "Municipal Living Libraries open where citizens can consult reciters and copyists by the hour.",
-      "consequence": "Oral learning and hand copying become everyday public life, shaping schools, plazas and street architecture."
+      "year": 1888,
+      "event": "Merchants and town councils pay for wired voice lines and later wireless voice boxes to share prices and news without printed sheets.",
+      "consequence": "Public criers, dictation offices and group listening rooms become the main news system, and painted picture signs replace printed notices in streets."
     },
     {
-      "year": 2026,
-      "event": "The Concord of Reciters links cities by traveling memory festivals and illuminated public panels.",
-      "consequence": "Handmade knowledge culture stays vibrant and peaceful, honored in calm gathering places and glowing picture walls."
+      "year": 1955,
+      "event": "Makers perfect sound recorders, picture transmitters and voice telephones while office work still depends on spoken dictation and hand-ledgers.",
+      "consequence": "Administration stays labor-heavy with large staffs for copying and memorizing, coordination by voice keeps organizations mid-sized, and literacy remains uncommon through 2026."
     }
   ],
   "eras": [
@@ -40,29 +40,30 @@
       "year": -500,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "1526 · Hall of Copied Voices",
-      "visualPrompt": "Transform this scene to 1526. Low timber-and-plaster guild halls with steep thatched roofs stand on the same footprints, their facades wrapped in hand-painted story friezes and hanging wooden scribe signs. Apprentices copy at oak benches in the arcade while neighbours listen in circles under soft golden morning light.",
-      "visualPromptIndoor": "A snug candle-lit copying room with long oak tables, stacked vellum, ink bowls and quills, where robed scribes write quietly side by side.",
-      "fossil": {
-        "medium": "mural",
-        "brief": "Front-facing plaster mural showing a central ring of seated scribes in deep blue robes, left side tall wooden memory shelves stacked with scrolls, right side a flight of white songbirds over a sunlit square. No letters, no words, no text of any kind.",
-        "slogan": "Hear Once, Keep Forever",
-        "elements": [
-          {
-            "name": "ring of seated scribes",
-            "technique": "authority",
-            "explanation": "Robed experts signal trusted knowledge worth remembering."
-          },
-          {
-            "name": "tall wooden memory shelves",
-            "technique": "social proof",
-            "explanation": "Full shelves imply abundance and security through the guild."
-          },
-          {
-            "name": "flight of white songbirds",
-            "technique": "association",
-            "explanation": "Birds link memory to freedom and gentle uplift."
-          }
+      "caption": "1526 · Hand-copied signs and low workshops",
+      "visualPrompt": "Transform this scene to 1526 in a world where the printing press was never invented. Low street houses in the region's own building tradition hold daylight copying rooms, with large painted picture walls, hand-lettered boards and criers' platforms and no printed paper.",
+      "visualPromptIndoor": "A long daylight copying room in the region's own building tradition with rows of desks, ink pots, parchment sheets and picture charts, scribes writing and reciting aloud.",
+      "world": {
+        "differences": [
+          "low two- to three-storey street houses with large daylight copying rooms instead of taller merchant houses with print shops (because books are made by teams of scribes needing window light and low benches)",
+          "large hand-painted picture walls and carved shop marks instead of printed posters and playbills (because news must be seen as images when few can read multiplied texts)",
+          "mounted letter carriers, pack horses and handcarts with parchment bundles instead of heavy wagons with bales of printed paper (because each copy is costly and moves in small guarded lots)",
+          "cobbled lanes with speaking platforms and reading benches instead of streets lined with posted paper notices (because laws and prices are announced aloud by criers)",
+          "inner-plot drying yards and small vellum stores instead of large paper-mill yards and storehouses (because skins and limited rag paper come from small local makers)"
+        ],
+        "absent": [
+          "printing presses",
+          "movable metal type",
+          "printed books",
+          "printed pamphlets",
+          "printed posters",
+          "cheap woodcut prints"
+        ],
+        "kept": [
+          "hilly terrain and river courses",
+          "seasonal climate and native trees",
+          "the region's own building tradition in walls and roofs",
+          "market-plot street pattern"
         ]
       }
     },
@@ -70,29 +71,29 @@
       "year": -100,
       "driver": "culture",
       "structures": "predecessor",
-      "caption": "1926 · City of Reciters",
-      "visualPrompt": "Transform this scene to 1926. Grand brick-and-stone recitation houses with tiled roofs and carved wooden balconies stand on the same footprints, their walls covered in large painted picture panels and enamel seal plaques. Crowds in festival cloaks gather calmly to hear reciters on stepped platforms in clear midday sun.",
-      "visualPromptIndoor": "A spacious recitation hall with polished wood benches in circles, warm lantern light and walls lined with painted scroll cabinets and listening niches.",
-      "fossil": {
-        "medium": "poster",
-        "brief": "Front-facing painted poster showing a central kindly elder reciter with open arms, above a curved row of listening children in festival cloaks, below a border of red seal stamps and ribboned scrolls. No letters, no words, no text of any kind.",
-        "slogan": "Every Voice Carries Wisdom",
-        "elements": [
-          {
-            "name": "kindly elder reciter",
-            "technique": "liking",
-            "explanation": "A warm elder invites trust and attention from all ages."
-          },
-          {
-            "name": "curved row of listening children",
-            "technique": "social proof",
-            "explanation": "Attentive children show that everyone joins the listening circle."
-          },
-          {
-            "name": "border of red seal stamps",
-            "technique": "authority",
-            "explanation": "Official seals promise authenticity and guild approval."
-          }
+      "caption": "1926 · Painted walls, low blocks, few motors",
+      "visualPrompt": "Transform this scene to 1926 in a world where the printing press was never invented. Mid-rise blocks in the region's own building tradition line streets with painted murals and hand-lettered boards, horse trams and bicycles passing under simple lamps with no printed signs or cars.",
+      "visualPromptIndoor": "A group listening room in the region's own building tradition with long benches, a central voice box, hand-written ledgers on shelves and large picture charts on the walls.",
+      "world": {
+        "differences": [
+          "three- to four-storey street blocks with courtyards instead of six- to ten-storey office and apartment blocks (because voice orders and hand ledgers keep firms mid-sized and limit capital pooling)",
+          "horse trams, bicycles, handcarts and few shared motor vans instead of mass private cars and motor buses (because driving and repair skills pass only by long apprenticeship and parts networks stay thin)",
+          "large painted murals and hand-lettered price boards instead of printed billboards and newsstands (because advertising must work as pictures and speech for a largely non-reading public)",
+          "mild gas lamps and few wired bulbs on main streets instead of bright citywide electric lighting with signal systems (because power planning without cheap duplicated plans stays limited to central lines)",
+          "compact town quarters with gardens, orchards and stable yards between homes instead of wide commuter suburbs with filling stations (because daily life stays on foot and near work)"
+        ],
+        "absent": [
+          "cars",
+          "mass-circulation newspapers",
+          "printed billboards",
+          "cinema marquees",
+          "traffic signals",
+          "glass office towers"
+        ],
+        "kept": [
+          "terrain and waterways",
+          "mature street trees and seasonal climate",
+          "the region's own building tradition in facades and roofs"
         ]
       }
     },
@@ -100,29 +101,30 @@
       "year": 0,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2026 · Living Library Streets",
-      "visualPrompt": "Transform this scene to 2026. Smooth limestone and cedar library arcades with living green roofs and broad glass doors stand on the same footprints, fronted by large illustrated public panels and bronze inkwell posts. Families and elders share books and listen to storytellers on woven mats in gentle afternoon light.",
-      "visualPromptIndoor": "A bright modern living-library interior with cedar shelves for handmade books, soft reading nooks and a central recitation circle under skylight glow.",
-      "fossil": {
-        "medium": "billboard",
-        "brief": "Front-facing large billboard showing a central circle of diverse listeners holding blank books, left side a towering inkwell monument in bronze, right side a canopy of green recitation trees with lanterns. No letters, no words, no text of any kind.",
-        "slogan": "Remember Together, Belong Together",
-        "elements": [
-          {
-            "name": "circle of diverse listeners",
-            "technique": "belonging",
-            "explanation": "A united circle suggests belonging through shared remembering."
-          },
-          {
-            "name": "towering inkwell monument",
-            "technique": "authority",
-            "explanation": "The grand monument lends weight and permanence to hand knowledge."
-          },
-          {
-            "name": "canopy of green recitation trees",
-            "technique": "association",
-            "explanation": "Lit trees connect learning with growth and peaceful gathering."
-          }
+      "caption": "2026 · Picture walls and courtyard blocks",
+      "visualPrompt": "Transform this scene to 2026 in a world where the printing press was never invented. Mid-rise courtyard blocks in the region's own building tradition with hand-painted picture walls and chalk boards, trams, bicycles and speaker poles in planted streets with no cars or printed signs.",
+      "visualPromptIndoor": "A dictation hall in the region's own building tradition with rows of desks, voice horns, hand-kept ledgers and large instructional pictures, clerks speaking and copying by daylight.",
+      "world": {
+        "differences": [
+          "four- to six-storey courtyard blocks instead of glass high-rise towers (because voice-led offices with hand records favor mid-size firms and mid-rise streets)",
+          "street trams, bicycles, handcarts and shared motor vans instead of dense private car traffic (because mechanic skills spread slowly by apprenticeship and fleets stay small and local)",
+          "hand-painted picture walls, carved marks and chalk price boards instead of printed signs, glowing billboards and paper posters (because messages must work as images and speech when reading is rare)",
+          "stone-set lanes and packed-earth sidestreets with speaker poles and listening shelters instead of wide asphalt arterials with sign gantries (because public news arrives by announced voice and scheduled readings)",
+          "market gardens, fruit trees and stable yards between houses instead of parking lots and fuel courts (because food and draft animals remain close to town centers)"
+        ],
+        "absent": [
+          "cars",
+          "glass office towers",
+          "glowing billboards",
+          "smartphones",
+          "printed newspapers",
+          "parking lots",
+          "traffic lights"
+        ],
+        "kept": [
+          "terrain, soils and water courses",
+          "native trees and garden plants",
+          "the region's own building tradition in walls and roofs"
         ]
       }
     },
@@ -130,29 +132,30 @@
       "year": 100,
       "driver": "culture",
       "structures": "alternate",
-      "caption": "2126 · Glowing Memory Canopy",
-      "visualPrompt": "Transform this scene to 2126. Graceful limestone and light-timber pavilions with curved solar canopies stand on the same footprints, their facades set with softly glowing illustrated panels and living vine trellises. People stroll and sit peacefully with listeners and copyists in calm pearly evening light.",
-      "visualPromptIndoor": "A serene glowing memory chamber with curved timber walls, cushioned listening rings and luminous ceiling panels casting warm diffused light.",
-      "fossil": {
-        "medium": "panel",
-        "brief": "Front-facing softly glowing panel showing a central calm face formed from flowing script lines, surrounded by concentric rings of small listener silhouettes, crowned by a glowing tree of connected lamps. No letters, no words, no text of any kind.",
-        "slogan": "Light Keeps What We Speak",
-        "elements": [
-          {
-            "name": "calm face",
-            "technique": "liking",
-            "explanation": "A serene face makes spoken memory feel kind and personal."
-          },
-          {
-            "name": "concentric rings of small listener silhouettes",
-            "technique": "social proof",
-            "explanation": "Repeating rings imply everyone is included in remembrance."
-          },
-          {
-            "name": "glowing tree of connected lamps",
-            "technique": "association",
-            "explanation": "Glowing branches suggest knowledge lives and spreads gently."
-          }
+      "caption": "2126 · Voice posts and roof gardens",
+      "visualPrompt": "Transform this scene to 2126 in a world where the printing press was never invented. Planted courtyard housing in the region's own building tradition with mural walls, voice posts and roof gardens along narrow lanes with trams and pedal cabs and no text screens or cars.",
+      "visualPromptIndoor": "A bright memory school hall in the region's own building tradition with semicircle seating, a speaker's stand, picture panels and hand-copied scrolls, learners reciting together.",
+      "world": {
+        "differences": [
+          "five- to seven-storey planted courtyard housing instead of taller tower districts (because memory training and voice coordination keep schools and firms small and streets human-scaled)",
+          "battery trams, pedal cabs and horse-drawn service carts instead of self-driving cars and delivery drones (because repair and routing knowledge passes orally and operations stay neighborhood-based)",
+          "large mural walls and carved image panels with voice posts instead of text screens and printed signage (because public information remains spoken and pictorial)",
+          "low sound poles and courtyard listening rooms instead of data kiosks and display facades (because investment favors acoustic voice networks over text networks)",
+          "narrow planted lanes with permeable paving instead of wide asphalt roads with lane paint (because slow shared movement needs less hard surfacing)"
+        ],
+        "absent": [
+          "private cars",
+          "text display screens",
+          "printed books and newspapers",
+          "glass skyscrapers",
+          "motorways",
+          "parking structures",
+          "traffic lights"
+        ],
+        "kept": [
+          "hills, rivers and soils",
+          "mature trees and garden plants",
+          "the region's own building tradition in form and roofs"
         ]
       }
     },
@@ -160,9 +163,32 @@
       "year": 1000,
       "driver": "culture",
       "structures": "overgrown",
-      "caption": "3026 · Garden of Kept Stories",
-      "visualPrompt": "Transform this scene to 3026. Moss-softened limestone arcades and cedar pavilions stand on the same footprints, their roofs and balconies embraced by recitation trees, flowering vines and tended herb gardens. Neighbours walk garden paths and read together in dappled green daylight filtering through leaves.",
-      "visualPromptIndoor": "A sunlit garden hall where climbing plants frame cedar shelves of handmade books, with mossy stone benches and soft leaf-filtered light for quiet reading."
+      "caption": "3026 · Garden roofs over old town fabric",
+      "visualPrompt": "Transform this scene to 3026 in a world where the printing press was never invented. Cared-for courtyard homes in the region's own building tradition with living roofs, orchards and vine-covered picture walls along footpaths and rail lines, trees and gardens growing over every surface.",
+      "visualPromptIndoor": "A sunlit hall garden room in the region's own building tradition with plants trailing over beams, low tables with hand-copied volumes, picture panels and a circle of stools for recitation.",
+      "world": {
+        "differences": [
+          "three- to five-storey courtyard clusters with living roofs and garden terraces instead of high-rise districts (because small voice-taught households and crafts remain the basic economic unit)",
+          "footpaths, cycle tracks and light rail lines instead of car roads and air lanes (because daily movement stays muscle-powered and rail-based at local scale)",
+          "vine-covered image walls and hand-cut story panels instead of illuminated signs and printed facades (because history is kept in pictures and recitation)",
+          "rain cisterns, orchards and terraced food beds between houses instead of concrete plazas and fuel courts (because water and food stay visible, local and hand-tended)",
+          "small timber voice poles with lamps instead of tall grid pylons and signal towers (because networks are neighborhood-scale and low-power)"
+        ],
+        "absent": [
+          "cars",
+          "skyscrapers",
+          "motorways",
+          "billboards",
+          "airports",
+          "parking lots",
+          "traffic lights"
+        ],
+        "kept": [
+          "hills, rivers and soils",
+          "old trees and climate patterns",
+          "the region's own building tradition in stone, timber and clay"
+        ]
+      }
     }
   ]
 }
