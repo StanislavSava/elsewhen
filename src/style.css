@@ -38,8 +38,15 @@ button, select, input { font: inherit; color: inherit; }
     radial-gradient(90% 60% at 50% -10%, rgba(120, 160, 200, 0.16), transparent 60%),
     var(--bg);
 }
+/* The opening demo's photo, set by the inline script in index.html while the app loads, under the same veil. */
+:root[style*="--landing-photo"] #landing {
+  background:
+    radial-gradient(80% 70% at 50% 50%, rgba(10, 10, 9, 0.62), rgba(10, 10, 9, 0.25)),
+    var(--landing-photo) center / cover no-repeat,
+    var(--bg);
+}
 /* Over a playing demo scene the landing turns into a translucent veil. */
-body.overlay #landing { background: radial-gradient(80% 70% at 50% 50%, rgba(10, 10, 9, 0.62), rgba(10, 10, 9, 0.25)); }
+body.overlay #landing, :root[style*="--landing-photo"] body.overlay #landing { background: radial-gradient(80% 70% at 50% 50%, rgba(10, 10, 9, 0.62), rgba(10, 10, 9, 0.25)); }
 body.overlay .topbar, body.overlay .timebar .slider-wrap, body.overlay #hint { visibility: hidden; }
 .link { background: none; border: none; color: var(--muted); text-decoration: underline; margin-top: 14px; cursor: pointer; font-size: 0.9rem; }
 .credit { position: absolute; right: 12px; bottom: calc(4px + env(safe-area-inset-bottom)); z-index: 2; font-size: 0.68rem; color: var(--muted); }

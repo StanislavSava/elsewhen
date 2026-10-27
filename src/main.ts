@@ -272,8 +272,10 @@ async function begin(photo: PreparedPhoto, opts: { token?: string; demo?: Demo }
   update();
 
   if (opts.demo) {
+    // Eras start loading straight away; the masks only shape transitions and can arrive alongside.
+    loadDemoEras(gen);
     await applyMasks(gen, photo, demoMaskUrls(opts.demo));
-    return loadDemoEras(gen);
+    return;
   }
 
   loading.show("Opening a window into this place");

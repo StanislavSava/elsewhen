@@ -7,6 +7,20 @@
     <title>Elsewhen</title>
     <meta name="description" content="A window through time: see where you stand from a million years ago to a million years ahead." />
     <link rel="stylesheet" href="/src/style.css" />
+    <script>
+      // Before the app bundle (three.js is most of it) arrives, put the opening demo's photo behind the landing
+      // so a cold visit never stares at black. The scene then draws the same photo over it.
+      (function () {
+        var q = new URLSearchParams(location.search);
+        if (q.get("s")) return;
+        var show = function (name) {
+          if (!/^[a-z0-9-]+$/.test(name)) return;
+          document.documentElement.style.setProperty("--landing-photo", 'url("/demo/' + name + '/photo.jpg")');
+        };
+        if (q.get("demo")) return show(q.get("demo"));
+        fetch("/demo/index.json").then(function (r) { return r.json(); }).then(function (list) { if (list[0]) show(list[0].name); }, function () {});
+      })();
+    </script>
   </head>
   <body>
     <section id="landing" class="screen">
