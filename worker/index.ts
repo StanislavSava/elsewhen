@@ -15,6 +15,7 @@ import {
   verifyTurnstile,
 } from "./guard";
 import { describeCells } from "./cells";
+import { gate } from "./gate";
 import { ContentFilteredError, editImage, segment } from "./meta/client";
 import { eraLabel, getNotes, noteFor, readNoteFor, readNotes, townOf } from "./historian";
 import { writeStory, type StoryEra } from "./story";
@@ -25,6 +26,9 @@ import { bareEraPrompt, CREATURE_PHRASE, eraPrompt, promptVersion } from "./prom
 type C = Context<{ Bindings: Env }>;
 
 const app = new Hono<{ Bindings: Env }>();
+
+// Everything, static files included (run_worker_first), sits behind the shared password.
+app.use("*", gate);
 
 const fail = (c: C, status: 400 | 403 | 404 | 409 | 422 | 502 | 503, error: ApiError["error"], detail?: string) =>
   c.json<ApiError>({ error, detail }, status);
@@ -378,5 +382,8 @@ app.get("/api/files/*", async (c) => {
     },
   });
 });
+
+// Signed in: the built app and demos, with the SPA fallback from wrangler.jsonc.
+app.all("*", (c) => c.env.ASSETS.fetch(c.req.raw));
 
 export default app;

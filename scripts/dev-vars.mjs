@@ -29,5 +29,7 @@ const vars = {
   // Local dev only (overrides wrangler.jsonc vars); production keeps its own cap. Set DEV_DAILY_BUDGET_CENTS to change.
   DAILY_BUDGET_CENTS: env.DEV_DAILY_BUDGET_CENTS ?? "2000",
   MAX_REPAINTS: env.DEV_MAX_REPAINTS ?? "2",
+  // Empty leaves local dev open; set DEV_APP_PASSWORD to try the gate.
+  APP_PASSWORD: env.DEV_APP_PASSWORD ?? "",
 };
 writeFileSync(".dev.vars", Object.entries(vars).map(([k, v]) => `${k}=${v}`).join("\n") + "\n");

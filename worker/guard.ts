@@ -19,7 +19,7 @@ function b64url(bytes: ArrayBuffer): string {
   return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 
-async function hmac(env: Env, data: string): Promise<string> {
+export async function hmac(env: Env, data: string): Promise<string> {
   const key = await crypto.subtle.importKey("raw", enc.encode(env.SCENE_HMAC_KEY), { name: "HMAC", hash: "SHA-256" }, false, [
     "sign",
   ]);

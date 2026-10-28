@@ -12,6 +12,7 @@ export const LOCK_TTL_SECONDS = 120;
 export const BASE_PHRASES = ["sky", "building", "tree", "grass", "street", "wall", "ceiling", "floor"] as const;
 
 export type Env = {
+  ASSETS: Fetcher;
   BUCKET: R2Bucket;
   KV: KVNamespace;
   MODEL_API_KEY: string;
@@ -21,4 +22,6 @@ export type Env = {
   DAILY_BUDGET_CENTS: string;
   MAX_REPAINTS?: string;
   KILL_SWITCH: string;
+  /** Shared password for the whole site; unset leaves it open. */
+  APP_PASSWORD?: string;
 };

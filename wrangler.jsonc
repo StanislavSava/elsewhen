@@ -5,8 +5,10 @@
   "compatibility_date": "2026-10-01",
   "observability": { "enabled": true },
   "assets": {
+    "binding": "ASSETS",
     "not_found_handling": "single-page-application",
-    "run_worker_first": ["/api/*"]
+    // Every request meets the password gate first; the Worker then serves the files itself.
+    "run_worker_first": true
   },
   "r2_buckets": [{ "binding": "BUCKET", "bucket_name": "elsewhen" }],
   // Production namespace "elsewhen-kv"; local dev simulates it.
@@ -17,6 +19,6 @@
     // Critic-driven repaints per era. Eras paint in parallel, so a repaint only delays its own era.
     "MAX_REPAINTS": "2"
   }
-  // Secrets (wrangler secret put): MODEL_API_KEY, TURNSTILE_SITE_KEY, TURNSTILE_SECRET_KEY, SCENE_HMAC_KEY.
+  // Secrets (wrangler secret put): MODEL_API_KEY, TURNSTILE_SITE_KEY, TURNSTILE_SECRET_KEY, SCENE_HMAC_KEY, APP_PASSWORD.
   // Locally they come from .dev.vars, generated from the root .env by scripts/dev-vars.mjs.
 }
