@@ -49,6 +49,14 @@ const STRUCTURES: Record<StructureState, Record<Setting, string>> = {
 const CAMERA_LOCK =
   "Same camera, same position, same lens and framing: do not zoom in or out, do not crop, do not change the perspective or camera height. The horizon line, distant hills, mountains and skyline keep exactly the same height, size and position in the frame.";
 
+/**
+ * Scrubbing reads as one camera only if the light holds: golden sunsets under a grey photo's sky broke it. Deep
+ * time keeps weather and hour but may change season (an ice age has its snow).
+ */
+const LIGHT_CULTURE =
+  "Keep the original photo's season, weather, sky, time of day and direction of light exactly: the same kind of day, as if photographed on the same date in another year.";
+const LIGHT_DEEP = "Keep the original photo's weather, sky brightness, time of day and direction of light.";
+
 /** Painted/CGI drift was the other one. */
 const PHOTOREAL =
   "The result is a real, unretouched documentary photograph with natural light, true-to-life colours and textures and the same photographic quality as the original: not a painting, illustration, render or concept art. Remove any people.";
@@ -95,7 +103,8 @@ export function eraPrompt(
   const regional = era.driver === "culture" ? ` ${REGIONAL}` : ` ${WILDLIFE_SCALE}`;
   const roads = era.driver === "culture" && setting === "outdoor" ? ` ${roadsClause(road)}` : "";
   const fix = fixes ? ` A previous attempt had these problems, avoid them: ${fixes}` : "";
-  return `${theme}${world}${here}${regional} ${STRUCTURES[era.structures][setting]}${roads} ${CAMERA_LOCK} ${PHOTOREAL}${fix}`;
+  const light = setting === "indoor" ? "" : ` ${era.driver === "culture" ? LIGHT_CULTURE : LIGHT_DEEP}`;
+  return `${theme}${world}${here}${regional} ${STRUCTURES[era.structures][setting]}${roads} ${CAMERA_LOCK}${light} ${PHOTOREAL}${fix}`;
 }
 
 /** The smallest prompt that still keeps the photo: for eras the content filter keeps blocking. */
@@ -106,7 +115,7 @@ export function bareEraPrompt(era: ChronicleEra, biome: Biome, setting: Setting,
 }
 
 /** Bump when how an era is painted or checked changes (not just its prompt), so old results aren't served. */
-const PIPELINE_VERSION = 6; // 2: critic + SAM building overlap; 3: no idea fossils, cell labels; 4: repaints re-checked; 5: alternate worlds as consequences; 6: roads keep their line
+const PIPELINE_VERSION = 7; // 2: critic + SAM building overlap; 3: no idea fossils, cell labels; 4: repaints re-checked; 5: alternate worlds as consequences; 6: roads keep their line; 7: light held, per-era building masks
 
 /** Short hash of everything that shapes an era's image, so editing a chronicle regenerates only what changed. */
 export async function promptVersion(

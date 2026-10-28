@@ -1,7 +1,10 @@
 // Full-screen three.js quad that blends two keyframes. Each pixel changes on its own schedule from a
 // delay map baked from the photo's SAM masks: sky first, plants next, structures last, with a noisy edge.
 // Structures also change along their height, block by block: they rise from the ground while a place is being
-// built up and come down from the roofline as it weathers away, so nothing simply pops in or out.
+// built up and come down from the roofline as it weathers away, so nothing simply pops in or out. When both
+// keyframes know where their own buildings stand (a SAM mask per era), each building is handled on its own: one
+// only in the older keyframe comes down first, one only in the newer rises after, one in both ages in place.
+// While a transition plays, cloud shadows sweep the land and a few days and nights flick by.
 import * as THREE from "three";
 
 const vertexShader = /* glsl */ `
@@ -15,6 +18,9 @@ const fragmentShader = /* glsl */ `
   uniform sampler2D uA;
   uniform sampler2D uB;
   uniform sampler2D uDelay;
+  uniform sampler2D uSA; // where keyframe A's own structures stand
+  uniform sampler2D uSB;
+  uniform float uPerEra; // 1 when both are known; otherwise the photo's structures and uBuild stand in
   uniform float uT;
   uniform float uImgAspect;
   uniform float uViewAspect;
@@ -43,13 +49,28 @@ const fragmentShader = /* glsl */ `
     // Each pixel transitions over a window of length L that starts later for higher delays.
     // r: when this pixel changes; g: how much it belongs to a structure.
     vec2 d = texture2D(uDelay, uv).rg;
-    float delay = clamp(d.r + d.g * uBuild * (uv.y - 0.5) * 0.7, 0.0, 1.0);
+    float delay;
+    float structure;
+    if (uPerEra > 0.5) {
+      // A is always the older keyframe; scrubbing back simply plays this in reverse.
+      float sa = texture2D(uSA, uv).r;
+      float sb = texture2D(uSB, uv).r;
+      float gone = sa * (1.0 - sb);
+      float born = sb * (1.0 - sa);
+      delay = mix(d.r, 0.05 + (1.0 - uv.y) * 0.4, gone); // roofline first, early
+      delay = mix(delay, 0.5 + uv.y * 0.45, born);        // from the ground up, late
+      structure = max(gone, born);
+    } else {
+      delay = clamp(d.r + d.g * uBuild * (uv.y - 0.5) * 0.7, 0.0, 1.0);
+      structure = d.g * abs(uBuild);
+    }
     const float L = 0.45;
     float start = delay * (1.0 - L);
     float n = noise(uv * 18.0) * 0.6 + noise(uv * 64.0) * 0.4;
     // Structures go block by block, like courses of stone, instead of melting.
     float blocks = hash(floor(uv * vec2(120.0, 170.0))) - 0.5;
-    float jitter = ((n - 0.5) * 0.18 + blocks * 0.14 * d.g * abs(uBuild)) * sin(3.14159 * uT); // none at the keyframes
+    float pass = sin(3.14159 * uT); // 0 at the keyframes, so they always show exactly as painted
+    float jitter = ((n - 0.5) * 0.18 + blocks * 0.14 * structure) * pass;
     float local = clamp(smoothstep(start, start + L, uT + jitter), 0.0, 1.0);
 
     vec3 color;
@@ -68,6 +89,12 @@ const fragmentShader = /* glsl */ `
 
     // Era grading: warm past, cool future; then vignette and fine grain.
     // Kept subtle: heavier grading made photographs read as paintings.
+    // Time passing: cloud shadows drift over the land (not the sky, the earliest layer) and days dim and brighten.
+    float sky = 1.0 - smoothstep(0.0, 0.08, d.r);
+    float cloud = smoothstep(0.5, 0.78, noise(uv * vec2(2.2, 3.0) + vec2(uT * 7.0, uT * 1.3)));
+    color *= 1.0 - pass * 0.1 * cloud * (1.0 - sky);
+    color *= 1.0 - pass * 0.05 * (0.5 - 0.5 * cos(uT * 6.2832 * 3.0));
+
     color = mix(color, color * uTint, 0.12);
     float vig = smoothstep(1.2, 0.4, length(vUv - 0.5) * 1.4);
     color *= mix(0.9, 1.0, vig);
@@ -84,6 +111,9 @@ export class Renderer {
   private camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
   private material: THREE.ShaderMaterial;
   private textures = new Map<number, THREE.Texture>();
+  /** Per keyframe: where its own structures stand. Missing = unknown (older scenes and demos). */
+  private structures = new Map<number, THREE.Texture>();
+  private blank: THREE.Texture;
   private look: Look = { x: 0, y: 0 };
   private zoomBoost = 1;
   private zoomBoostTarget = 1;
@@ -98,6 +128,7 @@ export class Renderer {
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     const blank = new THREE.DataTexture(new Uint8Array([0, 0, 0, 255]), 1, 1);
     blank.needsUpdate = true;
+    this.blank = blank;
     const delay = new THREE.DataTexture(new Uint8Array([128, 0, 128, 255]), 1, 1);
     delay.needsUpdate = true;
     this.material = new THREE.ShaderMaterial({
@@ -107,6 +138,9 @@ export class Renderer {
         uA: { value: blank },
         uB: { value: blank },
         uDelay: { value: delay },
+        uSA: { value: blank },
+        uSB: { value: blank },
+        uPerEra: { value: 0 },
         uBuild: { value: 0 },
         uT: { value: 0 },
         uImgAspect: { value: imgAspect },
@@ -183,6 +217,18 @@ export class Renderer {
     tex.needsUpdate = true;
     this.textures.get(year)?.dispose();
     this.textures.set(year, tex);
+    this.setStructures(year, null); // a new image makes the old one's structures stale
+  }
+
+  /** Where a keyframe's own structures stand (white on black, any size), or null when unknown. */
+  setStructures(year: number, canvas: HTMLCanvasElement | null): void {
+    this.structures.get(year)?.dispose();
+    this.structures.delete(year);
+    if (!canvas) return;
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.minFilter = THREE.LinearFilter;
+    tex.generateMipmaps = false;
+    this.structures.set(year, tex);
   }
 
   hasKeyframe(year: number): boolean {
@@ -205,6 +251,11 @@ export class Renderer {
     this.material.uniforms.uB.value = tb;
     this.material.uniforms.uT.value = t;
     this.material.uniforms.uBuild.value = build;
+    const sa = this.structures.get(a);
+    const sb = this.structures.get(b);
+    this.material.uniforms.uSA.value = sa ?? this.blank;
+    this.material.uniforms.uSB.value = sb ?? this.blank;
+    this.material.uniforms.uPerEra.value = sa && sb ? 1 : 0;
     (this.material.uniforms.uTint.value as THREE.Vector3).set(...tint);
   }
 
@@ -238,6 +289,7 @@ export class Renderer {
   dispose(): void {
     cancelAnimationFrame(this.raf);
     this.textures.forEach((t) => t.dispose());
+    this.structures.forEach((t) => t.dispose());
     this.renderer.dispose();
   }
 }
@@ -264,6 +316,11 @@ export function bakeDelayMap(
   out.height = height;
   out.getContext("2d")!.putImageData(d, 0, 0);
   return out;
+}
+
+/** A keyframe's structures as white on black, for Renderer.setStructures. An empty list means "none stand here". */
+export function bakeStructures(width: number, height: number, masks: (MaskLike | null)[]): HTMLCanvasElement {
+  return paintLayers(width, height, "rgb(0,0,0)", masks.map((mask) => ({ mask, delay: 1 })));
 }
 
 function paintLayers(width: number, height: number, ground: string, layers: { mask: MaskLike | null; delay: number }[]): HTMLCanvasElement {

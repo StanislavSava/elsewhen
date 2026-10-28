@@ -30,7 +30,8 @@
           "planted street garden beds",
           "cobbled street with tram rails",
           "potted fruit trees by wall"
-        ]
+        ],
+        "structures": "base_100.structures.txt"
       },
       "1000": {
         "image": "base_1000.webp",
@@ -44,7 +45,8 @@
           "mossy cobbled walkway planters",
           "lily covered water channel",
           "mossy cobbled garden path"
-        ]
+        ],
+        "structures": "base_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -62,7 +64,8 @@
           "moss-covered ancient street wall base",
           "mossy leaf-covered cobble street path",
           "mossy stone ruin topped with bromeliad"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -112,7 +115,8 @@
           "wattle hut with thatched roof",
           "packed-earth path with woven fences",
           "thatched huts with fenced gardens"
-        ]
+        ],
+        "structures": "base_-500.structures.txt"
       },
       "-100": {
         "image": "base_-100.webp",
@@ -126,7 +130,8 @@
           "vintage black open car",
           "cobbled street vintage cars",
           "cobbled sidewalk white wall"
-        ]
+        ],
+        "structures": "base_-100.structures.txt"
       },
       "-2000": {
         "image": "base_-2000.webp",
@@ -140,7 +145,8 @@
           "fenced manioc beds left",
           "sandy footpath foreground",
           "fenced manioc beds right"
-        ]
+        ],
+        "structures": "base_-2000.structures.txt"
       },
       "-10000": {
         "image": "base_-10000.webp",
@@ -174,7 +180,8 @@
           "rain gardens beside permeable paving",
           "reserved lane with electric pods",
           "wayfinding lights among rain gardens"
-        ]
+        ],
+        "structures": "library-of-alexandria_0.structures.txt"
       },
       "100": {
         "image": "library-of-alexandria_100.webp",
@@ -188,7 +195,8 @@
           "white houses with blue doors",
           "modern tram on stone tracks",
           "low white colonial row houses"
-        ]
+        ],
+        "structures": "library-of-alexandria_100.structures.txt"
       },
       "1000": {
         "image": "library-of-alexandria_1000.webp",
@@ -202,7 +210,8 @@
           "round glass skylight in grass",
           "shallow rocky stream rapids",
           "glass skylights among garden ferns"
-        ]
+        ],
+        "structures": "library-of-alexandria_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -220,7 +229,8 @@
           "moss-covered ancient street wall base",
           "mossy leaf-covered cobble street path",
           "mossy stone ruin topped with bromeliad"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -252,7 +262,8 @@
           "fenced garden plot",
           "sandy foot track",
           "stacked poles and thatch"
-        ]
+        ],
+        "structures": "library-of-alexandria_-2000.structures.txt"
       },
       "-1000000": {
         "image": "base_-1000000.webp",
@@ -302,7 +313,8 @@
           "lit shopfronts and stone sidewalk",
           "stone tracks with steam locomotive",
           "gaslit station wall with timetables"
-        ]
+        ],
+        "structures": "library-of-alexandria_-500.structures.txt"
       },
       "-100": {
         "image": "library-of-alexandria_-100.webp",
@@ -316,7 +328,8 @@
           "colonial corner shopfront with signage",
           "green tram on tracks",
           "parked blue delivery van"
-        ]
+        ],
+        "structures": "library-of-alexandria_-100.structures.txt"
       }
     },
     "no-electricity": {
@@ -332,7 +345,8 @@
           "cobblestone street with bicycles",
           "vintage steam lorry on tracks",
           "iron pneumatic cabinet at corner"
-        ]
+        ],
+        "structures": "no-electricity_0.structures.txt"
       },
       "100": {
         "image": "no-electricity_100.webp",
@@ -346,7 +360,8 @@
           "stone base and cobbled sidewalk",
           "cobbled street with tram rail",
           "potted banana plant and lanterns"
-        ]
+        ],
+        "structures": "no-electricity_100.structures.txt"
       },
       "1000": {
         "image": "no-electricity_1000.webp",
@@ -360,7 +375,8 @@
           "moored wooden sail barge",
           "shallow tidal canal water",
           "stone canal walkway with planters"
-        ]
+        ],
+        "structures": "no-electricity_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -378,7 +394,8 @@
           "moss-covered ancient street wall base",
           "mossy leaf-covered cobble street path",
           "mossy stone ruin topped with bromeliad"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -410,7 +427,8 @@
           "wattle hut with thatched roof",
           "packed-earth path with woven fences",
           "thatched huts with fenced gardens"
-        ]
+        ],
+        "structures": "base_-500.structures.txt"
       },
       "-2000": {
         "image": "base_-2000.webp",
@@ -424,7 +442,8 @@
           "fenced manioc beds left",
           "sandy footpath foreground",
           "fenced manioc beds right"
-        ]
+        ],
+        "structures": "base_-2000.structures.txt"
       },
       "-10000": {
         "image": "base_-10000.webp",
@@ -474,7 +493,8 @@
           "leaning bicycle by arched doors",
           "horse cart and steam engine",
           "iron pneumatic kiosk and coal"
-        ]
+        ],
+        "structures": "no-electricity_-100.structures.txt"
       }
     },
     "no-printing-press": {
@@ -490,7 +510,8 @@
           "chalkboards on painted shop doors",
           "cobblestone lane with tram tracks",
           "garden beds with basket cart"
-        ]
+        ],
+        "structures": "no-printing-press_0.structures.txt"
       },
       "100": {
         "image": "no-printing-press_100.webp",
@@ -504,7 +525,8 @@
           "arched doorways with parked bicycles",
           "cobblestone street with tram rails",
           "painted lower facade with trees"
-        ]
+        ],
+        "structures": "no-printing-press_100.structures.txt"
       },
       "1000": {
         "image": "no-printing-press_1000.webp",
@@ -518,7 +540,8 @@
           "mossy cobbled street corner",
           "cobblestone street with tram tracks",
           "potted plants along stone wall"
-        ]
+        ],
+        "structures": "no-printing-press_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -536,7 +559,8 @@
           "moss-covered ancient street wall base",
           "mossy leaf-covered cobble street path",
           "mossy stone ruin topped with bromeliad"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -568,7 +592,8 @@
           "stacked timber beside wattle fence",
           "narrow packed-earth track",
           "stacked logs and cloth bundles"
-        ]
+        ],
+        "structures": "no-printing-press_-500.structures.txt"
       },
       "-2000": {
         "image": "base_-2000.webp",
@@ -582,7 +607,8 @@
           "fenced manioc beds left",
           "sandy footpath foreground",
           "fenced manioc beds right"
-        ]
+        ],
+        "structures": "base_-2000.structures.txt"
       },
       "-10000": {
         "image": "base_-10000.webp",
@@ -632,7 +658,8 @@
           "fruit-laden wooden handcart",
           "horse-drawn carriage on cobbles",
           "painted wall with potted plants"
-        ]
+        ],
+        "structures": "no-printing-press_-100.structures.txt"
       }
     },
     "rome-never-fell": {
@@ -648,7 +675,8 @@
           "shaded colonnade with Latin tablets",
           "stone fountain on paved plaza",
           "colonnade lined with potted plants"
-        ]
+        ],
+        "structures": "rome-never-fell_0.structures.txt"
       },
       "100": {
         "image": "rome-never-fell_100.webp",
@@ -662,7 +690,8 @@
           "lion head street fountain",
           "cobbled avenue with tram tracks",
           "small tiled fountain shrine"
-        ]
+        ],
+        "structures": "rome-never-fell_100.structures.txt"
       },
       "1000": {
         "image": "rome-never-fell_1000.webp",
@@ -676,7 +705,8 @@
           "lion fountain with stone basin",
           "central garden water channel",
           "right lion fountain and hedges"
-        ]
+        ],
+        "structures": "rome-never-fell_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -694,7 +724,8 @@
           "moss-covered ancient street wall base",
           "mossy leaf-covered cobble street path",
           "mossy stone ruin topped with bromeliad"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -726,7 +757,8 @@
           "cut logs and inscribed stone",
           "sandy track with drainage ditches",
           "stacked timber and stone blocks"
-        ]
+        ],
+        "structures": "rome-never-fell_-500.structures.txt"
       },
       "-2000": {
         "image": "base_-2000.webp",
@@ -740,7 +772,8 @@
           "fenced manioc beds left",
           "sandy footpath foreground",
           "fenced manioc beds right"
-        ]
+        ],
+        "structures": "base_-2000.structures.txt"
       },
       "-10000": {
         "image": "base_-10000.webp",
@@ -790,7 +823,8 @@
           "vintage green tram on rails",
           "cobbled street with twin rails",
           "public stone fountain on sidewalk"
-        ]
+        ],
+        "structures": "rome-never-fell_-100.structures.txt"
       }
     },
     "tamed-mammoth": {
@@ -806,7 +840,8 @@
           "stacked felt rolls by door",
           "mammoth pulling hay wagon",
           "small blue electric van"
-        ]
+        ],
+        "structures": "tamed-mammoth_0.structures.txt"
       },
       "100": {
         "image": "tamed-mammoth_100.webp",
@@ -820,7 +855,8 @@
           "two mammoths with hay wagon",
           "grass avenue with wooden troughs",
           "wooden water trough by fence"
-        ]
+        ],
+        "structures": "tamed-mammoth_100.structures.txt"
       },
       "1000": {
         "image": "tamed-mammoth_1000.webp",
@@ -834,7 +870,8 @@
           "large brown woolly mammoth",
           "mammoth adult with calf",
           "wooden water troughs beside haystack"
-        ]
+        ],
+        "structures": "tamed-mammoth_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -852,7 +889,8 @@
           "moss-covered ancient street wall base",
           "mossy leaf-covered cobble street path",
           "mossy stone ruin topped with bromeliad"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -884,7 +922,8 @@
           "damp leaf litter ground",
           "faint animal trail mud",
           "damp tidal forest floor"
-        ]
+        ],
+        "structures": "tamed-mammoth_-2000.structures.txt"
       },
       "-500": {
         "image": "tamed-mammoth_-500.webp",
@@ -898,7 +937,8 @@
           "wattle hut with felt awning",
           "wide packed-earth track",
           "wattle hut with clay pots"
-        ]
+        ],
+        "structures": "tamed-mammoth_-500.structures.txt"
       },
       "-10000": {
         "image": "base_-10000.webp",
@@ -948,7 +988,8 @@
           "stone trough and drying wool",
           "mammoth pulling hay wagon",
           "wool bales and drying frames"
-        ]
+        ],
+        "structures": "tamed-mammoth_-100.structures.txt"
       }
     }
   },

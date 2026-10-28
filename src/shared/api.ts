@@ -14,6 +14,8 @@ export type EraResult = {
   target: { phrase: string; samUrl: string } | null;
   /** What is in each cell of a 3×3 grid over the image, in reading order (labels for the time core). */
   cells?: string[] | null;
+  /** Raw SAM text: where this era's own buildings stand, for transitions. Missing in older eras and demos. */
+  structuresUrl?: string | null;
 };
 
 export type ApiError = {

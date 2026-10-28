@@ -5,7 +5,7 @@ import { playFracture } from "./fracture";
 import { closeTimeCore, isTimeCoreOpen, openTimeCore, type Side, type Slice } from "./timecore";
 import { demoEras, demoMaskUrls, loadDemo, loadDemoIndex, type Demo, type DemoIndexEntry } from "./demo";
 import { generateAll, nearestFirst, type EraStatus } from "./orchestrator";
-import { bakeDelayMap, Renderer, tintForPosition } from "./renderer";
+import { bakeDelayMap, bakeStructures, Renderer, tintForPosition } from "./renderer";
 import { anchor, coverage, hit, loadMask, type Mask } from "./sam";
 import type { EraResult, NotesResponse } from "./shared/api";
 import { CHRONICLES, DEFAULT_FORK, findEra, isShared, yearsFor } from "./shared/chronicles";
@@ -65,6 +65,7 @@ const state = {
   biome: "temperate" as Biome,
   /** The visitor's own biome (from their IP); a demo's biome must not carry over into their photo. */
   homeBiome: "temperate" as Biome,
+  photoStructures: null as HTMLCanvasElement | null,
   setting: "outdoor" as Setting,
   turnstileSiteKey: "",
   token: "",
@@ -356,6 +357,9 @@ async function applyMasks(gen: number, photo: PreparedPhoto, masks: Record<strin
       [decoded.building, decoded.wall],
     ),
   );
+  // Today's buildings, for transitions that know each era's own (only our timeline's present is the photo).
+  state.photoStructures = bakeStructures(photo.width, photo.height, [decoded.building, decoded.wall]);
+  if (state.forkId === DEFAULT_FORK) state.renderer.setStructures(0, state.photoStructures);
   return true;
 }
 
@@ -448,8 +452,20 @@ async function loadKeyframe(gen: number, year: number, result: EraResult): Promi
   if (gen !== state.generation || !state.renderer) return;
   state.renderer.setKeyframe(year, image);
   const era = state.eras.get(year);
-  if (era) era.mask = await loadMask(result.target?.samUrl ?? null);
+  const [target, structures] = await Promise.all([loadMask(result.target?.samUrl ?? null), eraStructures(year, result)]);
+  if (gen !== state.generation || !state.renderer) return;
+  if (era) era.mask = target;
+  if (structures) state.renderer.setStructures(year, bakeStructures(state.displaySize.width, state.displaySize.height, structures));
   update();
+}
+
+/** Where an era's own buildings stand: none in an unbuilt or vanished world, SAM's reading otherwise; null if unknown. */
+async function eraStructures(year: number, result: EraResult): Promise<(Mask | null)[] | null> {
+  const s = findEra(state.forkId, year)?.structures;
+  if (s === "unbuilt" || s === "gone") return [];
+  if (!result.structuresUrl) return null;
+  const mask = await loadMask(result.structuresUrl).catch(() => null);
+  return mask ? [mask] : null;
 }
 
 function bitmap(blob: Blob): Promise<ImageBitmap> {
@@ -802,6 +818,7 @@ forkSelect.addEventListener("change", async () => {
   }
   if (forkId === DEFAULT_FORK && state.photo && state.renderer) {
     state.renderer.setKeyframe(0, await bitmap(state.photo.blob));
+    state.renderer.setStructures(0, state.photoStructures);
     state.eras.set(0, { status: "ready" });
   }
   renderTicks();

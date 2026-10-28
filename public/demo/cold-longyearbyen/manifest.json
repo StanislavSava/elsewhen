@@ -30,7 +30,8 @@
           "sheltered vegetable garden beds",
           "colourful houses with solar roofs",
           "low tram embankment with birches"
-        ]
+        ],
+        "structures": "base_100.structures.txt"
       },
       "1000": {
         "image": "base_1000.webp",
@@ -44,7 +45,8 @@
           "flower gardens with winding waterways",
           "low timber houses among birches",
           "ivy pavilions beside stone paths"
-        ]
+        ],
+        "structures": "base_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -62,7 +64,8 @@
           "grazing reindeer in wetland",
           "mossy roofless ruin walls",
           "overgrown ruined walls by meadow"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -112,7 +115,8 @@
           "open brown tundra plain",
           "two canvas tents on gravel",
           "turf hut with timber stack"
-        ]
+        ],
+        "structures": "base_-500.structures.txt"
       },
       "-2000": {
         "image": "base_-2000.webp",
@@ -126,7 +130,8 @@
           "shallow stony tundra pools",
           "brown gold moss wetland",
           "mossy stones by pool"
-        ]
+        ],
+        "structures": "base_-2000.structures.txt"
       },
       "-10000": {
         "image": "base_-10000.webp",
@@ -158,7 +163,8 @@
           "grey stilted wooden houses",
           "colorful stilted barracks rows",
           "open tundra with pipeline"
-        ]
+        ],
+        "structures": "base_-100.structures.txt"
       }
     },
     "library-of-alexandria": {
@@ -174,7 +180,8 @@
           "brown open tundra foreground",
           "terraced houses with pod lane",
           "foreground pipeline crossing tundra"
-        ]
+        ],
+        "structures": "library-of-alexandria_0.structures.txt"
       },
       "100": {
         "image": "library-of-alexandria_100.webp",
@@ -188,7 +195,8 @@
           "arcaded greenhouses with fountains",
           "magnetic shuttle at fountain plaza",
           "tundra meadow with shuttle track"
-        ]
+        ],
+        "structures": "library-of-alexandria_100.structures.txt"
       },
       "1000": {
         "image": "library-of-alexandria_1000.webp",
@@ -202,7 +210,8 @@
           "vegetable terraces with vine trellis",
           "footpath and rain water channel",
           "vine trellises over stone channels"
-        ]
+        ],
+        "structures": "library-of-alexandria_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -220,7 +229,8 @@
           "grazing reindeer in wetland",
           "mossy roofless ruin walls",
           "overgrown ruined walls by meadow"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -252,7 +262,8 @@
           "three skin tents on tundra",
           "driftwood hut with survey poles",
           "stacked timber and coal piles"
-        ]
+        ],
+        "structures": "library-of-alexandria_-500.structures.txt"
       },
       "-2000": {
         "image": "library-of-alexandria_-2000.webp",
@@ -266,7 +277,8 @@
           "brown moss tundra pools",
           "shallow tundra melt pools",
           "low willow lichen gravel"
-        ]
+        ],
+        "structures": "library-of-alexandria_-2000.structures.txt"
       },
       "-1000000": {
         "image": "base_-1000000.webp",
@@ -316,7 +328,8 @@
           "red timber house rows",
           "lit houses along gravel lanes",
           "station shed with battery carts"
-        ]
+        ],
+        "structures": "library-of-alexandria_-100.structures.txt"
       }
     },
     "no-electricity": {
@@ -332,7 +345,8 @@
           "tundra foreground with train",
           "painted shops with lorries",
           "shopfronts with gas lanterns"
-        ]
+        ],
+        "structures": "no-electricity_0.structures.txt"
       },
       "100": {
         "image": "no-electricity_100.webp",
@@ -346,7 +360,8 @@
           "low painted courtyard housing blocks",
           "steam tramway with gas lanterns",
           "insulated heat mains beside glasshouse"
-        ]
+        ],
+        "structures": "no-electricity_100.structures.txt"
       },
       "1000": {
         "image": "no-electricity_1000.webp",
@@ -360,7 +375,8 @@
           "canal pond with boat",
           "moored wooden cargo boat",
           "stone canal with gas lanterns"
-        ]
+        ],
+        "structures": "no-electricity_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -378,7 +394,8 @@
           "grazing reindeer in wetland",
           "mossy roofless ruin walls",
           "overgrown ruined walls by meadow"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -410,7 +427,8 @@
           "open brown tundra plain",
           "two canvas tents on gravel",
           "turf hut with timber stack"
-        ]
+        ],
+        "structures": "base_-500.structures.txt"
       },
       "-2000": {
         "image": "base_-2000.webp",
@@ -424,7 +442,8 @@
           "shallow stony tundra pools",
           "brown gold moss wetland",
           "mossy stones by pool"
-        ]
+        ],
+        "structures": "base_-2000.structures.txt"
       },
       "-1000000": {
         "image": "base_-1000000.webp",
@@ -474,7 +493,8 @@
           "canvas tents and steam tractor",
           "stacked timber and coal sacks",
           "log barracks with gas lamps"
-        ]
+        ],
+        "structures": "no-electricity_-100.structures.txt"
       }
     },
     "no-printing-press": {
@@ -490,7 +510,8 @@
           "colorful courtyard housing blocks",
           "brown tundra with tram rails",
           "mural housing with speaker pole"
-        ]
+        ],
+        "structures": "no-printing-press_0.structures.txt"
       },
       "100": {
         "image": "no-printing-press_100.webp",
@@ -504,7 +525,8 @@
           "soil roofed mural courtyard blocks",
           "battery track pedal sled cars",
           "voice posts beside battery track"
-        ]
+        ],
+        "structures": "no-printing-press_100.structures.txt"
       },
       "1000": {
         "image": "no-printing-press_1000.webp",
@@ -518,7 +540,8 @@
           "tundra meadow with voice poles",
           "story-panel house with roof terraces",
           "light rail embankment through meadow"
-        ]
+        ],
+        "structures": "no-printing-press_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -536,7 +559,8 @@
           "grazing reindeer in wetland",
           "mossy roofless ruin walls",
           "overgrown ruined walls by meadow"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -568,7 +592,8 @@
           "mossy tundra with meltwater streams",
           "two skin tents and timber pile",
           "drying rack with painted hide"
-        ]
+        ],
+        "structures": "no-printing-press_-500.structures.txt"
       },
       "-10000": {
         "image": "base_-10000.webp",
@@ -618,7 +643,8 @@
           "shallow stony tundra pools",
           "brown gold moss wetland",
           "mossy stones by pool"
-        ]
+        ],
+        "structures": "base_-2000.structures.txt"
       },
       "-100": {
         "image": "no-printing-press_-100.webp",
@@ -632,7 +658,8 @@
           "red timber rows snow roofs",
           "horse wagon dirt track",
           "painted walls hand-lettered boards"
-        ]
+        ],
+        "structures": "no-printing-press_-100.structures.txt"
       }
     },
     "rome-never-fell": {
@@ -648,7 +675,8 @@
           "colorful colonnaded perimeter blocks",
           "stone plaza with fountain",
           "tundra with tram rails"
-        ]
+        ],
+        "structures": "rome-never-fell_0.structures.txt"
       },
       "100": {
         "image": "rome-never-fell_100.webp",
@@ -662,7 +690,8 @@
           "public laundry and library colonnades",
           "public bath with mist fountain",
           "dry meadow with buried duct"
-        ]
+        ],
+        "structures": "rome-never-fell_100.structures.txt"
       },
       "1000": {
         "image": "rome-never-fell_1000.webp",
@@ -676,7 +705,8 @@
           "mature birch willow grove",
           "mossy terraced stone blocks",
           "milestone by reed ponds"
-        ]
+        ],
+        "structures": "rome-never-fell_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -694,7 +724,8 @@
           "grazing reindeer in wetland",
           "mossy roofless ruin walls",
           "overgrown ruined walls by meadow"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -726,7 +757,8 @@
           "shallow stony tundra pools",
           "brown gold moss wetland",
           "mossy stones by pool"
-        ]
+        ],
+        "structures": "base_-2000.structures.txt"
       },
       "-500": {
         "image": "rome-never-fell_-500.webp",
@@ -740,7 +772,8 @@
           "driftwood stack on tundra",
           "Latin-cut stone marker",
           "hide tent on brown tundra"
-        ]
+        ],
+        "structures": "rome-never-fell_-500.structures.txt"
       },
       "-1000000": {
         "image": "base_-1000000.webp",
@@ -790,7 +823,8 @@
           "walled vegetable garden plots",
           "green trams and coal tubs",
           "parked green passenger tram"
-        ]
+        ],
+        "structures": "rome-never-fell_-100.structures.txt"
       }
     },
     "tamed-mammoth": {
@@ -806,7 +840,8 @@
           "grassy meadow with haystacks",
           "mammoth hauled hay wagons",
           "battery van and cabinets"
-        ]
+        ],
+        "structures": "tamed-mammoth_0.structures.txt"
       },
       "100": {
         "image": "tamed-mammoth_100.webp",
@@ -820,7 +855,8 @@
           "mammoth pulling fodder wagon",
           "terraced blocks with roof planting",
           "water troughs beside tram rails"
-        ]
+        ],
+        "structures": "tamed-mammoth_100.structures.txt"
       },
       "1000": {
         "image": "tamed-mammoth_1000.webp",
@@ -834,7 +870,8 @@
           "mammoths grazing on grass lane",
           "vegetable beds before sod houses",
           "stone cisterns and hand pump"
-        ]
+        ],
+        "structures": "tamed-mammoth_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -852,7 +889,8 @@
           "grazing reindeer in wetland",
           "mossy roofless ruin walls",
           "overgrown ruined walls by meadow"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -884,7 +922,8 @@
           "stacked driftwood pile",
           "hide tents around hollow",
           "two harnessed woolly mammoths"
-        ]
+        ],
+        "structures": "tamed-mammoth_-2000.structures.txt"
       },
       "-500": {
         "image": "tamed-mammoth_-500.webp",
@@ -898,7 +937,8 @@
           "haystack beside wicker fence",
           "mammoth pulling hay wagon",
           "mammoth hauling hay wagon"
-        ]
+        ],
+        "structures": "tamed-mammoth_-500.structures.txt"
       },
       "-1000000": {
         "image": "base_-1000000.webp",
@@ -948,7 +988,8 @@
           "red timber outbuildings and meadow",
           "mammoth hay wagons on boulevard",
           "red wool hay store"
-        ]
+        ],
+        "structures": "tamed-mammoth_-100.structures.txt"
       }
     }
   },

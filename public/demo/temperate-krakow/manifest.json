@@ -30,7 +30,8 @@
           "solar panels on green roof",
           "orchard gardens and planted beds",
           "grassed tram lines with trams"
-        ]
+        ],
+        "structures": "base_100.structures.txt"
       },
       "1000": {
         "image": "base_1000.webp",
@@ -44,7 +45,8 @@
           "ivy-covered building with vegetable beds",
           "shallow ponds with stone paths",
           "overgrown station buildings with orchards"
-        ]
+        ],
+        "structures": "base_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -62,7 +64,8 @@
           "ivy covered roofless station wall",
           "wet meadow with meandering stream",
           "mossy roofless market hall wall"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -112,7 +115,8 @@
           "large thatched timber farmhouses",
           "fenced gardens and thatched sheds",
           "shingled houses with fenced yards"
-        ]
+        ],
+        "structures": "base_-500.structures.txt"
       },
       "-2000": {
         "image": "base_-2000.webp",
@@ -126,7 +130,8 @@
           "wattle huts with garden plots",
           "dirt crossroads with thatched huts",
           "fenced homestead with thatched huts"
-        ]
+        ],
+        "structures": "base_-2000.structures.txt"
       },
       "-10000": {
         "image": "base_-10000.webp",
@@ -158,7 +163,8 @@
           "large brick tenement warehouses",
           "cobbled forecourt with tram rails",
           "brick station houses with red roofs"
-        ]
+        ],
+        "structures": "base_-100.structures.txt"
       }
     },
     "library-of-alexandria": {
@@ -174,7 +180,8 @@
           "building with rooftop plantings",
           "paved square with rain gardens",
           "solar roofs and pod lanes"
-        ]
+        ],
+        "structures": "library-of-alexandria_0.structures.txt"
       },
       "100": {
         "image": "library-of-alexandria_100.webp",
@@ -188,7 +195,8 @@
           "pale library colonnade with fountains",
           "formal plaza with fountain pools",
           "red-roof halls with silent tram"
-        ]
+        ],
+        "structures": "library-of-alexandria_100.structures.txt"
       },
       "1000": {
         "image": "library-of-alexandria_1000.webp",
@@ -202,7 +210,8 @@
           "tower base with garden beds",
           "glass skylights in meadow grass",
           "clear winding stream with reeds"
-        ]
+        ],
+        "structures": "library-of-alexandria_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -220,7 +229,8 @@
           "ivy covered roofless station wall",
           "wet meadow with meandering stream",
           "mossy roofless market hall wall"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -270,7 +280,8 @@
           "gaslit cobbled side street",
           "brick shop with price signs",
           "steam locomotive with freight wagons"
-        ]
+        ],
+        "structures": "library-of-alexandria_-500.structures.txt"
       },
       "-2000": {
         "image": "library-of-alexandria_-2000.webp",
@@ -284,7 +295,8 @@
           "grassy clearing with oak trees",
           "log hut with stacked timber",
           "wooden waterwheel and paper stall"
-        ]
+        ],
+        "structures": "library-of-alexandria_-2000.structures.txt"
       },
       "-10000": {
         "image": "base_-10000.webp",
@@ -316,7 +328,8 @@
           "battery trams and delivery vans",
           "tree-lined sidewalk with streetlights",
           "electric station building with sign"
-        ]
+        ],
+        "structures": "library-of-alexandria_-100.structures.txt"
       }
     },
     "no-electricity": {
@@ -332,7 +345,8 @@
           "five-storey brick market building",
           "market stalls around ice sheet",
           "old station with steam trains"
-        ]
+        ],
+        "structures": "no-electricity_0.structures.txt"
       },
       "100": {
         "image": "no-electricity_100.webp",
@@ -346,7 +360,8 @@
           "cobbled square with gas lanterns",
           "brick steam winding house",
           "cable tram beside water leat"
-        ]
+        ],
+        "structures": "no-electricity_100.structures.txt"
       },
       "1000": {
         "image": "no-electricity_1000.webp",
@@ -360,7 +375,8 @@
           "ivy-covered weathered apartment block",
           "wooden barges beside terraced gardens",
           "weathered station with water wheels"
-        ]
+        ],
+        "structures": "no-electricity_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -378,7 +394,8 @@
           "ivy covered roofless station wall",
           "wet meadow with meandering stream",
           "mossy roofless market hall wall"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -410,7 +427,8 @@
           "large thatched timber farmhouses",
           "fenced gardens and thatched sheds",
           "shingled houses with fenced yards"
-        ]
+        ],
+        "structures": "base_-500.structures.txt"
       },
       "-2000": {
         "image": "base_-2000.webp",
@@ -424,7 +442,8 @@
           "wattle huts with garden plots",
           "dirt crossroads with thatched huts",
           "fenced homestead with thatched huts"
-        ]
+        ],
+        "structures": "base_-2000.structures.txt"
       },
       "-1000000": {
         "image": "base_-1000000.webp",
@@ -474,7 +493,8 @@
           "four-storey brick tenement block",
           "cobbled square with steam engine",
           "white station with red roofs"
-        ]
+        ],
+        "structures": "no-electricity_-100.structures.txt"
       }
     },
     "no-printing-press": {
@@ -490,7 +510,8 @@
           "green tram beside mural building",
           "market gardens with orchard trees",
           "station halls with shared vans"
-        ]
+        ],
+        "structures": "no-printing-press_0.structures.txt"
       },
       "100": {
         "image": "no-printing-press_100.webp",
@@ -504,7 +525,8 @@
           "mural-covered courtyard block facade",
           "carved bell and speaker towers",
           "trams and bicycles by murals"
-        ]
+        ],
+        "structures": "no-printing-press_100.structures.txt"
       },
       "1000": {
         "image": "no-printing-press_1000.webp",
@@ -518,7 +540,8 @@
           "grass roofed stone building",
           "carved stone building with glass",
           "stone buildings with small trams"
-        ]
+        ],
+        "structures": "no-printing-press_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -536,7 +559,8 @@
           "ivy covered roofless station wall",
           "wet meadow with meandering stream",
           "mossy roofless market hall wall"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -568,7 +592,8 @@
           "wattle huts with garden plots",
           "dirt crossroads with thatched huts",
           "fenced homestead with thatched huts"
-        ]
+        ],
+        "structures": "base_-2000.structures.txt"
       },
       "-500": {
         "image": "no-printing-press_-500.webp",
@@ -582,7 +607,8 @@
           "painted timber workshop building",
           "stone speaking platform",
           "stable yard with carts"
-        ]
+        ],
+        "structures": "no-printing-press_-500.structures.txt"
       },
       "-10000": {
         "image": "base_-10000.webp",
@@ -632,7 +658,8 @@
           "brick block with painted murals",
           "horse tram beside fenced gardens",
           "two-storey red-roofed station buildings"
-        ]
+        ],
+        "structures": "no-printing-press_-100.structures.txt"
       }
     },
     "rome-never-fell": {
@@ -648,7 +675,8 @@
           "stone arcade with rooftop garden",
           "stone plaza with central fountain",
           "stone arcades with green tram"
-        ]
+        ],
+        "structures": "rome-never-fell_0.structures.txt"
       },
       "100": {
         "image": "rome-never-fell_100.webp",
@@ -662,7 +690,8 @@
           "formal fountain forum gardens",
           "colonnaded avenue lined with cypresses",
           "basilica thermae columned facade"
-        ]
+        ],
+        "structures": "rome-never-fell_100.structures.txt"
       },
       "1000": {
         "image": "rome-never-fell_1000.webp",
@@ -676,7 +705,8 @@
           "stone facade with rooftop garden",
           "fountain plaza with cypress",
           "mossy domes among stone pines"
-        ]
+        ],
+        "structures": "rome-never-fell_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -694,7 +724,8 @@
           "ivy covered roofless station wall",
           "wet meadow with meandering stream",
           "mossy roofless market hall wall"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -726,7 +757,8 @@
           "wattle huts with garden plots",
           "dirt crossroads with thatched huts",
           "fenced homestead with thatched huts"
-        ]
+        ],
+        "structures": "base_-2000.structures.txt"
       },
       "-500": {
         "image": "rome-never-fell_-500.webp",
@@ -740,7 +772,8 @@
           "mule wagon on pavement",
           "stone fountain with milestones",
           "mule wagon beside arcade"
-        ]
+        ],
+        "structures": "rome-never-fell_-500.structures.txt"
       },
       "-1000000": {
         "image": "base_-1000000.webp",
@@ -790,7 +823,8 @@
           "arcaded stone market block",
           "electric trams on twin tracks",
           "irrigated market gardens with channel"
-        ]
+        ],
+        "structures": "rome-never-fell_-100.structures.txt"
       }
     },
     "tamed-mammoth": {
@@ -806,7 +840,8 @@
           "mammoth pulling hay wagon",
           "fenced mammoth paddock with trough",
           "mammoth wagon and wool racks"
-        ]
+        ],
+        "structures": "tamed-mammoth_0.structures.txt"
       },
       "100": {
         "image": "tamed-mammoth_100.webp",
@@ -820,7 +855,8 @@
           "felt-roofed block with awnings",
           "fenced hay paddocks trough",
           "mammoth pulling freight wagon"
-        ]
+        ],
+        "structures": "tamed-mammoth_100.structures.txt"
       },
       "1000": {
         "image": "tamed-mammoth_1000.webp",
@@ -834,7 +870,8 @@
           "thatched houses with arched gateway",
           "grazing mammoths and haystacks",
           "mammoths grazing by fenced gardens"
-        ]
+        ],
+        "structures": "tamed-mammoth_1000.structures.txt"
       },
       "10000": {
         "image": "base_10000.webp",
@@ -852,7 +889,8 @@
           "ivy covered roofless station wall",
           "wet meadow with meandering stream",
           "mossy roofless market hall wall"
-        ]
+        ],
+        "structures": "base_10000.structures.txt"
       },
       "1000000": {
         "image": "base_1000000.webp",
@@ -884,7 +922,8 @@
           "fenced timber house with haystacks",
           "mammoth pulling timber sledge",
           "thatched timber barn with fence"
-        ]
+        ],
+        "structures": "tamed-mammoth_-2000.structures.txt"
       },
       "-500": {
         "image": "tamed-mammoth_-500.webp",
@@ -898,7 +937,8 @@
           "mammoth hay wagon on avenue",
           "crossroads with water troughs and wagons",
           "mammoths hauling hay wagons"
-        ]
+        ],
+        "structures": "tamed-mammoth_-500.structures.txt"
       },
       "-10000": {
         "image": "base_-10000.webp",
@@ -948,7 +988,8 @@
           "brick wool warehouse building",
           "mammoth hay wagons on boulevard",
           "brick railway station building"
-        ]
+        ],
+        "structures": "tamed-mammoth_-100.structures.txt"
       }
     }
   },

@@ -316,7 +316,15 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
       const maxRepaints = Number(env.MAX_REPAINTS ?? "2");
       for (let repaint = 1; bestIssues.length && repaint <= maxRepaints; repaint++) {
         console.log(`era ${prefix}: repaint ${repaint} (${bestIssues.join("; ")})`);
-        const next = await paint(bestIssues.join("; "));
+        let next: Painting;
+        try {
+          next = await paint(bestIssues.join("; "));
+        } catch (err) {
+          // A repaint the filter blocks must not throw away the painting we already have.
+          if (!(err instanceof ContentFilteredError)) throw err;
+          console.warn(`era ${prefix}: repaint ${repaint} filtered, keeping the earlier attempt`);
+          break;
+        }
         const nextIssues = await check(next.data);
         if (nextIssues.length <= bestIssues.length) [best, bestIssues] = [next, nextIssues];
       }
@@ -336,9 +344,25 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
           return null; // the era still works without a tappable creature
         }
       };
-      const [target, cells] = await Promise.all([findCreature(), describeCells(env, imageData, eraLabel(year), note)]);
+      // Where this era's own buildings stand, so transitions can bring each one down or up on its own.
+      const findStructures = async (): Promise<string | null> => {
+        if (params.setting === "indoor" || era.structures === "unbuilt" || era.structures === "gone") return null;
+        try {
+          const raw = await segment(env.MODEL_API_KEY, { phrase: "building", image: imageData });
+          await env.BUCKET.put(`${prefix}/structures.txt`, raw, { httpMetadata: { contentType: "text/plain" } });
+          return fileUrl(`${prefix}/structures.txt`);
+        } catch (err) {
+          console.error(`structures ${prefix}:`, String(err).slice(0, 200));
+          return null; // transitions fall back to the photo's buildings
+        }
+      };
+      const [target, cells, structuresUrl] = await Promise.all([
+        findCreature(),
+        describeCells(env, imageData, eraLabel(year), note),
+        findStructures(),
+      ]);
 
-      const result: EraResult = { year, imageUrl: fileUrl(`${prefix}/image.webp`), target, cells };
+      const result: EraResult = { year, imageUrl: fileUrl(`${prefix}/image.webp`), target, cells, structuresUrl };
       await env.BUCKET.put(`${prefix}/meta.json`, JSON.stringify(result), {
         httpMetadata: { contentType: "application/json" },
       });

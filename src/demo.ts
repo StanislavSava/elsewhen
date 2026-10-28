@@ -7,6 +7,8 @@ type DemoEra = {
   image: string;
   target?: { phrase: string; sam: string };
   cells?: string[] | null;
+  /** SAM text file: where this era's buildings stand (see EraResult.structuresUrl). */
+  structures?: string;
 };
 
 export type DemoManifest = {
@@ -49,6 +51,7 @@ export function demoEras(demo: Demo, forkId: string): Map<number, EraResult> {
       imageUrl: demo.base + e.image,
       target: e.target ? { phrase: e.target.phrase, samUrl: demo.base + e.target.sam } : null,
       cells: e.cells ?? null,
+      structuresUrl: e.structures ? demo.base + e.structures : null,
     });
   }
   return out;
