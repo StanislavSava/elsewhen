@@ -2,23 +2,29 @@
 // so a town founded in 1667 isn't painted into 1526, and a 26 CE Polish field isn't a stone town.
 // Written once per scene and history, stored in R2; concurrent requests wait for the first one.
 import { CHRONICLES, DEFAULT_FORK, findEra, isShared, yearsFor } from "../src/shared/chronicles";
-import { CURRENT_YEAR, formatYear } from "../src/shared/eras";
+import { BIOMES, CURRENT_YEAR, formatYear, type Biome } from "../src/shared/eras";
 import { describeCells } from "./cells";
 import { LOCK_TTL_SECONDS, type Env } from "./config";
 import { sparkJson } from "./meta/client";
 
 /** Bump when the historian's instructions change, so scenes get fresh notes instead of stale ones. */
-const NOTES_VERSION = 5; // 3–4: one continuous story, photo cells; 5: forks reasoned item by item
+const NOTES_VERSION = 6; // 3–4: one continuous story, photo cells; 5: forks reasoned item by item; 6: biome and street
 const notesKey = (sceneId: string, forkId: string) =>
   `scenes/${sceneId}/${forkId === DEFAULT_FORK ? "base" : forkId}/notes.v${NOTES_VERSION}.json`;
 
-/** cells: labels for the photo itself (our timeline only), see cells.ts. */
-export type Notes = { place: string; eras: Record<string, string>; cells?: string[] | null };
+/**
+ * cells: labels for the photo itself (our timeline only), see cells.ts. biome: the place's own climate, read from
+ * the photo (the IP-based guess can be a VPN, or a demo's biome left over). road: where in the frame the photo shows
+ * a road or street ("" when none); eras keep any road there and nowhere else.
+ */
+export type Notes = { place: string; eras: Record<string, string>; cells?: string[] | null; biome?: Biome; road?: string };
 
 const SCHEMA = {
   type: "object",
   properties: {
     place: { type: "string" },
+    biome: { type: "string", enum: [...BIOMES] },
+    road: { type: "string" },
     eras: {
       type: "array",
       items: {
@@ -31,7 +37,7 @@ const SCHEMA = {
       },
     },
   },
-  required: ["place", "eras"],
+  required: ["place", "biome", "road", "eras"],
 };
 
 const SYSTEM = `You are a careful historian and landscape scientist helping an app repaint a real photo as the same
@@ -41,11 +47,17 @@ stood in THIS camera view at that time: whether there was any settlement at all 
 recent centuries), and if so how large, which buildings, materials and street surfaces; otherwise the vegetation,
 fields, water and terrain. Keep the permanent terrain (hills, coast, rivers, mountains) consistent with the photo.
 Be historically and ecologically plausible; prefer "open land / forest / village edge" over inventing a town.
+Also give "biome", the natural climate of this place (${BIOMES.join(", ")}), and "road": where in the frame the
+photo shows a road, street, parking or vehicle track at ground level, by its position and size (e.g. "a small
+parking lane in the bottom-right corner", "a wide street across the lower third"), or "none".
+
+Roads stay where they are: streets and tracks in the past run only where the photo shows one, on the same line,
+narrower and unpaved. No era adds a road, track, rails or vehicles anywhere else; at most a narrow footpath.
 
 The eras are one continuous story seen from one fixed camera: the viewer slides between them, so nothing may
 appear from nothing. Buildings are preceded by their beginnings: in the last era before buildings stand in this
 view MUST show their beginnings: a camp of a few tents, a hut, a cleared plot, a timber frame, stacked building
-material, a fence or a track, where the buildings will later stand. This is the first sign of the place to come,
+material, a fence or a footpath, where the buildings will later stand. This is the first sign of the place to come,
 even if it is somewhat earlier than the real founding. Big buildings are preceded by smaller, older ones on roughly
 the same spots. Say briefly what is new since the previous era.
 
@@ -89,7 +101,7 @@ async function write(env: Env, forkId: string, photo: string): Promise<Notes> {
       : `This is an ALTERNATE history: "${chronicle.title}". ${chronicle.premise} Everything before ${chronicle.divergenceYear} happened as in our history. How it got here: ${chronicle.chain.map((e) => `${e.year}: ${e.event} ${e.consequence}`).join(" ")}
 Reason like a historian about THIS place, which may be far from where the change began. For each era, go through what the photo shows (the buildings and their height and density, the street, vehicles, wires, lights, shopfronts, greenery) and say concretely what this history changes here and why, and what it leaves alone. Would this place be bigger, smaller, poorer, richer, or not there at all? The differences listed per era are the world's; apply the ones that would reach this place.`;
   const [r, cells] = await Promise.all([
-    sparkJson<{ place: string; eras: { year: number; here: string }[] }>(env.MODEL_API_KEY, {
+    sparkJson<{ place: string; biome: Biome; road: string; eras: { year: number; here: string }[] }>(env.MODEL_API_KEY, {
       system: SYSTEM,
       name: "PlaceHistory",
       schema: SCHEMA,
@@ -101,7 +113,13 @@ Reason like a historian about THIS place, which may be far from where the change
     // Our timeline's present is the photo itself, so its labels come from here rather than from a painted era.
     forkId === DEFAULT_FORK ? describeCells(env, photo, eraLabel(0), "") : Promise.resolve(null),
   ]);
-  return { place: r.place, eras: Object.fromEntries(r.eras.map((e) => [String(e.year), e.here])), cells };
+  return {
+    place: r.place,
+    eras: Object.fromEntries(r.eras.map((e) => [String(e.year), e.here])),
+    cells,
+    biome: BIOMES.includes(r.biome) ? r.biome : undefined,
+    road: /^\s*(none|no road|n\/a)?\s*\.?\s*$/i.test(r.road ?? "") ? "" : r.road.trim(),
+  };
 }
 
 export async function getNotes(env: Env, sceneId: string, forkId: string, photo: () => Promise<string>): Promise<Notes> {

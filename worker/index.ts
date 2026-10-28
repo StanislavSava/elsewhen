@@ -129,7 +129,13 @@ app.post("/api/scenes/:token/notes", async (c) => {
     const photo = toDataUrl(await scene.photo.arrayBuffer(), "image/jpeg");
     const notes = await getNotes(c.env, scene.id, forkId, async () => photo);
     const town = await townOf(c.env, scene.id, notes.place).catch(() => null);
-    return c.json<NotesResponse>({ place: notes.place, town, eras: notes.eras, cells: notes.cells ?? null });
+    return c.json<NotesResponse>({
+      place: notes.place,
+      town,
+      eras: notes.eras,
+      cells: notes.cells ?? null,
+      biome: notes.biome ?? null,
+    });
   } catch (err) {
     console.error(`notes ${scene.id} ${forkId}:`, String(err).slice(0, 300));
     return fail(c, 502, "upstream");
@@ -158,12 +164,31 @@ async function buildingOverlap(env: Env, sceneId: string, imageData: string): Pr
 }
 
 /**
+ * Where the photo shows a road, from the historian ("" for none); null before the notes exist. If the historian
+ * saw none but SAM finds a street, we don't know where: null, so a missed reading never erases a real road.
+ * Both GET and POST derive it the same way, since it is part of the era's prompt hash.
+ */
+async function roadOf(env: Env, sceneId: string): Promise<string | null> {
+  const [notes, mask] = await Promise.all([readNotes(env, sceneId, DEFAULT_FORK), env.BUCKET.get(`scenes/${sceneId}/masks/street.txt`)]);
+  if (notes?.road === undefined) return null;
+  if (notes.road === "" && mask && occupancy(await mask.text()).some(Boolean)) return null;
+  return notes.road;
+}
+
+/**
  * Shared eras (before a divergence, and all of deep time) are stored once under "base" for every history.
  * The prompt version makes an edited chronicle regenerate only the eras whose prompts changed.
  */
-async function eraPrefix(sceneId: string, year: number, p: EraParams, era: ChronicleEra, note: string): Promise<string> {
+async function eraPrefix(
+  sceneId: string,
+  year: number,
+  p: EraParams,
+  era: ChronicleEra,
+  note: string,
+  road: string | null,
+): Promise<string> {
   const fork = isShared(p.forkId, year) ? "base" : p.forkId;
-  const version = await promptVersion(era, p.biome, p.setting, note);
+  const version = await promptVersion(era, p.biome, p.setting, note, road);
   return `scenes/${sceneId}/${fork}/${era.driver === "biology" ? p.biome : "-"}/${p.setting}/${year}/${version}`;
 }
 
@@ -187,7 +212,7 @@ app.get("/api/scenes/:token/eras/:year", async (c) => {
   if (!id || !params || !era) return fail(c, 404, "not_found");
   const note = await readNoteFor(c.env, id, params.forkId, year);
   if (note === null) return fail(c, 404, "not_found");
-  const result = await readEra(c.env, await eraPrefix(id, year, params, era, note));
+  const result = await readEra(c.env, await eraPrefix(id, year, params, era, note, await roadOf(c.env, id)));
   return result ? c.json(result) : fail(c, 404, "not_found");
 });
 
@@ -211,7 +236,8 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
     console.error(`notes ${scene.id} ${params.forkId}:`, String(err).slice(0, 300));
     note = "";
   }
-  const prefix = await eraPrefix(scene.id, year, params, era, note);
+  const road = await roadOf(c.env, scene.id);
+  const prefix = await eraPrefix(scene.id, year, params, era, note, road);
 
   const existing = await readEra(c.env, prefix);
   if (existing) return c.json(existing);
@@ -230,18 +256,18 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
         const edit = (prompt: string) => editImage(env.MODEL_API_KEY, { prompt, images: [photo], size });
         let url: string;
         try {
-          url = await edit(eraPrompt(era, params.biome, params.setting, note, fixes));
+          url = await edit(eraPrompt(era, params.biome, params.setting, note, road, fixes));
         } catch (err) {
           // The content filter is non-deterministic and blocks even calm notes now and then: last try, plain prompt.
           if (!(err instanceof ContentFilteredError)) throw err;
           console.warn(`era ${prefix}: content filter twice, retrying with the plain prompt`);
           try {
-            url = await edit(eraPrompt(era, params.biome, params.setting, "", ""));
+            url = await edit(eraPrompt(era, params.biome, params.setting, "", road));
           } catch (err2) {
             // Last resort: the era's own description and the camera/photo rules, nothing else.
             if (!(err2 instanceof ContentFilteredError)) throw err2;
             console.warn(`era ${prefix}: plain prompt filtered too, trying the bare era`);
-            url = await edit(bareEraPrompt(era, params.biome, params.setting));
+            url = await edit(bareEraPrompt(era, params.biome, params.setting, road));
           }
         }
         await spend(env, IMAGE_PRICE_CENTS);
@@ -261,7 +287,15 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
       // The critic also checks an alternate world for things it can't have (cars where nothing runs on electricity).
       const chronicle = CHRONICLES[params.forkId];
       const history = isShared(params.forkId, year) ? "" : `Alternate history: ${chronicle.title}. ${chronicle.premise} `;
-      const expected = `${history}${note}${era.driver === "culture" && era.world ? ` It must not show: ${era.world.absent.join(", ")}.` : ""}`;
+      const absent = era.driver === "culture" && era.world ? ` It must not show: ${era.world.absent.join(", ")}.` : "";
+      // A road painted where the photo has none reads as a different place.
+      const roads =
+        era.driver === "culture" && params.setting === "outdoor"
+          ? road === ""
+            ? " The original view has no road or street: any road, track, rails or vehicle is wrong."
+            : ` Roads and vehicles may only be ${road ? `where the original photo has them (${road})` : "where the original photo has a street"}; a road or tracks anywhere else are wrong.`
+          : "";
+      const expected = `${history}${note}${absent}${roads}`;
       const check = async (img: string): Promise<string[]> => {
         const [verdict, overlap] = await Promise.all([
           judge(env, photo, img, eraLabel(year), expected).catch((err) => {
@@ -336,7 +370,7 @@ app.post("/api/scenes/:token/story", async (c) => {
   const params = parseEraParams(await c.req.json().catch(() => ({})));
   const id = await verifySceneToken(c.env, c.req.param("token"));
   if (!params || !id) return fail(c, 404, "not_found");
-  const base = await readNotes(c.env, id, DEFAULT_FORK);
+  const [base, road] = await Promise.all([readNotes(c.env, id, DEFAULT_FORK), roadOf(c.env, id)]);
   const eras: StoryEra[] = [];
   for (const year of yearsFor(params.forkId)) {
     const era = findEra(params.forkId, year);
@@ -347,7 +381,7 @@ app.post("/api/scenes/:token/story", async (c) => {
     }
     const note = await readNoteFor(c.env, id, params.forkId, year);
     if (note === null) continue;
-    const meta = await readEra(c.env, await eraPrefix(id, year, params, era, note));
+    const meta = await readEra(c.env, await eraPrefix(id, year, params, era, note, road));
     if (meta) eras.push({ year, label: eraLabel(year), note, cells: meta.cells ?? null });
   }
   if (eras.length < 2) return c.json<StoryResponse>({ story: null });

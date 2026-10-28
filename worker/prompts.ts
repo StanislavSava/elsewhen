@@ -60,12 +60,30 @@ const REGIONAL =
 const WILDLIFE_SCALE =
   "Any animal appears at its true size for its distance from this camera, even if small; never move the camera closer to show it.";
 
+/**
+ * Invented roads were the most visible error of the past eras: a road across a courtyard. Roads keep their line.
+ * road: where the photo shows one ("" for none, from the historian); null when we don't know.
+ */
+function roadsClause(road: string | null): string {
+  if (road === "")
+    return "This view has no road or street and never gets one: no road, track, rails, cars, carts or trams anywhere; at most a narrow footpath.";
+  const where = road ? `The only road in this view is ${road}: any road, track or vehicle stays there, on the same line (narrower and unpaved in the past)` : "Roads and tracks run only where the photo shows a street, along the same line (narrower and unpaved in the past)";
+  return `${where}; never add a road, track, rails or vehicles anywhere else.`;
+}
+
 /** An alternate era is painted as a set of consequences, relative to what the photo shows of our world. */
 export function worldClause(w: World): string {
   return `What is different from our world: ${w.differences.join("; ")}. Keep what this history would not change: ${w.kept.join("; ")}. None of these exist here: ${w.absent.join(", ")}.`;
 }
 
-export function eraPrompt(era: ChronicleEra, biome: Biome, setting: Setting, note: string, fixes = ""): string {
+export function eraPrompt(
+  era: ChronicleEra,
+  biome: Biome,
+  setting: Setting,
+  note: string,
+  road: string | null,
+  fixes = "",
+): string {
   const theme =
     era.driver === "biology"
       ? era.biomes[biome].visualPrompt
@@ -75,22 +93,30 @@ export function eraPrompt(era: ChronicleEra, biome: Biome, setting: Setting, not
   const here = note ? ` At this exact place in this era: ${note}` : "";
   const world = era.driver === "culture" && era.world ? ` ${worldClause(era.world)}` : "";
   const regional = era.driver === "culture" ? ` ${REGIONAL}` : ` ${WILDLIFE_SCALE}`;
+  const roads = era.driver === "culture" && setting === "outdoor" ? ` ${roadsClause(road)}` : "";
   const fix = fixes ? ` A previous attempt had these problems, avoid them: ${fixes}` : "";
-  return `${theme}${world}${here}${regional} ${STRUCTURES[era.structures][setting]} ${CAMERA_LOCK} ${PHOTOREAL}${fix}`;
+  return `${theme}${world}${here}${regional} ${STRUCTURES[era.structures][setting]}${roads} ${CAMERA_LOCK} ${PHOTOREAL}${fix}`;
 }
 
 /** The smallest prompt that still keeps the photo: for eras the content filter keeps blocking. */
-export function bareEraPrompt(era: ChronicleEra, biome: Biome, setting: Setting): string {
+export function bareEraPrompt(era: ChronicleEra, biome: Biome, setting: Setting, road: string | null): string {
   const theme = era.driver === "biology" ? era.biomes[biome].visualPrompt : era.visualPrompt;
-  return `${theme} ${STRUCTURES[era.structures][setting]} ${CAMERA_LOCK} ${PHOTOREAL}`;
+  const roads = era.driver === "culture" && setting === "outdoor" ? ` ${roadsClause(road)}` : "";
+  return `${theme} ${STRUCTURES[era.structures][setting]}${roads} ${CAMERA_LOCK} ${PHOTOREAL}`;
 }
 
 /** Bump when how an era is painted or checked changes (not just its prompt), so old results aren't served. */
-const PIPELINE_VERSION = 5; // 2: critic + SAM building overlap; 3: no idea fossils, cell labels; 4: repaints re-checked; 5: alternate worlds as consequences
+const PIPELINE_VERSION = 6; // 2: critic + SAM building overlap; 3: no idea fossils, cell labels; 4: repaints re-checked; 5: alternate worlds as consequences; 6: roads keep their line
 
 /** Short hash of everything that shapes an era's image, so editing a chronicle regenerates only what changed. */
-export async function promptVersion(era: ChronicleEra, biome: Biome, setting: Setting, note: string): Promise<string> {
-  const bytes = new TextEncoder().encode(`${PIPELINE_VERSION}|${eraPrompt(era, biome, setting, note)}`);
+export async function promptVersion(
+  era: ChronicleEra,
+  biome: Biome,
+  setting: Setting,
+  note: string,
+  road: string | null,
+): Promise<string> {
+  const bytes = new TextEncoder().encode(`${PIPELINE_VERSION}|${eraPrompt(era, biome, setting, note, road)}`);
   const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", bytes));
   return [...digest.slice(0, 4)].map((b) => b.toString(16).padStart(2, "0")).join("");
 }

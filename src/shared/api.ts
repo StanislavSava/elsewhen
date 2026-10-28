@@ -34,4 +34,6 @@ export type NotesResponse = {
   town?: string | null;
   eras: Record<string, string>;
   cells: string[] | null;
+  /** The place's own climate, read from the photo; missing in older demo files. */
+  biome?: Biome | null;
 };

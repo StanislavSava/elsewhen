@@ -63,6 +63,8 @@ type EraState = { status: EraStatus; result?: EraResult; mask?: Mask | null };
 const state = {
   forkId: DEFAULT_FORK,
   biome: "temperate" as Biome,
+  /** The visitor's own biome (from their IP); a demo's biome must not carry over into their photo. */
+  homeBiome: "temperate" as Biome,
   setting: "outdoor" as Setting,
   turnstileSiteKey: "",
   token: "",
@@ -86,7 +88,7 @@ fillForkPicker();
 
 const configReady = api.config().then((cfg) => {
   state.turnstileSiteKey = cfg.turnstileSiteKey;
-  state.biome = cfg.biome;
+  state.biome = state.homeBiome = cfg.biome;
   biomeSelect.value = cfg.biome;
   if (!cfg.live) toast("Live generation is resting right now. Try again later.", 0);
   return cfg;
@@ -252,6 +254,9 @@ async function begin(photo: PreparedPhoto, opts: { token?: string; demo?: Demo }
   if (opts.demo) {
     state.biome = opts.demo.manifest.biome;
     biomeSelect.value = state.biome;
+  } else if (!opts.token) {
+    state.biome = state.homeBiome;
+    biomeSelect.value = state.biome;
   }
   $("credit").innerHTML = opts.demo ? opts.demo.manifest.credit : "";
   fillForkPicker(opts.demo ? Object.keys(opts.demo.manifest.forks) : undefined);
@@ -305,6 +310,14 @@ async function begin(photo: PreparedPhoto, opts: { token?: string; demo?: Demo }
     if (!(await applyMasks(gen, photo, masks))) return;
     loading.step("read", "done");
     await research;
+    // The historian reads the climate from the photo itself; that beats the IP guess (VPNs, travel photos).
+    // A resumed scene keeps the biome in its link, so its eras stay the ones already painted.
+    const placeBiome = state.notes.get(DEFAULT_FORK)?.biome;
+    if (!opts.token && placeBiome && BIOMES.includes(placeBiome)) {
+      state.biome = placeBiome;
+      biomeSelect.value = placeBiome;
+      syncUrl();
+    }
     // applyMasks sets state.setting; TypeScript still sees the "outdoor" assigned above.
     if ((state.setting as Setting) === "indoor") toast("Works best outdoors: the deep past and far future can't keep a room's shape.");
 
@@ -420,6 +433,14 @@ async function generate(gen: number, years: number[] = yearsFor(state.forkId)): 
     years,
   );
 }
+
+// A phone that sleeps mid-paint drops its open requests and those eras fail. When the page is back they try once
+// more: one the server is still painting answers 409, and the client waits for it instead of painting it twice.
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState !== "visible" || state.demo || !state.token) return;
+  const failed = [...state.eras].filter(([, e]) => e.status === "failed").map(([year]) => year);
+  if (failed.length) void generate(state.generation, failed);
+});
 
 async function loadKeyframe(gen: number, year: number, result: EraResult): Promise<void> {
   const res = await fetch(result.imageUrl);

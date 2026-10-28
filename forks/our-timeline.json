@@ -296,15 +296,15 @@
       "driver": "culture",
       "structures": "predecessor",
       "caption": "1926 · the town a century ago",
-      "visualPrompt": "Transform this scene to the year 1926. The buildings that stood here then in the region’s own style, some of them older or smaller predecessors of today’s, period street details, a few vintage cars, soft period light.",
+      "visualPrompt": "Transform this scene to the year 1926. The buildings that stood here then in the region’s own style, some of them older or smaller predecessors of today’s, period details, a vintage car only on a street the photo already shows, soft period light.",
       "visualPromptIndoor": "Transform this room to the year 1926: patterned wallpaper, a wooden sideboard, an upholstered armchair, a gas lamp, lace curtains."
     },
     {
       "year": 100,
       "driver": "culture",
       "structures": "intact",
-      "caption": "2126 · green roofs, quiet trams, gardens on every street",
-      "visualPrompt": "Transform this scene to the year 2126. The same buildings, refurbished with green roofs, climbing plants and solar facades, quiet electric trams and wide tree-lined walkways. Peaceful, sunlit, optimistic.",
+      "caption": "2126 · green roofs, solar facades, gardens everywhere",
+      "visualPrompt": "Transform this scene to the year 2126. The same buildings, refurbished with green roofs, climbing plants and solar facades, quiet electric trams only on streets the photo already shows, and tree-lined walkways. Peaceful, sunlit, optimistic.",
       "visualPromptIndoor": "Transform this room to the year 2126: the same layout, warm natural materials, plants along the window, soft integrated lighting, simple elegant furniture. Peaceful and sunlit."
     },
     {
