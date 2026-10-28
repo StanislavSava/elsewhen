@@ -8,7 +8,7 @@ import { LOCK_TTL_SECONDS, type Env } from "./config";
 import { sparkJson } from "./meta/client";
 
 /** Bump when the historian's instructions change, so scenes get fresh notes instead of stale ones. */
-const NOTES_VERSION = 6; // 3–4: one continuous story, photo cells; 5: forks reasoned item by item; 6: biome and street
+const NOTES_VERSION = 7; // 3–4: one continuous story, photo cells; 5: forks reasoned item by item; 6: biome and road; 7: 1976, calm building work
 const notesKey = (sceneId: string, forkId: string) =>
   `scenes/${sceneId}/${forkId === DEFAULT_FORK ? "base" : forkId}/notes.v${NOTES_VERSION}.json`;
 
@@ -59,7 +59,8 @@ appear from nothing. Buildings are preceded by their beginnings: in the last era
 view MUST show their beginnings: a camp of a few tents, a hut, a cleared plot, a timber frame, stacked building
 material, a fence or a footpath, where the buildings will later stand. This is the first sign of the place to come,
 even if it is somewhat earlier than the real founding. Big buildings are preceded by smaller, older ones on roughly
-the same spots. Say briefly what is new since the previous era.
+the same spots. Say briefly what is new since the previous era. Describe building work calmly, as partly finished buildings and
+stacked materials; never mention cranes, scaffolding, demolition or building sites.
 
 For future eras up to a thousand years, describe a calm, cared-for, inhabited place where nature and buildings
 live together (gardens, planted terraces, meadows); never an empty or deserted one. Never mention people. Plain,

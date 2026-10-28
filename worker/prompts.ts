@@ -79,6 +79,16 @@ function roadsClause(road: string | null): string {
   return `${where}; never add a road, track, rails or vehicles anywhere else.`;
 }
 
+/** The neighbouring era toward now, sent as a second image so the eras agree on what stands where. */
+export type Reference = { label: string; later: boolean };
+
+function referenceClause(r: Reference): string {
+  const role = `The first image is the photo to transform: its camera, framing and scale are kept. The second image shows this same view in ${r.label}, `;
+  return r.later
+    ? `${role}later than this era: use it for continuity. Whatever already stood in this era and still stands there keeps exactly its place, shape and size; anything that first appears in the second image is not here yet.`
+    : `${role}earlier than this era: its buildings, roads and big trees stay in exactly the same places, changed only as described here.`;
+}
+
 /** An alternate era is painted as a set of consequences, relative to what the photo shows of our world. */
 export function worldClause(w: World): string {
   return `What is different from our world: ${w.differences.join("; ")}. Keep what this history would not change: ${w.kept.join("; ")}. None of these exist here: ${w.absent.join(", ")}.`;
@@ -91,6 +101,7 @@ export function eraPrompt(
   note: string,
   road: string | null,
   fixes = "",
+  reference: Reference | null = null,
 ): string {
   const theme =
     era.driver === "biology"
@@ -104,7 +115,8 @@ export function eraPrompt(
   const roads = era.driver === "culture" && setting === "outdoor" ? ` ${roadsClause(road)}` : "";
   const fix = fixes ? ` A previous attempt had these problems, avoid them: ${fixes}` : "";
   const light = setting === "indoor" ? "" : ` ${era.driver === "culture" ? LIGHT_CULTURE : LIGHT_DEEP}`;
-  return `${theme}${world}${here}${regional} ${STRUCTURES[era.structures][setting]}${roads} ${CAMERA_LOCK}${light} ${PHOTOREAL}${fix}`;
+  const ref = reference ? ` ${referenceClause(reference)}` : "";
+  return `${theme}${world}${here}${regional} ${STRUCTURES[era.structures][setting]}${roads}${ref} ${CAMERA_LOCK}${light} ${PHOTOREAL}${fix}`;
 }
 
 /** The smallest prompt that still keeps the photo: for eras the content filter keeps blocking. */
@@ -115,7 +127,7 @@ export function bareEraPrompt(era: ChronicleEra, biome: Biome, setting: Setting,
 }
 
 /** Bump when how an era is painted or checked changes (not just its prompt), so old results aren't served. */
-const PIPELINE_VERSION = 7; // 2: critic + SAM building overlap; 3: no idea fossils, cell labels; 4: repaints re-checked; 5: alternate worlds as consequences; 6: roads keep their line; 7: light held, per-era building masks
+const PIPELINE_VERSION = 8; // 2: critic + SAM building overlap; 3: no idea fossils, cell labels; 4: repaints re-checked; 5: alternate worlds as consequences; 6: roads keep their line; 7: light held, per-era building masks; 8: neighbour era as reference (not hashed: it may or may not exist yet)
 
 /** Short hash of everything that shapes an era's image, so editing a chronicle regenerates only what changed. */
 export async function promptVersion(

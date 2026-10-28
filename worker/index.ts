@@ -1,6 +1,6 @@
 import { Hono, type Context } from "hono";
 import type { ApiError, ConfigResponse, CreateSceneResponse, EraResult, MasksResponse, NotesResponse, StoryResponse } from "../src/shared/api";
-import { CHRONICLES, DEFAULT_FORK, findEra, isShared, yearsFor } from "../src/shared/chronicles";
+import { anchorYear, CHRONICLES, DEFAULT_FORK, findEra, isShared, yearsFor } from "../src/shared/chronicles";
 import { BIOMES, SETTINGS, isEraYear, type Biome, type ChronicleEra, type Setting } from "../src/shared/eras";
 import { biomeFor } from "./biome";
 import { BASE_PHRASES, IMAGE_MODEL, IMAGE_PRICE_CENTS, MAX_PHOTO_BYTES, SAM_MODEL, type Env } from "./config";
@@ -21,7 +21,7 @@ import { eraLabel, getNotes, noteFor, readNoteFor, readNotes, townOf } from "./h
 import { writeStory, type StoryEra } from "./story";
 import { iou, occupancy } from "./geometry";
 import { judge, passes } from "./judge";
-import { bareEraPrompt, CREATURE_PHRASE, eraPrompt, promptVersion } from "./prompts";
+import { bareEraPrompt, CREATURE_PHRASE, eraPrompt, promptVersion, type Reference } from "./prompts";
 
 type C = Context<{ Bindings: Env }>;
 
@@ -192,6 +192,34 @@ async function eraPrefix(
   return `scenes/${sceneId}/${fork}/${era.driver === "biology" ? p.biome : "-"}/${p.setting}/${year}/${version}`;
 }
 
+/**
+ * The neighbouring era toward now, if it is already painted: its image goes in as a second input so the eras agree
+ * on what stands where. The client paints eras outward from now, so it usually is; if not, the era paints alone.
+ */
+async function referenceFor(
+  env: Env,
+  sceneId: string,
+  year: number,
+  p: EraParams,
+  road: string | null,
+): Promise<(Reference & { image: string }) | null> {
+  const anchor = anchorYear(p.forkId, year);
+  const era = anchor === null ? undefined : findEra(p.forkId, anchor);
+  if (anchor === null || !era) return null;
+  try {
+    const note = await readNoteFor(env, sceneId, p.forkId, anchor);
+    if (note === null) return null;
+    const prefix = await eraPrefix(sceneId, anchor, p, era, note, road);
+    const obj = await env.BUCKET.get(`${prefix}/image.webp`);
+    if (!obj) return null;
+    const image = toDataUrl(await obj.arrayBuffer(), obj.httpMetadata?.contentType ?? "image/webp");
+    return { label: eraLabel(anchor), later: anchor > year, image };
+  } catch (err) {
+    console.error(`reference ${sceneId} ${year}:`, String(err).slice(0, 200));
+    return null;
+  }
+}
+
 async function readEra(env: Env, prefix: string): Promise<EraResult | null> {
   const meta = await env.BUCKET.get(`${prefix}/meta.json`);
   return meta ? ((await meta.json()) as EraResult) : null;
@@ -244,6 +272,7 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
   if (!(await takeLock(c.env, prefix))) return fail(c, 409, "pending");
 
   const env = c.env;
+  const reference = await referenceFor(env, scene.id, year, params, road);
   const width = scene.photo.customMetadata?.width;
   const height = scene.photo.customMetadata?.height;
   const size = `${width}x${height}`;
@@ -252,22 +281,26 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
   const work = (async (): Promise<EraResult> => {
     try {
       type Painting = { bytes: ArrayBuffer; type: string; data: string };
+      // The content filter is non-deterministic and blocks even calm notes now and then. Each level drops more:
+      // the full prompt, then without the historian's note, then the era's own description and the camera/photo
+      // rules alone. Once an era only passes at some level, its repaints start there instead of re-hitting the filter.
+      const levels = [
+        (fixes: string) => ({ prompt: eraPrompt(era, params.biome, params.setting, note, road, fixes, reference), ref: true }),
+        (fixes: string) => ({ prompt: eraPrompt(era, params.biome, params.setting, "", road, fixes, reference), ref: true }),
+        () => ({ prompt: bareEraPrompt(era, params.biome, params.setting, road), ref: false }),
+      ];
+      let level = 0;
       const paint = async (fixes: string): Promise<Painting> => {
-        const edit = (prompt: string) => editImage(env.MODEL_API_KEY, { prompt, images: [photo], size });
         let url: string;
-        try {
-          url = await edit(eraPrompt(era, params.biome, params.setting, note, road, fixes));
-        } catch (err) {
-          // The content filter is non-deterministic and blocks even calm notes now and then: last try, plain prompt.
-          if (!(err instanceof ContentFilteredError)) throw err;
-          console.warn(`era ${prefix}: content filter twice, retrying with the plain prompt`);
+        for (;;) {
+          const { prompt, ref } = levels[level](fixes);
           try {
-            url = await edit(eraPrompt(era, params.biome, params.setting, "", road));
-          } catch (err2) {
-            // Last resort: the era's own description and the camera/photo rules, nothing else.
-            if (!(err2 instanceof ContentFilteredError)) throw err2;
-            console.warn(`era ${prefix}: plain prompt filtered too, trying the bare era`);
-            url = await edit(bareEraPrompt(era, params.biome, params.setting, road));
+            url = await editImage(env.MODEL_API_KEY, { prompt, images: reference && ref ? [photo, reference.image] : [photo], size });
+            break;
+          } catch (err) {
+            if (!(err instanceof ContentFilteredError) || level === levels.length - 1) throw err;
+            level++;
+            console.warn(`era ${prefix}: content filter twice, dropping to prompt level ${level}`);
           }
         }
         await spend(env, IMAGE_PRICE_CENTS);

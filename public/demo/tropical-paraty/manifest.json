@@ -165,6 +165,21 @@
           "slow muddy tidal creek",
           "mangrove thicket with prop roots"
         ]
+      },
+      "-50": {
+        "image": "base_-50.webp",
+        "cells": [
+          "tall arched upper windows",
+          "cloudy sky over palm canopy",
+          "white building tiled roofs",
+          "iron lantern on white wall",
+          "brick construction with scaffolding",
+          "white houses with iron lanterns",
+          "blue arched doors and curb",
+          "wide cobbled street center",
+          "young palms beside white wall"
+        ],
+        "structures": "base_-50.structures.txt"
       }
     },
     "library-of-alexandria": {
@@ -1006,7 +1021,8 @@
         "-10000": "The same flat coastal plain holds dense humid Atlantic forest with palms, ferns and mangrove thickets around a slow tidal creek, the ground soft and shaded with no clearing.",
         "-2000": "A small cleared plot in the forest holds two low wattle-and-thatch huts and manioc beds exactly where the later street houses will stand, with a narrow sandy footpath and a low stick fence marking the future street line.",
         "-500": "On the same plots now stands a continuous row of small wattle-and-daub houses with palm-thatch roofs lining a widened packed-earth path. New since the earlier clearing are more joined houses forming the street frontage with fenced garden plots behind.",
-        "-100": "A continuous row of one- and two-storey whitewashed masonry houses with red clay tile roofs and blue and ochre doors lines pe-de-moleque cobbles fitted with iron lanterns. New since the thatched village are stone masonry walls, tiled roofs and a second storey on the corner house."
+        "-100": "A continuous row of one- and two-storey whitewashed masonry houses with red clay tile roofs and blue and ochre doors lines pe-de-moleque cobbles fitted with iron lanterns. New since the thatched village are stone masonry walls, tiled roofs and a second storey on the corner house.",
+        "-50": "New since the previous era, the houses now include two-storey white facades with tall arched windows at the foreground corners and iron street lanterns along the whitewashed walls. The wide cobbled street on the same central line is fully paved with stone curbs and the rear canopy of mango and palms is fuller."
       },
       "cells": [
         "white building with arched windows",

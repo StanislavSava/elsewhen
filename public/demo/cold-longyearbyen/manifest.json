@@ -165,6 +165,21 @@
           "open tundra with pipeline"
         ],
         "structures": "base_-100.structures.txt"
+      },
+      "-50": {
+        "image": "base_-50.webp",
+        "cells": [
+          "clear blue sky",
+          "empty blue sky",
+          "blue sky with clouds",
+          "distant snowy mountain ridge",
+          "dark snow-patched mountainside",
+          "snow-covered mountain summit",
+          "red wooden apartment houses",
+          "yellow blue grey houses",
+          "open brown tundra foreground"
+        ],
+        "structures": "base_-50.structures.txt"
       }
     },
     "library-of-alexandria": {
@@ -1006,7 +1021,8 @@
         "-10000": "The ice has withdrawn to leave a bare gravel outwash plain with shallow braided melt ponds and patches of snow in the foreground. The same rounded mountain behind shows patchy snow on dark rock, with low moss and dwarf willow beginning to cover the ground.",
         "-2000": "The foreground is open autumn tundra of brown-gold moss, lichen and scattered stones with shallow pools and faint reindeer trails. The same rounded mountain behind carries summer snow on its upper slopes above bare rock.",
         "-500": "New since the last time, a small shore camp stands on the mid-ground where the later houses will stand: two low tents and one small driftwood-and-turf hut beside a rack of stacked timber and a cleared gravel plot with a faint track. The foreground remains open tundra and the same snow-streaked mountain rises behind.",
-        "-100": "New since the camp, rows of small wooden barracks and gabled houses in red, yellow and grey now stand across the mid-ground on wooden posts, with gravel tracks and tall cable trestles climbing the lower slope of the same mountain. The foreground is still open tundra with a piped water line crossing it."
+        "-100": "New since the camp, rows of small wooden barracks and gabled houses in red, yellow and grey now stand across the mid-ground on wooden posts, with gravel tracks and tall cable trestles climbing the lower slope of the same mountain. The foreground is still open tundra with a piped water line crossing it.",
+        "-50": "New since the previous era, the town has grown denser with more two-storey wooden apartment houses painted red, yellow, blue and grey in rows on the same sites. The same mountain backdrop and open tundra foreground remain, with the buildings larger but still fewer than today."
       },
       "cells": [
         "clear blue sky",

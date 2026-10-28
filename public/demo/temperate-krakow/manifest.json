@@ -165,6 +165,21 @@
           "brick station houses with red roofs"
         ],
         "structures": "base_-100.structures.txt"
+      },
+      "-50": {
+        "image": "base_-50.webp",
+        "cells": [
+          "clear blue sky",
+          "clear blue sky",
+          "clear blue sky",
+          "distant white buildings and road",
+          "electrified rail tracks and platforms",
+          "church tower over town rooftops",
+          "asphalt street and construction piles",
+          "unfinished concrete brick office block",
+          "red roofed old station halls"
+        ],
+        "structures": "base_-50.structures.txt"
       }
     },
     "library-of-alexandria": {
@@ -1006,7 +1021,8 @@
         "-10000": "New since the glacial steppe, the same flat plain holds dense oak-pine forest with hazel clearings and wet meadows dotted with small ponds. A slow stream meanders through reeds across the future station ground, with no track or structure.",
         "-2000": "Small square barley plots, pasture and wattle-and-daub huts with thatched roofs dot the cleared flat ground, crossed by narrow dirt paths. New since the wild forest is a fenced clearing with stacked timber and a trodden track on the future station and market ground, marking the first plot of the place to come.",
         "-500": "Low timber-framed farmhouses and workshops with thatched and shingled roofs line a dusty north road where the tracks and forecourt will later lie, surrounded by walled gardens, orchards and grain fields. New since the scattered huts are more houses, a small wooden chapel and fenced yards on the same plots, with the suburb edge reaching this flat ground.",
-        "-100": "Brick station houses with red-tiled roofs already stand on the right on the same plots as the old farmhouses, fronting many iron-railed tracks with long steel-and-glass platform sheds. New since the suburb are large brick tenements, warehouses and a cobbled forecourt with tram rails where the glass market hall will later stand, with fields gone from this view."
+        "-100": "Brick station houses with red-tiled roofs already stand on the right on the same plots as the old farmhouses, fronting many iron-railed tracks with long steel-and-glass platform sheds. New since the suburb are large brick tenements, warehouses and a cobbled forecourt with tram rails where the glass market hall will later stand, with fields gone from this view.",
+        "-50": "New since 1926, larger concrete and brick office, hotel and station blocks fill the west side while the red-roofed old halls still stand on the east. The left-edge street is widened and asphalted and the central rails carry overhead gantries with more concrete platforms."
       },
       "cells": [
         "clear deep blue sky",

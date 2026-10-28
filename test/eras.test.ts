@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CHRONICLES, DEFAULT_FORK, findEra, isShared, yearsFor } from "../src/shared/chronicles";
+import { anchorYear, CHRONICLES, DEFAULT_FORK, findEra, isShared, yearsFor } from "../src/shared/chronicles";
 import { BIOMES, ERA_YEARS, GENERATED_YEARS, blendAt, positionToYear, yearToPosition } from "../src/shared/eras";
 
 describe("symlog time mapping", () => {
@@ -63,6 +63,25 @@ describe("chronicles", () => {
             if (f.kind === "extinct") expect(f.sources?.length, `${era.year} ${biome} ${f.name}`).toBeGreaterThan(0);
           }
         }
+      }
+    }
+  });
+
+  it("our timeline's 1976 is ours alone", () => {
+    expect(yearsFor(DEFAULT_FORK)).toContain(-50);
+    for (const id of Object.keys(CHRONICLES)) if (id !== DEFAULT_FORK) expect(yearsFor(id), id).not.toContain(-50);
+  });
+  it("anchors each era on its neighbour toward now", () => {
+    const ours = (y: number) => anchorYear(DEFAULT_FORK, y);
+    expect([-50, -100, -500, -2000, -10_000].map(ours)).toEqual([null, -50, -100, -500, null]);
+    expect([100, 1000, 10_000, 1_000_000].map(ours)).toEqual([null, 100, 1000, null]);
+    // A fork's own eras chain from its own now; shared ones still use ours, since they are stored once.
+    expect(anchorYear("no-electricity", 100)).toBe(0);
+    expect(anchorYear("no-electricity", 10_000)).toBe(1000);
+    for (const id of Object.keys(CHRONICLES)) {
+      for (const y of yearsFor(id)) {
+        const a = anchorYear(id, y);
+        if (a !== null) expect(yearsFor(isShared(id, y) ? DEFAULT_FORK : id), `${id} ${y}`).toContain(a);
       }
     }
   });

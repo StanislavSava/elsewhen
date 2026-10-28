@@ -11,7 +11,6 @@ import type { EraResult, NotesResponse } from "./shared/api";
 import { CHRONICLES, DEFAULT_FORK, findEra, isShared, yearsFor } from "./shared/chronicles";
 import {
   BIOMES,
-  ERA_YEARS,
   blendAt,
   eraCaption,
   formatYear,
@@ -507,7 +506,7 @@ function update(): void {
 
   const year = Math.round(positionToYear(p));
   yearEl.textContent = Math.abs(year) < 1 ? "now" : formatYear(roundNicely(year));
-  const nearest = [...ERA_YEARS].sort((x, y) => Math.abs(yearToPosition(x) - p) - Math.abs(yearToPosition(y) - p))[0];
+  const nearest = [...new Set([...yearsFor(state.forkId), 0])].sort((x, y) => Math.abs(yearToPosition(x) - p) - Math.abs(yearToPosition(y) - p))[0];
   const era = findEra(state.forkId, nearest);
   captionEl.textContent =
     nearest === 0 && state.forkId === DEFAULT_FORK ? "Where you are standing, today." : era ? eraCaption(era, state.biome) : "";
@@ -524,7 +523,7 @@ function renderTicks(): void {
   const ticks = $("ticks");
   ticks.innerHTML = "";
   const ownNow = state.forkId !== DEFAULT_FORK;
-  for (const y of ERA_YEARS) {
+  for (const y of [...new Set([...yearsFor(state.forkId), 0])]) {
     const el = document.createElement("span");
     const s = y === 0 && !ownNow ? "now" : (state.eras.get(y)?.status ?? "pending");
     el.className = `tick ${s}`;

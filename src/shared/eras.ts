@@ -11,7 +11,8 @@ export type Setting = (typeof SETTINGS)[number];
 export const CURRENT_YEAR = 2026;
 
 /** Years relative to now. In our timeline 0 is the captured photo; a fork generates its own alternate now. */
-export const ERA_YEARS = [-1_000_000, -10_000, -2_000, -500, -100, 0, 100, 1_000, 10_000, 1_000_000] as const;
+/** −50 (1976) is our timeline's own: today's buildings going up. Alternate histories skip it. */
+export const ERA_YEARS = [-1_000_000, -10_000, -2_000, -500, -100, -50, 0, 100, 1_000, 10_000, 1_000_000] as const;
 export type EraYear = (typeof ERA_YEARS)[number];
 export const GENERATED_YEARS = ERA_YEARS.filter((y) => y !== 0);
 

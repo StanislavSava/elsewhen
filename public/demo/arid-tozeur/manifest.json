@@ -165,6 +165,21 @@
           "brick arcade with striped awnings"
         ],
         "structures": "base_-100.structures.txt"
+      },
+      "-50": {
+        "image": "base_-50.webp",
+        "cells": [
+          "overhanging palm fronds in sky",
+          "clear blue sky with minaret top",
+          "palm canopy against blue sky",
+          "brick shops with striped awnings",
+          "unfinished building with minaret behind",
+          "palm trees with street lamps",
+          "shop entrances with stacked goods",
+          "paved road beside construction materials",
+          "empty asphalt road with curbs"
+        ],
+        "structures": "base_-50.structures.txt"
       }
     },
     "library-of-alexandria": {
@@ -1006,7 +1021,8 @@
         "-10000": "The same flat plain is greener steppe with denser grasses, tamarisk and acacia and a thicker natural grove of date-palms around a marshy spring hollow. There is still no track and no building of any kind.",
         "-2000": "Along the line of the future street runs a narrow dirt track between small irrigated garden plots edged by low palm-frond fences. New since the wild steppe, three low huts of mud and palm-trunks with thatched roofs and young planted palms stand where the later shop rows will stand.",
         "-500": "The track has become an unpaved oasis lane lined on both sides by single-storey sun-dried mudbrick houses with palm-beam arcades and small shop openings, and a small low mudbrick mosque with a short square tower on the spot of the later tall minaret. New since the huts, the plots are enclosed compounds with continuous adobe frontages along the lane.",
-        "-100": "The same street is wider with packed earth and stone edging, lined by two-storey ochre brick and plaster houses with arched shop fronts, wooden shutters and fabric awnings, and the tall slender brick minaret with domed top stands enlarged on the old mosque spot with young avenue palms and iron lamps. New since 1526, the houses are taller in fired brick and plaster and the minaret and shop arcade are larger."
+        "-100": "The same street is wider with packed earth and stone edging, lined by two-storey ochre brick and plaster houses with arched shop fronts, wooden shutters and fabric awnings, and the tall slender brick minaret with domed top stands enlarged on the old mosque spot with young avenue palms and iron lamps. New since 1526, the houses are taller in fired brick and plaster and the minaret and shop arcade are larger.",
+        "-50": "The same market street is now paved and wider with two-storey brick shops, striped awnings and signs on the left and pale houses on the right, still shaded by mature palms. New since 1926 are asphalt, concrete curbs, street lamps and more upper floors on the same building lines."
       },
       "cells": [
         "palm fronds against sky",

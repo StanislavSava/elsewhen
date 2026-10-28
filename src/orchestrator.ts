@@ -1,7 +1,9 @@
 // Requests every era for a scene: at most N in flight, nearest-to-now first, resuming from what the
-// Worker already stored (a phone that suspended the tab never pays twice).
+// Worker already stored (a phone that suspended the tab never pays twice). An era waits for its neighbour
+// toward now (see anchorYear), which the Worker paints in as a continuity reference.
 import { api, HttpError } from "./api";
 import type { EraResult } from "./shared/api";
+import { anchorYear } from "./shared/chronicles";
 import { GENERATED_YEARS, yearToPosition, type Biome, type Setting } from "./shared/eras";
 
 export type EraStatus = "pending" | "loading" | "ready" | "failed";
@@ -68,10 +70,33 @@ export async function generateAll(
     throw new Error("timed out waiting for another request");
   }
 
-  async function worker(): Promise<void> {
-    while (queue.length && !resting) await one(queue.shift()!);
-  }
+  let slots = CONCURRENCY;
+  const waiting: (() => void)[] = [];
+  const acquire = () => (slots > 0 ? (slots--, Promise.resolve()) : new Promise<void>((r) => waiting.push(r)));
+  const release = () => {
+    const next = waiting.shift();
+    if (next) next();
+    else slots++;
+  };
 
   queue.forEach((y) => events.onStatus(y, "pending"));
-  await Promise.all(Array.from({ length: CONCURRENCY }, worker));
+  // Nearest first, so an era's neighbour toward now is always already scheduled; one painted earlier isn't waited on.
+  const finished = new Map<number, Promise<void>>();
+  for (const year of queue) {
+    const anchor = anchorYear(params.forkId, year);
+    const before = anchor === null ? undefined : finished.get(anchor);
+    finished.set(
+      year,
+      (async () => {
+        await before;
+        await acquire();
+        try {
+          if (!resting) await one(year);
+        } finally {
+          release();
+        }
+      })(),
+    );
+  }
+  await Promise.all(finished.values());
 }
