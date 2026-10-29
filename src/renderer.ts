@@ -117,6 +117,9 @@ export class Renderer {
   private look: Look = { x: 0, y: 0 };
   private zoomBoost = 1;
   private zoomBoostTarget = 1;
+  /** Zoom past the edges, so looking around never shows one. More while the gyro steers, which needs room. */
+  private baseZoom = 1.08;
+  private baseZoomTarget = 1.08;
   private lookTarget: Look = { x: 0, y: 0 };
   private raf = 0;
 
@@ -189,7 +192,8 @@ export class Renderer {
     this.look.y += (this.lookTarget.y - this.look.y) * 0.08;
     (this.material.uniforms.uOffset.value as THREE.Vector2).set(this.look.x, -this.look.y);
     this.zoomBoost += (this.zoomBoostTarget - this.zoomBoost) * 0.06;
-    this.material.uniforms.uZoom.value = 1.08 * this.zoomBoost;
+    this.baseZoom += (this.baseZoomTarget - this.baseZoom) * 0.06;
+    this.material.uniforms.uZoom.value = this.baseZoom * this.zoomBoost;
     this.material.uniforms.uTime.value = (performance.now() % 10000) / 1000;
     this.renderer.render(this.scene, this.camera);
   };
@@ -197,6 +201,11 @@ export class Renderer {
   /** A slow camera push into the scene (e.g. while a poster lifts off its wall); 1 = rest. */
   setZoomBoost(k: number): void {
     this.zoomBoostTarget = k;
+  }
+
+  /** Extra room to look around (the gyro): 1.08 at rest. */
+  setLookRoom(zoom: number): void {
+    this.baseZoomTarget = zoom;
   }
 
   setLook(look: Look): void {

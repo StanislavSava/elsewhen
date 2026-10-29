@@ -42,10 +42,15 @@ class Ambience {
 
   /** Must be called from a tap or click. */
   async enable(): Promise<void> {
+    // iOS mutes Web Audio while the ring/silent switch is on, unless the page asks for playback audio (Safari
+    // 16.4+); older versions are unlocked by a media element playing from the same tap.
+    const session = (navigator as Navigator & { audioSession?: { type: string } }).audioSession;
+    if (session) session.type = "playback";
+    else void unlockMedia();
     if (!this.ctx) this.build();
     this.active = true;
     await this.ctx!.resume();
-    this.master.gain.setTargetAtTime(0.5, this.ctx!.currentTime, 0.4);
+    this.master.gain.setTargetAtTime(0.9, this.ctx!.currentTime, 0.4);
     clearInterval(this.timer);
     this.timer = window.setInterval(() => this.tick(), 120);
     try {
@@ -87,9 +92,10 @@ class Ambience {
     if (!this.ctx) return;
     const now = this.ctx.currentTime;
     // Continuous beds follow the mix; birds and crackle are events, scheduled in tick() by the same numbers.
-    this.gains.wind.gain.setTargetAtTime(this.mix.wind * 0.5, now, 0.3);
-    this.gains.insects.gain.setTargetAtTime(this.mix.insects * 0.05, now, 0.3);
-    this.gains.city.gain.setTargetAtTime(this.mix.city * 0.6, now, 0.3);
+    // Phone speakers barely play below ~300 Hz, so the beds sit higher and louder than headphones would need.
+    this.gains.wind.gain.setTargetAtTime(this.mix.wind * 0.9, now, 0.3);
+    this.gains.insects.gain.setTargetAtTime(this.mix.insects * 0.12, now, 0.3);
+    this.gains.city.gain.setTargetAtTime(this.mix.city * 1.1, now, 0.3);
   }
 
   private build(): void {
@@ -116,10 +122,10 @@ class Ambience {
     const wind = this.loop();
     const windFilter = ctx.createBiquadFilter();
     windFilter.type = "lowpass";
-    windFilter.frequency.value = 420;
+    windFilter.frequency.value = 700;
     const gust = ctx.createGain();
     gust.gain.value = 0.7;
-    this.lfo(0.07, 260, windFilter.frequency);
+    this.lfo(0.07, 400, windFilter.frequency);
     this.lfo(0.11, 0.3, gust.gain);
     wind.connect(windFilter).connect(gust).connect(this.gains.wind);
 
@@ -134,11 +140,12 @@ class Ambience {
     this.lfo(23, 0.4, tremble.gain);
     insects.connect(band).connect(tremble).connect(this.gains.insects);
 
-    // City: a deep, steady rumble of distant traffic.
+    // City: the steady wash of distant traffic, centred where a phone speaker can still play it.
     const city = this.loop();
     const rumble = ctx.createBiquadFilter();
-    rumble.type = "lowpass";
-    rumble.frequency.value = 180;
+    rumble.type = "bandpass";
+    rumble.frequency.value = 450;
+    rumble.Q.value = 0.7;
     const swell = ctx.createGain();
     swell.gain.value = 0.8;
     this.lfo(0.05, 0.2, swell.gain);
@@ -186,7 +193,7 @@ class Ambience {
       osc.frequency.setValueAtTime(f, t);
       osc.frequency.exponentialRampToValueAtTime(f * (Math.random() < 0.5 ? 1.35 : 0.75), t + len);
       env.gain.setValueAtTime(0, t);
-      env.gain.linearRampToValueAtTime(0.045 * this.mix.birds, t + 0.01);
+      env.gain.linearRampToValueAtTime(0.14 * this.mix.birds, t + 0.01);
       env.gain.exponentialRampToValueAtTime(0.0001, t + len);
       osc.connect(env).connect(pan);
       osc.start(t);
@@ -204,12 +211,34 @@ class Ambience {
     hp.frequency.value = 1800;
     const env = ctx.createGain();
     const t = ctx.currentTime + Math.random() * 0.1;
-    env.gain.setValueAtTime(0.12 * this.mix.crackle * Math.random(), t);
+    env.gain.setValueAtTime(0.35 * this.mix.crackle * Math.random(), t);
     env.gain.exponentialRampToValueAtTime(0.0001, t + 0.02);
     src.connect(hp).connect(env).connect(this.gains.crackle);
     this.gains.crackle.gain.value = 1;
     src.start(t, Math.random() * 1.9, 0.03);
   }
+}
+
+/** A tiny silent WAV, played from the tap that turns sound on: older iOS then lets Web Audio through the mute switch. */
+async function unlockMedia(): Promise<void> {
+  const bytes = new Uint8Array(44 + 2);
+  const view = new DataView(bytes.buffer);
+  const text = (o: number, s: string) => [...s].forEach((ch, i) => view.setUint8(o + i, ch.charCodeAt(0)));
+  text(0, "RIFF");
+  view.setUint32(4, 38, true);
+  text(8, "WAVEfmt ");
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true); // PCM
+  view.setUint16(22, 1, true); // mono
+  view.setUint32(24, 8000, true);
+  view.setUint32(28, 16000, true);
+  view.setUint16(32, 2, true);
+  view.setUint16(34, 16, true);
+  text(36, "data");
+  view.setUint32(40, 2, true);
+  const audio = new Audio(URL.createObjectURL(new Blob([bytes], { type: "audio/wav" })));
+  audio.setAttribute("playsinline", "");
+  await audio.play().catch(() => undefined);
 }
 
 export const ambience = new Ambience();

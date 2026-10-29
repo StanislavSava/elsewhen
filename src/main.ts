@@ -6,6 +6,7 @@ import { closeTimeCore, isTimeCoreOpen, openTimeCore, type Side, type Slice } fr
 import { demoEras, demoMaskUrls, loadDemo, loadDemoIndex, type Demo, type DemoIndexEntry } from "./demo";
 import { generateAll, nearestFirst, type EraStatus } from "./orchestrator";
 import { ambience } from "./ambience";
+import { lookFromTilt, type Orientation } from "./tilt";
 import { bakeDelayMap, bakeStructures, Renderer, tintForPosition } from "./renderer";
 import { anchor, coverage, hit, loadMask, type Mask } from "./sam";
 import type { EraResult, NotesResponse } from "./shared/api";
@@ -66,6 +67,8 @@ const state = {
   /** The visitor's own biome (from their IP); a demo's biome must not carry over into their photo. */
   homeBiome: "temperate" as Biome,
   photoStructures: null as HTMLCanvasElement | null,
+  /** The gyro steers the view (turned on once per visit). */
+  tilting: false,
   setting: "outdoor" as Setting,
   turnstileSiteKey: "",
   token: "",
@@ -271,6 +274,7 @@ async function begin(photo: PreparedPhoto, opts: { token?: string; demo?: Demo }
   state.renderer?.dispose();
   const canvas = $<HTMLCanvasElement>("canvas");
   state.renderer = new Renderer(canvas, photo.width / photo.height);
+  if (state.tilting) state.renderer.setLookRoom(TILT_ROOM);
   state.renderer.setKeyframe(0, await bitmap(photo.blob));
   // In our timeline "now" is the photo; a fork paints its own alternate present.
   state.eras.set(0, { status: state.forkId === DEFAULT_FORK ? "ready" : "pending" });
@@ -801,6 +805,9 @@ function placeHint(): void {
   hintEl.hidden = false;
 }
 
+/** Zoom while the gyro steers: enough room to turn into, even for a portrait photo on a portrait phone. */
+const TILT_ROOM = 1.2;
+
 // Phones: gyro look-around, asked for only when the visitor taps the chip (iOS needs a user gesture).
 const tiltBtn = $("tilt");
 if ("DeviceOrientationEvent" in window && matchMedia("(pointer: coarse)").matches) tiltBtn.hidden = false;
@@ -810,14 +817,18 @@ tiltBtn.addEventListener("click", async () => {
     toast("Motion access was denied. You can still drag to look around.");
     return;
   }
-  let base: { beta: number; gamma: number } | null = null;
+  // Measured from how the phone was held when tilt was turned on.
+  let base: Orientation | null = null;
   window.addEventListener("deviceorientation", (e) => {
-    if (e.beta === null || e.gamma === null) return;
-    base ??= { beta: e.beta, gamma: e.gamma };
-    look = { x: (e.gamma - base.gamma) / 20, y: (e.beta - base.beta) / 20 };
+    if (e.alpha === null || e.beta === null) return;
+    const now = { alpha: e.alpha, beta: e.beta };
+    base ??= now;
+    look = lookFromTilt(base, now, screen.orientation?.angle ?? 0);
     state.renderer?.setLook(look);
     placeHint();
   });
+  state.tilting = true;
+  state.renderer?.setLookRoom(TILT_ROOM);
   tiltBtn.hidden = true;
 });
 
