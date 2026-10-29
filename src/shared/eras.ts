@@ -62,7 +62,7 @@ export function formatYear(year: number): string {
 
 // ---------------------------------------------------------------- chronicle schema
 
-const StructureState = z.enum(["unbuilt", "predecessor", "alternate", "intact", "weathered", "overgrown", "remains", "buried", "gone"]);
+const StructureState = z.enum(["unbuilt", "predecessor", "growing", "alternate", "intact", "weathered", "overgrown", "remains", "buried", "gone"]);
 export type StructureState = z.infer<typeof StructureState>;
 
 const Fauna = z.object({

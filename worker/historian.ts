@@ -8,16 +8,24 @@ import { LOCK_TTL_SECONDS, type Env } from "./config";
 import { sparkJson } from "./meta/client";
 
 /** Bump when the historian's instructions change, so scenes get fresh notes instead of stale ones. */
-const NOTES_VERSION = 7; // 3–4: one continuous story, photo cells; 5: forks reasoned item by item; 6: biome and road; 7: 1976, calm building work
+const NOTES_VERSION = 8; // 3–4: one continuous story, photo cells; 5: forks reasoned item by item; 6: biome and road; 7: 1976, calm building work; 8: viewpoint, deep time per biome
 const notesKey = (sceneId: string, forkId: string) =>
   `scenes/${sceneId}/${forkId === DEFAULT_FORK ? "base" : forkId}/notes.v${NOTES_VERSION}.json`;
 
 /**
  * cells: labels for the photo itself (our timeline only), see cells.ts. biome: the place's own climate, read from
  * the photo (the IP-based guess can be a VPN, or a demo's biome left over). road: where in the frame the photo shows
- * a road or street ("" when none); eras keep any road there and nowhere else.
+ * a road or street ("" when none); eras keep any road there and nowhere else. viewpoint: the camera's height and
+ * angle in words, which every era holds.
  */
-export type Notes = { place: string; eras: Record<string, string>; cells?: string[] | null; biome?: Biome; road?: string };
+export type Notes = {
+  place: string;
+  eras: Record<string, string>;
+  cells?: string[] | null;
+  biome?: Biome;
+  road?: string;
+  viewpoint?: string;
+};
 
 const SCHEMA = {
   type: "object",
@@ -25,6 +33,7 @@ const SCHEMA = {
     place: { type: "string" },
     biome: { type: "string", enum: [...BIOMES] },
     road: { type: "string" },
+    viewpoint: { type: "string" },
     eras: {
       type: "array",
       items: {
@@ -37,7 +46,7 @@ const SCHEMA = {
       },
     },
   },
-  required: ["place", "biome", "road", "eras"],
+  required: ["place", "biome", "road", "viewpoint", "eras"],
 };
 
 const SYSTEM = `You are a careful historian and landscape scientist helping an app repaint a real photo as the same
@@ -49,7 +58,9 @@ fields, water and terrain. Keep the permanent terrain (hills, coast, rivers, mou
 Be historically and ecologically plausible; prefer "open land / forest / village edge" over inventing a town.
 Also give "biome", the natural climate of this place (${BIOMES.join(", ")}), and "road": where in the frame the
 photo shows a road, street, parking or vehicle track at ground level, by its position and size (e.g. "a small
-parking lane in the bottom-right corner", "a wide street across the lower third"), or "none".
+parking lane in the bottom-right corner", "a wide street across the lower third"), or "none". And "viewpoint":
+where the camera is, in plain words (e.g. "at a high window about eight floors up, looking down over a courtyard",
+"at eye level on a pavement, looking along the street").
 
 Roads stay where they are: streets and tracks in the past run only where the photo shows one, on the same line,
 narrower and unpaved. No era adds a road, track, rails or vehicles anywhere else; at most a narrow footpath.
@@ -89,7 +100,11 @@ async function write(env: Env, forkId: string, photo: string): Promise<Notes> {
   const years = yearsFor(forkId).filter((y) => (forkId === DEFAULT_FORK ? y !== 0 : !isShared(forkId, y)));
   const lines = years.map((y) => {
     const era = findEra(forkId, y)!;
-    const theme = era.driver === "biology" ? `deep time, no people; ${DEEP_TIME[era.structures] ?? "keep the terrain"}` : era.caption;
+    // Deep time is painted from the biome's own scene, so the note must describe that scene here, not another one.
+    const theme =
+      era.driver === "biology"
+        ? `deep time, no people; ${DEEP_TIME[era.structures] ?? "keep the terrain"}; the landscape by biome (use the one for the biome you give): ${BIOMES.map((b) => `${b}: ${era.biomes[b].environment}`).join(" | ")}`
+        : era.caption;
     const world =
       era.driver === "culture" && era.world
         ? `; differs from our world: ${era.world.differences.join("; ")}; does not exist: ${era.world.absent.join(", ")}`
@@ -102,7 +117,7 @@ async function write(env: Env, forkId: string, photo: string): Promise<Notes> {
       : `This is an ALTERNATE history: "${chronicle.title}". ${chronicle.premise} Everything before ${chronicle.divergenceYear} happened as in our history. How it got here: ${chronicle.chain.map((e) => `${e.year}: ${e.event} ${e.consequence}`).join(" ")}
 Reason like a historian about THIS place, which may be far from where the change began. For each era, go through what the photo shows (the buildings and their height and density, the street, vehicles, wires, lights, shopfronts, greenery) and say concretely what this history changes here and why, and what it leaves alone. Would this place be bigger, smaller, poorer, richer, or not there at all? The differences listed per era are the world's; apply the ones that would reach this place.`;
   const [r, cells] = await Promise.all([
-    sparkJson<{ place: string; biome: Biome; road: string; eras: { year: number; here: string }[] }>(env.MODEL_API_KEY, {
+    sparkJson<{ place: string; biome: Biome; road: string; viewpoint: string; eras: { year: number; here: string }[] }>(env.MODEL_API_KEY, {
       system: SYSTEM,
       name: "PlaceHistory",
       schema: SCHEMA,
@@ -119,6 +134,7 @@ Reason like a historian about THIS place, which may be far from where the change
     eras: Object.fromEntries(r.eras.map((e) => [String(e.year), e.here])),
     cells,
     biome: BIOMES.includes(r.biome) ? r.biome : undefined,
+    viewpoint: r.viewpoint?.trim() || undefined,
     road: /^\s*(none|no road|n\/a)?\s*\.?\s*$/i.test(r.road ?? "") ? "" : r.road.trim(),
   };
 }

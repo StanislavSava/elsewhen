@@ -1,6 +1,8 @@
 // Requests every era for a scene: at most N in flight, nearest-to-now first, resuming from what the
 // Worker already stored (a phone that suspended the tab never pays twice). An era waits for its neighbour
-// toward now (see anchorYear), which the Worker paints in as a continuity reference.
+// toward now (see anchorYear), which the Worker paints in as a continuity reference. Each era first arrives as
+// a draft (one unchecked paint, so the scene fills in fast and the next era's reference exists sooner); its
+// refinement (critic + repaints) runs behind and is swapped in when it lands.
 import { api, HttpError } from "./api";
 import type { EraResult } from "./shared/api";
 import { anchorYear } from "./shared/chronicles";
@@ -10,6 +12,8 @@ export type EraStatus = "pending" | "loading" | "ready" | "failed";
 
 export type OrchestratorEvents = {
   onStatus: (year: number, status: EraStatus, result?: EraResult) => void;
+  /** A draft's refinement landed (its image may have been replaced by a better one). */
+  onRefined: (year: number, result: EraResult) => void;
   onResting: () => void;
 };
 
@@ -32,14 +36,41 @@ export async function generateAll(
   const queue = nearestFirst(years);
   let resting = false;
 
+  const refinements: Promise<void>[] = [];
+  function ready(year: number, result: EraResult): void {
+    events.onStatus(year, "ready", result);
+    if (result.draft) refinements.push(refine(year));
+  }
+
+  /** Best effort: if refining fails, the draft simply stays. */
+  async function refine(year: number): Promise<void> {
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        return events.onRefined(year, await api.refineEra(token, year, params));
+      } catch (err) {
+        if (err instanceof HttpError && err.status === 409) {
+          // Someone else is refining it (another tab, a resume): wait for the result to be stored.
+          const deadline = Date.now() + POLL_LIMIT_MS;
+          while (Date.now() < deadline) {
+            await new Promise((r) => setTimeout(r, POLL_MS));
+            const r = await api.getEra(token, year, params).catch(() => null);
+            if (r && !r.draft) return events.onRefined(year, r);
+          }
+          return;
+        }
+        if (err instanceof HttpError && err.status !== 502) return;
+      }
+    }
+  }
+
   async function one(year: number): Promise<void> {
     events.onStatus(year, "loading");
     try {
       const existing = await api.getEra(token, year, params).catch(() => null);
-      if (existing) return events.onStatus(year, "ready", existing);
+      if (existing) return ready(year, existing);
       for (let attempt = 0; ; attempt++) {
         try {
-          return events.onStatus(year, "ready", await api.createEra(token, year, params));
+          return ready(year, await api.createEra(token, year, params));
         } catch (err) {
           if (!(err instanceof HttpError)) {
             if (attempt === 0) continue; // network blip: one retry
@@ -50,7 +81,7 @@ export async function generateAll(
             events.onResting();
             return events.onStatus(year, "failed");
           }
-          if (err.status === 409) return events.onStatus(year, "ready", await poll(year));
+          if (err.status === 409) return ready(year, await poll(year));
           if (err.status === 502 && attempt === 0) continue;
           throw err;
         }
@@ -99,4 +130,5 @@ export async function generateAll(
     );
   }
   await Promise.all(finished.values());
+  await Promise.all(refinements);
 }

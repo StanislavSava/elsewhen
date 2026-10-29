@@ -16,6 +16,10 @@ export type EraResult = {
   cells?: string[] | null;
   /** Raw SAM text: where this era's own buildings stand, for transitions. Missing in older eras and demos. */
   structuresUrl?: string | null;
+  /** True for the first, unchecked paint: the client asks for its refinement (POST …/refine) and swaps it in. */
+  draft?: boolean;
+  /** Which prompt level got past the content filter (0 = full); the refinement starts there. */
+  level?: number;
 };
 
 export type ApiError = {

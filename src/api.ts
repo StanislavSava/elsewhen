@@ -56,4 +56,12 @@ export const api = {
       headers: { "content-type": "application/json" },
       body: JSON.stringify(p),
     }).then(json<EraResult>),
+
+  /** The critic's pass over a draft era; returns the era as it stands after it (maybe a better image). */
+  refineEra: (token: string, year: number, p: { forkId: string; biome: Biome; setting: Setting }) =>
+    fetch(`/api/scenes/${token}/eras/${year}/refine`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(p),
+    }).then(json<EraResult>),
 };

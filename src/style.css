@@ -308,3 +308,13 @@ body.overlay .topbar, body.overlay .timebar .slider-wrap, body.overlay #hint { v
   position: absolute; right: 16px; top: calc(14px + env(safe-area-inset-top)); padding: 8px 14px; border-radius: 999px;
   background: rgba(14, 14, 13, 0.6); border: 1px solid var(--faint); color: var(--fg); font-size: 0.85rem; cursor: pointer;
 }
+
+/* Sound toggle: just the speaker, so the phone's top bar keeps to two rows. */
+.icon-chip {
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: center;
+}
+.icon-chip[aria-pressed="false"] {
+  opacity: 0.75;
+}

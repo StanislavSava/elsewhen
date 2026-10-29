@@ -5,6 +5,7 @@ import { playFracture } from "./fracture";
 import { closeTimeCore, isTimeCoreOpen, openTimeCore, type Side, type Slice } from "./timecore";
 import { demoEras, demoMaskUrls, loadDemo, loadDemoIndex, type Demo, type DemoIndexEntry } from "./demo";
 import { generateAll, nearestFirst, type EraStatus } from "./orchestrator";
+import { ambience } from "./ambience";
 import { bakeDelayMap, bakeStructures, Renderer, tintForPosition } from "./renderer";
 import { anchor, coverage, hit, loadMask, type Mask } from "./sam";
 import type { EraResult, NotesResponse } from "./shared/api";
@@ -431,9 +432,45 @@ async function generate(gen: number, years: number[] = yearsFor(state.forkId)): 
         }
         renderTicks();
       },
+      onRefined: (year, result) => {
+        if (gen !== state.generation) return;
+        const era = state.eras.get(year);
+        if (!era) return;
+        const replaced = era.result?.imageUrl !== result.imageUrl;
+        era.result = result;
+        // The critic's better repaint swaps in quietly; the slider keeps working on the draft until then.
+        if (replaced) void loadKeyframe(gen, year, result);
+      },
       onResting: () => toast("Live generation is resting right now. Try again later.", 0),
     },
     years,
+  );
+}
+
+// ---------------------------------------------------------------- sound
+
+const soundButton = $<HTMLButtonElement>("sound");
+const SPEAKER = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor" stroke="none"/>`;
+function showSound(): void {
+  soundButton.innerHTML = ambience.on
+    ? `${SPEAKER}<path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg>`
+    : `${SPEAKER}<path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>`;
+  soundButton.setAttribute("aria-pressed", String(ambience.on));
+}
+showSound();
+soundButton.addEventListener("click", async () => {
+  if (ambience.on) ambience.disable();
+  else await ambience.enable();
+  showSound();
+});
+// Someone who had sound on last time gets it back with their first tap (browsers need one before audio plays).
+if (ambience.wanted()) {
+  window.addEventListener(
+    "pointerdown",
+    (e) => {
+      if (e.target !== soundButton) void ambience.enable().then(showSound);
+    },
+    { once: true },
   );
 }
 
@@ -503,6 +540,7 @@ function update(): void {
   const { a, b, t } = blendAt(p, avail);
   // Buildings rise through the past and wear away in the far future (+1000 years on).
   r.show(a, b, t, tintForPosition(p), b <= 0 ? 1 : a >= 1000 ? -1 : 0);
+  ambience.set(a, b, t);
 
   const year = Math.round(positionToYear(p));
   yearEl.textContent = Math.abs(year) < 1 ? "now" : formatYear(roundNicely(year));
