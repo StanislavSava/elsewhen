@@ -36,10 +36,21 @@ export async function generateAll(
   const queue = nearestFirst(years);
   let resting = false;
 
-  const refinements: Promise<void>[] = [];
+  // An era's refinement waits for its neighbour's: the critic then compares it with the neighbour's final image,
+  // and repaints it against that, not against a draft that may since have been replaced.
+  const refinements = new Map<number, Promise<void>>();
   function ready(year: number, result: EraResult): void {
     events.onStatus(year, "ready", result);
-    if (result.draft) refinements.push(refine(year));
+    if (!result.draft) return;
+    const anchor = anchorYear(params.forkId, year);
+    const before = anchor === null ? undefined : refinements.get(anchor);
+    refinements.set(
+      year,
+      (async () => {
+        await before;
+        await refine(year);
+      })(),
+    );
   }
 
   /** Best effort: if refining fails, the draft simply stays. */
@@ -130,5 +141,5 @@ export async function generateAll(
     );
   }
   await Promise.all(finished.values());
-  await Promise.all(refinements);
+  await Promise.all(refinements.values());
 }

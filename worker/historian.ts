@@ -8,7 +8,7 @@ import { LOCK_TTL_SECONDS, type Env } from "./config";
 import { sparkJson } from "./meta/client";
 
 /** Bump when the historian's instructions change, so scenes get fresh notes instead of stale ones. */
-const NOTES_VERSION = 8; // 3–4: one continuous story, photo cells; 5: forks reasoned item by item; 6: biome and road; 7: 1976, calm building work; 8: viewpoint, deep time per biome
+const NOTES_VERSION = 9; // 3–4: one continuous story, photo cells; 5: forks reasoned item by item; 6: biome and road; 7: 1976, calm building work; 8: viewpoint, deep time per biome; 9: beginnings only just before
 const notesKey = (sceneId: string, forkId: string) =>
   `scenes/${sceneId}/${forkId === DEFAULT_FORK ? "base" : forkId}/notes.v${NOTES_VERSION}.json`;
 
@@ -66,11 +66,11 @@ Roads stay where they are: streets and tracks in the past run only where the pho
 narrower and unpaved. No era adds a road, track, rails or vehicles anywhere else; at most a narrow footpath.
 
 The eras are one continuous story seen from one fixed camera: the viewer slides between them, so nothing may
-appear from nothing. Buildings are preceded by their beginnings: in the last era before buildings stand in this
-view MUST show their beginnings: a camp of a few tents, a hut, a cleared plot, a timber frame, stacked building
-material, a fence or a footpath, where the buildings will later stand. This is the first sign of the place to come,
-even if it is somewhat earlier than the real founding. Big buildings are preceded by smaller, older ones on roughly
-the same spots. Say briefly what is new since the previous era. Describe building work calmly, as partly finished buildings and
+appear from nothing. Keep continuity through the terrain, the layout and plausible land use. Where buildings first
+stand in some era, the era just before it shows their beginnings if that is plausible for its date: a camp of a few
+tents, a hut, a cleared plot, a timber frame, stacked building material, a fence or a footpath, where they will
+stand. Never invent a settlement further back than that to foreshadow later buildings; big changes can happen
+between distant eras. Say briefly what is new since the previous era. Describe building work calmly, as partly finished buildings and
 stacked materials; never mention cranes, scaffolding, demolition or building sites.
 
 For future eras up to a thousand years, describe a calm, cared-for, inhabited place where nature and buildings

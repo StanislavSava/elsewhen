@@ -53,7 +53,7 @@ const STRUCTURES: Record<StructureState, Record<Setting, string>> = {
 
 /** Scale drift was the most visible failure: the model zooms or reframes unless told very precisely not to. */
 const CAMERA_LOCK =
-  "Same camera, same position, same lens and framing: do not zoom in or out, do not crop, do not change the perspective or camera height. The horizon line, distant hills, mountains and skyline keep exactly the same height, size and position in the frame.";
+  "Same camera, same position, same lens and framing: do not zoom in or out, do not crop, do not change the perspective or camera height. The horizon line and distant hills or mountains keep exactly the same height, size and position in the frame; buildings on the skyline may change with the era.";
 
 /**
  * Scrubbing reads as one camera only if the light holds: golden sunsets under a grey photo's sky broke it. Deep
@@ -161,7 +161,7 @@ export function minimalEraPrompt(era: ChronicleEra, year: number, biome: Biome):
 }
 
 /** Bump when how an era is painted or checked changes (not just its prompt), so old results aren't served. */
-const PIPELINE_VERSION = 9; // 2: critic + SAM building overlap; 3: no idea fossils, cell labels; 4: repaints re-checked; 5: alternate worlds as consequences; 6: roads keep their line; 7: light held, per-era building masks; 8: neighbour era as reference (not hashed: it may or may not exist yet); 9: viewpoint held, draft then refine
+const PIPELINE_VERSION = 10; // 2: critic + SAM building overlap; 3: no idea fossils, cell labels; 4: repaints re-checked; 5: alternate worlds as consequences; 6: roads keep their line; 7: light held, per-era building masks; 8: neighbour era as reference (not hashed: it may or may not exist yet); 9: viewpoint held, draft then refine; 10: neighbour-aware weighted critic, skyline free
 
 /** Short hash of everything that shapes an era's image, so editing a chronicle regenerates only what changed. */
 export async function promptVersion(

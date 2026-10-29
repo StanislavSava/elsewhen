@@ -20,7 +20,7 @@ import { ContentFilteredError, editImage, segment } from "./meta/client";
 import { eraLabel, getNotes, noteFor, readNoteFor, readNotes, townOf } from "./historian";
 import { writeStory, type StoryEra } from "./story";
 import { iou, occupancy } from "./geometry";
-import { judge, passes } from "./judge";
+import { judge, penalty } from "./judge";
 import { bareEraPrompt, CREATURE_PHRASE, eraPrompt, minimalEraPrompt, promptVersion, type PlaceFacts, type Reference } from "./prompts";
 
 type C = Context<{ Bindings: Env }>;
@@ -206,7 +206,7 @@ async function referenceFor(
   year: number,
   p: EraParams,
   facts: PlaceFacts,
-): Promise<(Reference & { image: string }) | null> {
+): Promise<(Reference & { image: string; url: string }) | null> {
   const anchor = anchorYear(p.forkId, year);
   const era = anchor === null ? undefined : findEra(p.forkId, anchor);
   if (anchor === null || !era) return null;
@@ -217,7 +217,7 @@ async function referenceFor(
     const obj = meta && (await env.BUCKET.get(imageKey(meta)));
     if (!obj) return null;
     const image = toDataUrl(await obj.arrayBuffer(), obj.httpMetadata?.contentType ?? "image/webp");
-    return { label: eraLabel(anchor), later: anchor > year, image };
+    return { label: eraLabel(anchor), later: anchor > year, image, url: meta.imageUrl };
   } catch (err) {
     console.error(`reference ${sceneId} ${year}:`, String(err).slice(0, 200));
     return null;
@@ -249,6 +249,9 @@ app.get("/api/scenes/:token/eras/:year", async (c) => {
 });
 
 type Painting = { bytes: ArrayBuffer; type: string; data: string };
+
+/** The critic's weighted penalty (0 = passes), its complaints, and whether it answered at all. */
+type Evaluation = { penalty: number; issues: string[]; verified: boolean };
 
 /**
  * Everything one era needs to be painted, checked and described. Shared by the draft (POST …/eras/:year: one
@@ -324,25 +327,62 @@ async function eraJob(c: C, year: number, params: EraParams) {
       : "";
   const camera = facts.viewpoint ? ` The camera is ${facts.viewpoint}; image 2 must keep that height and angle.` : "";
   const expected = `${history}${note}${absent}${roads}${camera}`;
-  const check = async (img: string): Promise<string[]> => {
+  // The critic sees the neighbouring era toward now as well (the same one the era is painted with), so a cottage
+  // that moved or a road that bent between two eras counts against it. A critic that can't answer is retried once;
+  // if it still can't, the result is unverified, not a pass.
+  const check = async (img: string): Promise<Evaluation> => {
+    if (reference === undefined) reference = await referenceFor(env, scene.id, year, params, facts);
+    const neighbour = reference ? { image: reference.image, label: reference.label } : null;
+    const ask = () => judge(env, photo, img, eraLabel(year), expected, neighbour);
     const [verdict, overlap] = await Promise.all([
-      judge(env, photo, img, eraLabel(year), expected).catch((err) => {
-        console.error(`judge ${prefix}:`, String(err).slice(0, 300));
-        return null;
-      }),
+      ask().catch(() =>
+        ask().catch((err) => {
+          console.error(`judge ${prefix}:`, String(err).slice(0, 300));
+          return null;
+        }),
+      ),
       keepsBuildings ? buildingOverlap(env, scene.id, img) : Promise.resolve(null),
     ]);
     const issues: string[] = [];
-    if (verdict && !passes(verdict)) issues.push(verdict.issues || "the viewpoint, scale or photographic look changed");
+    let score = verdict ? penalty(verdict) : 0;
+    if (verdict && score > 0) issues.push(verdict.issues || "the viewpoint, scale or photographic look changed");
     if (overlap !== null && overlap < MIN_BUILDING_OVERLAP) {
+      score += 2;
       issues.push("the buildings moved or changed size: keep every building exactly where and exactly as large as in the original photo, same zoom");
     }
-    return issues;
+    return { penalty: score, issues, verified: verdict !== null };
   };
 
-  /** Stores an image as the era's current one, with its creature, cell labels and building mask. */
-  const publish = async (p: Painting, file: string, draft: boolean): Promise<EraResult> => {
+  const writeMeta = (r: EraResult) =>
+    env.BUCKET.put(`${prefix}/meta.json`, JSON.stringify(r), { httpMetadata: { contentType: "application/json" } });
+
+  /**
+   * Stores an image as the era's current one and returns at once, so the next era in the chain can use it as its
+   * reference; its creature, cell labels and building mask follow in the background (enrich).
+   */
+  const publish = async (p: Painting, file: string, extra: Partial<EraResult>, background = true): Promise<EraResult> => {
     await env.BUCKET.put(`${prefix}/${file}`, p.bytes, { httpMetadata: { contentType: p.type } });
+    const result: EraResult = {
+      year,
+      imageUrl: fileUrl(`${prefix}/${file}`),
+      target: null,
+      cells: null,
+      structuresUrl: null,
+      level,
+      referenceUrl: reference?.url ?? null,
+      ...extra,
+    };
+    await writeMeta(result);
+    if (background) c.executionCtx.waitUntil(enrich(p.data).catch((err) => console.error(`enrich ${prefix}:`, String(err).slice(0, 200))));
+    return result;
+  };
+
+  /** Adds the creature, cell labels and building mask to the era's current image (once; skipped if replaced). */
+  const enrich = async (data: string): Promise<EraResult | null> => {
+    const current = await readEra(env, prefix);
+    if (!current || current.enriched) return current;
+    const file = imageKey(current).split("/").pop()!;
+    const p = { data };
     // Deep time's creature to tap, and labels for every part of the image (the time core).
     const findCreature = async (): Promise<EraResult["target"]> => {
       if (era.driver !== "biology") return null;
@@ -372,15 +412,18 @@ async function eraJob(c: C, year: number, params: EraParams) {
       describeCells(env, p.data, eraLabel(year), note),
       findStructures(),
     ]);
-    const result: EraResult = { year, imageUrl: fileUrl(`${prefix}/${file}`), target, cells, structuresUrl, draft, level };
-    await env.BUCKET.put(`${prefix}/meta.json`, JSON.stringify(result), { httpMetadata: { contentType: "application/json" } });
+    // The era may have been refined meanwhile: only the image these were made for gets them.
+    const latest = await readEra(env, prefix);
+    if (!latest || latest.imageUrl !== current.imageUrl) return latest;
+    const result: EraResult = { ...latest, target, cells, structuresUrl, enriched: true };
+    await writeMeta(result);
     return result;
   };
 
   /** Repaints of an era the filter forced down a level start there, instead of walking down again. */
   const startAt = (l: number | undefined) => (level = Math.min(Math.max(l ?? 0, 0), levels.length - 1));
 
-  return { env, scene, prefix, paint, check, publish, startAt };
+  return { env, scene, prefix, paint, check, publish, enrich, writeMeta, startAt };
 }
 
 /** Runs era work under waitUntil, so a phone that suspends the tab mid-request still gets the result on resume. */
@@ -420,7 +463,7 @@ app.post("/api/scenes/:token/eras/:year", async (c) => {
   if (!job) return fail(c, 404, "not_found");
   const existing = await readEra(c.env, job.prefix);
   if (existing) return c.json(existing);
-  return runLocked(c, job.prefix, async () => job.publish(await job.paint(""), "image.webp", true));
+  return runLocked(c, job.prefix, async () => job.publish(await job.paint(""), "image.webp", { draft: true }));
 });
 
 /**
@@ -443,32 +486,37 @@ app.post("/api/scenes/:token/eras/:year/refine", async (c) => {
     const type = draft.httpMetadata?.contentType ?? "image/webp";
     const bytes = await draft.arrayBuffer();
     let best: Painting = { bytes, type, data: toDataUrl(bytes, type) };
-    let bestIssues = await job.check(best.data);
+    let bestEval = await job.check(best.data);
     let improved = false;
     const maxRepaints = Number(env.MAX_REPAINTS ?? "2");
-    for (let repaint = 1; bestIssues.length && repaint <= maxRepaints; repaint++) {
-      console.log(`era ${prefix}: repaint ${repaint} (${bestIssues.join("; ")})`);
+    // An unverified draft isn't repainted blind: without a verdict there is nothing to fix or to compare against.
+    for (let repaint = 1; bestEval.verified && bestEval.penalty > 0 && repaint <= maxRepaints; repaint++) {
+      console.log(`era ${prefix}: repaint ${repaint} (penalty ${bestEval.penalty}: ${bestEval.issues.join("; ")})`);
       let next: Painting;
       try {
-        next = await job.paint(bestIssues.join("; "));
+        next = await job.paint(bestEval.issues.join("; "));
       } catch (err) {
         // A repaint the filter blocks must not throw away the painting we already have.
         if (!(err instanceof ContentFilteredError)) throw err;
         console.warn(`era ${prefix}: repaint ${repaint} filtered, keeping the earlier attempt`);
         break;
       }
-      const nextIssues = await job.check(next.data);
-      // A tie goes to the repaint: it answered the critic's complaints, so it is likely the better one.
-      if (nextIssues.length <= bestIssues.length) [best, bestIssues, improved] = [next, nextIssues, true];
+      const nextEval = await job.check(next.data);
+      // Only a clearly better repaint replaces: one that trades the camera or the geometry for a fix elsewhere
+      // scores worse, and a tie keeps what is already there.
+      if (nextEval.verified && nextEval.penalty < bestEval.penalty) [best, bestEval, improved] = [next, nextEval, true];
     }
-    console.log(`era ${prefix}: ${bestIssues.length ? `kept with issues (${bestIssues.join("; ")})` : "passed"}${improved ? ", replaced the draft" : ""}`);
-    if (!improved) {
-      const result: EraResult = { ...current, draft: false };
-      await env.BUCKET.put(`${prefix}/meta.json`, JSON.stringify(result), { httpMetadata: { contentType: "application/json" } });
-      return result;
+    const verdict = !bestEval.verified ? "unverified" : bestEval.penalty ? `kept with issues (${bestEval.issues.join("; ")})` : "passed";
+    console.log(`era ${prefix}: ${verdict}${improved ? ", replaced the draft" : ""}`);
+    if (improved) {
+      // A new file name: era images are served as immutable, so the draft's URL must not change content.
+      await job.publish(best, "refined.webp", { draft: false, verified: true }, false);
+    } else {
+      const latest = (await readEra(env, prefix)) ?? current;
+      await job.writeMeta({ ...latest, draft: false, verified: bestEval.verified });
     }
-    // A new file name: era images are served as immutable, so the draft's URL must not change content.
-    return job.publish(best, "refined.webp", false);
+    // The client gets the era complete: make sure its labels and mask exist before answering.
+    return (await job.enrich(best.data)) ?? current;
   });
 });
 

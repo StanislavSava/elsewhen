@@ -20,6 +20,12 @@ export type EraResult = {
   draft?: boolean;
   /** Which prompt level got past the content filter (0 = full); the refinement starts there. */
   level?: number;
+  /** Image of the neighbouring era this one was painted against, if any (which version: draft or refined). */
+  referenceUrl?: string | null;
+  /** False when the critic couldn't give a verdict (kept as painted, not passed). */
+  verified?: boolean;
+  /** Creature, cell labels and building mask are filled in (they follow the image by a few seconds). */
+  enriched?: boolean;
 };
 
 export type ApiError = {

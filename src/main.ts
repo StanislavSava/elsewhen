@@ -440,10 +440,11 @@ async function generate(gen: number, years: number[] = yearsFor(state.forkId)): 
         if (gen !== state.generation) return;
         const era = state.eras.get(year);
         if (!era) return;
-        const replaced = era.result?.imageUrl !== result.imageUrl;
+        // The critic's better repaint swaps in quietly (the slider keeps working on the draft until then), and a
+        // draft's building mask, which follows its image by a few seconds, arrives with it.
+        const changed = era.result?.imageUrl !== result.imageUrl || era.result?.structuresUrl !== result.structuresUrl;
         era.result = result;
-        // The critic's better repaint swaps in quietly; the slider keeps working on the draft until then.
-        if (replaced) void loadKeyframe(gen, year, result);
+        if (changed) void loadKeyframe(gen, year, result);
       },
       onResting: () => toast("Live generation is resting right now. Try again later.", 0),
     },
